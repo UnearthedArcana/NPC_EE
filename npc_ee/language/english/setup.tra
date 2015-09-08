@@ -29,7 +29,7 @@
 @163  = ~Make Minsc a Barbarian Ranger (SoB)~
 @178  = ~Just drop Minsc to 1st level~
 @179  = ~No change for Minsc~
-@180  = ~Choose a kit for Dynaheir~
+//@180  = ~Choose a kit for Dynaheir~
 //@181  = ~Make Dynaheir a Sorcerer~
 //@198  = ~Just drop Dynaheir to 1st level~
 //@199  = ~No change for Dynaheir~
@@ -81,6 +81,7 @@
 @381  = ~Make Faldorn an Avenger~
 @382  = ~Make Faldorn a Purifier (SoB)~
 @383  = ~Make Faldorn a Lost Druid~
+//@384  = ~Make Faldorn a Shapeshifter~
 @398  = ~Just drop Faldorn to 1st level~
 @399  = ~No change for Faldorn~
 @400  = ~Choose a kit for Skie~
@@ -148,52 +149,54 @@
 //@678  = ~Just drop Rasaad to 1st level~
 //@679  = ~No change for Rasaad~
 @680  = ~Choose a kit for Yoshimo~
-//@681  = ~Make Yoshimo a Swashbuckler~
-//@682  = ~Make Yoshimo a fighter/thief~
-//@698  = ~Just drop  to 1st level~
-//@699  = ~No change for Yoshimo~
+@681  = ~Make Yoshimo a Swashbuckler~
+@682  = ~Make Yoshimo a fighter/thief~
+@698  = ~Just drop  to 1st level~
+@699  = ~No change for Yoshimo~
 @700  = ~Choose a kit for Valygar~
 @701  = ~Make Valygar a Mage Hunter (SoB)~
-//@702  = ~Make Valygar a fighter/thief~
+@702  = ~Make Valygar a fighter/thief~
 @703  = ~Make Valygar a fighter/thief Wizard Slayer (SoB)~
-//@718  = ~Just drop Valygar to 1st level~
-//@719  = ~No change for Valygar~
+@718  = ~Just drop Valygar to 1st level~
+@719  = ~No change for Valygar~
 @720  = ~Choose a kit for Nalia~
-//@721  = ~Make Nalia a Loresinger of Milil (SoB)~
-//@722  = ~Make Nalia a Loremaster (SoB)~
-//@723  = ~Make Nalia a Spellbender (SoB)~
-//@738  = ~Just drop Nalia to 1st level~
-//@739  = ~No change for Nalia~
+@721  = ~Make Nalia a Loremaster (SoB)~
+@722  = ~Make Nalia a Loresinger of Milil (SoB)~
+@723  = ~Make Nalia a Spellbender (SoB)~
+@739  = ~No change for Nalia~
 @740  = ~Choose a kit for Haer'Dalis~
-//@741  = ~Make Haer'Dalis a Skald~
-//@742  = ~Make Haer'Dalis a Gallant~
-//@758  = ~Just drop Haer'Dalis to 1st level~
-//@759  = ~No change for Haer-Dalis~
+@741  = ~Make Haer'Dalis a Jongleur (SoB)~
+@742  = ~Make Haer'Dalis a Gallant (SoB)~
+@743  = ~Make Haer'Dalis a Skald~
+@758  = ~Just drop Haer'Dalis to 1st level~
+@759  = ~No change for Haer-Dalis~
 @760  = ~Choose a kit for Mazzy~
-//@761  = ~Make Mazzy a fighter/cleric: Hearthguard of Arvoreen (SoB)~
+@761  = ~Make Mazzy a fighter/cleric: Hearthguard of Arvoreen (SoB)~
 //@762  = ~Make Mazzy a Holy Liberator (Oversight)~
-//@778  = ~Just drop Mazzy to 1st level~
-//@779  = ~No change for Mazzy~
+@778  = ~Just drop Mazzy to 1st level~
+@779  = ~No change for Mazzy~
 @780  = ~Choose a kit for Aerie~
-//@781  = ~Make Aerie a Fastpaws of Baervan Wildwanderer (SoB)~
-//@798  = ~Just drop Aerie to 1st level~
-//@799  = ~No change for Aerie~
-//@800  = ~Choose a kit for Keldorn~
-//@801  = ~Make Keldorn a Paladin~
-//@802  = ~Make Keldorn a Cavalier~
+@781  = ~Make Aerie a Fastpaws of Baervan Wildwanderer (SoB)~
+@798  = ~Just drop Aerie to 1st level~
+@799  = ~No change for Aerie~
+@800  = ~Choose a kit for Keldorn~
+@801  = ~Make Keldorn a Paladin~
+@802  = ~Make Keldorn a Cavalier~
 //@803  = ~Make Keldorn an Undead Hunter~
-//@818  = ~Just drop Keldorn to 1st level~
-//@819  = ~No change for Keldorn~
+@818  = ~Just drop Keldorn to 1st level~
+@819  = ~No change for Keldorn~
 //@820  = ~Choose a kit for Korgan~
 //@838  = ~Just drop Korgan to 1st level~
 //@839  = ~No change for Korgan~
 //@840  = ~Choose a kit for Jan~
 //@858  = ~Just drop Jan to 1st level~
 //@859  = ~No change for Jan~
-//@860  = ~Choose a kit for Cernd~
-//@861  = ~Make Cernd a Totemic Druid~
-//@878  = ~Just drop Cernd to 1st level~
-//@879  = ~No change for Cernd~
+@860  = ~Choose a kit for Cernd~
+@861  = ~Make Cernd a Totemic Druid~
+@862  = ~Make Cernd an Elementalist (SoB)~
+@863  = ~Make Cernd a Purifier (SoB)~
+@878  = ~Just drop Cernd to 1st level~
+@879  = ~No change for Cernd~
 //@880  = ~Choose a kit for Anomen~
 //@898  = ~Just drop Anomen to 1st level~
 //@899  = ~No change for Anomen~
@@ -539,3 +542,211 @@ Restrictions:
 @58105  = ~Blindness~
 @58106  = ~Power Word: Sleep~
 @58107  = ~Feeblemind~
+@70101  = ~mage hunter~
+@70102  = ~Mage Hunter~
+@70103  = ~MAGE HUNTER: These rangers participate in demanding rituals with Avenger druids in order to gain access to magic abilities which help them in their campaign against any wizards who use their skills to defile nature.
+
+Advantages:
+- Can cast the following as 1st-level spells: Shocking Touch, Deafness.
+- Can cast the following as 2nd-level spells: Remove Magic, Minor Spell Deflection.
+- Can cast the following as 3rd-level spells: Breach, Non-Detection, Spell Thrust.
+
+Disadvantages:
+- Suffers a -1 penalty to Strength and Constitution.
+- May not use Charm Animal ability.
+~
+@70104  = ~Mage Hunters participate in demanding rituals with Avenger druids in order to gain access to magic abilities which help them in their campaign against any wizards who use their skills to defile nature.~
+@72201  = ~loresinger~
+@72202  = ~Loresinger~
+@72203  = ~LORESINGER OF MILIL: Loresingers venerate Milil, god of poetry, song, and storytelling. More bard than priest, they volunteer their talents as cantors for churches. Loresingers may use a mix of divine and arcane magic, but may not turn undead like most priests.
+
+Advantages:
+- May cast the following priest spells: Cure Light Wounds, Sanctuary, Find Traps, Silence 15' Radius, Spiritual Hammer, Cure Medium Wounds, Holy Smite, Death Ward, Holy Power, Greater Command, Cure Critical Wounds, and False Dawn.
+- The Loresinger's song, 'Milil's Hymn,' gives allies the effects of the Chant spell. From 5th level it has a chance to Slow any nearby undead. From 9th level, it also grants allies Protection from Evil. And from 13th level, the song has a chance to Hold nearby undead.
+
+Disadvantages:
+- Reduced pickpocketing ability
+~
+@72204  = ~Loresingers venerate Milil, god of poetry, song, and storytelling. More bard than priest, they volunteer their talents as cantors for churches. Loresingers may use a mix of divine and arcane magic, but may not turn undead like most priests.~
+@72205  = ~Song of Blessing~
+@72206  = ~Song of Warding~
+@72301  = ~spellbender~
+@72302  = ~Spellbender~
+@72303  = ~SPELLBENDER: The goddess Mystra rules the fabled Weave of Faerun, the ethereal conduit that allows mortals to shape magical energies into spells and effects. As with any rigid system, the are gaps and shortcuts that may be used to circumvent Mystra's rules. Spellbenders make a science of mapping the ways to bypass Mystra's restrictions. 
+
+Advantages: 
+- Spellbenders may sacrifice a memorized wizard spell to instead create one of numerous divine effects; and they may sacrifice a memorized cleric spell to create an arcane effect.~
+@72304  = ~The goddess Mystra rules the fabled Weave of Faerun, the ethereal conduit that allows mortals to shape magical energies into spells and effects. As with any rigid system, the are gaps and shortcuts that may be used to circumvent Mystra's rules. Spellbenders make a science of mapping the ways to bypass Mystra's restrictions.~
+@72305  = ~Arcane Weaving I~
+@72306  = ~Arcane Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Identify
+- Shield
+- Reflected Image
+- Grease
+- Sleep
+- Shocking Grasp
+- Burning Hands
+- Magic Missile~
+@72307  = ~Arcane Weaving II~
+@72308  = ~Arcane Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Vocalize
+- Blur
+- Invisibility
+- Horror
+- Web
+- Glitterdust
+- Acid Arrow
+- Knock~
+@72309  = ~Arcane Weaving III~
+@72310  = ~Arcane Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Dispel Magic
+- Detect Illusion
+- Ghost Armor
+- Protection from Missiles
+- Haste
+- Dire Charm
+- Lightning Bolt
+- Fireball~
+@72311  = ~Arcane Weaving IV~
+@72312  = ~Arcane Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Minor Globe
+- Stoneskin
+- Polymorph Self
+- Improved Invisibility
+- Secret Word
+- Greater Malison
+- Confusion
+- Ice Storm~
+@72313  = ~Arcane Weaving V~
+@72314  = ~Arcane Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Oracle
+- Shadow Door
+- Minor Turning
+- Phantom Blade
+- Domination
+- Breach
+- Hold Monster
+- Cloudkill~
+@72315  = ~Arcane Weaving VI~
+@72316  = ~Arcane Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Globe of Invulnerability
+- Spell Deflection
+- Protection from Energy
+- Mislead
+- Tenser's Transformation
+- Pierce Magic
+- Improved Haste
+- Chain Lightning~
+@72317  = ~Divine Weaving I~
+@72318  = ~Divine Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Cure Light Wounds
+- Bless
+- Remove Fear
+- Protection from Evil
+- Armor of Faith
+- Sanctuary
+- Command
+- Magic Stone~
+@72319  = ~Divine Weaving II~
+@72320  = ~Divine Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Find Traps
+- Chant
+- Resist Fire and Cold
+- Slow Poison
+- Draw Upon Holy Might
+- Silence
+- Hold Person
+- Spiritual Hammer~
+@72321  = ~Divine Weaving III~
+@72322  = ~Divine Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Cure Medium Wounds
+- Remove Curse
+- Cure Disease
+- Remove Paralysis
+- Dispel Magic
+- Invisibility Purge
+- Strength of One
+- Holy Smite~
+@72323  = ~Divine Weaving IV~
+@72324  = ~Divine Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Cure Serious Wounds
+- Lesser Restoration
+- Protection from Evil 10' Radius
+- Defensive Harmony
+- Death Ward
+- Protection from Lightning
+- Free Action
+- Holy Power~
+@72325  = ~Divine Weaving V~
+@72326  = ~Divine Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Cure Critical Wounds
+- Mass Cure
+- Chaotic Commands
+- Magic Resistance
+- Righteous Magic
+- Greater Command
+- Repulse Undead
+- Flame Strike~
+@72327  = ~Divine Weaving VI~
+@72328  = ~Divine Weaving
+
+This magic will allow the Spellbender to cast one of the following spells:
+- Heal
+- Wondrous Recall
+- Aerial Servant
+- Physical mirror
+- Blade Barrier
+- Sol's Searing Orb
+- False Dawn
+- Bolt of Glory~
+@76101  = ~hearthguard of arvoreen~
+@76102  = ~Hearthguard of Arvoreen~
+@76103  = ~HEARTHGUARD OF ARVOREEN: Arvoreen is the halfling goddess of protection and militant defense.  Her followers, the Hearthguards, are multiclass fighter/clerics who use their formidable courage, training, and magic to protect halfling communities and interests from whatever threats may appear.
+
+Advantages:
+- Hearthguards have an innate ability to rally their companions and remove magical fear
+- Hearthguards may imbue themselves with divine strength
+- Hearthguards may heal the injured by laying on hands like a paladin.  
+
+They may perform each such feat once per day per six levels of experience.~
+@76104  = ~HEARTHGUARD OF ARVOREEN: Arvoreen is the halfling goddess of protection and militant defense.  Her followers, the Hearthguards, are multiclass fighter/clerics who use their formidable courage, training, and magic to protect halfling communities and interests from whatever threats may appear.~
+@78101  = ~fastpaws of baervan~
+@78102  = ~Fastpaws of Baervan Wildwanderer~
+@78103  = ~FASTPAWS OF BAERVAN WILDWANDERER: Baervan Wildwanderer, known as The Forest Gnome and the Masked Leaf, is the neutral good gnome deity of forests, travel and nature.  His clerics are known as "Fastpaws" in honor of his friend, a sentient giant raccoon named Chiktikka Fastpaws.
+ 
+Advantages:
+- Immune to Entanglement.
+- From 3rd level, may cast Barkskin once per day.
+- From 7th level, may cast Call Woodland Being once per day.
+- From 12th level, may cast Conjure Animals once per day.
+
+Restrictions:
+- Alignment: limited to a combination of Chaotic, Neutral, and Good.
+~
+@78104  = ~Baervan Wildwanderer, known as The Forest Gnome and the Masked Leaf, is the neutral good gnome deity of forests, travel and nature.  His clerics are known as "Fastpaws" in honor of his friend, a sentient giant raccoon named Chiktikka Fastpaws.~
+@78105  = ~Barkskin~
+@78106  = ~Call Woodland Being~
+@78107  = ~Conjure Animals~
+

@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author: <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 1.0 </strong><br />
+  <p><strong> Version 1.1 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -196,6 +196,64 @@
     <p><strong>Component 583: Make Viconia a cleric/thief</strong><br /></p>
     <p><strong>Component 598: Drop Viconia to level 1</strong><br /></p>
   </div>
+  <h4 class="subheader">Choose a kit for Yoshimo</h4>
+  <div class="section">
+    <p><strong>Component 681: Make Yoshimo a Swashbuckler</strong></p>
+    <p><strong>Component 682: Make Yoshimo a fighter/thief</strong></p>
+    <p><strong>Component 698: Drop Yoshimo to level 1</strong><br /></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Valygar</h4>
+  <div class="section">
+    <p><strong>Component 701: Make Valygar a Mage Hunter</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Mage Hunter" kit - for Valygar only - if it is not already installed.</i></p>
+    <p><strong>Component 702: Make Valygar a fighter/thief</strong></p>
+    <p><strong>Component 718: Drop Valygar to level 1</strong><br /></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Nalia</h4>
+  <div class="section">
+    <p><strong>Component 721: Make Nalia a Loremaster (bard)</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Loremaster" kit - for Nalia only - if it is not already installed.</i></p>
+    <p><strong>Component 722: Make Nalia a Loresinger of Milil (bard)</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Loresinger" kit - for Nalia only - if it is not already installed.</i></p>
+    <p><strong>Component 723: Make Nalia a Spellbender (cleric/mage)</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Spellbender" kit - for Nalia only - if it is not already installed.</i></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Haer'Dalis</h4>
+  <div class="section">
+    <p><strong>Component 741: Make Haer'Dalis a Jongleur</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Jongleur" kit - for Haer'Dalis only - if it is not already installed.</i></p>
+    <p><strong>Component 742: Make Haer'Dalis a Gallant of Milil</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Gallant" kit - for Haer'Dalis only - if it is not already installed.</i></p>
+    <p><strong>Component 743: Make Haer'Dalis a Skald</strong></p>
+    <p><strong>Component 758: Drop Haer'Dalis to level 1</strong><br /></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Mazzy</h4>
+  <div class="section">
+    <p><strong>Component 761: Make Mazzy a Hearthguard of Arvoreen (fighter/cleric)</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Hearthguard" kit - for Mazzy only - if it is not already installed.</i></p>
+    <p><strong>Component 778: Drop Mazzy to level 1</strong><br /></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Mazzy</h4>
+  <div class="section">
+    <p><strong>Component 781: Make Aerie a Fastpaws of Baervan Wildwanderer</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Fastpaws" kit - for Mazzy only - if it is not already installed.</i></p>
+    <p><strong>Component 798: Drop Aerie to level 1</strong><br /></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Keldorn</h4>
+  <div class="section">
+    <p><strong>Component 801: Make Keldorn a trueclass Paladin</strong></p>
+    <p><strong>Component 802: Make Keldorn a Cavalier</strong></p>
+    <p><strong>Component 818: Drop Keldorn to level 1</strong><br /></p>
+  </div>
+  <h4 class="subheader">Choose a kit for Cernd</h4>
+  <div class="section">
+    <p><strong>Component 861: Make Cernd a Totemic druid</strong></p>
+    <p><strong>Component 862: Make Cernd an Elementalist (SoB)</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Elementalist" kit - for Cernd only - if it is not already installed.</i></p>
+    <p><strong>Component 863: Make Cernd a Purifier (SoB)</strong></p>
+      &ndash; <i>This will install the Scales of Balance "Purifier" kit - for Cernd only - if it is not already installed.</i></p>
+    <p><strong>Component 888: Drop Cernd to level 1</strong><br /></p>
+  </div>
 </div>
 <h2>Contact Information</h2>
 <div class="section">
@@ -218,6 +276,10 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 1.1 - September 8, 2015</strong></p>
+  <ul>
+    <li>Added BG2 NPCs</li>
+  </ul>
   <p><strong>Version 1.0 - August 27, 2015</strong></p>
   <ul>
     <li>First version, transferred over from Scales of Balance v3.2</li>
