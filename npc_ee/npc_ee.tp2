@@ -1805,7 +1805,8 @@ ACTION_IF GAME_IS ~tutu bgt bgee~ THEN BEGIN
 		WRITE_BYTE 0x006a 5
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
-		ADD_CRE_ITEM ~bow05~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~ TWOHANDED
+		ADD_CRE_ITEM ~bow05~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ TWOHANDED
+		ADD_CRE_ITEM ~sw1h04~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~ TWOHANDED
 		LPF ADD_CRE_EFFECT INT_VAR opcode=147 target=1 timing=9 power=1 STR_VAR resource=~d5_arslo~ END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~coran.cre~ ~override~
@@ -2707,7 +2708,7 @@ ACTION_IF GAME_IS ~tutu bgt bgee~ THEN BEGIN
 				~ajanti6.cre~ ~override~
 			SET_BG2_PROFICIENCY 89 2
 			SET_BG2_PROFICIENCY 93 1
-			SET_BG2_PROFICIENCY 104 1
+			SET_BG2_PROFICIENCY 111 1
 	END
 END
 
@@ -2752,7 +2753,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~c#ajan08.cre~ THEN BEGIN
 				~c#ajatob.cre~ ~override~
 			SET_BG2_PROFICIENCY 89 2
 			SET_BG2_PROFICIENCY 93 1
-			SET_BG2_PROFICIENCY 104 1
+			SET_BG2_PROFICIENCY 111 1
 	END
 END
 //__________________________________________________________________________________
@@ -2879,7 +2880,7 @@ COPY_EXISTING ~montar.cre~ ~override~
 		WRITE_BYTE 0x006a 5
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
-		ADD_CRE_ITEM ~xbow01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~ TWOHANDED
+		ADD_CRE_ITEM ~xbow04~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~ TWOHANDED
 		LPF ADD_CRE_EFFECT INT_VAR opcode=73 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
 		LPF ADD_CRE_EFFECT INT_VAR opcode=278 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN

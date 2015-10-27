@@ -183,7 +183,7 @@ COPY_EXISTING ~spwi815.spl~ ~override/d5_shabl.spl~
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5_profs.d5~) OR (FILE_EXISTS_IN_GAME ~d5_clerics.d5~) THEN BEGIN
 	COPY ~npc_ee/kits/darkcloak/d5_shar.2da~ ~override~
 		LPM remove_blank_lines
-		APPEND_FILE ~scales_of_balance/profs/pcdagg.txt~
+		APPEND_FILE ~npc_ee/kits/darkcloak/pcdagg.txt~
 		BUT_ONLY
 END
 //____________________________________________________________________________________
