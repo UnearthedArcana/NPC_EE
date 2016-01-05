@@ -182,8 +182,8 @@ COPY_EXISTING ~sppr205.spl~ ~override/d5_lorm2.spl~
 	LPM spell_to_innate
 COPY ~npc_ee/kits/loremaster/d5_lor20.spl~ ~override~
 COPY ~npc_ee/kits/loremaster/d5_lor05.spl~ ~override~
-COPY ~scales_of_balance/wizard/d5_cstbo.spl~ ~override~
-COPY ~scales_of_balance/wizard/d5_mglv1.spl~ ~override~
+COPY ~npc_ee/kits/loremaster/d5_cstbo.spl~ ~override~
+COPY ~npc_ee/kits/loremaster/d5_mglv1.spl~ ~override~
 ACTION_IF FILE_EXISTS_IN_GAME ~d5_skspl.d5~ THEN BEGIN
 	COPY_EXISTING ~d5_lorem.2da~ ~override~
 		LPM remove_blank_lines
