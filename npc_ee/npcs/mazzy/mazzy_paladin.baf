@@ -1,0 +1,9 @@
+//code adapted from the NPC Kitpack
+
+IF
+  InParty(Myself)
+THEN
+  RESPONSE #100
+    ChangeClass(Myself,PALADIN)
+    AddKit(0)
+END

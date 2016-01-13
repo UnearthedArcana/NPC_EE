@@ -1,0 +1,8 @@
+//code adapted from the NPC Kitpack
+
+IF
+  InParty(Myself)
+THEN
+  RESPONSE #100
+    ChangeClass(Myself,CLERIC_MAGE)
+END

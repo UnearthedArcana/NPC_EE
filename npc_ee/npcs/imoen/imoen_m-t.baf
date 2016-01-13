@@ -1,0 +1,9 @@
+//code adapted from the NPC Kitpack
+
+IF
+  InParty(Myself)
+THEN
+  RESPONSE #100
+    ChangeClass(Myself,MAGE_THIEF)
+    AddKit(0)
+END

@@ -1,754 +1,123 @@
-@1   = ~skipping component~
-@6   = ~...~
-@7   = ~skipping item components~
-@8   = ~skipping for IWD~
+@1   = ~...~
+@2   = ~EE-only, sorry~
 @9   = ~kit change~
-@100  = ~100: Choose a kit for Imoen~
-@101  = ~Make Imoen a Swashbuckler~
-@102  = ~Make Imoen a Spellfilcher (SoB)~
-@103  = ~Make Imoen an Adventurer (S+S)~
-//@104  = ~Make Imoen a Bard~
-//@105  = ~Make Imoen a Jester~
-@119  = ~No change for Imoen~
-@120  = ~Choose a kit for Jaheira~
-@121  = ~Make Jaheira a Totemic Druid~
+@11   = ~Choose a kit~
+@100  = ~Choose a class for Imoen~
+@102  = ~Make Imoen a mage/thief~
+@104  = ~Make Imoen a bard~
+@120  = ~Choose a class for Jaheira~
+@121  = ~Make Jaheira a druid~
 @122  = ~Make Jaheira an Elementalist (SoB)~
 @138  = ~Just drop Jaheira to 1st level~
-@139  = ~No change for Jaheira~
-@140  = ~Choose a kit for Khalid~
+@140  = ~Choose a class for Khalid~
 @141  = ~Make Khalid a ranger/cleric~
-@142  = ~Make Khalid a Marksman (SoB)~
-@143  = ~Make Khalid a Justifier (DR ranger)~
-@144  = ~Make Khalid a Corsair (SoB)~
-@157  = ~Make Khalid a Harrier (SoB ranger)~
+@143  = ~Make Khalid a ranger~
 @158  = ~Just drop Khalid to 1st level~
-@159  = ~No change for Khalid~
-@160  = ~Choose a kit for Minsc~
-@161  = ~Make Minsc a Berserker~
-//@162  = ~Make Minsc a Barbarian~
-@163  = ~Make Minsc a Barbarian Ranger (SoB)~
+@160  = ~Choose a class for Minsc~
+@161  = ~Make Minsc a fighter~
 @178  = ~Just drop Minsc to 1st level~
-@179  = ~No change for Minsc~
-//@180  = ~Choose a kit for Dynaheir~
-//@181  = ~Make Dynaheir a Sorcerer~
-//@198  = ~Just drop Dynaheir to 1st level~
-//@199  = ~No change for Dynaheir~
-@200  = ~Choose a kit for Kivan~
-@201  = ~Make Kivan a Stalker~
-@202  = ~Make Kivan an Archer~
-@218  = ~Just drop Kivan to 1st level~
-@219  = ~No change for Kivan~
-@220  = ~Choose a kit for Coran~
-@221  = ~Make Coran a Sniper (SoB)~
-@222  = ~Make Coran a Scout (SoB)~
-@223  = ~Make Coran a Swashbuckler~
-//@224  = ~Make Coran a fighter/thief: Hunter (SoB)~
+@180  = ~Choose a class for Dynaheir~
+@181  = ~Make Dynaheir a sorcerer~
+@198  = ~Just drop Dynaheir to 1st level~
+//@200  = ~Choose a class for Kivan~
+//@218  = ~Just drop Kivan to 1st level~
+@220  = ~Choose a class for Coran~
+@221  = ~Make Coran a thief~
+@222  = ~Make Coran a ranger~
+@223  = ~Make Coran a bard~
 @238  = ~Just drop Coran to 1st level~
-@239  = ~No change for Coran~
-@240  = ~Choose a kit for Branwen~
-@241  = ~Make Branwen a Battleguard of Tempus (DR)~
-@242  = ~Make Branwen a Gloryblood of Tempus (SoB)~
+@240  = ~Choose a class for Branwen~
+@242  = ~Make Branwen a fighter/cleric~
 @258  = ~Just drop Branwen to 1st level~
-@259  = ~No change for Branwen~
-@260  = ~Choose a kit for Safana~
-@261  = ~Make Safana a Swashbuckler~
-@262  = ~Make Safana a Bounty Hunter~
-@278  = ~Just drop Safana to 1st level~
-@279  = ~No change for Safana~
-@280  = ~Choose a kit for Ajantis~
-@281  = ~Make Ajantis an Inquisitor~
-@282  = ~Make Ajantis a Cavalier~
-//@283  = ~Make Ajantis a Holy Liberator (Oversight)~
-@298  = ~Just drop Ajantis to 1st level~
-@299  = ~No change for Ajantis~
-//@300  = ~Choose a kit for Xzar~
+//@260  = ~Choose a class for Safana~
+//@262  = ~Make Safana a fighter/thief~
+//@278  = ~Just drop Safana to 1st level~
+//@280  = ~Choose a class for Ajantis~
+//@298  = ~Just drop Ajantis to 1st level~
+//@300  = ~Choose a class for Xzar~
 //@318  = ~Just drop Xzar to 1st level~
-//@319  = ~No change for Xzar~
-@320  = ~Choose a kit for Montaron~
-@321  = ~Make Montaron an Assassin~
-//@322  = ~Make Montaron a cleric/thief: Nightrunner of Mask (SoB)~
+@320  = ~Choose a class for Montaron~
+@321  = ~Make Montaron a thief~
+//@322  = ~Make Montaron a cleric/thief~
 @338  = ~Just drop Montaron to 1st level~
-@339  = ~No change for Montaron~
-@340  = ~Choose a kit for Yeslick~
-@341  = ~Make Yeslick an Alaghor of Clangeddin (SoB)~
-@358  = ~Just drop Yeslick to 1st level~
-@359  = ~No change for Yeslick~
-@360  = ~Choose a kit for Quayle~
-@361  = ~Make Quayle a Hoodwinker of Baravar Cloakshadow (SoB)~
-@378  = ~Just drop Quayle to 1st level~
-@379  = ~No change for Quayle~
-@380  = ~Choose a kit for Faldorn~
-@381  = ~Make Faldorn an Avenger~
-@382  = ~Make Faldorn a Purifier (SoB)~
-@383  = ~Make Faldorn a Lost Druid~
-//@384  = ~Make Faldorn a Shapeshifter~
-@398  = ~Just drop Faldorn to 1st level~
-@399  = ~No change for Faldorn~
-@400  = ~Choose a kit for Skie~
-@401  = ~Make Skie an Assassin~
-@402  = ~Make Skie a Shadowdancer (S&S)~
-@403  = ~Make Skie a Shadowdancer (EE)~
-//@404  = ~Make Skie a Soulknife (S&S)~
-@418  = ~Just drop Skie to 1st level~
-@419  = ~No change for Skie~
-@420  = ~Choose a kit for Eldoth~
-@421  = ~Make Eldoth a Blade~
-@422  = ~Make Eldoth a Jongleur (SoB)~
-@438  = ~Just drop Eldoth to 1st level~
-@439  = ~No change for Eldoth~
-@440  = ~Choose a kit for Garrick~
-@441  = ~Make Garrick a Gallant (SoB)~
-@442  = ~Make Garrick a Chorister (S&S)~
-@443  = ~Make Garrick a Meistersinger (SoB)~
-@458  = ~Just drop Garrick to 1st level~
-@459  = ~No change for Garrick~
-@460  = ~Choose a kit for Alora~
-@461  = ~Make Alora a Swashbuckler~
-@462  = ~Make Alora a Sniper (SoB)~
-@463  = ~Make Alora a Burgler (S&S)~
-@464  = ~Make Alora a Misadventurer of Brandobaris (SoB)~
+//@340  = ~Choose a class for Yeslick~
+//@358  = ~Just drop Yeslick to 1st level~
+//@360  = ~Choose a class for Quayle~
+//@361  = ~Make Quayle a Hoodwinker of Baravar Cloakshadow (SoB)~
+//@378  = ~Just drop Quayle to 1st level~
+//@380  = ~Choose a class for Faldorn~
+//@398  = ~Just drop Faldorn to 1st level~
+//@400  = ~Choose a class for Skie~
+//@402  = ~Make Skie a mage/thief~
+//@418  = ~Just drop Skie to 1st level~
+//@420  = ~Choose a class for Eldoth~
+//@438  = ~Just drop Eldoth to 1st level~
+//@440  = ~Choose a class for Garrick~
+//@458  = ~Just drop Garrick to 1st level~
+@460  = ~Choose a class for Alora~
+@464  = ~Make Alora a cleric/thief~
 @478  = ~Just drop Alora to 1st level~
-@479  = ~No change for Alora~
-@480  = ~Choose a kit for Xan~
-@481  = ~Make Xan a Bladesinger~
-@482  = ~Make Xan a Loremaster (SoB)~
+@480  = ~Choose a class for Xan~
+@482  = ~Make Xan a bard~
 @483  = ~Make Xan a fighter/mage (will not override Xan BG2 mod)~
-//@484  = ~Make Xan a Dirgesinger (S&S)~
+@484  = ~Make Xan a sorcerer~
 @498  = ~Just drop Xan to 1st level~
-@499  = ~No change for Xan~
-@500  = ~Choose a kit for Shar-Teel~
-@501  = ~Make Shar-Teel a Berserker~
-@518  = ~Just drop Shar-Teel to 1st level~
-@519  = ~No change for Shar-Teel~
-//@520  = ~Choose a kit for Kagain~
+//@500  = ~Choose a class for Shar-Teel~
+//@518  = ~Just drop Shar-Teel to 1st level~
+//@520  = ~Choose a class for Kagain~
 //@538  = ~Just drop Kagain to 1st level~
-//@539  = ~No change for Kagain~
-@540  = ~Choose a kit for Tiax~
-@541  = ~Make Tiax a Strifeleader of Cyric (DR)~
-@558  = ~Just drop Tiax to 1st level~
-@559  = ~No change for Tiax~
-//@560  = ~Choose a kit for Baeloth~
+//@540  = ~Choose a class for Tiax~
+//@558  = ~Just drop Tiax to 1st level~
+//@560  = ~Choose a class for Baeloth~
 //@578  = ~Just drop Baeloth to 1st level~
-//@579  = ~No change for Baeloth~
-@580  = ~Choose a kit for Viconia~
-@581  = ~Make Viconia a Darkcloak of Shar (SoB)~
-@582  = ~Make Viconia a Nightcloak of Shar (DR)~
-@583  = ~Make Viconia a Cleric/Thief~
+@580  = ~Choose a class for Viconia~
+@583  = ~Make Viconia a cleric/thief~
 @598  = ~Just drop Viconia to 1st level~
-@599  = ~No change for Viconia~
-//@600  = ~Choose a kit for Edwin~
+//@600  = ~Choose a class for Edwin~
 //@618  = ~Just drop Edwin to 1st level~
 //@619  = ~No change for Edwin~
-//@620  = ~Choose a kit for Neera~
-//@638  = ~Just drop Neera to 1st level~
-//@639  = ~No change for Neera~
-//@640  = ~Choose a kit for Dorn~
+@620  = ~Choose a class for Neera~
+@621  = ~Make Neera a sorcerer~
+@638  = ~Just drop Neera to 1st level~
+//@640  = ~Choose a class for Dorn~
 //@658  = ~Just drop Dorn to 1st level~
-//@659  = ~No change for Dorn~
-//@660  = ~Choose a kit for Rasaad~
+//@660  = ~Choose a class for Rasaad~
 //@678  = ~Just drop Rasaad to 1st level~
-//@679  = ~No change for Rasaad~
-@680  = ~Choose a kit for Yoshimo~
-@681  = ~Make Yoshimo a Swashbuckler~
+//
+@680  = ~Choose a class for Yoshimo~
 @682  = ~Make Yoshimo a fighter/thief~
 @698  = ~Just drop  to 1st level~
-@699  = ~No change for Yoshimo~
-@700  = ~Choose a kit for Valygar~
-@701  = ~Make Valygar a Mage Hunter (SoB)~
+@700  = ~Choose a class for Valygar~
 @702  = ~Make Valygar a fighter/thief~
-@703  = ~Make Valygar a fighter/thief Wizard Slayer (SoB)~
 @718  = ~Just drop Valygar to 1st level~
-@719  = ~No change for Valygar~
-@720  = ~Choose a kit for Nalia~
-@721  = ~Make Nalia a Loremaster (SoB)~
-@722  = ~Make Nalia a Loresinger of Milil (SoB)~
-@723  = ~Make Nalia a Spellbender (SoB)~
+@720  = ~Choose a class for Nalia~
+@722  = ~Make Nalia a bard~
+@723  = ~Make Nalia a cleric/mage~
+@724  = ~Make Nalia a sorcerer~
 @739  = ~No change for Nalia~
-@740  = ~Choose a kit for Haer'Dalis~
-@741  = ~Make Haer'Dalis a Jongleur (SoB)~
-@742  = ~Make Haer'Dalis a Gallant (SoB)~
-@743  = ~Make Haer'Dalis a Skald~
-@758  = ~Just drop Haer'Dalis to 1st level~
-@759  = ~No change for Haer-Dalis~
-@760  = ~Choose a kit for Mazzy~
-@761  = ~Make Mazzy a fighter/cleric: Hearthguard of Arvoreen (SoB)~
-//@762  = ~Make Mazzy a Holy Liberator (Oversight)~
+//@740  = ~Choose a class for Haer'Dalis~
+//@758  = ~Just drop Haer'Dalis to 1st level~
+//@759  = ~No change for Haer-Dalis~
+@760  = ~Choose a class for Mazzy~
+@761  = ~Make Mazzy a fighter/cleric~
+@762  = ~Make Mazzy a paladin~
 @778  = ~Just drop Mazzy to 1st level~
-@779  = ~No change for Mazzy~
-@780  = ~Choose a kit for Aerie~
-@781  = ~Make Aerie a Fastpaws of Baervan Wildwanderer (SoB)~
-@798  = ~Just drop Aerie to 1st level~
-@799  = ~No change for Aerie~
-@800  = ~Choose a kit for Keldorn~
-@801  = ~Make Keldorn a Paladin~
-@802  = ~Make Keldorn a Cavalier~
-//@803  = ~Make Keldorn an Undead Hunter~
-@818  = ~Just drop Keldorn to 1st level~
-@819  = ~No change for Keldorn~
-//@820  = ~Choose a kit for Korgan~
+//@780  = ~Choose a class for Aerie~
+//@798  = ~Just drop Aerie to 1st level~
+//@800  = ~Choose a class for Keldorn~
+//@818  = ~Just drop Keldorn to 1st level~
+//@820  = ~Choose a class for Korgan~
 //@838  = ~Just drop Korgan to 1st level~
-//@839  = ~No change for Korgan~
-//@840  = ~Choose a kit for Jan~
+//@840  = ~Choose a class for Jan~
 //@858  = ~Just drop Jan to 1st level~
-//@859  = ~No change for Jan~
-@860  = ~Choose a kit for Cernd~
-@861  = ~Make Cernd a Totemic Druid~
-@862  = ~Make Cernd an Elementalist (SoB)~
-@863  = ~Make Cernd a Purifier (SoB)~
-@878  = ~Just drop Cernd to 1st level~
-@879  = ~No change for Cernd~
-//@880  = ~Choose a kit for Anomen~
+//@860  = ~Choose a class for Cernd~
+//@878  = ~Just drop Cernd to 1st level~
+//@880  = ~Choose a class for Anomen~
 //@898  = ~Just drop Anomen to 1st level~
 //@899  = ~No change for Anomen~
 //
-// ... spellfilcher
-@10201  = ~spellfilcher~
-@10202  = ~Spellfilcher~
-@10203  = ~SPELLFILCHER: The Spellfilchers are hidden society of very specialized thieves. They hone their abilities toward a dangerous goal: stealing magic from wizards. To that end, Spellfilchers have a few special tricks they can employ when confronted by angry mages.
-
-Advantages:
-- Spellfilchers may innately cast the spell "Silence 15' Radius" to prevent an enemy from casting spells. (Of course many wizards know the Vocalize spell to overcome such a disadvantage, but a skilled Spellfilcher knows that the time it takes to do so may make all the difference in the world.)
-- Every time a Spellfilcher successfully strikes a wizard with a melee attack, the target must save vs. rods/wands or suffer a 33% chance of miscast magic for 2 rounds.
-- At 5th level, Spellfilchers can cast a special variant of "Spell Turning" which lasts for 12 hours. It will only turn back a single spell, but doing so may give a Spellfilcher the time he or she needs to get better spell protections up, if surprised. (Spellfilchers commonly erect this protection every morning, before even brushing their teeth.)
-- At 9th level, Spellfilchers become innately and permanently protected by "non-detection," enabling them to use their thiefly abilities to hide even from wizards with powerful scrying magic.~
-@10204  = ~The Spellfilchers are hidden society of very specialized thieves. They hone their abilities toward a dangerous goal: stealing magic from wizards. To that end, Spellfilchers have a few special tricks they can employ when confronted by angry mages.~
-@10205  = ~Silence~
-@10206  = ~All enemies in the area must make a saving throw vs. spell at -1; if the save is failed, then they are silenced for the duration of the spell, unless an affected spellcaster then casts Vocalize.  At the instant the spell is completed, it affects all creatures in a 15 foot radius centered on the point selected by the Spellfilcher.~
-@10207  = ~Spell Turning~
-@10208  = ~This abjuration causes one spell cast against the Spellfilcher to rebound upon the original caster.~
-@10209  = ~Save vs. Spells bonus~
 //
-// ... elementalist
-@12201   = ~elementalist~
-@12202   = ~Elementalist~
-@12203   = ~ELEMENTALIST: While all druids serve the cause of life, some have a deeper understanding of the fundamental forces that underlie the world of nature. These 'Elementalists' master learn to shapechange into forms sprung from the four elemental inner planes, which contain the building blocks of all of the natural matter in the rest of the universe.
-
-Abilities:
-- May Shapeshift into the following forms:
- 5th level: lesser earth elemental
- 10th level: air elemental
- 13th level: fire elemental
- High levels: may learn to shapeshift into greater elemental forms.
-~
-@12204   = ~Shapechange Earth Elemental~
-@12205   = ~Shapechange Water Elemental~
-@12206   = ~Shapechange Air Elemental~
-@12207   = ~Shapechange Fire Elemental~
-@12208   = ~Earth Elemental~
-@12209   = ~Water Elemental~
-@12210   = ~Air Elemental~
-@12211   = ~Fire Elemental~
+@2000  = ~NPC kit choices~
+@3000  = ~multiclass kit choices~
 //
-// ... marksman
-@14201  = ~marskman~
-@14202  = ~Marksman~
-@14203  = ~MARKSMAN: This soldier is the epitome of skill with ranged weapons. He can make almost any shot, no matter how difficult. To become so skilled, the marksman has had to sacrifice some proficiency with melee weapons and armor.
- 
-Advantages:
-- +1 to hit and damage rolls with ranged weapon at levels 3, 6, 10, 15, and 21.
-- Can achieve Grand Mastery (+++++) with bows and crossbows.
-- Can use Called Shots once per day per three levels, in order to pin, slow, or disarm the target.
-
-Disadvantages:
-- May only specialize (++) with melee weapons.
-- May not wear heavier armor than splint mail.
-~
-@14204  = ~The Marksman is the epitome of skill with ranged weapons. He can make almost any shot, no matter how difficult. To become so skilled, the marksman has had to sacrifice some of his proficiency with melee weapons and armor.~
-@14205  = ~Called Shot: Pin~
-@14206  = ~Called Shot: Pin
-In addition to normal damage, all successful ranged attacks within the next round will pin the target to the spot for 12 seconds unless the target makes a successful saving throw vs. paralyzation.~
-@14207  = ~Called Shot: Trip~
-@14208  = ~Called Shot: Trip
-In addition to normal damage, all successful ranged attacks within the next round will Slow the target for 12 seconds unless the target makes a successful saving throw vs. paralyzation.~
-@14209  = ~Called Shot: Disarm~
-@14210  = ~Called Shot: Disarm
-In addition to normal damage, all successful ranged attacks within the next round will cause the target to fumble his weapon, resulting in -3 penalties to thac0 and AC for 18 seconds, unless the target makes a successful saving throw vs. paralyzation.~
-//
-// ... corsair
-@14401  = ~corsair~
-@14402  = ~Corsair~
-@14403  = ~CORSAIR: Part warrior, part rogue, part charming sailor, the Corsair is a dashing swordsman who survives by sharp wits and a sharper blade.
- 
-Advantages:
-- +1 bonus to Armor Class and thac0 at levels 7, 14, and 21.
-- Can achieve Grand Mastery (+++++) with light bladed weapons
-- Begins with one proficiency point in Single-Weapon Style and Two-Weapon Style.
-- Can use use the skill Swashbuckling once per day for each five levels.  While Swashbuckling, the character wheels and spins and parries, gaining an Armor Class of -1 per two levels, up to a maximum of -10. The character's movement rate is halved while swashbuckling.
-- +1 bonus to saves vs. Breath for each 5 levels of experience.
-
-Disadvantages:
-- Cannot become proficient with heavy weapons 
-- May only specialize (++) with ranged weapons
-- May not wear heavier armor than studded leather
-~
-@14404  = ~Part warrior, part rogue, part charming sailor, the Corsair is a dashing swordsman who survives by sharp wits and a sharper blade.~
-@14405  = ~Save vs. Breath bonus~
-@14406  = ~Luck~
-@14407  = ~Swashbuckling~
-@14408  = ~Swashbuckling
-For four rounds, the character wheels and spins and parries, gaining an Armor Class of -1 per two levels, up to a maximum of -10.~
-//
-// ... barbarian ranger
-@16301  = ~barbarian ranger~
-@16302  = ~Barbarian Ranger~
-@16303  = ~BARBARIAN RANGER: Among barbarian tribes there are hunters of great skill. Spending many days alone in the wild, stalking their prey, they are closer to nature than most men. They are not quite as hardy as their more aggressive brethren, and tend to be loners. Yet they bring uncommon skills to bear both in providing for, and in defending, their tribe.
- 
-Advantages:
-- May move 2 points faster than other characters.
-- May enter an enraged state, enhancing combat abilities, once per day per six levels.
-- May Charm animals once per day per five levels.
-- Gains 5% physical damage resistance at 11th level, and again at 15th and 19th levels.
-
-Disadvantages:
-- Cannot cast priest spells.
-- Is not immune to backstab.
-- -2 penalty to Charisma.
-- May not wear armor heavier than studded leather or hide armor
-- May not dual-class.
-~
-@16304  = ~Among barbarian tribes there are hunters of great skill. Spending many days alone in the wild, stalking their prey, they are closer to nature than most men. They are not quite as hardy as their more aggressive brethren, and tend to be loners. Yet they bring uncommon skills to bear both in providing for, and in defending, their tribe.~
-//
-// ... sniper
-@22101  = ~sniper~ 
-@22102  = ~Sniper~
-@22103  = ~SNIPER: Whether you need to hit a target with a poisoned arrow or shoot a rope to the windowsill of a noble's mansion for a burglary, the sniper is a highly trained stealthy marskman who can get the job done.
-
-Advantages:
-- +1 to hit and damage rolls with missiles weapon at levels 1, 3, 6, 10, 15, and 21.
-- Can achieve Mastery (+++) with bows and crossbows
-- Can use use Called Shots once per day per three levels.  Called shots have a chance of pinning, slowing, or blinding the target.
-
-Disadvantages:
-- May only distribute 20 skill points per level among thieving skills.
-- Reduced backstab multiplier.
-~
-@22104  = ~SNIPER: Whether you need to hit a target with a poisoned arrow or shoot a rope to the windowsill of a noble's mansion for a burglary, the sniper is a highly trained stealthy marskman who can get the job done.~
-@22105  = ~Called Shot: Pin~
-@22106  = ~Called Shot: Pin
-In addition to normal damage, all successful ranged attacks within the next round will pin the target to the spot for 12 seconds unless the target makes a successful saving throw vs. paralyzation.~
-@22107  = ~Called Shot: Trip~
-@22108  = ~Called Shot: Trip
-In addition to normal damage, all successful ranged attacks within the next round will Slow the target for 12 seconds unless the target makes a successful saving throw vs. paralyzation.~
-@22109  = ~Called Shot: Blind~
-@22110  = ~Called Shot: Blind
-In addition to normal damage, all successful ranged attacks within the next round will blind the target for 12 seconds unless the target makes a successful saving throw vs. paralyzation.~
-//
-// ... gloryblood
-@24201   = ~gloryblood of tempus~
-@24202   = ~Gloryblood of Tempus~
-@24203   = ~GLORYBLOOD OF TEMPUS: Known as the Lord of Battles and The Foehammer, Tempus is the god of war. No paladins honor him, but a sect of fighting clerics known as Glorybloods travel the Realms in search of battles to join. They revel in bloody struggle and ensure that battles are conducted honorably.
-
-Advantages: 
-- Glorybloods may create a Spiritual Axe of Tempus. This weapon of magical force does d4+1 slashing damage and d4 magic damage to foes, and has a chance to cause Panic in anyone struck by it. It is wielded as if the bearer is specialized (2 stars) in its use. These abilities increase as the Gloryblood rises in level.
-- Glorybloods may enter an enraged state, similar to a barbarian. This state lasts for 5 rounds and grants the Gloryblood a +4 bonus to Strength and Constitution, a +2 bonus to saves vs. spells, a +2 penalty to AC, and immunity to charm, hold, fear, maze, stun, sleep, confusion, and level drain effects.
-
-Restrictions:
-- Alignment: may not be Lawful.~
-@24204  = ~Known as the Lord of Battles and The Foehammer, Tempus is the god of war. His dogma is primarily concerned with honorable battle, forbidding cowardice and encouraging the use of force of arms to settle disputes. Glorybloods travel the Realms in search of battles to join, to revel in the struggle and to ensure they are conducted honorably.~
-@24205   = ~Axe of Tempus~
-@24206   = ~This weapon of magical force does d4+1 slashing damage and d4 magic damage to foes, and has a chance to cause Panic in anyone struck by it. It is wielded as if the bearer is specialized (2 stars) in its use. These abilities increase as the Gloryblood rises in level.~
-//
-// ... alaghor of clangeddin:
-@34101   = ~alaghor of clangeddin~
-@34102   = ~Alaghor of Clangeddin~
-@34103   = ~ALAGHOR OF CLANGEDDIN: Clangeddin Silverbeard is the dwarven deity of battle and honor in warfare.  Alaghors are his elite order of fighter/clerics.  They are powerful warriors as well as wise ministers, protecting dwarven communities from threats both physical and spiritual.
-
-Advantages:
-- Once per day, an Alaghor may use the Hardiness power, gaining 35% resistance to physical attacks for one round per two levels of experience.
-- Alaghors may create a Spiritual Hammer of Clangeddin. This weapon of magical force does d4+1 blunt damage and d4 magic damage to foes, and has a chance to briefly Hold undead struck by it. It is wielded as if the bearer is specialized (2 stars) in its use.  These abilities increase as the Alaghor rises in level.
-
-Restrictions:
-- Restricted to dwarves.
-- Alignment: must be a combination of neutral, lawful, and good.
-~
-@34104   = ~Clangeddin Silverbeard is the dwarven deity of battle and honor in warfare.  Alaghors are his elite order of fighter/clerics.  They are powerful warriors as well as wise ministers, protecting dwarven communities from threats both physical and spiritual.~
-@34105   = ~Hammer of Clangeddin~
-@34106   = ~This weapon of magical force does d4+1 blunt damage and d4 magic damage to foes, and has a chance to briefly Hold undead struck by it. It is wielded as if the bearer is specialized (2 stars) in its use.  These abilities increase as the Alaghor rises in level.~
-@34107   = ~Hardiness~
-@34108   = ~Calling upon hidden reserves of strength during times of danger, an Alaghor can use the Hardiness ability to gain 35% resistance to all forms of physical damage. The ability lasts for 5 rounds.~
-//
-// ... hoodwinker of baravar:
-@36101  = ~hoodwinker of baravar cloakshadow~
-@36102  = ~Hoodwinker of Baravar Cloakshadow~
-@36103  = ~HOODWINKER OF BARAVAR CLOAKSHADOW: known as the Sly One, Baravar Cloakshadow is the gnomish deity of illusion and deception. He is primarily concerned with the protection of the gnome race through the art of illusion. His followers, known as Hoodwinkers, are generally sneaky, smart gnomes who serve their communities by instructing in disguise and camouflage.
-
-Advantages:
-- May cast the following spells as priest spells of the equivalent level: Reflected Image, Invisibility, Mirror Image, Invisibility 10' Radius, Improved Invisibility, Shadow Door, Mislead, and Projected Image
-
-Restrictions:
-- Restricted to gnomes.
-- May not dual-class to fighter.
-- Alignment: must be a combination of neutral, chaotic, and good.
-~
-@36104  = ~Known as the Sly One, Baravar Cloakshadow is the gnomish deity of illusion and deception. He is primarily concerned with the protection of the gnome race through the art of illusion. His followers, known as Hoodwinkers, are generally sneaky, smart gnomes who serve their communities by instructing in disguise and camouflage.~
-//
-// ... purifier
-@38201  = ~purifier~
-@38202  = ~Purifier~
-@38203  = ~PURIFIER: Some druids understand that destructive forces can be used in constructive ways. Natural environments may sometimes be corrupted, and twisted with death; while some druids in these situations may despair and become Lost Druids, others understand that a purifying inferno may cleanse the corruption and allow the environment to regrow, even stronger than it was. Most people, even other druids, lack such long-term perspective, and fear Purifiers.
-
-Abilities:
-- May cast the following spells in addition to a druid's normal spell list: Burning Hands, Agannazar's Scorcher, Melf's Minute Meteors, Fireball, Fire Shield (Red), Sunfire, Flame Strike, Fire Seeds, False Dawn, Conjure Fire Elemental, Delayed Blast Fireball, and Firestorm
-- May Shapeshift into the form of a fire elemental at 14th level
-- Gains resistance to fire, 2% per level of experience.
-
-Disadvantages:
-- May not shapeshift into animal forms.
-~
-@38204  = ~Some druids understand that destructive forces can be used in constructive ways. Natural environments may sometimes be corrupted, and twisted with death; while some druids in these situations may despair and become Lost Druids, others understand that a purifying inferno may cleanse the corruption and allow the environment to regrow, even stronger than it was. Most people, even other druids, lack such long-term perspective, and fear Purifiers.~
-@38205  = ~Shapechange Fire Elemental~
-@38206  = ~Fire Elemental~
-//
-// ... lost druid:
-@38301 = ~lost druid~
-@38302 = ~Lost Druid~
-@38303  = ~LOST DRUID: The strangest members of the druidic order, Lost Druids find that many other druids no longer consider them kin. The Lost Druids come from lands that have been maliciously destroyed - forests burned to the ground, swamps drained, mountains ruined by mining, and so on. Rather than try to rebuild or move on, a Lost Druid allows his heart to darken from brooding on the devastation and embraces strange magic to seek revenge.
-
-Advantages:
-- May cast Summon Dread Wolf once per day at level 6. Gains additional Summon Dread Wolf at level 12th and 18th.
-- Six necromancy spells are added to the Lost Druid's repertoire, all the way up to 6th level. These are listed below:
-1st level: Larloch's Minor Draining.
-2nd level: Horror.
-3rd level: Skull Trap.
-4th level: Contagion.
-5th level: Slay Living.
-6th level: Death Spell.
-
-Disadvantages:
-- Can cast only the reversed versions of cure spells.
-- Cannot Shapeshift.
-- Alignment restricted to neutral and chaotic evil.~
-@38304  = ~Dread Wolf~
-@38305  = ~Summon Dread Wolf~
-@38306  = ~This spell causes a dread wolf to rise and serve the caster under any conditions.~
-//
-// ... jongleur - 422
-@42201  = ~jongleur~
-@42202  = ~Jongleur~
-@42203  = ~JONGLEUR: These agile bards are master acrobats and jugglers. Their skill in flipping, vaulting and balancing is matched only by their accuracy with hurled knives and other implements. 
-
-Advantages:
-- +1 bonus to Armor Class at 1st level, plus an additional +1 bonus every 6 levels.
-- May achieve Mastery (+++) with daggers, darts, and two-weapon fighting.
-- Begins with one proficiency point in Single-Weapon Style, and may add one more.
-- Begins with one proficiency point in Two-Weapon Style, and may add two more.
-- Instead of a traditional bard song, may perform the 'Blade Dance,' a complicated sequence of maneuvers that puts enemies off balance as they try to follow the jongleur's weapon. This gives the jongleur a -2 bonus to AC and gives enemies a -2 penalty to thac0. These effects increase, and also have a chance to induce panic in enemies, at level 13 and level 20.
-
-Disadvantages:
-- May not become proficient in heavy weapons or in sword-and-shield style.
-- Limited to light armors.
-~
-@42204  = ~These agile bards are master acrobats and jugglers. Their skill in flipping, vaulting and balancing is matched only by their accuracy with hurled knives and other implements.~
-//
-// ... gallant
-@44101  = ~gallant~
-@44102  = ~Gallant~
-@44103  = ~GALLANT: Part charming aesthete, part dashing warrior, gallants travel the land in search of beauty, love, and adventure. They steal the hearts of the young, and lift the spirits of the elderly. Their code, similar to a paladin's, requires that they defend the innocent and members of the opposite sex, and aid the needy in times of trouble and danger.
-
-Advantages:
-- +1 bonus to thac0 every 6 levels.
-- Gallants have an inherent +1 bonus to Luck.
-- Essence of Purity: the Gallant clings to life with more ferocity than most, receiving +1 hit point per level for 12 levels, and receiving a +1 bonus to saves vs. death.  This saving throw bonus increases at levels 3, 6, 10, 15, and 21.
-- From 7th level, may cast the priest spell Death Ward as an innate ability once per day.
-- May use the innate ability "Heart of Valor" once per day, which functions like the priest spell Aid. From 9th level, this ability also Protects from Evil.
-
-Disadvantages:
-- May cast one fewer spell per level compared to most bards.
-- Bard song does not improve over time.
-- No pickpocketing ability.
-~
-@44104  = ~Part charming aesthete, part dashing warrior, gallants travel the land in search of beauty, love, and adventure. They steal the hearts of the young, and lift the spirits of the elderly. Their code, similar to a paladin's, requires that they defend the innocent and members of the opposite sex, and aid the needy in times of trouble and danger.~
-@44105  = ~Heart of Valor~
-@44106  = ~Death Ward~
-@44107  = ~Death Ward
-
-Level: 4
-Duration: 1 turn/level
-Casting Time: 9 
-Area of Effect: self
-Saving Throw: None 
-
-This spell protects the Gallant from all forms of death magic for the duration of the spell. This includes, but is not limited to, Disintegrate; Power Word, Kill; Death Spell; and Finger of Death.~
-@44108  = ~Luck~
-//
-// ... meistersinger - 443
-@44301  = ~meistersinger~
-@44302  = ~Meistersinger~
-@44303  = ~MEISTERSINGER: These bards wander the woodlands, charming animals with their melodies and helping druids and rangers to protect nature. They are the enemies of ruthless hunters and trappers, striving against such activities with their animal allies, beguiling music, and nature-based magic.
-
-Advantages:
-- The Meistersinger's song brings Luck to allies within earshot.
-- May use the ranger's Animal Empathy ability.
-- Once per day, may summon a swarm of friendly rodents (3 a 1st level, and 3 more for every third level after that).
-- May cast the following druid spells: Cure Light Wounds, Entangle, Sanctuary, Shillelagh, Barkskin, Charm Person/Mammal, Resist Fire/Cold, Slow Poison, Remove Paralysis, Cure Disease, Zone of Sweet Air, Summon Insects, Cure Serious Wounds, Call Woodland Being, Leser Restoration, Mass Cure, Chaotic Commands, Insect Plague, Animal Summoning III, and False Dawn.
-
-Disadvantages:
-- May only gain proficiency in weapons appropriate for use by druids.
-- Bard song does not improve over time.
-~
-@44304  = ~Meistersingers wander the woodlands, charming animals with their melodies and helping druids and rangers to protect nature. They are the enemies of ruthless hunters and trappers, striving against such activities with their animal allies, beguiling music, and nature-based magic.~
-@44305  = ~Luck~
-//
-// ... misadventurer
-@46401  = ~misadventurer of brandobaris~
-@46402  = ~Misadventurer of Brandobaris~
-@46403  = ~MISADVENTURER OF BRANDOBARIS: Brandobaris is the halfling god of trickery and adventure.  His followers are cleric/thieves known as misadventurers.  They have an unusual tendency to get into trouble as they wander the land, but they also have a reputation for uncanny abilities to narrowly escape danger.  Their deeds are fraught with both peril and annoyance... but they are never boring!
-
-Advantages:
-- Misadventurers are very difficult to strike in combat, gaining a -1 bonus to AC for each 7 levels of experience.
-- From 4th level, Misadventurers they may Haste themselves to escape harm. 
-- From 8th level, Misadventurers may create Scattering Images of themselves to confuse opponents.  When struck by a weapon, there is a chance that the blow will land on an illusory image, instead of upon the Misadventurer.
-
-Restrictions:
-- Halflings only~
-@46404  = ~Brandobaris is the halfling god of trickery and adventure.  His followers are cleric/thieves known as misadventurers.  They have an unusual tendency to get into trouble as they wander the land, but they also have a reputation for uncanny abilities to narrowly escape danger.  Their deeds are fraught with both peril and annoyance... but they are never boring!~
-@46405  = ~Haste~
-@46406  = ~When this spell is cast, the Misadventurer moves at double the normal rate, gains a -2 initiative bonus, and receives an extra attack each round.~
-@46407  = ~Scattering Images~
-@46408  = ~Upon casting this spell, the wizard creates extra images of himself that will travel along beside him.  The images will perform all of the actions that the wizard does so that if any enemies are trying to attack the wizard they will not know which one is real.  There is a 50% chance that an attacker will attack an image, and a 50% chance that he will attack the caster.  The images will disappear with a successful dispel magic, when attacked, or when the spell duration runs out.~
-@46409  = ~Luck~
-//
-// ... loremaster 
-@48201  = ~loremaster~
-@48202  = ~Loremaster~
-@48203  = ~LOREMASTER: There is a fine line between Loremaster and sage. Loremasters may often be found in professorial positions, teaching history to others. But unlike sages, Loremasters feel compelled to go out and discover knowledge by exploring the unknown. They can often be found fleeing huge boulders in trapped dungeons, battling savage practitioners of strange magics, and discovering secret passages in ancient castles. Loremasters are fond of any aspect of history that makes a good story - and they enjoy living those stories as much as telling them.
-
-Advantages:
-- Through their devoted study of the past, gain a fundamental understanding of many strange magical items not normally usable by the bard class. Thus, they can use any magical item.
-- Loremasters' studies enhance their understanding of magic, such much that they cast spells as if they were one level higher.
-- Loremasters have an innate ability to Find Traps.
-
-Disadvantages:
-- Bard song does not improve over time.
-~
-@48204  = ~Loremasters are romantically entranced by the past. There is a fine line between Loremaster and sage. So fine that many Lore masters call themselves sages and are rarely questioned about it. However, true sages are knowledge specialists who concentrate their efforts into mastering a specific field such as mushrooms, elven swords, and so on. Loremasters are fond of any aspect of history that makes a good story.~
-//
-// ... darkcloak
-@58101  = ~darkcloak of shar~
-@58102  = ~Darkcloak of Shar~
-@58103  = ~DARKCLOAK OF SHAR: Shar is known as the Mistress of the Night. She is the goddess of darkness, presiding over caverns, darkness, dungeons, forgetfulness, loss, night, secrets, and the Underdark. The Darkcloak sect travels to spread Shar's influence: working against the followers of her nemesis, Selune, but also giving care and comfort to those who are lost or emotionally damaged.
- 
-Advantages:
-- May cast Power Word: Sleep once per day at level 1.
-- May cast Blur once per day at level 5.
-- May cast Phantom Blade once per day at level 9.
-- May cast Power Word: Blindness once per day at level 13.
-
-Restrictions:
-- May not dual-class to fighter.
-- Alignment: may not be Chaotic or Good.
-~
-@58104  = ~Shar is known as the Mistress of the Night. She is the goddess of darkness, presiding over caverns, darkness, dungeons, forgetfulness, loss, night, secrets, and the Underdark. The Darkcloak sect travels to spread Shar's influence: working against the followers of her nemesis, Selune, but also giving care and comfort to those who are lost or emotionally damaged.~
-@58105  = ~Blindness~
-@58106  = ~Power Word: Sleep~
-@58107  = ~Feeblemind~
-//
-// ... mage hunter
-@70101  = ~mage hunter~
-@70102  = ~Mage Hunter~
-@70103  = ~MAGE HUNTER: These rangers participate in demanding rituals with Avenger druids in order to gain access to magic abilities which help them in their campaign against any wizards who use their skills to defile nature.
-
-Advantages:
-- Can cast the following as 1st-level spells: Shocking Touch, Deafness.
-- Can cast the following as 2nd-level spells: Remove Magic, Minor Spell Deflection.
-- Can cast the following as 3rd-level spells: Breach, Non-Detection, Spell Thrust.
-
-Disadvantages:
-- Suffers a -1 penalty to Strength and Constitution.
-- May not use Charm Animal ability.
-~
-@70104  = ~Mage Hunters participate in demanding rituals with Avenger druids in order to gain access to magic abilities which help them in their campaign against any wizards who use their skills to defile nature.~
-@72201  = ~loresinger~
-@72202  = ~Loresinger~
-@72203  = ~LORESINGER OF MILIL: Loresingers venerate Milil, god of poetry, song, and storytelling. More bard than priest, they volunteer their talents as cantors for churches. Loresingers may use a mix of divine and arcane magic, but may not turn undead like most priests.
-
-Advantages:
-- May cast the following priest spells: Cure Light Wounds, Sanctuary, Find Traps, Silence 15' Radius, Spiritual Hammer, Cure Medium Wounds, Holy Smite, Death Ward, Holy Power, Greater Command, Cure Critical Wounds, and False Dawn.
-- The Loresinger's song, 'Milil's Hymn,' gives allies the effects of the Chant spell. From 5th level it has a chance to Slow any nearby undead. From 9th level, it also grants allies Protection from Evil. And from 13th level, the song has a chance to Hold nearby undead.
-
-Disadvantages:
-- Reduced pickpocketing ability
-~
-@72204  = ~Loresingers venerate Milil, god of poetry, song, and storytelling. More bard than priest, they volunteer their talents as cantors for churches. Loresingers may use a mix of divine and arcane magic, but may not turn undead like most priests.~
-@72205  = ~Song of Blessing~
-@72206  = ~Song of Warding~
-@72301  = ~spellbender~
-@72302  = ~Spellbender~
-@72303  = ~SPELLBENDER: The goddess Mystra rules the fabled Weave of Faerun, the ethereal conduit that allows mortals to shape magical energies into spells and effects. As with any rigid system, the are gaps and shortcuts that may be used to circumvent Mystra's rules. Spellbenders make a science of mapping the ways to bypass Mystra's restrictions. 
-
-Advantages: 
-- Spellbenders may sacrifice a memorized wizard spell to instead create one of numerous divine effects; and they may sacrifice a memorized cleric spell to create an arcane effect.~
-@72304  = ~The goddess Mystra rules the fabled Weave of Faerun, the ethereal conduit that allows mortals to shape magical energies into spells and effects. As with any rigid system, the are gaps and shortcuts that may be used to circumvent Mystra's rules. Spellbenders make a science of mapping the ways to bypass Mystra's restrictions.~
-@72305  = ~Arcane Weaving I~
-@72306  = ~Arcane Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Identify
-- Shield
-- Reflected Image
-- Grease
-- Sleep
-- Shocking Grasp
-- Burning Hands
-- Magic Missile~
-@72307  = ~Arcane Weaving II~
-@72308  = ~Arcane Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Vocalize
-- Blur
-- Invisibility
-- Horror
-- Web
-- Glitterdust
-- Acid Arrow
-- Knock~
-@72309  = ~Arcane Weaving III~
-@72310  = ~Arcane Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Dispel Magic
-- Detect Illusion
-- Ghost Armor
-- Protection from Missiles
-- Haste
-- Dire Charm
-- Lightning Bolt
-- Fireball~
-@72311  = ~Arcane Weaving IV~
-@72312  = ~Arcane Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Minor Globe
-- Stoneskin
-- Polymorph Self
-- Improved Invisibility
-- Secret Word
-- Greater Malison
-- Confusion
-- Ice Storm~
-@72313  = ~Arcane Weaving V~
-@72314  = ~Arcane Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Oracle
-- Shadow Door
-- Minor Turning
-- Phantom Blade
-- Domination
-- Breach
-- Hold Monster
-- Cloudkill~
-@72315  = ~Arcane Weaving VI~
-@72316  = ~Arcane Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Globe of Invulnerability
-- Spell Deflection
-- Protection from Energy
-- Mislead
-- Tenser's Transformation
-- Pierce Magic
-- Improved Haste
-- Chain Lightning~
-@72317  = ~Divine Weaving I~
-@72318  = ~Divine Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Cure Light Wounds
-- Bless
-- Remove Fear
-- Protection from Evil
-- Armor of Faith
-- Sanctuary
-- Command
-- Magic Stone~
-@72319  = ~Divine Weaving II~
-@72320  = ~Divine Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Find Traps
-- Chant
-- Resist Fire and Cold
-- Slow Poison
-- Draw Upon Holy Might
-- Silence
-- Hold Person
-- Spiritual Hammer~
-@72321  = ~Divine Weaving III~
-@72322  = ~Divine Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Cure Medium Wounds
-- Remove Curse
-- Cure Disease
-- Remove Paralysis
-- Dispel Magic
-- Invisibility Purge
-- Strength of One
-- Holy Smite~
-@72323  = ~Divine Weaving IV~
-@72324  = ~Divine Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Cure Serious Wounds
-- Lesser Restoration
-- Protection from Evil 10' Radius
-- Defensive Harmony
-- Death Ward
-- Protection from Lightning
-- Free Action
-- Holy Power~
-@72325  = ~Divine Weaving V~
-@72326  = ~Divine Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Cure Critical Wounds
-- Mass Cure
-- Chaotic Commands
-- Magic Resistance
-- Righteous Magic
-- Greater Command
-- Repulse Undead
-- Flame Strike~
-@72327  = ~Divine Weaving VI~
-@72328  = ~Divine Weaving
-
-This magic will allow the Spellbender to cast one of the following spells:
-- Heal
-- Wondrous Recall
-- Aerial Servant
-- Physical mirror
-- Blade Barrier
-- Sol's Searing Orb
-- False Dawn
-- Bolt of Glory~
-@76101  = ~hearthguard of arvoreen~
-@76102  = ~Hearthguard of Arvoreen~
-@76103  = ~HEARTHGUARD OF ARVOREEN: Arvoreen is the halfling goddess of protection and militant defense.  Her followers, the Hearthguards, are multiclass fighter/clerics who use their formidable courage, training, and magic to protect halfling communities and interests from whatever threats may appear.
-
-Advantages:
-- Hearthguards have an innate ability to rally their companions and remove magical fear
-- Hearthguards may imbue themselves with divine strength
-- Hearthguards may heal the injured by laying on hands like a paladin.  
-
-They may perform each such feat once per day per six levels of experience.~
-@76104  = ~HEARTHGUARD OF ARVOREEN: Arvoreen is the halfling goddess of protection and militant defense.  Her followers, the Hearthguards, are multiclass fighter/clerics who use their formidable courage, training, and magic to protect halfling communities and interests from whatever threats may appear.~
-@78101  = ~fastpaws of baervan~
-@78102  = ~Fastpaws of Baervan Wildwanderer~
-@78103  = ~FASTPAWS OF BAERVAN WILDWANDERER: Baervan Wildwanderer, known as The Forest Gnome and the Masked Leaf, is the neutral good gnome deity of forests, travel and nature.  His clerics are known as "Fastpaws" in honor of his friend, a sentient giant raccoon named Chiktikka Fastpaws.
- 
-Advantages:
-- Immune to Entanglement.
-- From 3rd level, may cast Barkskin once per day.
-- From 7th level, may cast Call Woodland Being once per day.
-- From 12th level, may cast Conjure Animals once per day.
-
-Restrictions:
-- Alignment: limited to a combination of Chaotic, Neutral, and Good.
-~
-@78104  = ~Baervan Wildwanderer, known as The Forest Gnome and the Masked Leaf, is the neutral good gnome deity of forests, travel and nature.  His clerics are known as "Fastpaws" in honor of his friend, a sentient giant raccoon named Chiktikka Fastpaws.~
-@78105  = ~Barkskin~
-@78106  = ~Call Woodland Being~
-@78107  = ~Conjure Animals~
 

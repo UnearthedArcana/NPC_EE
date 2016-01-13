@@ -1,0 +1,65 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							KHALID
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+ACTION_IF GAME_IS ~tutu bgt bgee eet~ THEN BEGIN
+	COPY_EXISTING ~khalid.cre~ ~override~
+				~khalid2.cre~ ~override~
+				~khalid4.cre~ ~override~
+				~khalid6.cre~ ~override~
+		WRITE_SHORT 0x0234 1 //sets level to 1
+		WRITE_SHORT 0x0235 1
+		WRITE_SHORT 0x0236 1
+//		WRITE_SHORT 0x273 2 // sets class
+		WRITE_BYTE 0x0045 15
+		WRITE_BYTE 0x0066 10
+		WRITE_BYTE 0x0068 15
+		WRITE_SHORT 0x0024 14
+		WRITE_SHORT 0x0026 14
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~KHALID.cre~ ~override~
+				~khalid2.cre~ ~override~
+				~khalid4.cre~ ~override~
+				~khalid6.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		COPY_EXISTING ~KHALID.cre~ ~override~
+				~khalid2.cre~ ~override~
+				~khalid4.cre~ ~override~
+				~khalid6.cre~ ~override~
+			SET_BG2_PROFICIENCY 90 2
+			SET_BG2_PROFICIENCY 92 1
+			SET_BG2_PROFICIENCY 104 1
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~zikhalid.cre~ THEN BEGIN
+	COPY_EXISTING ~zikhalid.cre~ ~override~
+				~zikhalid25.cre~ ~override~
+		WRITE_SHORT 0x0234 1 //sets level to 1
+		WRITE_SHORT 0x0235 1
+		WRITE_SHORT 0x0236 1
+//		WRITE_SHORT 0x273 2 // sets class
+		WRITE_BYTE 0x0045 15
+		WRITE_BYTE 0x0066 10
+		WRITE_BYTE 0x0068 15
+		WRITE_SHORT 0x0024 14
+		WRITE_SHORT 0x0026 14
+		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_arslo~ END
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~zikhalid.cre~ ~override~
+				~zikhalid25.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		COPY_EXISTING ~zikhalid.cre~ ~override~
+				~zikhalid25.cre~ ~override~
+			SET_BG2_PROFICIENCY 90 2
+			SET_BG2_PROFICIENCY 92 1
+			SET_BG2_PROFICIENCY 104 1
+	END
+END
+//__________________________________________________________________________________
+

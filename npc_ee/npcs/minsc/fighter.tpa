@@ -1,0 +1,83 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							MINSC
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+// FIGHTER
+
+ACTION_IF GAME_IS ~tutu bgt bgee eet~ THEN BEGIN
+	COPY_EXISTING ~minsc.cre~ ~override~
+				~minsc2.cre~ ~override~
+				~minsc4.cre~ ~override~
+				~minsc6.cre~ ~override~
+		WRITE_SHORT 0x0234 1 //sets level to 1
+		WRITE_SHORT 0x0235 1
+		WRITE_SHORT 0x0236 1
+		WRITE_SHORT 0x273 2 // fighter
+		WRITE_BYTE 0x0045 15
+		WRITE_BYTE 0x0066 10
+		WRITE_BYTE 0x0068 15
+		WRITE_SHORT 0x244 0
+//		WRITE_SHORT 0x246 0x4000 + 0x01 // changes kit
+		WRITE_SHORT 0x0024 14
+		WRITE_SHORT 0x0026 14
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~minsc.cre~ ~override~
+				~minsc2.cre~ ~override~
+				~minsc4.cre~ ~override~
+				~minsc6.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		COPY_EXISTING ~minsc.cre~ ~override~
+				~minsc2.cre~ ~override~
+				~minsc4.cre~ ~override~
+				~minsc6.cre~ ~override~
+			SET_BG2_PROFICIENCY 114 2
+			SET_BG2_PROFICIENCY 104 1
+			SET_BG2_PROFICIENCY 101 1
+			SET_BG2_PROFICIENCY 93 1
+	END
+END
+
+ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
+	COPY_EXISTING ~minsc7.cre~ ~override~
+				~minsc8.cre~ ~override~
+				~minsc9.cre~ ~override~
+				~minsc10.cre~ ~override~
+				~minsc12.cre~ ~override~
+				~minsc14.cre~ ~override~
+		WRITE_SHORT 0x0234 1 //sets level to 1
+		WRITE_SHORT 0x0235 1
+		WRITE_SHORT 0x0236 1
+		WRITE_SHORT 0x273 2 // fighter
+		WRITE_BYTE 0x0045 15
+		WRITE_BYTE 0x0066 10
+		WRITE_BYTE 0x0068 15
+		WRITE_SHORT 0x244 0
+//		WRITE_SHORT 0x246 0x4000 + 0x01 // changes kit
+		WRITE_SHORT 0x0024 14
+		WRITE_SHORT 0x0026 14
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~minsc7.cre~ ~override~
+				~minsc8.cre~ ~override~
+				~minsc9.cre~ ~override~
+				~minsc10.cre~ ~override~
+				~minsc12.cre~ ~override~
+				~minsc14.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		COPY_EXISTING ~minsc7.cre~ ~override~
+				~minsc8.cre~ ~override~
+				~minsc9.cre~ ~override~
+				~minsc10.cre~ ~override~
+				~minsc12.cre~ ~override~
+				~minsc14.cre~ ~override~
+			SET_BG2_PROFICIENCY 114 2
+			SET_BG2_PROFICIENCY 104 1
+			SET_BG2_PROFICIENCY 101 1
+			SET_BG2_PROFICIENCY 93 1
+	END
+END
+//__________________________________________________________________________________
+

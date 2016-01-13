@@ -9,17 +9,19 @@
 <body>
 <h1>NPCs Enhanced for Everyone! (a.k.a. NPC_EE)</h1>
 <div class="section">
-  <p><strong>Author: <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
+  <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 1.0 </strong><br />
+  <p><strong> Version 2.0 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
 <h2>Overview</h2>
 <div class="section">
-  <p>This mod is intended as a "poor man's Level 1 NPCs," for EE players who can't use L1NPCs.  It just provides a few new options to re-spec most NPCs, and drop them to level 1 so that you can control their proficiency advancement etc. </p>
-  <p>This mod pales in comparison to Level 1 NPCs, but it should at least provide some extra options for new playthroughs and let you spice things up a bit.</p>
-  <p>I'm designing this to be extensible. You'll notice in the component numbering that each NPC has a block of 18 options, the last of which is "just drop to level 1." That means the mod can handle 17 alternative class/kit options for each NPC.  So far I only provide 2 or 3 each... but maybe, if I find time or some enterprising folk out there want to add stuff on your own, this can grow to provide lots and lots of options.</p>
+  <p>This is intended to be a successor to the fantastic "Level 1 NPCs" mod.  L1NPCs was never updated for the EE games, and its author is no longer active, and it is an incredible, complicated piece of work that is difficult for someone else to update.  So I made this.  It's not as complete as L1NPCs, and my techniques are not as sophisticated.  But it aims to reach a similar result: add replayability by allowing players to easily change the class and kit of various NPCs, thus creating different parties with different tactics, for different playthroughs</p>
+  <p>In application, this kind of pales in comparison to Level 1 NPCs, but it should at least let you spice things up a bit.  And it has one real advantage: you can change the kits of every NPC in every playthrough *in-game,* without going back out to Weidu to uninstall/reinstall a mod.</p>
+  <p>The way this works is, during installation you can change the *class* of various NPCs.  Some only have one alternate class, some have more than one, and some don't have any option to change.  This is based on the in-game lore; e.g. Xan is a spellcaster with a Moonblade; that could work as a mage, but also as a fighter/mage or a bard or a sorcerer.  Conversely, Jaheira is a druid, she talks all the time about being a druid, and so there is no option to make her anything other than a druid.</p>
+  <p>Once you have decided which <i>class</i> to give each NPC, you have the option to give all of them (even those you didn't change, and including mod NPCs) a special innate ability that you can use in-game to add or change their <i>kit</i>.  This is a single-use ability, so choose wisely!  This ability will trigger a dialogue that gives you the option to adopt any kit for that class... this includes any and all mod kits that you may have installed.  Turn Mazzy into a Dwarven Defender!  Make Keldorn a Blackguard!  Make Minsc a fighter in the Weidu install, and then use this ability to make him a Barbarian!  (Barbarian is actually, technically, a fighter kit.)</p>
+  <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  You can't do that in the Weidu installer, you have to do it in-game.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
 </div>
 <h2>Installation</h2>
 <div class="section">
@@ -36,223 +38,78 @@
 </div>
 <h2>Contents</h2>
 <div class="section">
-  <h4 class="subheader">Choose a kit for Imoen</h4>
+  <h4 class="subheader">Component 100: choose a new class for Imoen</h4>
   <div class="section">
-    <p><strong>Component 101: Make Imoen a Swashbuckler</strong><br /></p>
-    <p><strong>Component 102: Make Imoen a Spellfilcher (mage/thief)</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Spellfilcher" kit - for Imoen only - if it is not already installed. It makes Imoen a multiclass mage/thief in BG1; but she will stay a dual-class in BG2 and only advance in mage levels. Consider the switch a result of Irenicus'... experiments.</i></p>
-    <p><strong>Component 103: Make Imoen an Adventurer</strong><br />
-      &ndash; <i>Requires that the Song & Silence "Adventurer" kit be installed.</i></p>
+    <p>Make Imoen a mage-thief, or a bard</p>
   </div>
-  <h4 class="subheader">Choose a kit for Jaheira</h4>
+  <h4 class="subheader">Component 120: choose a new class for Jaheira</h4>
   <div class="section">
-    <p><strong>Component 121: Make Jaheira a Totemic Druid (single-class)</strong><br /></p>
-    <p><strong>Component 122: Make Jaheira an Elementalist (single-class)</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Elementalist" kit - for Jaheira only - if it is not already installed.</i></p>
-    <p><strong>Component 138: Drop Jaheira to level 1</strong><br />
-      &ndash; <i>This will not change her class or kit or XP; it just drops her to level 1 so that you can level her up and control her character progression.</i></p>
+    <p>Make Jaheira a single-class druid</p>
   </div>
-  <h4 class="subheader">Choose a kit for Khalid</h4>
+  <h4 class="subheader">Component 140: choose a new class for Khalid</h4>
   <div class="section">
-    <p><strong>Component 141: Make Khalid a ranger/cleric</strong><br /></p>
-    <p><strong>Component 142: Make Khalid a Marksman</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Marksman" kit - for Khalid only - if it is not already installed.</i></p>
-    <p><strong>Component 143: Make Khalid a Justifier</strong><br />
-      &ndash; <i>Requires that the Divine Remix "Justifier" kit be installed.</i></p>
-    <p><strong>Component 144: Make Khalid a Corsair</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Corsair" kit - for Khalid only - if it is not already installed.</i></p>
-    <p><strong>Component 158: Drop Khalid to level 1</strong><br /></p>
+    <p>Make Khalid a ranger/cleric, or a ranger></p>
   </div>
-  <h4 class="subheader">Choose a kit for Minsc</h4>
+  <h4 class="subheader">Component 160: choose a new class for Minsc</h4>
   <div class="section">
-    <p><strong>Component 161: Make Minsc a Berserker</strong><br /></p>
-    <p><strong>Component 163: Make Minsc a Barbarian Ranger</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Barbarian Ranger" kit - for Minsc only - if it is not already installed.</i></p>
-    <p><strong>Component 178: Drop Minsc to level 1</strong><br /></p>
+    <p>Make Minsc a fighter</p>
   </div>
-  <h4 class="subheader">Choose a kit for Kivan</h4>
+  <h4 class="subheader">Component 180: choose a new class for Dynaheir</h4>
   <div class="section">
-    <p><strong>Component 201: Make Kivan a Stalker</strong><br /></p>
-    <p><strong>Component 202: Make Kivan an Archer</strong><br /></p>
-    <p><strong>Component 218: Drop Kivan to level 1</strong><br /></p>
+    <p>Make Dynaheir a sorcerer</p>
   </div>
-  <h4 class="subheader">Choose a kit for Coran</h4>
+  <h4 class="subheader">Component 220: choose a new class for Coran</h4>
   <div class="section">
-    <p><strong>Component 221: Make Coran a Sniper (single-class)</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Sniper" kit - for Coran only - if it is not already installed.</i></p>
-    <p><strong>Component 222: Make Coran a Scout (single-class)</strong><br />
-      &ndash; <i>Requires that the Scales of Balance "Scout" kit be installed.</i></p>
-    <p><strong>Component 223: Make Coran a Swashbuckler</strong><br /></p>
-    <p><strong>Component 238: Drop Coran to level 1</strong><br /></p>
+    <p>Make Coran a single-class thief, or a ranger, or a bard</p>
   </div>
-  <h4 class="subheader">Choose a kit for Branwen</h4>
+  <h4 class="subheader">Component 240: choose a new class for Branwen</h4>
   <div class="section">
-    <p><strong>Component 241: Make Branwen a Battleguard of Tempus</strong><br />
-      &ndash; <i>Requires that the Divine Remix "Battleguard" kit be installed.</i></p>
-    <p><strong>Component 242: Make Branwen a Gloryblood of Tempus (fighter/cleric)</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Gloryblood" kit - for Branwen only - if it is not already installed.</i></p>
-    <p><strong>Component 258: Drop Branwen to level 1</strong><br /></p>
+    <p>Make Branwen a fighter/cleric (multiclass)</p>
   </div>
-  <h4 class="subheader">Choose a kit for Safana</h4>
+  <h4 class="subheader">Component 320: choose a new class for Montaron</h4>
   <div class="section">
-    <p><strong>Component 261: Make Safana a Swashbuckler</strong></p>
-    <p><strong>Component 262: Make Safana a Bounty Hunter</strong></p>
-    <p><strong>Component 278: Drop Safana to level 1</strong><br /></p>
+    <p>Make Montaron a single-class thief</p>
   </div>
-  <h4 class="subheader">Choose a kit for Ajantis</h4>
+  <h4 class="subheader">Component 460: choose a new class for Alora</h4>
   <div class="section">
-    <p><strong>Component 282: Make Ajantis a Cavalier</strong></p>
-    <p><strong>Component 298: Drop Ajantis to level 1</strong><br /></p>
+    <p>Make Alora a cleric/thief</p>
   </div>
-  <h4 class="subheader">Choose a kit for Montaron</h4>
+  <h4 class="subheader">Component 480: choose a new class for Xan</h4>
   <div class="section">
-    <p><strong>Component 321: Make Montaron an Assassin</strong></p>
-    <p><strong>Component 338: Drop Montaron to level 1</strong><br /></p>
+    <p>Make Xan a bard, or a fighter/mage, or a sorcerer</p>
   </div>
-  <h4 class="subheader">Choose a kit for Yeslick</h4>
+  <h4 class="subheader">Component 580: choose a new class for Viconia</h4>
   <div class="section">
-    <p><strong>Component 341: Make Yeslick an Alaghor of Clangeddin</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Alaghor" kit - for Yeslick only - if it is not already installed.</i></p>
-    <p><strong>Component 358: Drop Yeslick to level 1</strong><br /></p>
+    <p>Make Viconia a cleric/thief</p>
   </div>
-  <h4 class="subheader">Choose a kit for Quayle</h4>
+  <h4 class="subheader">Component 620: choose a new class for Neera</h4>
   <div class="section">
-    <p><strong>Component 361: Make Quayle a Hoodwinker of Baraver Cloakshadow</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Hoodwinker" kit - for Quayle only - if it is not already installed.</i></p>
-    <p><strong>Component 378: Drop Quayle to level 1</strong><br /></p>
+    <p>Make Neera a sorcerer (still subject to wild magic)</p>
   </div>
-  <h4 class="subheader">Choose a kit for Faldorn</h4>
+  <h4 class="subheader">Component 680: choose a new class for Yoshimo</h4>
   <div class="section">
-    <p><strong>Component 381: Make Faldorn an Avenger</strong><br />
-    <p><strong>Component 382: Make Faldorn a Purifier</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Purifier" kit - for Faldorn only - if it is not already installed.</i></p>
-    <p><strong>Component 383: Make Faldorn a Lost Druid</strong><br />
-      &ndash; <i>This will install Zupsky's "Lost Druid" kit - for Faldorn only - if it is not already installed.</i></p>
-    <p><strong>Component 398: Drop Faldorn to level 1</strong><br /></p>
+    <p>Make Yoshimo a fighter/thief</p>
   </div>
-  <h4 class="subheader">Choose a kit for Skie</h4>
+  <h4 class="subheader">Component 700: choose a new class for Valygar</h4>
   <div class="section">
-    <p><strong>Component 401: Make Skie an Assassin</strong><br /></p>
-    <p><strong>Component 402: Make Skie a Shadowdancer (S&S)</strong><br />
-      &ndash; <i>Requires that the Song & Silence "Shadowdancer" kit be installed.</i></p>
-    <p><strong>Component 403: Make Skie a Shadowdancer (EE)</strong><br /></p>
-    <p><strong>Component 418: Drop Skie to level 1</strong><br /></p>
+    <p>Make Valygar a fighter/thief</p>
   </div>
-  <h4 class="subheader">Choose a kit for Eldoth</h4>
+  <h4 class="subheader">Component 720: choose a new class for Nalia</h4>
   <div class="section">
-    <p><strong>Component 421: Make Eldoth a Blade</strong><br /></p>
-    <p><strong>Component 422: Make Eldoth a Jongleur</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Jongleur" kit - for Eldoth only - if it is not already installed.</i></p>
-    <p><strong>Component 438: Drop Eldoth to level 1</strong><br /></p>
+    <p>Make Nalia a bard, or a cleric/mage, or a sorcerer</p>
   </div>
-  <h4 class="subheader">Choose a kit for Garrick</h4>
+  <h4 class="subheader">Component 760: choose a new class for Mazzy</h4>
   <div class="section">
-    <p><strong>Component 441: Make Garrick a Gallant</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Gallant" kit - for Garrick only - if it is not already installed.</i></p>
-    <p><strong>Component 855: Make Garrick a Chorister</strong><br />
-      &ndash; <i>Requires that the Song & Silence "Chorister" kit be installed.</i></p>
-    <p><strong>Component 441: Make Garrick a Meistersinger</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Meistersinger" kit - for Garrick only - if it is not already installed.</i></p>
-    <p><strong>Component 458: Drop Garrick to level 1</strong><br /></p>
+    <p>Make Mazzy a fighter/cleric, or a paladin</p>
   </div>
-  <h4 class="subheader">Choose a kit for Alora</h4>
+  <h4 class="subheader">Component 2000: NPC kit choices</h4>
   <div class="section">
-    <p><strong>Component 461: Make Alora a Swashbuckler</strong></p>
-    <p><strong>Component 462: Make Alora a Sniper</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Sniper" kit - for Alora only - if it is not already installed.</i></p>
-    <p><strong>Component 463: Make Alora a Burglar</strong><br />
-      &ndash; <i>Requires that the Song & Silence "Burglar" kit be installed.</i></p>
-    <p><strong>Component 464: Make Alora a Misadventurer of Brandobaris (cleric/thief)</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Misadventurer" kit - for Alora only - if it is not already installed.</i></p>
-    <p><strong>Component 478: Drop Alora to level 1</strong><br /></p>
+    <p>As described above, this will add an innate ability to every single-class NPC allowing them to take a kit - or, if they already have a kit, to switch to a new one.</p>
+    <p>If you've read this far, I might as well tell you about a little experiment: I've added one kit option to a class in which is doesn't belong: any sorcerer NPC will be able to become a "Wild Sorcerer" - which is just a sorcerer with the Wild Mage wizard kit.  This will cause a chance of wild surges and randomly adjust their caster level.  I don't know if NRD or Chaos Shield will be available; honestly, I haven't tested this one bit, except to make sure the change actually happens.  Why would anyone do this?  I have no idea.  But, it seems like a perfect option for Neera, doesn't it?  ;)</p>
   </div>
-  <h4 class="subheader">Choose a kit for Xan</h4>
+  <h4 class="subheader">Component 3000: multiclass kit choices</h4>
   <div class="section">
-    <p><strong>Component 481: Make Xan a Bladesinger (fighter/mage)</strong><br />
-      &ndash; <i>Requires that the Scales of Balance multiclass tweaks be installed.</i></p>
-    <p><strong>Component 482: Make Xan a Loremaster (bard)</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Loremaster" kit - for Xan only - if it is not already installed.</i></p>
-    <p><strong>Component 483: Make Xan a fighter/mage</strong></p>
-      &ndash; <i>Requires that the Scales of Balance multiclass tweaks NOT be installed - this is an alternative to making him a Bladesinger. This will not override your choice of class in the Xan BG2 mod, if you install that first.</i></p>
-    <p><strong>Component 498: Drop Xan to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Shar-Teel</h4>
-  <div class="section">
-    <p><strong>Component 501: Make Shar-Teel a Berserker</strong></p>
-    <p><strong>Component 518: Drop Shar-Teel to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Tiax</h4>
-  <div class="section">
-    <p><strong>Component 541: Make Tiax a Strifeleader of Cyric (single-class)</strong><br />
-      &ndash; <i>Requires that the Divine Remix "Strifeleader" kit be installed.</i></p>
-    <p><strong>Component 558: Drop Tiax to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Viconia</h4>
-  <div class="section">
-    <p><strong>Component 482: Make Viconia a Darkcloak of Shar</strong><br />
-      &ndash; <i>This will install the Scales of Balance "Darkcloak" kit - for Viconia only - if it is not already installed.</i></p>
-    <p><strong>Component 582: Make Viconia a Nightcloak of Shar</strong><br />
-      &ndash; <i>Requires that the Divine Remix "Nightcloak" kit be installed.</i></p>
-    <p><strong>Component 583: Make Viconia a cleric/thief</strong><br /></p>
-    <p><strong>Component 598: Drop Viconia to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Yoshimo</h4>
-  <div class="section">
-    <p><strong>Component 681: Make Yoshimo a Swashbuckler</strong></p>
-    <p><strong>Component 682: Make Yoshimo a fighter/thief</strong></p>
-    <p><strong>Component 698: Drop Yoshimo to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Valygar</h4>
-  <div class="section">
-    <p><strong>Component 701: Make Valygar a Mage Hunter</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Mage Hunter" kit - for Valygar only - if it is not already installed.</i></p>
-    <p><strong>Component 702: Make Valygar a fighter/thief</strong></p>
-    <p><strong>Component 718: Drop Valygar to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Nalia</h4>
-  <div class="section">
-    <p><strong>Component 721: Make Nalia a Loremaster (bard)</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Loremaster" kit - for Nalia only - if it is not already installed.</i></p>
-    <p><strong>Component 722: Make Nalia a Loresinger of Milil (bard)</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Loresinger" kit - for Nalia only - if it is not already installed.</i></p>
-    <p><strong>Component 723: Make Nalia a Spellbender (cleric/mage)</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Spellbender" kit - for Nalia only - if it is not already installed.</i></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Haer'Dalis</h4>
-  <div class="section">
-    <p><strong>Component 741: Make Haer'Dalis a Jongleur</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Jongleur" kit - for Haer'Dalis only - if it is not already installed.</i></p>
-    <p><strong>Component 742: Make Haer'Dalis a Gallant</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Gallant" kit - for Haer'Dalis only - if it is not already installed.</i></p>
-    <p><strong>Component 743: Make Haer'Dalis a Skald</strong></p>
-    <p><strong>Component 758: Drop Haer'Dalis to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Mazzy</h4>
-  <div class="section">
-    <p><strong>Component 761: Make Mazzy a Hearthguard of Arvoreen (fighter/cleric)</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Hearthguard" kit - for Mazzy only - if it is not already installed.</i></p>
-    <p><strong>Component 778: Drop Mazzy to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Mazzy</h4>
-  <div class="section">
-    <p><strong>Component 781: Make Aerie a Fastpaws of Baervan Wildwanderer</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Fastpaws" kit - for Mazzy only - if it is not already installed.</i></p>
-    <p><strong>Component 798: Drop Aerie to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Keldorn</h4>
-  <div class="section">
-    <p><strong>Component 801: Make Keldorn a trueclass Paladin</strong></p>
-    <p><strong>Component 802: Make Keldorn a Cavalier</strong></p>
-    <p><strong>Component 818: Drop Keldorn to level 1</strong><br /></p>
-  </div>
-  <h4 class="subheader">Choose a kit for Cernd</h4>
-  <div class="section">
-    <p><strong>Component 861: Make Cernd a Totemic druid</strong></p>
-    <p><strong>Component 862: Make Cernd an Elementalist (SoB)</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Elementalist" kit - for Cernd only - if it is not already installed.</i></p>
-    <p><strong>Component 863: Make Cernd a Purifier (SoB)</strong></p>
-      &ndash; <i>This will install the Scales of Balance "Purifier" kit - for Cernd only - if it is not already installed.</i></p>
-    <p><strong>Component 888: Drop Cernd to level 1</strong><br /></p>
+    <p>This will give the kit-choice innate ability to multiclass NPCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So a ranger/cleric is presumed to worship a nature deity, and can choose a ranger kit; but any other multiclass cleric will choose a deity, and cannot have a kit from the other class.  A fighter/thief can be a kensai/thief or a barbarian/thief (yes!) but not a fighter/swashbuckler.  And you can be an assassin/mage or swashbuckler/mage, but not a thief/illusionist (unless you're a gnome).  Needless to say this is way outside the basic game rules, and you only have yourself to blame if you abuse this and render the game stupidly easy.</p>
   </div>
 </div>
 <h2>Contact Information</h2>
@@ -262,7 +119,7 @@
 </div>
 <h2>Thanks and Acknowledgements</h2>
 <div class="section">
-  <p>Huge thanks in particular to Smeagolheart, Crevsdaak, kjeron, Camdawg, Mike1072, kreso, Grammarsalad and The Imp for advice and help with using Weidu. </p>
+  <p>Huge thanks in particular to Smeagolheart, Crevsdaak, kjeron, Camdawg, Mike1072, kreso, and The Imp for advice and help with using Weidu.  And special thanks to Grammarsalad, without whom I never could have made the kit-choice-by-dialogue system in v2.</p>
   <p>Thanks to the still active and vibrant Infinity Engine modding community. </p>
   <p><strong>Tools Used in Creation</strong><br />
     <a href="http://www.weidu.org/"><acronym title="Weimer Dialogue Utility">WeiDU</acronym></a> by
@@ -272,15 +129,23 @@
 </div>
 <h2>Credits and Copyright Information</h2>
 <div class="section">
-  <p>Copyright 2014-2015. If you want to use or adapt any part of this mod in another mod or similar endeavor, please try to contact me at forums.gibberlings3.net or forum.baldursgate.com to discuss it. As a general rule, I have no problem with that as long as you credit the source of the work. If you cannot get in touch with me, assume that you have my permission to use any of this code for any project that is non-commercial, offered for free, and intended for the greater enjoyment of players of Infinity Engine games. If you do so, please credit me, and mention how awesome I am in a comment in the code, or something like that. You may NOT use this code for any profit-making or commercial venture, without express permission from me.</p>
+  <p>Copyright 2014-2016. If you want to use or adapt any part of this mod in another mod or similar endeavor, please try to contact me at forums.gibberlings3.net or forum.baldursgate.com to discuss it.  As a general rule, I have no problem with that as long as you credit the source of the work.  If you cannot get in touch with me, assume that you have my permission to use any of this code for any project that is non-commercial, offered for free, and intended for the greater enjoyment of players of Infinity Engine games.  If you do so, please credit me, and mention how awesome I am in a comment in the code, or something like that.  You may NOT use this code for any profit-making or commercial venture, without express permission from me.</p>
 </div>
 <h2>Version History</h2>
 <div class="section">
-  <p><strong>Version 1.1 - September 8, 2015</strong></p>
+  <p><strong>Version 2.0 - January 2016</strong></p>
+  <ul>
+    <li>Total revamp, now class changes are in Weidu and kit changes are via dialogue.</li>
+  </ul>
+  <p><strong>Version 1.2 - October 2015</strong></p>
+  <ul>
+    <li>Fixes for various NPCs</li>
+  </ul>
+  <p><strong>Version 1.1 - September 2015</strong></p>
   <ul>
     <li>Added BG2 NPCs</li>
   </ul>
-  <p><strong>Version 1.0 - August 27, 2015</strong></p>
+  <p><strong>Version 1.0 - August 2015</strong></p>
   <ul>
     <li>First version, transferred over from Scales of Balance v3.2</li>
   </ul>

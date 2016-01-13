@@ -1,6 +1,0 @@
-IF
-  XPLT(Player1,159000)
-THEN
-  RESPONSE #100
-    AddXPObject(Player1,40000)
-END
