@@ -26,6 +26,10 @@ COPY_EXISTING ~VALYG8.cre~ ~override~
 		WRITE_SHORT 0x0024 10
 		WRITE_SHORT 0x0026 10
 		WRITE_BYTE 0x0066 10
+		READ_BYTE 0x11 rdual 
+		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
+		READ_BYTE 0x10 dual 
+		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 	COPY_EXISTING ~VALYG8.cre~ ~override~
 			~VALYG9.cre~ ~override~

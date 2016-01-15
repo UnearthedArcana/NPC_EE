@@ -91,7 +91,7 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
 		WRITE_BYTE 0x272 3 // half-elf
 // switch from dual-class to multiclass
 		READ_BYTE 0x11 rdual 
-		WRITE_BYTE 0x10 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
+		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
 		READ_BYTE 0x10 dual 
 		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
 //

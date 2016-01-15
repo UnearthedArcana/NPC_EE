@@ -18,6 +18,10 @@ ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
 		WRITE_BYTE 0x006a 5
 		WRITE_SHORT 0x0024 12
 		WRITE_SHORT 0x0026 12
+		READ_BYTE 0x11 rdual 
+		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
+		READ_BYTE 0x10 dual 
+		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~branwe.cre~ ~override~
 				~branwe5.cre~ ~override~
@@ -41,6 +45,10 @@ ACTION_IF FILE_EXISTS_IN_GAME ~o#bran.cre~ THEN BEGIN
 		WRITE_BYTE 0x006a 5
 		WRITE_SHORT 0x0024 12
 		WRITE_SHORT 0x0026 12
+		READ_BYTE 0x11 rdual 
+		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
+		READ_BYTE 0x10 dual 
+		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~o#bran.cre~ ~override~
 				~o#bran25.cre~ ~override~
