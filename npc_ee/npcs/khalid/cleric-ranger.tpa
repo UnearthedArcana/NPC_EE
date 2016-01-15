@@ -1,0 +1,83 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							KHALID
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
+	COPY_EXISTING ~khalid.cre~ ~override~
+				~khalid2.cre~ ~override~
+				~khalid4.cre~ ~override~
+				~khalid6.cre~ ~override~
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 18 // sets class
+		WRITE_BYTE 0x272 3 // half-elf
+		WRITE_BYTE 0x0045 15
+		WRITE_BYTE 0x0066 10
+		WRITE_BYTE 0x0068 15
+		WRITE_BYTE 0x23a 11
+		WRITE_BYTE 0x23b 16
+		WRITE_SHORT 0x0024 14
+		WRITE_SHORT 0x0026 14
+		ADD_CRE_ITEM ~staf01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ EQUIP TWOHANDED
+		ADD_CRE_ITEM ~slng02~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~
+		ADD_CRE_ITEM ~bull01~ #40 #0 #0 ~IDENTIFIED~ ~quiver1~
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~KHALID.cre~ ~override~
+				~khalid2.cre~ ~override~
+				~khalid4.cre~ ~override~
+				~khalid6.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		COPY_EXISTING ~KHALID.cre~ ~override~
+				~khalid2.cre~ ~override~
+				~khalid4.cre~ ~override~
+				~khalid6.cre~ ~override~
+			SET_BG2_PROFICIENCY 115 1
+			SET_BG2_PROFICIENCY 102 2
+			SET_BG2_PROFICIENCY 107 1
+			SET_BG2_PROFICIENCY 114 2
+	END
+	COPY_EXISTING ~khalid.cre~ ~override~
+		WRITE_BYTE 0x0018 3138
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~zikhalid.cre~ THEN BEGIN
+	COPY_EXISTING ~zikhalid.cre~ ~override~
+				~zikhalid25.cre~ ~override~
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 18 // sets class
+		WRITE_BYTE 0x272 3 // half-elf
+		WRITE_BYTE 0x0045 15
+		WRITE_BYTE 0x0066 10
+		WRITE_BYTE 0x0068 15
+		WRITE_BYTE 0x23a 11
+		WRITE_BYTE 0x23b 16
+		WRITE_SHORT 0x0024 14
+		WRITE_SHORT 0x0026 14
+		ADD_CRE_ITEM ~staf01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ EQUIP TWOHANDED
+		ADD_CRE_ITEM ~slng02~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~
+		ADD_CRE_ITEM ~bull01~ #40 #0 #0 ~IDENTIFIED~ ~quiver1~
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~zikhalid.cre~ ~override~
+				~zikhalid25.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		COPY_EXISTING ~zikhalid.cre~ ~override~
+				~zikhalid25.cre~ ~override~
+			SET_BG2_PROFICIENCY 115 1
+			SET_BG2_PROFICIENCY 102 2
+			SET_BG2_PROFICIENCY 107 1
+			SET_BG2_PROFICIENCY 114 2
+	END
+END
+
+EXTEND_BOTTOM ~khalid.bcs~ ~npc_ee/npcs/khalid/khalid_c-r.baf~
+
+//__________________________________________________________________________________
+

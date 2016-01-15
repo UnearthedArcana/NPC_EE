@@ -2,7 +2,9 @@
 
 IF
   InParty(Myself)
+  Global("xan_bard","LOCALS",0)
 THEN
   RESPONSE #100
     ChangeClass(Myself,BARD)
+	SetGlobal("xan_bard","LOCALS",1)
 END
