@@ -12,10 +12,10 @@ COPY_EXISTING ~MAZZY8.cre~ ~override~
 			~MAZZY11.cre~ ~override~
 			~MAZZY12.cre~ ~override~
 			~MAZZY15.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 8 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 8 // sets class
 		WRITE_BYTE 0x23e 18
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 5

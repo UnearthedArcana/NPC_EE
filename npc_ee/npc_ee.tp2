@@ -18,7 +18,7 @@ LANGUAGE
 // mage/thief_______________________________________________________________________
 BEGIN @102
 DESIGNATED 102
-REQUIRE_PREDICATE GAME_IS ~tutu bgt bgee tob bg2ee eet~ ~Imoen~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Imoen~
 SUBCOMPONENT @100 
 
 INCLUDE ~npc_ee/npcs/imoen/mage-thief.tpa~
@@ -42,7 +42,7 @@ INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
 // fighter__________________________________________________________________________
 BEGIN @121
 DESIGNATED 121
-REQUIRE_PREDICATE GAME_IS ~tutu bgt bgee tob bg2ee eet~ ~Jaheira~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Jaheira~
 SUBCOMPONENT @120
 
 INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
@@ -59,7 +59,7 @@ INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
 // cleric/ranger____________________________________________________________________
 BEGIN @141
 DESIGNATED 141
-REQUIRE_PREDICATE (GAME_IS ~tutu bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
 SUBCOMPONENT @140
 
 INCLUDE ~npc_ee/npcs/khalid/cleric-ranger.tpa~
@@ -84,7 +84,7 @@ INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
 // fighter__________________________________________________________________________
 BEGIN @161
 DESIGNATED 161
-REQUIRE_PREDICATE GAME_IS ~tutu bgt bgee tob bg2ee eet~ ~Minsc~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Minsc~
 SUBCOMPONENT @160
 
 INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
@@ -101,7 +101,7 @@ INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @181
 DESIGNATED 181
-REQUIRE_PREDICATE GAME_IS ~tutu bgt bgee eet~ ~Dynaheir~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Dynaheir~
 SUBCOMPONENT @180 
 
 INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
@@ -128,7 +128,7 @@ INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 // thief____________________________________________________________________________
 BEGIN @221
 DESIGNATED 221
-REQUIRE_PREDICATE (GAME_IS ~tutu bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
 SUBCOMPONENT @220
 
 INCLUDE ~npc_ee/npcs/coran/thief.tpa~
@@ -161,7 +161,7 @@ INCLUDE ~npc_ee/npcs/coran/bard.tpa~
 // fighter/cleric___________________________________________________________________
 BEGIN @242
 DESIGNATED 242
-REQUIRE_PREDICATE (GAME_IS ~tutu bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
 SUBCOMPONENT @240
 
 INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
@@ -178,7 +178,7 @@ INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
 // fighter/cleric___________________________________________________________________
 BEGIN @321
 DESIGNATED 321
-REQUIRE_PREDICATE GAME_IS ~tutu bgt bgee eet~ ~Montaron~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Montaron~
 SUBCOMPONENT @320
 
 INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
@@ -195,7 +195,7 @@ INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
 // cleric/thief_____________________________________________________________________
 BEGIN @464
 DESIGNATED 464
-REQUIRE_PREDICATE (GAME_IS ~tutu bgt bgee~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
 SUBCOMPONENT @460
 
 INCLUDE ~npc_ee/npcs/alora/cleric-thief.tpa~

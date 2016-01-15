@@ -6,22 +6,19 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-// FIGHTER
 
-ACTION_IF GAME_IS ~tutu bgt bgee eet~ THEN BEGIN
+ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
 	COPY_EXISTING ~minsc.cre~ ~override~
 				~minsc2.cre~ ~override~
 				~minsc4.cre~ ~override~
 				~minsc6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 2 // fighter
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 2 // fighter
 		WRITE_BYTE 0x0045 15
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x0068 15
-		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + 0x01 // changes kit
 		WRITE_SHORT 0x0024 14
 		WRITE_SHORT 0x0026 14
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
@@ -48,15 +45,13 @@ ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
 				~minsc10.cre~ ~override~
 				~minsc12.cre~ ~override~
 				~minsc14.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 2 // fighter
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 2 // fighter
 		WRITE_BYTE 0x0045 15
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x0068 15
-		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + 0x01 // changes kit
 		WRITE_SHORT 0x0024 14
 		WRITE_SHORT 0x0026 14
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN

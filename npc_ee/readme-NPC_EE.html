@@ -64,7 +64,8 @@
   </div>
   <h4 class="subheader">Component 240: choose a new class for Branwen</h4>
   <div class="section">
-    <p>Make Branwen a fighter/cleric (multiclass)</p>
+    <p>Make Branwen a fighter/cleric (multiclass)<br />
+    <i>(If the Gloryblood of Tempus kit is installed, making Branwen a fighter/cleric will also give her that kit.)</i></p>
   </div>
   <h4 class="subheader">Component 320: choose a new class for Montaron</h4>
   <div class="section">
@@ -72,7 +73,8 @@
   </div>
   <h4 class="subheader">Component 460: choose a new class for Alora</h4>
   <div class="section">
-    <p>Make Alora a cleric/thief</p>
+    <p>Make Alora a cleric/thief<br />
+    <i>(If the Misadventurer of Brandobaris kit is installed, making Alora a cleric/thief will also give her that kit.)</i></p>
   </div>
   <h4 class="subheader">Component 480: choose a new class for Xan</h4>
   <div class="section">
@@ -100,7 +102,8 @@
   </div>
   <h4 class="subheader">Component 760: choose a new class for Mazzy</h4>
   <div class="section">
-    <p>Make Mazzy a fighter/cleric, or a paladin</p>
+    <p>Make Mazzy a fighter/cleric, or a paladin<br />
+    <i>(If the Hearthguard of Arvoreen kit is installed, making Mazzy a fighter/cleric will also give her that kit.)</i></p>
   </div>
   <h4 class="subheader">Component 2000: NPC kit choices</h4>
   <div class="section">

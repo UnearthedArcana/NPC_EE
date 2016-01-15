@@ -10,10 +10,10 @@
 ACTION_IF GAME_IS ~tutu bgt bgee~ THEN BEGIN
 	COPY_EXISTING ~alora.cre~ ~override~
 			~alora6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 15 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 15 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5
@@ -41,10 +41,10 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~alora09.cre~ THEN BEGIN
 	COPY_EXISTING ~alora09.cre~ ~override~
 				~alora25.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 15 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 15 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5
@@ -69,7 +69,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~alora09.cre~ THEN BEGIN
 	END
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_msadv.2da~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_multi.d5~ THEN BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 		COUNT_2DA_ROWS 8 "rows"
 		FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
@@ -108,7 +108,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_msadv.2da~ THEN BEGIN
 	END
 END
 
-EXTEND_BOTTOM ~khalid.bcs~ ~npc_ee/npcs/alora/alora_c-t.baf~
+EXTEND_BOTTOM ~alora.bcs~ ~npc_ee/npcs/alora/alora_c-t.baf~
 
 //__________________________________________________________________________________
 

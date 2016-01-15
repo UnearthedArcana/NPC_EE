@@ -10,10 +10,10 @@
 ACTION_IF FILE_EXISTS_IN_GAME ~xan4.cre~ THEN BEGIN
 	COPY_EXISTING ~xan4.cre~ ~override~
 				~xan6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 7 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 7 // sets class
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
 		WRITE_BYTE 0x0066 10
@@ -26,10 +26,10 @@ END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~xan.cre~ THEN BEGIN
 	COPY_EXISTING ~xan.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 7 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 7 // sets class
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
 		WRITE_BYTE 0x0066 10
@@ -45,9 +45,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~o#xan09.cre~ THEN BEGIN
 				~o#xan25.cre~ ~override~
 		READ_SHORT 0x273 xanclass
 		PATCH_IF ( xanclass = 7 ) BEGIN
-			WRITE_SHORT 0x0234 1 // sets level to 1
-			WRITE_SHORT 0x0235 1
-			WRITE_SHORT 0x0236 1
+			WRITE_BYTE 0x0234 1 // sets level to 1
+			WRITE_BYTE 0x0235 1
+			WRITE_BYTE 0x0236 1
 			WRITE_SHORT 0x0024 9
 			WRITE_SHORT 0x0026 9
 			WRITE_BYTE 0x0066 10
@@ -59,7 +59,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~o#xan09.cre~ THEN BEGIN
 		
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_blads.2da~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_multi.d5~ THEN BEGIN
 	COPY_EXISTING ~kitlist.2da~ ~override~
 		COUNT_2DA_ROWS 8 "rows"
 		FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN

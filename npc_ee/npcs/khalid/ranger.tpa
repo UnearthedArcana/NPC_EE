@@ -12,20 +12,15 @@ ACTION_IF FILE_EXISTS_IN_GAME ~KHALID.cre~ THEN BEGIN
 				~KHALID2.cre~ ~override~
 				~KHALID4.cre~ ~override~
 				~KHALID6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 12 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 12 // sets class
 		WRITE_BYTE 0x0045 15
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x0068 15
-		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%a#justif%~ // changes kit
 		WRITE_SHORT 0x0024 14
 		WRITE_SHORT 0x0026 14
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=59 target=1 timing=9 power=1 parameter1=10 parameter2=0 END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=275 target=1 timing=9 power=1 parameter1=10 parameter2=0 END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=275 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~KHALID.cre~ ~override~
 				~khalid2.cre~ ~override~
@@ -46,20 +41,15 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~zikhalid.cre~ THEN BEGIN
 	COPY_EXISTING ~zikhalid.cre~ ~override~
 				~zikhalid25.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 12 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 12 // sets class
 		WRITE_BYTE 0x0045 15
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x0068 15
-		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%a#justif%~ // changes kit
 		WRITE_SHORT 0x0024 14
 		WRITE_SHORT 0x0026 14
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=59 target=1 timing=9 power=1 parameter1=10 parameter2=0 END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=275 target=1 timing=9 power=1 parameter1=10 parameter2=0 END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=278 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~KHALID.cre~ ~override~
 				~khalid2.cre~ ~override~

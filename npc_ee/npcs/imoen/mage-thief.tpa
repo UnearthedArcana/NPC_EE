@@ -31,12 +31,10 @@ ACTION_IF GAME_IS ~tutu bgee eet~ THEN BEGIN
 				~IMOEN2.cre~ ~override~
 				~IMOEN4.cre~ ~override~
 				~IMOEN6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 13 // sets class
-		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_FILCH%~ // changes kit
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 13 // sets class
 		WRITE_BYTE 0x272 3 // half-elf
 		READ_BYTE 0x11 rdual 
 		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
@@ -52,7 +50,6 @@ ACTION_IF GAME_IS ~tutu bgee eet~ THEN BEGIN
 		WRITE_BYTE 0x006a 5
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch1~ END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~IMOEN1.cre~ ~override~
 				~IMOEN2.cre~ ~override~
@@ -80,11 +77,6 @@ ACTION_IF GAME_IS ~tob bg2ee eet~ THEN BEGIN
 		READ_BYTE 0x10 dual 
 		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
 //
-//		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_FILCH%~ // changes kit
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch1~ END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch2~ END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch3~ END
 END
 
 ACTION_IF GAME_IS ~bgt~ THEN BEGIN
@@ -92,10 +84,10 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
 				~IMOEN2.cre~ ~override~
 				~IMOEN4.cre~ ~override~
 				~IMOEN61.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 13 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 13 // sets class
 		WRITE_BYTE 0x272 3 // half-elf
 // switch from dual-class to multiclass
 		READ_BYTE 0x11 rdual 
@@ -111,11 +103,8 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
 		WRITE_BYTE 0x0068 10
 		WRITE_BYTE 0x0069 5
 		WRITE_BYTE 0x006a 5
-		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_FILCH%~ // changes kit
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch1~ END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~IMOEN1.cre~ ~override~
 				~IMOEN2.cre~ ~override~
@@ -140,11 +129,6 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
 		READ_BYTE 0x10 dual 
 		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
 //
-//		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_FILCH%~ // changes kit
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch1~ END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch2~ END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_flch3~ END
 END
 
 EXTEND_BOTTOM ~imoen.bcs~ ~npc_ee/npcs/imoen/imoen_m-t.baf~

@@ -13,12 +13,10 @@ COPY_EXISTING ~nalia8.cre~ ~override~
 			~nalia13.cre~ ~override~
 			~nalia15.cre~ ~override~
 			~nalia18.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 14 // sets class
-//		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_bendr%~ // changes kit
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 14 // sets class
 		READ_BYTE 0x11 rdual 
 		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
 		READ_BYTE 0x10 dual 

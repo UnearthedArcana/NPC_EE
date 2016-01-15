@@ -5,5 +5,4 @@ IF
 THEN
   RESPONSE #100
     ChangeClass(Myself,PALADIN)
-    AddKit(0)
 END

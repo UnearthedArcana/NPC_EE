@@ -12,11 +12,10 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 				~neera2.cre~ ~override~
 				~neera4.cre~ ~override~
 				~neera6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 19 // sets class
-		WRITE_SHORT 0x244 0
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 19 // sets class
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 10
 		WRITE_SHORT 0x0024 6
@@ -47,11 +46,10 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 				~neera12.cre~ ~override~
 				~neera13.cre~ ~override~
 				~neera15.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 19 // sets class
-		WRITE_SHORT 0x244 0
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 19 // sets class
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 10
 		WRITE_SHORT 0x0024 6

@@ -7,21 +7,17 @@
 //__________________________________________________________________________________
 
 
-ACTION_IF GAME_IS ~tutu bgt bgee eet~ THEN BEGIN
+ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
 	COPY_EXISTING ~branwe.cre~ ~override~
 				~branwe5.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 8 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 8 // sets class
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 5
-//		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_tempu%~ // changes kit
 		WRITE_SHORT 0x0024 12
 		WRITE_SHORT 0x0026 12
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spcl152~ END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_temp1~ END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~branwe.cre~ ~override~
 				~branwe5.cre~ ~override~
@@ -37,18 +33,14 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~o#bran.cre~ THEN BEGIN
 	COPY_EXISTING ~o#bran.cre~ ~override~
 				~o#bran25.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 8 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 8 // sets class
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 5
-//		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_tempu%~ // changes kit
 		WRITE_SHORT 0x0024 12
 		WRITE_SHORT 0x0026 12
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spcl152~ END
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_temp1~ END
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~o#bran.cre~ ~override~
 				~o#bran25.cre~ ~override~
@@ -60,5 +52,35 @@ ACTION_IF FILE_EXISTS_IN_GAME ~o#bran.cre~ THEN BEGIN
 			SET_BG2_PROFICIENCY 97 2
 	END
 END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_multi.d5~ THEN BEGIN
+	COPY_EXISTING ~kitlist.2da~ ~override~
+		COUNT_2DA_ROWS 8 "rows"
+		FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+			READ_2DA_ENTRY "%index%" 5 8 "clab"
+			PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5_tempu" = 1) BEGIN
+				SET "d5_tempu" = "%index%"-1
+				SET "rows" = 0
+			END
+		END
+	BUT_ONLY
+	ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
+		COPY_EXISTING ~branwe.cre~ ~override~
+				~branwe5.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + ~%d5_tempu%~ // changes kit
+		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spcl152~ END
+		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_temp1~ END
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~o#bran.cre~ THEN BEGIN
+		COPY_EXISTING ~o#bran.cre~ ~override~
+				~o#bran25.cre~ ~override~
+		WRITE_SHORT 0x244 0
+		WRITE_SHORT 0x246 0x4000 + ~%d5_tempu%~ // changes kit
+		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spcl152~ END
+		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_temp1~ END
+	END
+END
+
 //__________________________________________________________________________________
 

@@ -10,10 +10,10 @@
 ACTION_IF GAME_IS ~tutu bgt bgee eet~ THEN BEGIN
 	COPY_EXISTING ~coran.cre~ ~override~
 			~coran5.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 5 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 5 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5
@@ -40,10 +40,10 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~o#coran.cre~ THEN BEGIN
 	COPY_EXISTING ~o#coran.cre~ ~override~
 			~o#cor25.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 5 // sets class
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 5 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5

@@ -5,5 +5,4 @@ IF
 THEN
   RESPONSE #100
     ChangeClass(Myself,MAGE_THIEF)
-    AddKit(0)
 END

@@ -12,12 +12,10 @@ ACTION_IF FILE_EXISTS_IN_GAME ~dynahe.cre~ THEN BEGIN
 				~dynahe2.cre~ ~override~
 				~dynahe4.cre~ ~override~
 				~dynahe6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 //sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 19 // sets class
-//		WRITE_SHORT 0x244 0
-//		WRITE_SHORT 0x246 0x4000 + ~%d5_bendr%~ // changes kit
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 19 // sets class
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 10
 		WRITE_SHORT 0x0024 8

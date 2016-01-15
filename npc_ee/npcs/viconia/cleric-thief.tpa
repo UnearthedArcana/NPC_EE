@@ -7,14 +7,14 @@
 //__________________________________________________________________________________
 
 
-ACTION_IF GAME_IS ~tutu bgee~ THEN BEGIN
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
 	COPY_EXISTING ~viconi.cre~ ~override~
 				~viconi4.cre~ ~override~
 				~viconi6.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 15 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 15 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5
@@ -43,10 +43,10 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
 	COPY_EXISTING ~viconi.cre~ ~override~
 				~viconi4.cre~ ~override~
 				~viconi61.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 15 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 15 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5
@@ -79,10 +79,10 @@ ACTION_IF GAME_IS ~bgt tob bg2ee~ THEN BEGIN
 				~viconi11.cre~ ~override~
 				~viconi13.cre~ ~override~
 				~viconi16.cre~ ~override~
-		WRITE_SHORT 0x0234 1 // sets level to 1
-		WRITE_SHORT 0x0235 1
-		WRITE_SHORT 0x0236 1
-		WRITE_SHORT 0x273 15 // sets class
+		WRITE_BYTE 0x0234 1 // sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 15 // sets class
 		WRITE_BYTE 0x0045 10
 		WRITE_BYTE 0x0064 5
 		WRITE_BYTE 0x0065 5
