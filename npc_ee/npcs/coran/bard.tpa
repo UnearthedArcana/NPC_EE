@@ -67,7 +67,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~o#coran.cre~ THEN BEGIN
 	END
 END
 
-EXTEND_BOTTOM ~imoen.bcs~ ~npc_ee/npcs/coran/coran_bard.baf~
+EXTEND_BOTTOM ~coran.bcs~ ~npc_ee/npcs/coran/coran_bard.baf~
 
 //__________________________________________________________________________________
 

@@ -39,6 +39,7 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 END
 
 EXTEND_BOTTOM ~mazzy.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
+EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
 
 //__________________________________________________________________________________
 

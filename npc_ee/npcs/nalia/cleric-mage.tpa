@@ -45,6 +45,7 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 END
 
 EXTEND_BOTTOM ~nalia.bcs~ ~npc_ee/npcs/nalia/nalia_c-m.baf~
+EXTEND_BOTTOM ~nali25.bcs~ ~npc_ee/npcs/nalia/nalia_c-m.baf~
 
 //__________________________________________________________________________________
 
