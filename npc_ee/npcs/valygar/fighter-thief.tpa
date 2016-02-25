@@ -2,16 +2,14 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							VALYGAR
+//							VALYGAR MULTI FIGHTER/THIEF
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
 
-COPY_EXISTING ~VALYG8.cre~ ~override~
-			~VALYG9.cre~ ~override~
-			~VALYG11.cre~ ~override~
-			~VALYG12.cre~ ~override~
-			~VALYG14.cre~ ~override~
+ACTION_FOR_EACH char IN ~valyg8~ ~valyg9~ ~valyg11~ ~valyg12~ ~valyg14~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -30,26 +28,26 @@ COPY_EXISTING ~VALYG8.cre~ ~override~
 		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
 		READ_BYTE 0x10 dual 
 		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-	COPY_EXISTING ~VALYG8.cre~ ~override~
-			~VALYG9.cre~ ~override~
-			~VALYG11.cre~ ~override~
-			~VALYG12.cre~ ~override~
-			~VALYG14.cre~ ~override~
-		LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-	COPY_EXISTING ~VALYG8.cre~ ~override~
-			~VALYG9.cre~ ~override~
-			~VALYG11.cre~ ~override~
-			~VALYG12.cre~ ~override~
-			~VALYG14.cre~ ~override~
+	BUT_ONLY
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
 		SET_BG2_PROFICIENCY 94 1
 		SET_BG2_PROFICIENCY 95 1
 		SET_BG2_PROFICIENCY 104 1
 		SET_BG2_PROFICIENCY 113 1
+	END
+  END
 END
 
-EXTEND_BOTTOM ~valygar.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
-EXTEND_BOTTOM ~valy25.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
+ACTION_IF FILE_EXISTS_IN_GAME ~valygar.bcs~ BEGIN
+	EXTEND_BOTTOM ~valygar.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~valy25.bcs~ BEGIN
+	EXTEND_BOTTOM ~valy25.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
+END
 
 //__________________________________________________________________________________
 

@@ -2,14 +2,14 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							ALORA
+//							ALORA CLERIC/THIEF (BRANDOBARIS)
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
 
-ACTION_IF GAME_IS ~tutu bgt bgee~ THEN BEGIN
-	COPY_EXISTING ~alora.cre~ ~override~
-			~alora6.cre~ ~override~
+ACTION_FOR_EACH char IN ~%tutu_var%alora~ ~%tutu_var%alora6~ ~alora09~ ~alora25~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 // sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -28,65 +28,29 @@ ACTION_IF GAME_IS ~tutu bgt bgee~ THEN BEGIN
 		WRITE_SHORT 0x0026 10
 		ADD_CRE_ITEM ~blun01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ 
 		ADD_CRE_ITEM ~slng01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~ EQUIP
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-		COPY_EXISTING ~alora.cre~ ~override~
-			~alora6.cre~ ~override~
-			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-		COPY_EXISTING ~alora.cre~ ~override~
-			~alora6.cre~ ~override~
-			SET_BG2_PROFICIENCY 96 1
-			SET_BG2_PROFICIENCY 105 1
-			SET_BG2_PROFICIENCY 114 1
-	END
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~alora09.cre~ THEN BEGIN
-	COPY_EXISTING ~alora09.cre~ ~override~
-				~alora25.cre~ ~override~
-		WRITE_BYTE 0x0234 1 // sets level to 1
-		WRITE_BYTE 0x0235 1
-		WRITE_BYTE 0x0236 1
-		WRITE_BYTE 0x273 15 // sets class
-		WRITE_BYTE 0x0045 10
-		WRITE_BYTE 0x0064 5
-		WRITE_BYTE 0x0065 5
-		WRITE_BYTE 0x0066 10
-		WRITE_BYTE 0x0067 5
-		WRITE_BYTE 0x0068 10
-		WRITE_BYTE 0x0069 5
-		WRITE_BYTE 0x006a 5
-		WRITE_BYTE 0x23a 8
-		WRITE_BYTE 0x23b 15
-		WRITE_SHORT 0x0024 10
-		WRITE_SHORT 0x0026 10
-		ADD_CRE_ITEM ~blun01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ 
-		ADD_CRE_ITEM ~slng01~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON2~ EQUIP
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-		COPY_EXISTING ~alora09.cre~ ~override~
-				~alora25.cre~ ~override~
-			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-		COPY_EXISTING ~alora09.cre~ ~override~
-				~alora25.cre~ ~override~
-			SET_BG2_PROFICIENCY 96 1
-			SET_BG2_PROFICIENCY 105 1
-			SET_BG2_PROFICIENCY 114 1
-	END
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_multi.d5~ THEN BEGIN
-	COPY_EXISTING ~kitlist.2da~ ~override~
-		COUNT_2DA_ROWS 8 "rows"
-		FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
-			READ_2DA_ENTRY "%index%" 5 8 "clab"
-			PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5_msadv" = 1) BEGIN
-				SET "d5_msadv" = "%index%"-1
-				SET "rows" = 0
-			END
-		END
 	BUT_ONLY
-	ACTION_IF GAME_IS ~tutu bgt bgee~ THEN BEGIN
-		COPY_EXISTING ~alora.cre~ ~override~
-				~alora6.cre~ ~override~
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+			SET_BG2_PROFICIENCY 96 1
+			SET_BG2_PROFICIENCY 105 1
+			SET_BG2_PROFICIENCY 114 1
+		BUT_ONLY
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~d5_msadv.2da~ THEN BEGIN
+		COPY_EXISTING ~kitlist.2da~ ~override~
+			COUNT_2DA_ROWS 8 "rows"
+			FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+				READ_2DA_ENTRY "%index%" 5 8 "clab"
+				PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5_msadv" = 1) BEGIN
+					SET "d5_msadv" = "%index%"-1
+					SET "rows" = 0
+				END
+			END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
 			WRITE_SHORT 0x244 0
 			WRITE_SHORT 0x246 0x4000 + ~%d5_msadv%~ // changes kit
 			LPF ADD_CRE_EFFECT INT_VAR opcode=33 target=1 timing=9 power=1 parameter1=2 parameter2=0 END
@@ -96,23 +60,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_multi.d5~ THEN BEGIN
 			LPF ADD_CRE_EFFECT INT_VAR opcode=37 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
 			LPF ADD_CRE_EFFECT INT_VAR opcode=133 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
 			LPF ADD_CRE_EFFECT INT_VAR opcode=142 target=1 timing=9 power=1 parameter1=0 parameter2=32 END
+		BUT_ONLY
 	END
-	ACTION_IF FILE_EXISTS_IN_GAME ~alora09.cre~ THEN BEGIN
-		COPY_EXISTING ~alora09.cre~ ~override~
-				~alora25.cre~ ~override~
-			WRITE_SHORT 0x244 0
-			WRITE_SHORT 0x246 0x4000 + ~%d5_msadv%~ // changes kit
-			LPF ADD_CRE_EFFECT INT_VAR opcode=33 target=1 timing=9 power=1 parameter1=2 parameter2=0 END
-			LPF ADD_CRE_EFFECT INT_VAR opcode=34 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
-			LPF ADD_CRE_EFFECT INT_VAR opcode=35 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
-			LPF ADD_CRE_EFFECT INT_VAR opcode=36 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
-			LPF ADD_CRE_EFFECT INT_VAR opcode=37 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
-			LPF ADD_CRE_EFFECT INT_VAR opcode=133 target=1 timing=9 power=1 parameter1=1 parameter2=0 END
-			LPF ADD_CRE_EFFECT INT_VAR opcode=142 target=1 timing=9 power=1 parameter1=0 parameter2=32 END
-	END
+  END
 END
 
-EXTEND_BOTTOM ~alora.bcs~ ~npc_ee/npcs/alora/alora_c-t.baf~
+ACTION_IF FILE_EXISTS_IN_GAME ~alora.bcs~ BEGIN
+	EXTEND_BOTTOM ~alora.bcs~ ~npc_ee/npcs/alora/alora_c-t.baf~
+END
 
 //__________________________________________________________________________________
 

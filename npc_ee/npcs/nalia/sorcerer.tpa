@@ -2,17 +2,14 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							NALIA
+//							NALIA SORCERER
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
 
-COPY_EXISTING ~nalia8.cre~ ~override~
-			~nalia10.cre~ ~override~
-			~nalia11.cre~ ~override~
-			~nalia13.cre~ ~override~
-			~nalia15.cre~ ~override~
-			~nalia18.cre~ ~override~
+ACTION_FOR_EACH char IN ~nalia8~ ~nalia10~ ~nalia11~ ~nalia13~ ~nalia15~ ~nalia18~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -25,25 +22,24 @@ COPY_EXISTING ~nalia8.cre~ ~override~
 		REMOVE_KNOWN_SPELLS
 		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi112~ END
 		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi116~ END
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-	COPY_EXISTING ~nalia8.cre~ ~override~
-			~nalia10.cre~ ~override~
-			~nalia11.cre~ ~override~
-			~nalia13.cre~ ~override~
-			~nalia15.cre~ ~override~
-			~nalia18.cre~ ~override~
-		LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-	COPY_EXISTING ~nalia8.cre~ ~override~
-			~nalia10.cre~ ~override~
-			~nalia11.cre~ ~override~
-			~nalia13.cre~ ~override~
-			~nalia15.cre~ ~override~
-			~nalia18.cre~ ~override~
-		SET_BG2_PROFICIENCY 102 1
-		SET_BG2_PROFICIENCY 107 1
+	BUT_ONLY
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+			SET_BG2_PROFICIENCY 102 1
+			SET_BG2_PROFICIENCY 107 1
+		BUT_ONLY
+	END
+  END
 END
 
-EXTEND_BOTTOM ~nalia.bcs~ ~npc_ee/npcs/nalia/nalia_sorcerer.baf~
-EXTEND_BOTTOM ~nali25.bcs~ ~npc_ee/npcs/nalia/nalia_sorcerer.baf~
+ACTION_IF FILE_EXISTS_IN_GAME ~nalia.bcs~ BEGIN
+	EXTEND_BOTTOM ~nalia.bcs~ ~npc_ee/npcs/nalia/nalia_sorcerer.baf~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~nali25.bcs~ BEGIN
+	EXTEND_BOTTOM ~nali25.bcs~ ~npc_ee/npcs/nalia/nalia_sorcerer.baf~
+END
 
 //__________________________________________________________________________________

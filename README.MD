@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 2.0 </strong><br />
+  <p><strong> Version 2.1 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -40,7 +40,7 @@
 <div class="section">
   <h4 class="subheader">Component 100: choose a new class for Imoen</h4>
   <div class="section">
-    <p>Make Imoen a mage-thief, or a bard</p>
+    <p>Make Imoen a multiclass mage/thief, or a bard</p>
   </div>
   <h4 class="subheader">Component 120: choose a new class for Jaheira</h4>
   <div class="section">
@@ -48,7 +48,7 @@
   </div>
   <h4 class="subheader">Component 140: choose a new class for Khalid</h4>
   <div class="section">
-    <p>Make Khalid a ranger/cleric, or a ranger></p>
+    <p>Make Khalid a multiclass ranger/cleric, or a ranger</p>
   </div>
   <h4 class="subheader">Component 160: choose a new class for Minsc</h4>
   <div class="section">
@@ -66,6 +66,10 @@
   <div class="section">
     <p>Make Branwen a fighter/cleric (multiclass)<br />
     <i>(If the Gloryblood of Tempus kit is installed, making Branwen a fighter/cleric will also give her that kit.)</i></p>
+  </div>
+  <h4 class="subheader">Component 300: choose a new class for Xzar</h4>
+  <div class="section">
+    <p>Make Xzar a multiclass necromancer/cleric</p>
   </div>
   <h4 class="subheader">Component 320: choose a new class for Montaron</h4>
   <div class="section">
@@ -90,15 +94,15 @@
   </div>
   <h4 class="subheader">Component 680: choose a new class for Yoshimo</h4>
   <div class="section">
-    <p>Make Yoshimo a fighter/thief</p>
+    <p>Make Yoshimo a multiclass fighter/thief</p>
   </div>
   <h4 class="subheader">Component 700: choose a new class for Valygar</h4>
   <div class="section">
-    <p>Make Valygar a fighter/thief</p>
+    <p>Make Valygar a multiclass fighter/thief</p>
   </div>
   <h4 class="subheader">Component 720: choose a new class for Nalia</h4>
   <div class="section">
-    <p>Make Nalia a bard, or a cleric/mage, or a sorcerer</p>
+    <p>Make Nalia a bard, or a multiclass cleric/mage, or a sorcerer</p>
   </div>
   <h4 class="subheader">Component 760: choose a new class for Mazzy</h4>
   <div class="section">
@@ -112,7 +116,7 @@
   </div>
   <h4 class="subheader">Component 3000: multiclass kit choices</h4>
   <div class="section">
-    <p>This will give the kit-choice innate ability to multiclass NPCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So a ranger/cleric is presumed to worship a nature deity, and can choose a ranger kit; but any other multiclass cleric will choose a deity, and cannot have a kit from the other class.  A fighter/thief can be a kensai/thief or a barbarian/thief (yes!) but not a fighter/swashbuckler.  And you can be an assassin/mage or swashbuckler/mage, but not a thief/illusionist (unless you're a gnome).  Needless to say this is way outside the basic game rules, and you only have yourself to blame if you abuse this and render the game stupidly easy.</p>
+    <p>This will give the kit-choice innate ability to multiclass NPCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So a ranger/cleric is presumed to worship a nature deity, and can choose a ranger kit; but any other multiclass cleric will choose a deity, and cannot have a kit from the other class.  A fighter/thief can be a kensai/thief or a barbarian/thief (yes!) but not a fighter/swashbuckler.  And you can be an assassin/mage or swashbuckler/mage, but not a thief/illusionist (unless you're a gnome).  Needless to say this is way outside the basic game rules, and you only have yourself to blame if you abuse this and render the game stupidly easy.  Also, <b>be warned:</b> this should not be used with any kit that has its own HLA table!  Such as mod kits, or vanilla kits affected by Rogue Rebalancing HLAs, Refinements HLAs, or other HLA mods.</p>
   </div>
 </div>
 <h2>Contact Information</h2>
@@ -136,6 +140,10 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 2.1 - February 2016</strong></p>
+  <ul>
+    <li>No new features! Bug fixes, code consolidation, and compatibility with EET.</li>
+  </ul>
   <p><strong>Version 2.0 - January 2016</strong></p>
   <ul>
     <li>Total revamp, now class changes are in Weidu and kit changes are via dialogue.</li>

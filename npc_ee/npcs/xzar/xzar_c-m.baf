@@ -1,0 +1,10 @@
+//code adapted from the NPC Kitpack
+
+IF
+  InParty(Myself)
+  Global("nalia_cleric_mage","LOCALS",0)
+THEN
+  RESPONSE #100
+    ChangeClass(Myself,CLERIC_MAGE)
+	SetGlobal("nalia_cleric_mage","LOCALS",1)
+END

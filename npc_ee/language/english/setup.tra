@@ -3,7 +3,7 @@
 @9   = ~kit change~
 @11   = ~Choose a kit~
 @100  = ~Choose a class for Imoen~
-@102  = ~Make Imoen a mage/thief~
+@102  = ~Make Imoen a multiclass mage/thief~
 @104  = ~Make Imoen a bard~
 @120  = ~Choose a class for Jaheira~
 @121  = ~Make Jaheira a druid~
@@ -27,15 +27,15 @@
 @223  = ~Make Coran a bard~
 @238  = ~Just drop Coran to 1st level~
 @240  = ~Choose a class for Branwen~
-@242  = ~Make Branwen a fighter/cleric~
+@242  = ~Make Branwen a multiclass fighter/cleric~
 @258  = ~Just drop Branwen to 1st level~
 //@260  = ~Choose a class for Safana~
 //@262  = ~Make Safana a fighter/thief~
 //@278  = ~Just drop Safana to 1st level~
 //@280  = ~Choose a class for Ajantis~
 //@298  = ~Just drop Ajantis to 1st level~
-//@300  = ~Choose a class for Xzar~
-//@318  = ~Just drop Xzar to 1st level~
+@300  = ~Choose a class for Xzar~
+@302  = ~Make Xzar a necromancer/cleric~
 @320  = ~Choose a class for Montaron~
 @321  = ~Make Montaron a thief~
 //@322  = ~Make Montaron a cleric/thief~
@@ -48,7 +48,7 @@
 //@380  = ~Choose a class for Faldorn~
 //@398  = ~Just drop Faldorn to 1st level~
 //@400  = ~Choose a class for Skie~
-//@402  = ~Make Skie a mage/thief~
+//@402  = ~Make Skie a multiclass mage/thief~
 //@418  = ~Just drop Skie to 1st level~
 //@420  = ~Choose a class for Eldoth~
 //@438  = ~Just drop Eldoth to 1st level~
@@ -85,14 +85,14 @@
 //@678  = ~Just drop Rasaad to 1st level~
 //
 @680  = ~Choose a class for Yoshimo~
-@682  = ~Make Yoshimo a fighter/thief~
+@682  = ~Make Yoshimo a multiclass fighter/thief~
 @698  = ~Just drop  to 1st level~
 @700  = ~Choose a class for Valygar~
-@702  = ~Make Valygar a fighter/thief~
+@702  = ~Make Valygar a multiclass fighter/thief~
 @718  = ~Just drop Valygar to 1st level~
 @720  = ~Choose a class for Nalia~
 @722  = ~Make Nalia a bard~
-@723  = ~Make Nalia a cleric/mage~
+@723  = ~Make Nalia a multiclass cleric/mage~
 @724  = ~Make Nalia a sorcerer~
 @739  = ~No change for Nalia~
 //@740  = ~Choose a class for Haer'Dalis~

@@ -2,48 +2,14 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							JAHEIRA
+//							JAHEIRA DRUID
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-// DRUID
 
-ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
-	COPY_EXISTING ~jaheir.cre~ ~override~
-				~jaheir2.cre~ ~override~
-				~jaheir4.cre~ ~override~
-				~jaheir6.cre~ ~override~
-		WRITE_BYTE 0x0234 1 //sets level to 1
-		WRITE_BYTE 0x0235 1
-		WRITE_BYTE 0x0236 1
-		WRITE_BYTE 0x273 11 // sets class
-		WRITE_SHORT 0x0024 10
-		WRITE_SHORT 0x0026 10
-		WRITE_BYTE 0x0066 10
-//		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spcl621~ END
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-		COPY_EXISTING ~jaheir.cre~ ~override~
-				~jaheir2.cre~ ~override~
-				~jaheir4.cre~ ~override~
-				~jaheir6.cre~ ~override~
-			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-		COPY_EXISTING ~jaheir.cre~ ~override~
-				~jaheir2.cre~ ~override~
-				~jaheir4.cre~ ~override~
-				~jaheir6.cre~ ~override~
-			SET_BG2_PROFICIENCY 115 1
-			SET_BG2_PROFICIENCY 102 2
-			SET_BG2_PROFICIENCY 107 1
-	END
-END
-
-ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
-	COPY_EXISTING ~jaheir7.cre~ ~override~
-				~jaheir8.cre~ ~override~
-				~jaheir11.cre~ ~override~
-				~jaheir12.cre~ ~override~
-				~jahei12b.cre~ ~override~
-				~jahei14.cre~ ~override~
+ACTION_FOR_EACH char IN ~%tutu_var%jaheir~ ~%tutu_var%jaheir2~ ~%tutu_var%jaheir4~ ~%tutu_var%jaheir6~ ~jaheir7~ ~jaheir8~ ~jaheir11~ ~jaheir12~ ~jahei12b~ ~jahei14~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -52,23 +18,15 @@ ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
 		WRITE_SHORT 0x0026 10
 		WRITE_BYTE 0x0066 10
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-		COPY_EXISTING ~jaheir7.cre~ ~override~
-				~jaheir8.cre~ ~override~
-				~jaheir11.cre~ ~override~
-				~jaheir12.cre~ ~override~
-				~jahei12b.cre~ ~override~
-				~jahei14.cre~ ~override~
+		COPY_EXISTING ~%char%.cre~ ~override~
 			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-		COPY_EXISTING ~jaheir7.cre~ ~override~
-				~jaheir8.cre~ ~override~
-				~jaheir11.cre~ ~override~
-				~jaheir12.cre~ ~override~
-				~jahei12b.cre~ ~override~
-				~jahei14.cre~ ~override~
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
 			SET_BG2_PROFICIENCY 115 1
-			SET_BG2_PROFICIENCY 102 2
+			SET_BG2_PROFICIENCY 102 1
 			SET_BG2_PROFICIENCY 107 1
 	END
+  END
 END
 
 //__________________________________________________________________________________

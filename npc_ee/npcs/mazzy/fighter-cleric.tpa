@@ -2,16 +2,14 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							MAZZY
+//							MAZZY FIGHTER/CLERIC (ARVOREEN)
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
 
-COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
+ACTION_FOR_EACH char IN ~mazzy8~ ~mazzy9~ ~mazzy11~ ~mazzy12~ ~mazzy15~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -22,49 +20,45 @@ COPY_EXISTING ~MAZZY8.cre~ ~override~
 		WRITE_SHORT 0x0026 12
 		ADD_CRE_ITEM ~BLUN21.itm~ #0 #0 #0 ~IDENTIFIED~ ~INV~
 		ADD_CRE_ITEM ~SLNG04.itm~ #0 #0 #0 ~IDENTIFIED~ ~INV~
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-	COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
-		LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-	COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
-		SET_BG2_PROFICIENCY 97 1
-		SET_BG2_PROFICIENCY 101 1
-		SET_BG2_PROFICIENCY 107 1
-		SET_BG2_PROFICIENCY 112 1
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_multi.d5~ THEN BEGIN
-	COPY_EXISTING ~kitlist.2da~ ~override~
-		COUNT_2DA_ROWS 8 "rows"
-		FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
-			READ_2DA_ENTRY "%index%" 5 8 "clab"
-			PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5_harth" = 1) BEGIN
-				SET "d5_harth" = "%index%"-1
-				SET "rows" = 0
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+			SET_BG2_PROFICIENCY 97 1
+			SET_BG2_PROFICIENCY 101 1
+			SET_BG2_PROFICIENCY 107 1
+			SET_BG2_PROFICIENCY 112 1
+		BUT_ONLY
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~d5_harth.2da~ THEN BEGIN
+		COPY_EXISTING ~kitlist.2da~ ~override~
+			COUNT_2DA_ROWS 8 "rows"
+			FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+				READ_2DA_ENTRY "%index%" 5 8 "clab"
+				PATCH_IF ("%clab%" STRING_EQUAL_CASE "d5_harth" = 1) BEGIN
+					SET "d5_harth" = "%index%"-1
+					SET "rows" = 0
+				END
 			END
-		END
-	BUT_ONLY
-	COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
-		WRITE_SHORT 0x244 0
-		WRITE_SHORT 0x246 0x4000 + ~%d5_harth%~ // changes kit
-		LPF ADD_CRE_EFFECT INT_VAR opcode=251 target=1 timing=9 power=1 STR_VAR resource=~SPCL827~ END
-		LPF ADD_CRE_EFFECT INT_VAR opcode=251 target=1 timing=9 power=1 STR_VAR resource=~SPCL826~ END
-		LPF ADD_CRE_EFFECT INT_VAR opcode=251 target=1 timing=9 power=1 STR_VAR resource=~SPCL676~ END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+			WRITE_SHORT 0x244 0
+			WRITE_SHORT 0x246 0x4000 + ~%d5_harth%~ // changes kit
+			LPF ADD_CRE_EFFECT INT_VAR opcode=251 target=1 timing=9 power=1 STR_VAR resource=~SPCL827~ END
+			LPF ADD_CRE_EFFECT INT_VAR opcode=251 target=1 timing=9 power=1 STR_VAR resource=~SPCL826~ END
+			LPF ADD_CRE_EFFECT INT_VAR opcode=251 target=1 timing=9 power=1 STR_VAR resource=~SPCL676~ END
+		BUT_ONLY
+	END
+  END
 END
 
-EXTEND_BOTTOM ~mazzy.bcs~ ~npc_ee/npcs/mazzy/mazzy_f-c.baf~
-EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_f-c.baf~
+ACTION_IF FILE_EXISTS_IN_GAME ~mazzy.bcs~ BEGIN
+	EXTEND_BOTTOM ~mazzy.bcs~ ~npc_ee/npcs/mazzy/mazzy_f-c.baf~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~mazz25.bcs~ BEGIN
+	EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_f-c.baf~
+END
 
 //__________________________________________________________________________________
 

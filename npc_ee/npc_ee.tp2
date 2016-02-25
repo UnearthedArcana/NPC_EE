@@ -1,6 +1,40 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
+
+ALWAYS
+  ACTION_IF GAME_IS ~bgee~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT IMOEN6_var ~IMOEN6~
+    OUTER_SPRINT QUAYLE_var ~QUAYLE~
+    OUTER_SPRINT VICONI6_var ~VICONI6~
+    OUTER_SPRINT XAN_var ~XAN~
+    OUTER_SPRINT XZAR_var ~XZAR~
+  END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT IMOEN6_var ~IMOEN6_~
+    OUTER_SPRINT QUAYLE_var ~QUAYLE_~
+    OUTER_SPRINT VICONI6_var ~VICONI6_~
+    OUTER_SPRINT XAN_var ~XAN_~
+    OUTER_SPRINT XZAR_var ~XZAR_~
+  END ELSE ACTION_IF GAME_IS ~bgt~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT IMOEN6_var ~IMOEN61~
+    OUTER_SPRINT QUAYLE_var ~BGQUAYLE~
+    OUTER_SPRINT VICONI6_var ~VICONI61~
+    OUTER_SPRINT XAN_var ~BGXAN~
+    OUTER_SPRINT XZAR_var ~BGXZAR~
+  END ELSE ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+    OUTER_SPRINT tutu_var ~_~
+    OUTER_SPRINT IMOEN6_var ~IMOEN6~
+    OUTER_SPRINT QUAYLE_var ~QUAYLE~
+    OUTER_SPRINT VICONI6_var ~VICONI6~
+    OUTER_SPRINT XAN_var ~XAN~
+    OUTER_SPRINT XZAR_var ~XZAR~
+  END
+END
+
+
 LANGUAGE
   ~English~
   ~english~
@@ -165,6 +199,23 @@ REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~)
 SUBCOMPONENT @240
 
 INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							XZAR
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// necromancer/cleric_______________________________________________________________
+BEGIN @302
+DESIGNATED 302
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) ~Xzar~
+SUBCOMPONENT @300
+
+INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
 
 
 //__________________________________________________________________________________

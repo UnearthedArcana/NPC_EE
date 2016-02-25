@@ -2,7 +2,7 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							MAZZY
+//							MAZZY PALADIN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -22,24 +22,23 @@ COPY_EXISTING ~MAZZY8.cre~ ~override~
 		WRITE_SHORT 0x0024 12
 		WRITE_SHORT 0x0026 12
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
-	COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
-		LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
-	COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
-		SET_BG2_PROFICIENCY 91 1
-		SET_BG2_PROFICIENCY 101 1
-		SET_BG2_PROFICIENCY 105 2
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+			SET_BG2_PROFICIENCY 91 1
+			SET_BG2_PROFICIENCY 101 1
+			SET_BG2_PROFICIENCY 105 2
+		BUT_ONLY
+
 END
 
-EXTEND_BOTTOM ~mazzy.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
-EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
+ACTION_IF FILE_EXISTS_IN_GAME ~mazzy.bcs~ BEGIN
+	EXTEND_BOTTOM ~mazzy.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~mazz25.bcs~ BEGIN
+	EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
+END
 
 //__________________________________________________________________________________
 

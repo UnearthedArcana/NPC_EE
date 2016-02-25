@@ -2,14 +2,14 @@
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							XAN
+//							XAN SORCERER
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
 
-ACTION_IF FILE_EXISTS_IN_GAME ~xan4.cre~ THEN BEGIN
-	COPY_EXISTING ~xan4.cre~ ~override~
-				~xan6.cre~ ~override~
+ACTION_FOR_EACH char IN ~%tutu_var%xan4~ ~%tutu_var%xan6~ ~%tutu_var%%xan_var%~ ~o#xan09~ ~o#xan25~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 // sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -21,46 +21,18 @@ ACTION_IF FILE_EXISTS_IN_GAME ~xan4.cre~ THEN BEGIN
 		REMOVE_KNOWN_SPELLS
 		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi112~ END
 		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi116~ END
-		SET_BG2_PROFICIENCY 90 1
-		SET_BG2_PROFICIENCY 96 1
-		SET_BG2_PROFICIENCY 107 1
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~xan.cre~ THEN BEGIN
-	COPY_EXISTING ~xan.cre~ ~override~
-		WRITE_BYTE 0x0234 1 // sets level to 1
-		WRITE_BYTE 0x0235 1
-		WRITE_BYTE 0x0236 1
-		WRITE_BYTE 0x273 19 // sets class
-		WRITE_SHORT 0x0024 5
-		WRITE_SHORT 0x0026 5
-		WRITE_BYTE 0x0066 25
-		REMOVE_MEMORIZED_SPELLS
-		REMOVE_KNOWN_SPELLS
-		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi112~ END
-		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi116~ END
-		SET_BG2_PROFICIENCY 90 1
-		SET_BG2_PROFICIENCY 96 1
-		SET_BG2_PROFICIENCY 107 1
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~o#xan09.cre~ THEN BEGIN
-	COPY_EXISTING ~o#xan09.cre~ ~override~
-				~o#xan25.cre~ ~override~
-		WRITE_BYTE 0x0234 1 // sets level to 1
-		WRITE_BYTE 0x0235 1
-		WRITE_BYTE 0x0236 1
-		WRITE_BYTE 0x273 19 // sets class
-		WRITE_SHORT 0x0024 5
-		WRITE_SHORT 0x0026 5
-		WRITE_BYTE 0x0066 25
-		REMOVE_MEMORIZED_SPELLS
-		REMOVE_KNOWN_SPELLS
-		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi112~ END
-		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi116~ END
-		SET_BG2_PROFICIENCY 90 1
-		SET_BG2_PROFICIENCY 96 1
-		SET_BG2_PROFICIENCY 107 1
+	BUT_ONLY
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+			SET_BG2_PROFICIENCY 90 1
+			SET_BG2_PROFICIENCY 96 1
+			SET_BG2_PROFICIENCY 107 1
+		BUT_ONLY
+	END
+  END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~sw1h13.itm~ THEN BEGIN
@@ -82,9 +54,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~sw1h13.itm~ THEN BEGIN
 				END
 			END
 		END
-		BUT_ONLY
+	BUT_ONLY
 END
 
-EXTEND_BOTTOM ~xan.bcs~ ~npc_ee/npcs/xan/xan_sorcerer.baf~
+ACTION_IF FILE_EXISTS_IN_GAME ~xan.bcs~ BEGIN
+	EXTEND_BOTTOM ~xan.bcs~ ~npc_ee/npcs/xan/xan_sorcerer.baf~
+END
 
 //__________________________________________________________________________________
