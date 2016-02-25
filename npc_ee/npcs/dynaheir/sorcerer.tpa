@@ -31,6 +31,7 @@ ACTION_FOR_EACH char IN ~%tutu_var%dynahe~ ~%tutu_var%dynahe2~ ~%tutu_var%dynahe
 			SET_BG2_PROFICIENCY 107 1
 		BUT_ONLY
 	END
+  END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~dynaheir.bcs~ BEGIN

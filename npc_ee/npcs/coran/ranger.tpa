@@ -34,6 +34,7 @@ ACTION_FOR_EACH char IN ~coran~ ~coran5~ ~o#coran.cre~ ~o#cor25~ BEGIN
 			SET_BG2_PROFICIENCY 114 2
 		BUT_ONLY
 	END
+  END
 END
 
 //__________________________________________________________________________________

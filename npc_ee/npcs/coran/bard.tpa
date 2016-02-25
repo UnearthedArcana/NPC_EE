@@ -35,6 +35,7 @@ ACTION_FOR_EACH char IN ~%tutu_var%coran~ ~%tutu_var%coran5~ ~o#coran.cre~ ~o#co
 			SET_BG2_PROFICIENCY 90 1
 		BUT_ONLY
 	END
+  END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~coran.bcs~ BEGIN
