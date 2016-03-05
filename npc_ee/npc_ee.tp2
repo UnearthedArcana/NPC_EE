@@ -524,34 +524,34 @@ COPY ~npc_ee/mo/d5mokit.d~ ~npc_ee/d5mokit.d~
 
 //copy innate abilities and invisicres into game____________________________________
 //
-COPY ~npc_ee/spl/d5_fikit.spl~ ~override~
+COPY ~npc_ee/spl/d5_fikt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_pakit.spl~ ~override~
+COPY ~npc_ee/spl/d5_pakt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_rakit.spl~ ~override~
+COPY ~npc_ee/spl/d5_rakt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_thkit.spl~ ~override~
+COPY ~npc_ee/spl/d5_thkt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_bakit.spl~ ~override~
+COPY ~npc_ee/spl/d5_bakt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_clkit.spl~ ~override~
+COPY ~npc_ee/spl/d5_clkt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_drkit.spl~ ~override~
+COPY ~npc_ee/spl/d5_drkt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_makit.spl~ ~override~
+COPY ~npc_ee/spl/d5_mokt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_sokit.spl~ ~override~
+COPY ~npc_ee/spl/d5_makt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_mokit.spl~ ~override~
+COPY ~npc_ee/spl/d5_sokt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
 COPY ~npc_ee/cre/d5_fikit.cre~ ~override~
@@ -561,9 +561,9 @@ COPY ~npc_ee/cre/d5_thkit.cre~ ~override~
 COPY ~npc_ee/cre/d5_bakit.cre~ ~override~
 COPY ~npc_ee/cre/d5_clkit.cre~ ~override~
 COPY ~npc_ee/cre/d5_drkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_mokit.cre~ ~override~
 COPY ~npc_ee/cre/d5_makit.cre~ ~override~
 COPY ~npc_ee/cre/d5_sokit.cre~ ~override~
-COPY ~npc_ee/cre/d5_mokit.cre~ ~override~
 //__________________________________________________________________________________
 
 //add innate abilities to single-class NPCs_________________________________________
@@ -574,34 +574,34 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 		PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC
 			READ_BYTE 0x273 npc_class
 			PATCH_IF (%npc_class% = 2) BEGIN // fighter
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
 			PATCH_IF (%npc_class% = 6) BEGIN // paladin
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_pakit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_pakt~ END
 			END
 			PATCH_IF (%npc_class% = 12) BEGIN // ranger
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakt~ END
 			END
 			PATCH_IF (%npc_class% = 4) BEGIN // thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkt~ END
 			END
 			PATCH_IF (%npc_class% = 5) BEGIN // bard
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_bakit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_bakt~ END
 			END
 			PATCH_IF (%npc_class% = 3) BEGIN // cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
 			END
 			PATCH_IF (%npc_class% = 11) BEGIN // druid
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_drkit~ END
-			END
-			PATCH_IF (%npc_class% = 1) BEGIN // mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_makit~ END
-			END
-			PATCH_IF (%npc_class% = 19) BEGIN // sorcerer
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sokit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_drkt~ END
 			END
 			PATCH_IF (%npc_class% = 20) BEGIN // monk
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mokit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mokt~ END
+			END
+			PATCH_IF (%npc_class% = 1) BEGIN // mage
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_makt~ END
+			END
+			PATCH_IF (%npc_class% = 19) BEGIN // sorcerer
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sokt~ END
 			END
 		END
 	END
@@ -624,12 +624,12 @@ COMPILE ~npc_ee/d5clkit.d~
 COMPILE ~npc_ee/cl/d5clkit.baf~
 COMPILE ~npc_ee/d5drkit.d~
 COMPILE ~npc_ee/dr/d5drkit.baf~
+COMPILE ~npc_ee/d5mokit.d~
+COMPILE ~npc_ee/mo/d5mokit.baf~
 COMPILE ~npc_ee/d5makit.d~
 COMPILE ~npc_ee/ma/d5makit.baf~
 COMPILE ~npc_ee/d5sokit.d~
 COMPILE ~npc_ee/so/d5sokit.baf~
-COMPILE ~npc_ee/d5mokit.d~
-COMPILE ~npc_ee/mo/d5mokit.baf~
 //__________________________________________________________________________________
 
 CLEAR_ARRAYS
@@ -655,34 +655,34 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 		PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC
 			READ_BYTE 0x273 npc_class
 			PATCH_IF (%npc_class% = 7) BEGIN // fighter/mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
 			PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
 			END
 			PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
 			PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
 			PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkt~ END
 			END
 			PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
 			END
 			PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
 			END
 			PATCH_IF (%npc_class% = 16) BEGIN // fighter/druid
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
 			PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
 			END
 			PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakit~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakt~ END
 			END
 		END
 	END
