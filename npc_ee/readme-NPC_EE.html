@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 2.1 </strong><br />
+  <p><strong> Version 2.2 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -140,6 +140,10 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 2.2 - February 2016</strong></p>
+  <ul>
+    <li>for EE 2.0</li>
+  </ul>
   <p><strong>Version 2.1 - February 2016</strong></p>
   <ul>
     <li>No new features! Bug fixes, code consolidation, and compatibility with EET.</li>
