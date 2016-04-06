@@ -7,11 +7,11 @@
 <link href="style/g3icon.ico" rel="icon" type="image/bmp" />
 </head>
 <body>
-<h1>NPCs Enhanced for Everyone! (a.k.a. NPC_EE)</h1>
+<h1>NPCs Enhanced... um, for Everyone! (a.k.a. NPC_EE)</h1>
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 2.2 </strong><br />
+  <p><strong> Version 2.4 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -114,9 +114,26 @@
     <p>As described above, this will add an innate ability to every single-class NPC allowing them to take a kit - or, if they already have a kit, to switch to a new one.</p>
     <p>If you've read this far, I might as well tell you about a little experiment: I've added one kit option to a class in which is doesn't belong: any sorcerer NPC will be able to become a "Wild Sorcerer" - which is just a sorcerer with the Wild Mage wizard kit.  This will cause a chance of wild surges and randomly adjust their caster level.  I don't know if NRD or Chaos Shield will be available; honestly, I haven't tested this one bit, except to make sure the change actually happens.  Why would anyone do this?  I have no idea.  But, it seems like a perfect option for Neera, doesn't it?  ;)</p>
   </div>
-  <h4 class="subheader">Component 3000: multiclass kit choices</h4>
+  <h4 class="subheader">Component 3000: multiclass kit choices for NPCs</h4>
   <div class="section">
-    <p>This will give the kit-choice innate ability to multiclass NPCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So a ranger/cleric is presumed to worship a nature deity, and can choose a ranger kit; but any other multiclass cleric will choose a deity, and cannot have a kit from the other class.  A fighter/thief can be a kensai/thief or a barbarian/thief (yes!) but not a fighter/swashbuckler.  And you can be an assassin/mage or swashbuckler/mage, but not a thief/illusionist (unless you're a gnome).  Needless to say this is way outside the basic game rules, and you only have yourself to blame if you abuse this and render the game stupidly easy.  Also, <b>be warned:</b> this should not be used with any kit that has its own HLA table!  Such as mod kits, or vanilla kits affected by Rogue Rebalancing HLAs, Refinements HLAs, or other HLA mods.</p>
+    <p>This will give the kit-choice innate ability to multiclass NPCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So:
+    <ul>
+      <li>ranger/clerics: choose a ranger kit</li>
+	  <li>fighter/clerics: choose a cleric kit</li>
+	  <li>cleric/thieves: choose a cleric kit</li>
+	  <li>cleric/mages: choose a cleric kit</li>
+	  <li>fighter/druids: choose a fighter kit</li>
+	  <li>fighter/thieves: choose a fighter kit</li>
+	  <li>fighter/mages: choose a fighter kit</li>
+	  <li>thief/mages: choose a thief kit</li>
+	  <li>fighter/mage/clerics: choose a cleric kit</li>
+	  <li>fighter/mage/thieves: choose a fighter kit</li>
+	</ul> 
+	<p>Needless to say this is way outside the basic game rules, and you only have yourself to blame if you abuse this and render the game stupidly easy.</p>
+  </div>
+  <h4 class="subheader">Component 4000: multiclass kit choices for the PC</h4>
+  <div class="section">
+    <p>This component will go one step further, and give the kit-choice innate ability to YOU if you roll a multiclass character.  There are some limitations; the same rules apply as in component 3000, above. </p>
   </div>
 </div>
 <h2>Contact Information</h2>
@@ -140,9 +157,18 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
-  <p><strong>Version 2.2 - February 2016</strong></p>
+  <p><strong>Version 2.4 - April 2016</strong></p>
   <ul>
-    <li>for EE 2.0</li>
+    <li>New component: kit-switch for Charname.</li>
+  </ul>
+  <p><strong>Version 2.3 - March 2016</strong></p>
+  <ul>
+    <li>Really actual compatibility with EET.</li>
+  </ul>
+  <p><strong>Version 2.2 - March 2016</strong></p>
+  <ul>
+    <li>Bug fix for kit-switch.</li>
+    <li>Xzar! :)</li>
   </ul>
   <p><strong>Version 2.1 - February 2016</strong></p>
   <ul>

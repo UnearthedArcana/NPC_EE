@@ -54,6 +54,7 @@ LANGUAGE
 BEGIN @102
 DESIGNATED 102
 REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Imoen~
+GROUP @5
 SUBCOMPONENT @100 
 
 INCLUDE ~npc_ee/npcs/imoen/mage-thief.tpa~
@@ -61,6 +62,7 @@ INCLUDE ~npc_ee/npcs/imoen/mage-thief.tpa~
 // bard_______________________________________________________________________
 BEGIN @104
 DESIGNATED 104
+GROUP @5
 SUBCOMPONENT @100 
 
 INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
@@ -78,6 +80,7 @@ INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
 BEGIN @121
 DESIGNATED 121
 REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Jaheira~
+GROUP @5
 SUBCOMPONENT @120
 
 INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
@@ -95,6 +98,7 @@ INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
 BEGIN @141
 DESIGNATED 141
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
+GROUP @5
 SUBCOMPONENT @140
 
 INCLUDE ~npc_ee/npcs/khalid/cleric-ranger.tpa~
@@ -103,6 +107,7 @@ INCLUDE ~npc_ee/npcs/khalid/cleric-ranger.tpa~
 // ranger___________________________________________________________________________
 BEGIN @143
 DESIGNATED 143
+GROUP @5
 SUBCOMPONENT @140
 
 INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
@@ -120,6 +125,7 @@ INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
 BEGIN @161
 DESIGNATED 161
 REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Minsc~
+GROUP @5
 SUBCOMPONENT @160
 
 INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
@@ -137,6 +143,7 @@ INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
 BEGIN @181
 DESIGNATED 181
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Dynaheir~
+GROUP @5
 SUBCOMPONENT @180 
 
 INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
@@ -164,6 +171,7 @@ INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 BEGIN @221
 DESIGNATED 221
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
+GROUP @5
 SUBCOMPONENT @220
 
 INCLUDE ~npc_ee/npcs/coran/thief.tpa~
@@ -172,6 +180,7 @@ INCLUDE ~npc_ee/npcs/coran/thief.tpa~
 // ranger___________________________________________________________________________
 BEGIN @222
 DESIGNATED 222
+GROUP @5
 SUBCOMPONENT @220
 
 INCLUDE ~npc_ee/npcs/coran/ranger.tpa~
@@ -180,6 +189,7 @@ INCLUDE ~npc_ee/npcs/coran/ranger.tpa~
 // bard_____________________________________________________________________________
 BEGIN @223
 DESIGNATED 223
+GROUP @5
 SUBCOMPONENT @220
 
 INCLUDE ~npc_ee/npcs/coran/bard.tpa~
@@ -197,6 +207,7 @@ INCLUDE ~npc_ee/npcs/coran/bard.tpa~
 BEGIN @242
 DESIGNATED 242
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
+GROUP @5
 SUBCOMPONENT @240
 
 INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
@@ -214,6 +225,7 @@ INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
 BEGIN @302
 DESIGNATED 302
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) ~Xzar~
+GROUP @5
 SUBCOMPONENT @300
 
 INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
@@ -231,6 +243,7 @@ INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
 BEGIN @321
 DESIGNATED 321
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Montaron~
+GROUP @5
 SUBCOMPONENT @320
 
 INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
@@ -248,6 +261,7 @@ INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
 BEGIN @464
 DESIGNATED 464
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
+GROUP @5
 SUBCOMPONENT @460
 
 INCLUDE ~npc_ee/npcs/alora/cleric-thief.tpa~
@@ -265,6 +279,7 @@ INCLUDE ~npc_ee/npcs/alora/cleric-thief.tpa~
 BEGIN @482
 DESIGNATED 482
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~xan4.cre~) OR (FILE_EXISTS_IN_GAME ~o#xan09.cre~) ~Xan~
+GROUP @5
 SUBCOMPONENT @480
 
 INCLUDE ~npc_ee/npcs/xan/bard.tpa~
@@ -273,6 +288,7 @@ INCLUDE ~npc_ee/npcs/xan/bard.tpa~
 // fighter/mage_____________________________________________________________________
 BEGIN @483
 DESIGNATED 483
+GROUP @5
 SUBCOMPONENT @480 
 
 INCLUDE ~npc_ee/npcs/xan/fighter-mage.tpa~
@@ -280,6 +296,7 @@ INCLUDE ~npc_ee/npcs/xan/fighter-mage.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @484
 DESIGNATED 484
+GROUP @5
 SUBCOMPONENT @480 
 
 INCLUDE ~npc_ee/npcs/xan/sorcerer.tpa~
@@ -297,6 +314,7 @@ INCLUDE ~npc_ee/npcs/xan/sorcerer.tpa~
 BEGIN @583
 DESIGNATED 583
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee~ ~Viconia~
+GROUP @5
 SUBCOMPONENT @580 
 
 INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
@@ -314,6 +332,7 @@ INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
 BEGIN @621
 DESIGNATED 621
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Neera~
+GROUP @5
 SUBCOMPONENT @620
 
 INCLUDE ~npc_ee/npcs/neera/sorcerer.tpa~
@@ -330,6 +349,7 @@ INCLUDE ~npc_ee/npcs/neera/sorcerer.tpa~
 BEGIN @682
 DESIGNATED 682
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Yoshimo~
+GROUP @5
 SUBCOMPONENT @680
 
 INCLUDE ~npc_ee/npcs/yoshimo/fighter-thief.tpa~
@@ -346,6 +366,7 @@ INCLUDE ~npc_ee/npcs/yoshimo/fighter-thief.tpa~
 BEGIN @702
 DESIGNATED 702
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Valygar~
+GROUP @5
 SUBCOMPONENT @700
 
 INCLUDE ~npc_ee/npcs/valygar/fighter-thief.tpa~
@@ -363,6 +384,7 @@ INCLUDE ~npc_ee/npcs/valygar/fighter-thief.tpa~
 BEGIN @722
 DESIGNATED 722
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/bard.tpa~
@@ -371,6 +393,7 @@ INCLUDE ~npc_ee/npcs/nalia/bard.tpa~
 // cleric/mage______________________________________________________________________
 BEGIN @723
 DESIGNATED 723
+GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/cleric-mage.tpa~
@@ -379,6 +402,7 @@ INCLUDE ~npc_ee/npcs/nalia/cleric-mage.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @724
 DESIGNATED 724
+GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/sorcerer.tpa~
@@ -397,6 +421,7 @@ INCLUDE ~npc_ee/npcs/nalia/sorcerer.tpa~
 BEGIN @761
 DESIGNATED 761
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Mazzy~
+GROUP @5
 SUBCOMPONENT @760
 
 INCLUDE ~npc_ee/npcs/mazzy/fighter-cleric.tpa~
@@ -405,6 +430,7 @@ INCLUDE ~npc_ee/npcs/mazzy/fighter-cleric.tpa~
 // paladin__________________________________________________________________________
 BEGIN @762
 DESIGNATED 762
+GROUP @5
 SUBCOMPONENT @760
 
 INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
@@ -422,6 +448,7 @@ INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
 BEGIN @2000
 DESIGNATED 2000
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
+//GROUP @6
 
 //find all kits for each class, build dialogue pieces________________________________
 //
@@ -639,7 +666,7 @@ CLEAR_ARRAYS
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//					INNATE ABILITIES FOR MULTICLASS
+//					INNATE ABILITIES FOR MULTICLASS NPCs
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -647,6 +674,7 @@ CLEAR_ARRAYS
 BEGIN @3000
 DESIGNATED 3000
 REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
+//GROUP @6
 
 //add innate abilities to multiclass NPCs___________________________________________
 //
@@ -689,4 +717,45 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 	END
 BUT_ONLY
 //__________________________________________________________________________________
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					INNATE ABILITIES FOR MULTICLASS PC
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+BEGIN @4000
+DESIGNATED 4000
+REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
+//GROUP @6
+
+COPY ~npc_ee/pc/d5_gckt.spl~ ~override~
+COPY ~npc_ee/pc/d5_gfkt.spl~ ~override~
+COPY ~npc_ee/pc/d5_gtkt.spl~ ~override~
+COPY ~npc_ee/pc/d5_clkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fikt.eff~ ~override~
+COPY ~npc_ee/pc/d5_rakt.eff~ ~override~
+COPY ~npc_ee/pc/d5_thkt.eff~ ~override~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
+	COPY_EXISTING ~clabpr01.2da~ ~override~
+		APPEND_FILE ~npc_ee/pc/cleric_kit_choice.txt~
+	BUT_ONLY
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabfi01.2da~ BEGIN
+	COPY_EXISTING ~clabfi01.2da~ ~override~
+		APPEND_FILE ~npc_ee/pc/fighter_kit_choice.txt~
+	BUT_ONLY
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabth01.2da~ BEGIN
+	COPY_EXISTING ~clabth01.2da~ ~override~
+		APPEND_FILE ~npc_ee/pc/thief_kit_choice.txt~
+	BUT_ONLY
+END
+//__________________________________________________________________________________
+
 

@@ -1,5 +1,7 @@
 @1   = ~...~
 @2   = ~EE-only, sorry~
+@5   = ~class change components~
+@6   = ~kit change components~
 @9   = ~kit change~
 @11   = ~Choose a kit~
 @100  = ~Choose a class for Imoen~
@@ -118,6 +120,7 @@
 //
 //
 @2000  = ~NPC kit choices~
-@3000  = ~multiclass kit choices~
+@3000  = ~kit choice for multiclass NPCs~
+@4000  = ~multiclass kits for the PC~
 //
 
