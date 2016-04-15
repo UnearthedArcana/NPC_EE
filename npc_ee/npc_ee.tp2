@@ -507,7 +507,7 @@ ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
 END
 //__________________________________________________________________________________
 
-//patch together complet dialogues__________________________________________________
+//patch together complete dialogues_________________________________________________
 //
 COPY ~npc_ee/fi/d5fikit.d~ ~npc_ee/d5fikit.d~
 	APPEND_FILE ~npc_ee/fi/d5dfile1.txt~
@@ -594,6 +594,7 @@ COPY ~npc_ee/cre/d5_makit.cre~ ~override~
 COPY ~npc_ee/cre/d5_sokit.cre~ ~override~
 //__________________________________________________________________________________
 
+
 //add innate abilities to single-class NPCs_________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
@@ -601,34 +602,34 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 		READ_LONG 0x1cc biography
 		PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC
 			READ_BYTE 0x273 npc_class
-			PATCH_IF (%npc_class% = 2) BEGIN // fighter
+			PATCH_IF (npc_class = 2) BEGIN // fighter
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
-			PATCH_IF (%npc_class% = 6) BEGIN // paladin
+			PATCH_IF (npc_class = 6) BEGIN // paladin
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_pakt~ END
 			END
-			PATCH_IF (%npc_class% = 12) BEGIN // ranger
+			PATCH_IF (npc_class = 12) BEGIN // ranger
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakt~ END
 			END
-			PATCH_IF (%npc_class% = 4) BEGIN // thief
+			PATCH_IF (npc_class = 4) BEGIN // thief
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkt~ END
 			END
-			PATCH_IF (%npc_class% = 5) BEGIN // bard
+			PATCH_IF (npc_class = 5) BEGIN // bard
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_bakt~ END
 			END
-			PATCH_IF (%npc_class% = 3) BEGIN // cleric
+			PATCH_IF (npc_class = 3) BEGIN // cleric
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
 			END
-			PATCH_IF (%npc_class% = 11) BEGIN // druid
+			PATCH_IF (npc_class = 11) BEGIN // druid
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_drkt~ END
 			END
-			PATCH_IF (%npc_class% = 20) BEGIN // monk
+			PATCH_IF (npc_class = 20) BEGIN // monk
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mokt~ END
 			END
-			PATCH_IF (%npc_class% = 1) BEGIN // mage
+			PATCH_IF (npc_class = 1) BEGIN // mage
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_makt~ END
 			END
-			PATCH_IF (%npc_class% = 19) BEGIN // sorcerer
+			PATCH_IF (npc_class = 19) BEGIN // sorcerer
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sokt~ END
 			END
 		END
@@ -676,6 +677,7 @@ DESIGNATED 3000
 REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
 //GROUP @6
 
+
 //add innate abilities to multiclass NPCs___________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
@@ -686,9 +688,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 			PATCH_IF (%npc_class% = 7) BEGIN // fighter/mage
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
-			PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
-			END
+//			PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//			END
 			PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
@@ -698,21 +700,21 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 			PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkt~ END
 			END
-			PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
-			END
-			PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
-			END
+//			PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//			END
+//			PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//			END
 			PATCH_IF (%npc_class% = 16) BEGIN // fighter/druid
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
 			END
-			PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
-			END
-			PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakt~ END
-			END
+//			PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//			END
+//			PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakt~ END
+//			END
 		END
 	END
 BUT_ONLY
@@ -729,10 +731,12 @@ COPY ~npc_ee/pc/d5_fikt.eff~ ~override~
 COPY ~npc_ee/pc/d5_rakt.eff~ ~override~
 COPY ~npc_ee/pc/d5_thkt.eff~ ~override~
 
-ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 	COPY_EXISTING ~clabpr01.2da~ ~override~
 		APPEND_FILE ~npc_ee/pc/cleric_kit_choice.txt~
 	BUT_ONLY
+  END
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~clabfi01.2da~ BEGIN
 	COPY_EXISTING ~clabfi01.2da~ ~override~

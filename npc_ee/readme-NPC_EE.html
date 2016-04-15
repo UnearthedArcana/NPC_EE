@@ -116,7 +116,7 @@
   </div>
   <h4 class="subheader">Component 3000: multiclass kit choices for NPCs</h4>
   <div class="section">
-    <p>This will give the kit-choice innate ability to multiclass NPCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So:
+    <p>This will give the kit-choice innate ability to multiclass NPCs AND multiclass PCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So:
     <ul>
       <li>ranger/clerics: choose a ranger kit</li>
 	  <li>fighter/clerics: choose a cleric kit</li>
@@ -130,10 +130,6 @@
 	  <li>fighter/mage/thieves: choose a fighter kit</li>
 	</ul> 
 	<p>Needless to say this is way outside the basic game rules, and you only have yourself to blame if you abuse this and render the game stupidly easy.</p>
-  </div>
-  <h4 class="subheader">Component 4000: multiclass kit choices for the PC</h4>
-  <div class="section">
-    <p>This component will go one step further, and give the kit-choice innate ability to YOU if you roll a multiclass character.  There are some limitations; the same rules apply as in component 3000, above. </p>
   </div>
 </div>
 <h2>Contact Information</h2>
@@ -159,7 +155,7 @@
 <div class="section">
   <p><strong>Version 2.4 - April 2016</strong></p>
   <ul>
-    <li>New component: kit-switch for Charname.</li>
+    <li>New: kit-switch for Charname as well as NPCs!</li>
   </ul>
   <p><strong>Version 2.3 - March 2016</strong></p>
   <ul>

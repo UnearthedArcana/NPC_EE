@@ -1,6 +1,6 @@
 BEGIN ~D5SOKIT~
 
-// Trueclass thief: Global("D5SOKIT","GLOBAL",1) 
+// sorcerer: Global("D5SOKIT","GLOBAL",1) 
 
 IF ~Global("D5SOKIT","GLOBAL",1)~ THEN BEGIN d5sokit
 SAY ~Choose a kit:~

@@ -13,5 +13,5 @@ THEN
 	RESPONSE #100
 		SetGlobal("D5BAKIT","GLOBAL",0)
 		SetNumTimesTalkedTo(0)
-		DestroySelf()               // reset all global variables, then destroy self
+		DestroySelf()               // reset all variables, then destroy self
 END
