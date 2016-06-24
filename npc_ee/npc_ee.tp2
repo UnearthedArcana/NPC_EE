@@ -1,10 +1,12 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
+VERSION ~v2.5~
+//README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
 // joinable NPC issues for tutu/bgt/eet:
-  ACTION_IF GAME_IS ~bgee~ BEGIN
+  ACTION_IF GAME_IS ~bgee sod~ BEGIN
     OUTER_SPRINT tutu_var ~~
     OUTER_SPRINT imoen6_var ~imoen6~
     OUTER_SPRINT quayle_var ~quayle~
@@ -53,7 +55,7 @@ LANGUAGE
 // mage/thief_______________________________________________________________________
 BEGIN @102
 DESIGNATED 102
-REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Imoen~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee sod tob bg2ee eet~ ~Imoen~
 GROUP @5
 SUBCOMPONENT @100 
 
@@ -79,7 +81,7 @@ INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
 // fighter__________________________________________________________________________
 BEGIN @121
 DESIGNATED 121
-REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Jaheira~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee sod tob bg2ee eet~ ~Jaheira~
 GROUP @5
 SUBCOMPONENT @120
 
@@ -97,7 +99,7 @@ INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
 // cleric/ranger____________________________________________________________________
 BEGIN @141
 DESIGNATED 141
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
 GROUP @5
 SUBCOMPONENT @140
 
@@ -124,7 +126,7 @@ INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
 // fighter__________________________________________________________________________
 BEGIN @161
 DESIGNATED 161
-REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Minsc~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee sod tob bg2ee eet~ ~Minsc~
 GROUP @5
 SUBCOMPONENT @160
 
@@ -142,7 +144,7 @@ INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @181
 DESIGNATED 181
-REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Dynaheir~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee sod eet~ ~Dynaheir~
 GROUP @5
 SUBCOMPONENT @180 
 
@@ -170,7 +172,7 @@ INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 // thief____________________________________________________________________________
 BEGIN @221
 DESIGNATED 221
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
 GROUP @5
 SUBCOMPONENT @220
 
@@ -206,7 +208,7 @@ INCLUDE ~npc_ee/npcs/coran/bard.tpa~
 // fighter/cleric___________________________________________________________________
 BEGIN @242
 DESIGNATED 242
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
 GROUP @5
 SUBCOMPONENT @240
 
@@ -224,7 +226,7 @@ INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
 // necromancer/cleric_______________________________________________________________
 BEGIN @302
 DESIGNATED 302
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) ~Xzar~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) ~Xzar~
 GROUP @5
 SUBCOMPONENT @300
 
@@ -242,7 +244,7 @@ INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
 // fighter/cleric___________________________________________________________________
 BEGIN @321
 DESIGNATED 321
-REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Montaron~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee sod eet~ ~Montaron~
 GROUP @5
 SUBCOMPONENT @320
 
@@ -260,7 +262,7 @@ INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
 // cleric/thief_____________________________________________________________________
 BEGIN @464
 DESIGNATED 464
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
 GROUP @5
 SUBCOMPONENT @460
 
@@ -331,7 +333,7 @@ INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @621
 DESIGNATED 621
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Neera~
+REQUIRE_PREDICATE GAME_IS ~bgee sod bg2ee eet~ ~Neera~
 GROUP @5
 SUBCOMPONENT @620
 
@@ -447,7 +449,7 @@ INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
 
 BEGIN @2000
 DESIGNATED 2000
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
+REQUIRE_PREDICATE GAME_IS ~bgee sod bg2ee iwdee eet~ @2
 //GROUP @6
 
 //find all kits for each class, build dialogue pieces________________________________
@@ -500,6 +502,12 @@ ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
 	ACTION_IF (%zu% = 20) BEGIN
 		OUTER_TEXT_SPRINT class ~mo~
 	END
+	ACTION_IF (%zu% = 21) BEGIN
+		OUTER_TEXT_SPRINT class ~sh~
+	END
+	ACTION_IF (%zu% = 7) OR (%zu% = 8) OR (%zu% = 9) OR (%zu% = 13) OR (%zu% = 14) OR (%zu% = 15) OR (%zu% = 16) OR (%zu% = 18) BEGIN
+		OUTER_TEXT_SPRINT class ~dummy~
+	END
 	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
 	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
 	APPEND_OUTER ~npc_ee/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
@@ -548,6 +556,10 @@ COPY ~npc_ee/so/d5sokit.d~ ~npc_ee/d5sokit.d~
 COPY ~npc_ee/mo/d5mokit.d~ ~npc_ee/d5mokit.d~
 	APPEND_FILE ~npc_ee/mo/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/mo/d5dfile2.txt~
+
+COPY ~npc_ee/sh/d5shkit.d~ ~npc_ee/d5shkit.d~
+	APPEND_FILE ~npc_ee/sh/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/sh/d5dfile2.txt~
 //__________________________________________________________________________________
 
 //copy innate abilities and invisicres into game____________________________________
@@ -582,6 +594,9 @@ COPY ~npc_ee/spl/d5_makt.spl~ ~override~
 COPY ~npc_ee/spl/d5_sokt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_shkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
 COPY ~npc_ee/cre/d5_fikit.cre~ ~override~
 COPY ~npc_ee/cre/d5_pakit.cre~ ~override~
 COPY ~npc_ee/cre/d5_rakit.cre~ ~override~
@@ -591,7 +606,7 @@ COPY ~npc_ee/cre/d5_clkit.cre~ ~override~
 COPY ~npc_ee/cre/d5_drkit.cre~ ~override~
 COPY ~npc_ee/cre/d5_mokit.cre~ ~override~
 COPY ~npc_ee/cre/d5_makit.cre~ ~override~
-COPY ~npc_ee/cre/d5_sokit.cre~ ~override~
+COPY ~npc_ee/cre/d5_shkit.cre~ ~override~
 //__________________________________________________________________________________
 
 
@@ -618,7 +633,9 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_bakt~ END
 			END
 			PATCH_IF (npc_class = 3) BEGIN // cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//				PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+					LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//				END
 			END
 			PATCH_IF (npc_class = 11) BEGIN // druid
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_drkt~ END
@@ -659,6 +676,8 @@ COMPILE ~npc_ee/d5makit.d~
 COMPILE ~npc_ee/ma/d5makit.baf~
 COMPILE ~npc_ee/d5sokit.d~
 COMPILE ~npc_ee/so/d5sokit.baf~
+COMPILE ~npc_ee/d5shkit.d~
+COMPILE ~npc_ee/sh/d5shkit.baf~
 //__________________________________________________________________________________
 
 CLEAR_ARRAYS
@@ -678,6 +697,188 @@ REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
 //GROUP @6
 
 
+//prep multiclass working folders___________________________________________________
+//
+COPY ~npc_ee/fi/d5dfile1.txt~ ~npc_ee/fm/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fmkit~
+COPY ~npc_ee/fi/d5dfile2.txt~ ~npc_ee/fm/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fmkit~
+COPY ~npc_ee/fi/d5dfile1.txt~ ~npc_ee/fd/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fdkit~
+COPY ~npc_ee/fi/d5dfile2.txt~ ~npc_ee/fd/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fdkit~
+COPY ~npc_ee/fi/d5dfile1.txt~ ~npc_ee/ft/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5ftkit~
+COPY ~npc_ee/fi/d5dfile2.txt~ ~npc_ee/ft/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5ftkit~
+COPY ~npc_ee/cl/d5dfile1.txt~ ~npc_ee/fc/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
+COPY ~npc_ee/cl/d5dfile2.txt~ ~npc_ee/fc/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
+COPY ~npc_ee/cl/d5dfile1.txt~ ~npc_ee/cm/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
+COPY ~npc_ee/cl/d5dfile2.txt~ ~npc_ee/cm/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
+COPY ~npc_ee/cl/d5dfile1.txt~ ~npc_ee/ct/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
+COPY ~npc_ee/cl/d5dfile2.txt~ ~npc_ee/ct/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
+COPY ~npc_ee/cl/d5dfile1.txt~ ~npc_ee/cr/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
+COPY ~npc_ee/cl/d5dfile2.txt~ ~npc_ee/cr/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
+COPY ~npc_ee/th/d5dfile1.txt~ ~npc_ee/mt/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5mtkit~
+COPY ~npc_ee/th/d5dfile2.txt~ ~npc_ee/mt/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5mtkit~
+//__________________________________________________________________________________
+
+
+//find multiclass kits, build dialogue pieces_______________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS ~10~ "rows"
+	FOR ( index = 1 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 9 10 kit_code
+		READ_2DA_ENTRY %index% 3 10 kit_name
+		READ_2DA_ENTRY %index% 4 10 kit_desc
+		READ_2DA_ENTRY %index% 8 10 kit_class
+		DEFINE_ASSOCIATIVE_ARRAY d5_kits BEGIN "%kit_code%" , "%kit_name%" , "%kit_desc%" => "%kit_class%" END
+	END
+BUT_ONLY
+
+OUTER_SET block_num = 0
+
+ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
+	OUTER_SET block_num = (%block_num% + 1)
+	OUTER_PATCH foo BEGIN
+		LOOKUP_IDS_SYMBOL_OF_INT ids_name ~kit~ %zoo%
+	END
+	ACTION_IF (%zu% = 7) BEGIN
+		OUTER_TEXT_SPRINT class ~fm~
+	END
+	ACTION_IF (%zu% = 8) BEGIN
+		OUTER_TEXT_SPRINT class ~fc~
+	END
+	ACTION_IF (%zu% = 9) BEGIN
+		OUTER_TEXT_SPRINT class ~ft~
+	END
+	ACTION_IF (%zu% = 13) BEGIN
+		OUTER_TEXT_SPRINT class ~mt~
+	END
+	ACTION_IF (%zu% = 14) BEGIN
+		OUTER_TEXT_SPRINT class ~cm~
+	END
+	ACTION_IF (%zu% = 15) BEGIN
+		OUTER_TEXT_SPRINT class ~ct~
+	END
+	ACTION_IF (%zu% = 16) BEGIN
+		OUTER_TEXT_SPRINT class ~fd~
+	END
+	ACTION_IF (%zu% = 18) BEGIN
+		OUTER_TEXT_SPRINT class ~cr~
+	END
+	ACTION_IF (%zu% = 1) OR (%zu% = 2) OR (%zu% = 3) OR (%zu% = 4) OR (%zu% = 5) OR (%zu% = 6) OR (%zu% = 11) OR (%zu% = 12) OR (%zu% = 19) OR (%zu% = 20) OR (%zu% = 21) BEGIN
+		OUTER_TEXT_SPRINT class ~dummy~
+	END
+	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
+	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
+	APPEND_OUTER ~npc_ee/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~Adopt this kit~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~Choose a different kit~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
+END
+//__________________________________________________________________________________
+
+//patch together multiclass dialogues_______________________________________________
+//
+COPY ~npc_ee/fc/d5fckit.d~ ~npc_ee/d5fckit.d~
+	APPEND_FILE ~npc_ee/fc/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/fc/d5dfile2.txt~
+
+COPY ~npc_ee/fd/d5fdkit.d~ ~npc_ee/d5fdkit.d~
+	APPEND_FILE ~npc_ee/fd/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/fd/d5dfile2.txt~
+
+COPY ~npc_ee/fm/d5fmkit.d~ ~npc_ee/d5fmkit.d~
+	APPEND_FILE ~npc_ee/fm/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/fm/d5dfile2.txt~
+
+COPY ~npc_ee/ft/d5ftkit.d~ ~npc_ee/d5ftkit.d~
+	APPEND_FILE ~npc_ee/ft/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/ft/d5dfile2.txt~
+
+COPY ~npc_ee/cm/d5cmkit.d~ ~npc_ee/d5cmkit.d~
+	APPEND_FILE ~npc_ee/cm/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/cm/d5dfile2.txt~
+
+COPY ~npc_ee/cr/d5crkit.d~ ~npc_ee/d5crkit.d~
+	APPEND_FILE ~npc_ee/cr/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/cr/d5dfile2.txt~
+
+COPY ~npc_ee/ct/d5ctkit.d~ ~npc_ee/d5ctkit.d~
+	APPEND_FILE ~npc_ee/ct/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/ct/d5dfile2.txt~
+
+COPY ~npc_ee/mt/d5mtkit.d~ ~npc_ee/d5mtkit.d~
+	APPEND_FILE ~npc_ee/mt/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/mt/d5dfile2.txt~
+//__________________________________________________________________________________
+
+//copy multiclass abilities and invisicres into game________________________________
+//
+COPY ~npc_ee/spl/d5_fckt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_fdkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_fmkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_ftkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_cmkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_crkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_ctkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/spl/d5_mtkt.spl~ ~override~
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
+COPY ~npc_ee/cre/d5_fckit.cre~ ~override~
+COPY ~npc_ee/cre/d5_fdkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_fmkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_ftkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_cmkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_crkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_ctkit.cre~ ~override~
+COPY ~npc_ee/cre/d5_mtkit.cre~ ~override~
+//__________________________________________________________________________________
+
+//compile mc scripts and dialogues__________________________________________________
+//
+COMPILE ~npc_ee/d5fckit.d~
+COMPILE ~npc_ee/fc/d5fckit.baf~
+COMPILE ~npc_ee/d5fdkit.d~
+COMPILE ~npc_ee/fd/d5fdkit.baf~
+COMPILE ~npc_ee/d5fmkit.d~
+COMPILE ~npc_ee/fm/d5fmkit.baf~
+COMPILE ~npc_ee/d5ftkit.d~
+COMPILE ~npc_ee/ft/d5ftkit.baf~
+COMPILE ~npc_ee/d5cmkit.d~
+COMPILE ~npc_ee/cm/d5cmkit.baf~
+COMPILE ~npc_ee/d5crkit.d~
+COMPILE ~npc_ee/cr/d5crkit.baf~
+COMPILE ~npc_ee/d5ctkit.d~
+COMPILE ~npc_ee/ct/d5ctkit.baf~
+COMPILE ~npc_ee/d5mtkit.d~
+COMPILE ~npc_ee/mt/d5mtkit.baf~
+//__________________________________________________________________________________
+
 //add innate abilities to multiclass NPCs___________________________________________
 //
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
@@ -686,40 +887,39 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
 		PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC
 			READ_BYTE 0x273 npc_class
 			PATCH_IF (%npc_class% = 7) BEGIN // fighter/mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fmkt~ END
 			END
 //			PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fckt~ END
 //			END
 			PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ftkt~ END
 			END
 			PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fmkt~ END
 			END
 			PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_thkt~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mtkt~ END
 			END
 //			PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_cmkt~ END
 //			END
 //			PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ctkt~ END
 //			END
 			PATCH_IF (%npc_class% = 16) BEGIN // fighter/druid
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fikt~ END
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fdkt~ END
 			END
 //			PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_clkt~ END
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_fckt~ END
 //			END
 //			PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_rakt~ END
+//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_crkt~ END
 //			END
 		END
 	END
 BUT_ONLY
 //__________________________________________________________________________________
-
 
 //INNATE ABILITIES FOR MULTICLASS PC________________________________________________
 //
@@ -727,9 +927,17 @@ COPY ~npc_ee/pc/d5_gckt.spl~ ~override~
 COPY ~npc_ee/pc/d5_gfkt.spl~ ~override~
 COPY ~npc_ee/pc/d5_gtkt.spl~ ~override~
 COPY ~npc_ee/pc/d5_clkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_cmkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_crkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_ctkt.eff~ ~override~
 COPY ~npc_ee/pc/d5_fikt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fckt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fdkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fmkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_ftkt.eff~ ~override~
 COPY ~npc_ee/pc/d5_rakt.eff~ ~override~
 COPY ~npc_ee/pc/d5_thkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_mtkt.eff~ ~override~
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
@@ -749,5 +957,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabth01.2da~ BEGIN
 	BUT_ONLY
 END
 //__________________________________________________________________________________
+
+CLEAR_ARRAYS
 
 

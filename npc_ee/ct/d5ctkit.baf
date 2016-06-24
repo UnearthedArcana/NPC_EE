@@ -1,0 +1,17 @@
+IF
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+		SetGlobal("D5CTKIT","GLOBAL",1)    // cleric selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5ctkit",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		SetGlobal("D5CTKIT","GLOBAL",0)
+		SetNumTimesTalkedTo(0)
+		DestroySelf()               // reset all variables, then destroy self
+END

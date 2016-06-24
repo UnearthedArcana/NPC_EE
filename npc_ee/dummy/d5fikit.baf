@@ -1,0 +1,17 @@
+IF
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+		SetGlobal("D5FIKIT","GLOBAL",1)    // fighter selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5fikit",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		SetGlobal("D5FIKIT","GLOBAL",0)
+		SetNumTimesTalkedTo(0)
+		DestroySelf()               // reset all variables, then destroy self
+END

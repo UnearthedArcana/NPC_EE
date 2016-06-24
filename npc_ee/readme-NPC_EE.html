@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 2.4 </strong><br />
+  <p><strong> Version 2.5 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -153,6 +153,10 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 2.5 - June 2016</strong></p>
+  <ul>
+    <li>compatibility with EE 2.0 multiclass kits</li>
+  </ul>
   <p><strong>Version 2.4 - April 2016</strong></p>
   <ul>
     <li>New: kit-switch for Charname as well as NPCs!</li>
