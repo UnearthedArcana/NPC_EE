@@ -6,7 +6,7 @@ VERSION ~v2.5~
 
 ALWAYS
 // joinable NPC issues for tutu/bgt/eet:
-  ACTION_IF GAME_IS ~bgee sod~ BEGIN
+  ACTION_IF GAME_IS ~bgee~ BEGIN
     OUTER_SPRINT tutu_var ~~
     OUTER_SPRINT imoen6_var ~imoen6~
     OUTER_SPRINT quayle_var ~quayle~
@@ -55,7 +55,7 @@ LANGUAGE
 // mage/thief_______________________________________________________________________
 BEGIN @102
 DESIGNATED 102
-REQUIRE_PREDICATE GAME_IS ~bgt bgee sod tob bg2ee eet~ ~Imoen~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Imoen~
 GROUP @5
 SUBCOMPONENT @100 
 
@@ -81,7 +81,7 @@ INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
 // fighter__________________________________________________________________________
 BEGIN @121
 DESIGNATED 121
-REQUIRE_PREDICATE GAME_IS ~bgt bgee sod tob bg2ee eet~ ~Jaheira~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Jaheira~
 GROUP @5
 SUBCOMPONENT @120
 
@@ -99,7 +99,7 @@ INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
 // cleric/ranger____________________________________________________________________
 BEGIN @141
 DESIGNATED 141
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
 GROUP @5
 SUBCOMPONENT @140
 
@@ -126,7 +126,7 @@ INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
 // fighter__________________________________________________________________________
 BEGIN @161
 DESIGNATED 161
-REQUIRE_PREDICATE GAME_IS ~bgt bgee sod tob bg2ee eet~ ~Minsc~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Minsc~
 GROUP @5
 SUBCOMPONENT @160
 
@@ -144,7 +144,7 @@ INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @181
 DESIGNATED 181
-REQUIRE_PREDICATE GAME_IS ~bgt bgee sod eet~ ~Dynaheir~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Dynaheir~
 GROUP @5
 SUBCOMPONENT @180 
 
@@ -172,7 +172,7 @@ INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 // thief____________________________________________________________________________
 BEGIN @221
 DESIGNATED 221
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
 GROUP @5
 SUBCOMPONENT @220
 
@@ -208,7 +208,7 @@ INCLUDE ~npc_ee/npcs/coran/bard.tpa~
 // fighter/cleric___________________________________________________________________
 BEGIN @242
 DESIGNATED 242
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
 GROUP @5
 SUBCOMPONENT @240
 
@@ -226,7 +226,7 @@ INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
 // necromancer/cleric_______________________________________________________________
 BEGIN @302
 DESIGNATED 302
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) ~Xzar~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) ~Xzar~
 GROUP @5
 SUBCOMPONENT @300
 
@@ -244,7 +244,7 @@ INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
 // fighter/cleric___________________________________________________________________
 BEGIN @321
 DESIGNATED 321
-REQUIRE_PREDICATE GAME_IS ~bgt bgee sod eet~ ~Montaron~
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Montaron~
 GROUP @5
 SUBCOMPONENT @320
 
@@ -262,7 +262,7 @@ INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
 // cleric/thief_____________________________________________________________________
 BEGIN @464
 DESIGNATED 464
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee sod eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
 GROUP @5
 SUBCOMPONENT @460
 
@@ -333,7 +333,7 @@ INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
 // sorcerer_________________________________________________________________________
 BEGIN @621
 DESIGNATED 621
-REQUIRE_PREDICATE GAME_IS ~bgee sod bg2ee eet~ ~Neera~
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Neera~
 GROUP @5
 SUBCOMPONENT @620
 
@@ -449,7 +449,7 @@ INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
 
 BEGIN @2000
 DESIGNATED 2000
-REQUIRE_PREDICATE GAME_IS ~bgee sod bg2ee iwdee eet~ @2
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 //GROUP @6
 
 //find all kits for each class, build dialogue pieces________________________________
