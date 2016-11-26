@@ -13,11 +13,12 @@ ACTION_FOR_EACH char IN ~neera~ ~neera2~ ~neera4~ ~neera6~ ~neera8~ ~neera10~ ~n
 		WRITE_BYTE 0x0234 1 //sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
-		WRITE_BYTE 0x273 19 // sets class
+		WRITE_BYTE 0x0273 19 // sets class
 		WRITE_BYTE 0x0066 10
 		WRITE_BYTE 0x006a 10
 		WRITE_SHORT 0x0024 6
 		WRITE_SHORT 0x0026 6
+		WRITE_LONG 0x0244 0
 		REMOVE_MEMORIZED_SPELLS
 		REMOVE_KNOWN_SPELLS
 		LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~spwi112~ END

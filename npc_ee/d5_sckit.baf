@@ -1,0 +1,132 @@
+IF
+	Class(LastSummonerOf(Myself),FIGHTER)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5FIKIT","GLOBAL",1)    // fighter selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5fikit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),PALADIN)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PAKIT","GLOBAL",1)    // paladin selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5pakit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),RANGER)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5RAKIT","GLOBAL",1)    // ranger selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5rakit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),THIEF)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5THKIT","GLOBAL",1)    // thief selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5thkit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5BAKIT","GLOBAL",1)    // bard selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5bakit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),CLERIC)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CLKIT","GLOBAL",1)    // cleric selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5clkit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),DRUID)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DRKIT","GLOBAL",1)    // druid selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5drkit",Myself))
+END
+
+/*
+IF
+	Class(LastSummonerOf(Myself),SHAMAN)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5SHKIT","GLOBAL",1)    // shaman selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5shkit",Myself))
+END
+*/
+
+IF
+	Class(LastSummonerOf(Myself),MONK)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5MOKIT","GLOBAL",1)    // monk selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5mokit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),MAGE)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5MAKIT","GLOBAL",1)    // mage selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5makit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),SORCERER)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5SOKIT","GLOBAL",1)    // sorcerer selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5sokit",Myself))
+END
+
+//
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		SetGlobal("D5FIKIT","GLOBAL",0)
+		SetGlobal("D5PAKIT","GLOBAL",0)
+		SetGlobal("D5RAKIT","GLOBAL",0)
+		SetGlobal("D5THKIT","GLOBAL",0)
+		SetGlobal("D5BAKIT","GLOBAL",0)
+		SetGlobal("D5CLKIT","GLOBAL",0)
+		SetGlobal("D5DRKIT","GLOBAL",0)
+		SetGlobal("D5SHKIT","GLOBAL",0)
+		SetGlobal("D5MOKIT","GLOBAL",0)
+		SetGlobal("D5MAKIT","GLOBAL",0)
+		SetGlobal("D5SOKIT","GLOBAL",0)
+		SetNumTimesTalkedTo(0)
+		DestroySelf()               // reset all variables, then destroy self
+END

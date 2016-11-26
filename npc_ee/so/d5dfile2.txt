@@ -1,12 +1,3 @@
-IF ~~ THEN REPLY ~No change~ EXIT 
+IF ~~ THEN REPLY @2014 EXIT  //
 END
 
-IF ~~ THEN BEGIN d5sokit_30 
- SAY ~WILD MAGE: Wild magic is a new type of magic that is characterized by powerful and dangerous surges of unpredictable magic. Generally considered to be an unfortunate byproduct of the Time of Troubles, wild magic has recently begun to attract the attention of many a curious or scholarly wizard. 
-
-Wild Mages are wizards who specialize in the study of wild magic. They have access to spells to protect themselves from wild magic and bend it to their wills. Wild magic is extremely unpredictable and should be used with caution.
-
-Every time a Wild Mage casts a spell, there is a 5% chance that the spell explodes in a wild surge. A wild surge produces some entirely random magical effect. A percent chance is rolled to determine the effect; higher rolls are usually better than lower rolls. A Wild Mage’s casting level also varies slightly whenever <PRO_HESHE> casts a spell—anywhere between five levels lower and five levels higher than the Wild Mage’s true level.~ 
- IF ~~ THEN REPLY ~Adopt this kit~ DO ~AddKit(WILDMAGE)~ EXIT 
- IF ~~ THEN REPLY ~Choose a different kit~ GOTO d5sokit 
- END
