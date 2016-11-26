@@ -27,8 +27,8 @@ ACTION_FOR_EACH char IN ~%tutu_var%imoen1~ ~%tutu_var%imoen2~ ~%tutu_var%imoen4~
 		WRITE_BYTE 0x0068 10
 		WRITE_BYTE 0x0069 5
 		WRITE_BYTE 0x006a 5
-		WRITE_SHORT 0x0024 9
-		WRITE_SHORT 0x0026 9
+		WRITE_SHORT 0x0024 8
+		WRITE_SHORT 0x0026 8
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~%char%.cre~ ~override~
 			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END

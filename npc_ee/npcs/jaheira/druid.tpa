@@ -7,7 +7,7 @@
 //__________________________________________________________________________________
 
 
-ACTION_FOR_EACH char IN ~%tutu_var%jaheir~ ~%tutu_var%jaheir2~ ~%tutu_var%jaheir4~ ~%tutu_var%jaheir6~ ~jaheir7~ ~jaheir8~ ~jaheir11~ ~jaheir12~ ~jahei12b~ ~jahei14~ BEGIN
+ACTION_FOR_EACH char IN ~%tutu_var%jaheir~ ~%tutu_var%jaheir2~ ~%tutu_var%jaheir4~ ~%tutu_var%jaheir6~ ~%jaheir7_var%~ ~jaheir8~ ~jaheir11~ ~jaheir12~ ~jahei12b~ ~jahei14~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1
