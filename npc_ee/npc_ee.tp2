@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v2.6~
+VERSION ~v2.6.1~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -369,6 +369,7 @@ INCLUDE ~npc_ee/npcs/yoshimo/fighter-thief.tpa~
 //__________________________________________________________________________________
 
 
+// fighter/thief____________________________________________________________________
 BEGIN @702
 DESIGNATED 702
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Valygar~
@@ -376,6 +377,16 @@ GROUP @5
 SUBCOMPONENT @700
 
 INCLUDE ~npc_ee/npcs/valygar/fighter-thief.tpa~
+
+
+// fighter__________________________________________________________________________
+BEGIN @704
+DESIGNATED 704
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Valygar~
+GROUP @5
+SUBCOMPONENT @700
+
+INCLUDE ~npc_ee/npcs/valygar/fighter.tpa~
 
 
 //__________________________________________________________________________________
@@ -412,7 +423,6 @@ GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/sorcerer.tpa~
-
 
 
 //__________________________________________________________________________________

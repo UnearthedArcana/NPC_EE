@@ -122,10 +122,10 @@
 	  <li>fighter/clerics: choose a cleric kit</li>
 	  <li>cleric/thieves: choose a cleric kit</li>
 	  <li>cleric/mages: choose a cleric kit</li>
-	  <li>fighter/druids: choose a fighter kit</li>
-	  <li>fighter/thieves: choose a fighter kit</li>
-	  <li>fighter/mages: choose a fighter kit</li>
-	  <li>thief/mages: choose a thief kit</li>
+	  <li>fighter/druids: choose a druid kit</li>
+	  <li>fighter/thieves: choose a thief kit</li>
+	  <li>fighter/mages: choose a wizard kit</li>
+	  <li>thief/mages: choose a wizard kit</li>
 	  <li>fighter/mage/clerics: choose a cleric kit</li>
 	  <li>fighter/mage/thieves: choose a fighter kit</li>
 	</ul> 
