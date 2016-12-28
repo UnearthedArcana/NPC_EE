@@ -49,5 +49,17 @@ ACTION_IF FILE_EXISTS_IN_GAME ~valy25.bcs~ BEGIN
 	EXTEND_BOTTOM ~valy25.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
 END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~npchan.itm~ THEN BEGIN
+	COPY_EXISTING ~npchan.itm~ ~override~
+				  ~npsw04.itm~ ~override~
+		PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+			READ_BYTE 0x1f f
+			READ_BYTE 0x20 ft
+			WRITE_BYTE 0x1f (f BAND 0b11110111)
+			WRITE_BYTE 0x20 (ft BAND 0b11111101)
+		END
+	BUT_ONLY
+END
+
 //__________________________________________________________________________________
 

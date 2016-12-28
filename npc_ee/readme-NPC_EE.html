@@ -98,7 +98,7 @@
   </div>
   <h4 class="subheader">Component 700: choose a new class for Valygar</h4>
   <div class="section">
-    <p>Make Valygar a multiclass fighter/thief</p>
+    <p>Make Valygar a multiclass fighter/thief, or a single-class fighter</p>
   </div>
   <h4 class="subheader">Component 720: choose a new class for Nalia</h4>
   <div class="section">

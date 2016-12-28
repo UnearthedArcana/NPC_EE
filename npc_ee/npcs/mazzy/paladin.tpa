@@ -40,5 +40,16 @@ ACTION_IF FILE_EXISTS_IN_GAME ~mazz25.bcs~ BEGIN
 	EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
 END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~npchan.itm~ THEN BEGIN
+	COPY_EXISTING ~npsw01.itm~ ~override~
+		PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+			READ_BYTE 0x1f f
+			READ_BYTE 0x20 p
+			WRITE_BYTE 0x1f (f BAND 0b10111111)
+			WRITE_BYTE 0x20 (p BAND 0b11001111)
+		END
+	BUT_ONLY
+END
+
 //__________________________________________________________________________________
 
