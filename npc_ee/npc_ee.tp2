@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v2.6.3~
+VERSION ~v2.6.4~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -397,6 +397,16 @@ INCLUDE ~npc_ee/npcs/valygar/fighter.tpa~
 //__________________________________________________________________________________
 
 
+// thief____________________________________________________________________________
+BEGIN @721
+DESIGNATED 721
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
+
+
 // bard_____________________________________________________________________________
 BEGIN @722
 DESIGNATED 722
@@ -405,6 +415,16 @@ GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/bard.tpa~
+
+
+// thief____________________________________________________________________________
+BEGIN @721
+DESIGNATED 721
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
 
 
 // cleric/mage______________________________________________________________________
