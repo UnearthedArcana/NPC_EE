@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 2.6 </strong><br />
+  <p><strong> Version 2.7 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -64,8 +64,11 @@
   </div>
   <h4 class="subheader">Component 240: choose a new class for Branwen</h4>
   <div class="section">
-    <p>Make Branwen a fighter/cleric (multiclass)<br />
-    <i>(If the Gloryblood of Tempus kit is installed, making Branwen a fighter/cleric will also give her that kit.)</i></p>
+    <p>Make Branwen a fighter/cleric (multiclass)</p>
+  </div>
+  <h4 class="subheader">Component 260: choose a new class for Coran</h4>
+  <div class="section">
+    <p>Make Safana a fighter/thief (multiclass)</p>
   </div>
   <h4 class="subheader">Component 300: choose a new class for Xzar</h4>
   <div class="section">
@@ -77,8 +80,7 @@
   </div>
   <h4 class="subheader">Component 460: choose a new class for Alora</h4>
   <div class="section">
-    <p>Make Alora a cleric/thief<br />
-    <i>(If the Misadventurer of Brandobaris kit is installed, making Alora a cleric/thief will also give her that kit.)</i></p>
+    <p>Make Alora a cleric/thief</p>
   </div>
   <h4 class="subheader">Component 480: choose a new class for Xan</h4>
   <div class="section">
@@ -106,8 +108,7 @@
   </div>
   <h4 class="subheader">Component 760: choose a new class for Mazzy</h4>
   <div class="section">
-    <p>Make Mazzy a fighter/cleric, or a paladin<br />
-    <i>(If the Hearthguard of Arvoreen kit is installed, making Mazzy a fighter/cleric will also give her that kit.)</i></p>
+    <p>Make Mazzy a fighter/cleric, or a paladin</p>
   </div>
   <h4 class="subheader">Component 2000: NPC kit choices</h4>
   <div class="section">
@@ -153,6 +154,14 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 2.7 - May 2017</strong></p>
+  <ul>
+    <li>added class-change for Safana: fighter/thief</li>
+  </ul>
+  <p><strong>Version 2.6 - November 2016</strong></p>
+  <ul>
+    <li>improved kit-change scripts</li>
+  </ul>
   <p><strong>Version 2.5 - June 2016</strong></p>
   <ul>
     <li>compatibility with EE 2.0 multiclass kits</li>

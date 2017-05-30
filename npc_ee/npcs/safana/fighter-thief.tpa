@@ -1,0 +1,50 @@
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							SAFANA MULTI FIGHTER/THIEF
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+ACTION_FOR_EACH char IN ~safana4~ ~safana6~ ~safana7~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
+		WRITE_BYTE 0x0234 1 //sets level to 1
+		WRITE_BYTE 0x0235 1
+		WRITE_BYTE 0x0236 1
+		WRITE_BYTE 0x273 9 // sets class
+		WRITE_BYTE 0x0045 10
+		WRITE_BYTE 0x0064 5
+		WRITE_BYTE 0x0065 5
+		WRITE_BYTE 0x0067 5
+		WRITE_BYTE 0x0068 10
+		WRITE_BYTE 0x0069 5
+		WRITE_BYTE 0x006a 5
+		WRITE_SHORT 0x0024 10
+		WRITE_SHORT 0x0026 10
+		WRITE_BYTE 0x0066 10
+		READ_BYTE 0x11 rdual 
+		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
+		READ_BYTE 0x10 dual 
+		WRITE_BYTE 0x10 (dual BAND 0b00000111) // uncheck other dual-class flags
+	BUT_ONLY
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
+		COPY_EXISTING ~%char%.cre~ ~override~
+			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END
+		BUT_ONLY
+		COPY_EXISTING ~%char%.cre~ ~override~
+		SET_BG2_PROFICIENCY 96 2
+		SET_BG2_PROFICIENCY 95 2
+		SET_BG2_PROFICIENCY 105 1
+		SET_BG2_PROFICIENCY 115 1
+	END
+  END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~safana.bcs~ BEGIN
+	EXTEND_BOTTOM ~safana.bcs~ ~npc_ee/npcs/safana/safana_f-t.baf~
+END
+
+//__________________________________________________________________________________
+
