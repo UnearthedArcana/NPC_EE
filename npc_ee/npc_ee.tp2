@@ -1,10 +1,13 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v2.7~
+VERSION ~v2.8~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
+
+  INCLUDE ~npc_ee/lib/joinable_npcs.tpa~
+
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee~ BEGIN
     OUTER_SPRINT tutu_var ~~
@@ -619,52 +622,6 @@ COPY ~npc_ee/so/d5sokit.d~ ~npc_ee/d5sokit.d~
 
 //copy innate abilities and invisicres into game____________________________________
 //
-/*
-COPY ~npc_ee/spl/d5_fikt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_pakt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_rakt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_thkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_bakt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_clkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_drkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_mokt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_makt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_sokt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_shkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/cre/d5_fikit.cre~ ~override~
-COPY ~npc_ee/cre/d5_pakit.cre~ ~override~
-COPY ~npc_ee/cre/d5_rakit.cre~ ~override~
-COPY ~npc_ee/cre/d5_thkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_bakit.cre~ ~override~
-COPY ~npc_ee/cre/d5_clkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_drkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_mokit.cre~ ~override~
-COPY ~npc_ee/cre/d5_makit.cre~ ~override~
-COPY ~npc_ee/cre/d5_shkit.cre~ ~override~
-*/
-
 COPY ~npc_ee/spl/d5_sckt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
@@ -674,53 +631,55 @@ COPY ~npc_ee/cre/d5_sckit.cre~ ~override~
 
 //add innate abilities to single-class NPCs_________________________________________
 //
-COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+LAM JOINABLE_NPC_ARRAY
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+  PRINT ~%cre% => %dv%~ 
+  COPY_EXISTING ~%cre%~ ~override~
 	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
-		READ_LONG 0x1cc biography
-		PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC
-			READ_BYTE 0x273 npc_class
-			PATCH_IF (npc_class = 2) BEGIN // fighter
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-			END
-			PATCH_IF (npc_class = 6) BEGIN // paladin
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-			END
-			PATCH_IF (npc_class = 12) BEGIN // ranger
-				PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
-					LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-				END
-			END
-			PATCH_IF (npc_class = 4) BEGIN // thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-			END
-			PATCH_IF (npc_class = 5) BEGIN // bard
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-			END
-			PATCH_IF (npc_class = 3) BEGIN // cleric
-				PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
-					LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-				END
-			END
-			PATCH_IF (npc_class = 11) BEGIN // druid
-				PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
-					LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-				END
-			END
-//			PATCH_IF (npc_class = 21) BEGIN // shaman
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-//			END
-			PATCH_IF (npc_class = 20) BEGIN // monk
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-			END
-			PATCH_IF (npc_class = 1) BEGIN // mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-			END
-//			PATCH_IF (npc_class = 19) BEGIN // sorcerer
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
-//			END
+		READ_BYTE 0x273 npc_class
+		PATCH_IF (npc_class = 2) BEGIN // fighter
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
 		END
+		PATCH_IF (npc_class = 6) BEGIN // paladin
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 12) BEGIN // ranger
+			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+			END
+		END
+		PATCH_IF (npc_class = 4) BEGIN // thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 5) BEGIN // bard
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 3) BEGIN // cleric
+			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+			END
+		END
+		PATCH_IF (npc_class = 11) BEGIN // druid
+			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+			END
+		END
+//		PATCH_IF (npc_class = 21) BEGIN // shaman
+//			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+//		END
+		PATCH_IF (npc_class = 20) BEGIN // monk
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 1) BEGIN // mage
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+//		PATCH_IF (npc_class = 19) BEGIN // sorcerer
+//			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+//		END
 	END
-BUT_ONLY
+  BUT_ONLY
+END
 //__________________________________________________________________________________
 
 //compile the scripts and dialogues_________________________________________________
@@ -737,24 +696,11 @@ COMPILE ~npc_ee/d5mokit.d~
 COMPILE ~npc_ee/d5makit.d~
 COMPILE ~npc_ee/d5sokit.d~
 
-/*
-COMPILE ~npc_ee/fi/d5fikit.baf~
-COMPILE ~npc_ee/pa/d5pakit.baf~
-COMPILE ~npc_ee/ra/d5rakit.baf~
-COMPILE ~npc_ee/th/d5thkit.baf~
-COMPILE ~npc_ee/ba/d5bakit.baf~
-COMPILE ~npc_ee/cl/d5clkit.baf~
-COMPILE ~npc_ee/dr/d5drkit.baf~
-COMPILE ~npc_ee/sh/d5shkit.baf~
-COMPILE ~npc_ee/mo/d5mokit.baf~
-COMPILE ~npc_ee/ma/d5makit.baf~
-COMPILE ~npc_ee/so/d5sokit.baf~
-*/
-
 COMPILE ~npc_ee/d5_sckit.baf~
 //__________________________________________________________________________________
 
 CLEAR_ARRAYS
+
 
 
 //__________________________________________________________________________________
@@ -909,41 +855,6 @@ COPY ~npc_ee/mt/d5mtkit.d~ ~npc_ee/d5mtkit.d~
 
 //copy multiclass abilities and invisicres into game________________________________
 //
-/*
-COPY ~npc_ee/spl/d5_fckt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_fdkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_fmkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_ftkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_cmkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_crkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_ctkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/spl/d5_mtkt.spl~ ~override~
-	SAY NAME1 @11
-	SAY UNIDENTIFIED_DESC @11
-COPY ~npc_ee/cre/d5_fckit.cre~ ~override~
-COPY ~npc_ee/cre/d5_fdkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_fmkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_ftkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_cmkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_crkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_ctkit.cre~ ~override~
-COPY ~npc_ee/cre/d5_mtkit.cre~ ~override~
-*/
-
 COPY ~npc_ee/spl/d5_mckt.spl~ ~override~
 	SAY NAME1 @11
 	SAY UNIDENTIFIED_DESC @11
@@ -961,60 +872,51 @@ COMPILE ~npc_ee/d5crkit.d~
 COMPILE ~npc_ee/d5ctkit.d~
 COMPILE ~npc_ee/d5mtkit.d~
 
-/*
-COMPILE ~npc_ee/fc/d5fckit.baf~
-COMPILE ~npc_ee/fd/d5fdkit.baf~
-COMPILE ~npc_ee/fm/d5fmkit.baf~
-COMPILE ~npc_ee/ft/d5ftkit.baf~
-COMPILE ~npc_ee/cm/d5cmkit.baf~
-COMPILE ~npc_ee/cr/d5crkit.baf~
-COMPILE ~npc_ee/ct/d5ctkit.baf~
-COMPILE ~npc_ee/mt/d5mtkit.baf~
-*/
-
 COMPILE ~npc_ee/d5_mckit.baf~
 //__________________________________________________________________________________
 
 //add innate abilities to multiclass NPCs___________________________________________
 //
-COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+LAM JOINABLE_NPC_ARRAY
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+  PRINT ~%cre% => %dv%~ 
+  COPY_EXISTING ~%cre%~ ~override~
 	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
-		READ_LONG 0x1cc biography
-		PATCH_IF (biography > 0 && biography < 2147483647) BEGIN // party-joinable NPC
-			READ_BYTE 0x273 npc_class
-			PATCH_IF (%npc_class% = 7) BEGIN // fighter/mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-			PATCH_IF (%npc_class% = 16) BEGIN // fighter/druid
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
-//			PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
-//				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-//			END
-			PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
-				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-			END
+		READ_BYTE 0x273 npc_class
+		PATCH_IF (%npc_class% = 7) BEGIN // fighter/mage
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 16) BEGIN // fighter/druid
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+//		PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
+//			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+//		END
+		PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
 		END
 	END
-BUT_ONLY
+  BUT_ONLY
+END
 //__________________________________________________________________________________
 
 //INNATE ABILITIES FOR MULTICLASS PC________________________________________________
