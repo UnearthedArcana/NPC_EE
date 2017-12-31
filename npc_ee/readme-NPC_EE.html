@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 2.7 </strong><br />
+  <p><strong> Version 3.0 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -113,7 +113,7 @@
   <h4 class="subheader">Component 2000: NPC kit choices</h4>
   <div class="section">
     <p>As described above, this will add an innate ability to every single-class NPC allowing them to take a kit - or, if they already have a kit, to switch to a new one.</p>
-    <p>If you've read this far, I might as well tell you about a little experiment: I've added one kit option to a class in which is doesn't belong: any sorcerer NPC will be able to become a "Wild Sorcerer" - which is just a sorcerer with the Wild Mage wizard kit.  This will cause a chance of wild surges and randomly adjust their caster level.  I don't know if NRD or Chaos Shield will be available; honestly, I haven't tested this one bit, except to make sure the change actually happens.  Why would anyone do this?  I have no idea.  But, it seems like a perfect option for Neera, doesn't it?  ;)</p>
+    <p>New to v3.0: now, when you use the kit-choice ability, the NPC's proficiencies will be set to zero, and you will receive a number of innate abilities that will let you rebuild their proficiencies however you like. (Be warned, this follows the basic rules for proficiencies, so any NPCs that have illegal values in some weapon will lose that benefit.)</p>
   </div>
   <h4 class="subheader">Component 3000: multiclass kit choices for NPCs</h4>
   <div class="section">

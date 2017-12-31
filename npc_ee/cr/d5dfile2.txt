@@ -1,3 +1,8 @@
-IF ~~ THEN REPLY @2014 EXIT  //
+IF ~~ THEN REPLY @2015 GOTO d5crkit_0 // trueclass
 END
 
+IF ~~ THEN BEGIN d5crkit_0 
+ SAY @2016 
+ IF ~~ THEN REPLY @2011 DO ~AddKit(TRUECLASS)~ EXIT 
+ IF ~~ THEN REPLY @2012 GOTO d5crkit 
+END 
