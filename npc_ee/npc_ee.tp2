@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.0~
+VERSION ~v3.1~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -808,46 +808,29 @@ COMPILE ~npc_ee/d5_sckit.baf~
 //add proficiency/specialization abilities__________________________________________
 //
 ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_kits_profs BEGIN
-MAGE , class				=> 	3
-FIGHTER , class 			=> 	4
-CLERIC , class 				=> 	5
-THIEF , class 				=> 	6
-BARD , class 				=> 	7
-PALADIN , class 			=> 	8
-DRUID , class 				=> 	9
-RANGER , class 				=> 	10
-FIGHTER_MAGE , class 		=> 	11
-FIGHTER_CLERIC , class 		=> 	12
-FIGHTER_THIEF , class 		=> 	13
-FIGHTER_MAGE_THIEF , class 	=> 	14
-MAGE_THIEF , class 			=> 	15
-CLERIC_MAGE , class 		=> 	16
-CLERIC_THIEF , class 		=> 	17
-FIGHTER_DRUID , class 		=> 	18
-FIGHTER_MAGE_CLERIC , class => 	19
-CLERIC_RANGER , class 		=> 	20
-MONK , class 				=> 	50
+MAGE , class , MAGE					=> 	3
+FIGHTER , class , FIGHTER 				=> 	4
+CLERIC , class , CLERIC 				=> 	5
+THIEF , class , THIEF 					=> 	6
+BARD , class , BARD 					=> 	7
+PALADIN , class , PALADIN 				=> 	8
+DRUID , class , DRUID 					=> 	9
+RANGER , class , RANGER 				=> 	10
+FIGHTER_MAGE , class , FIGHTER_MAGE 		=> 	11
+FIGHTER_CLERIC , class , FIGHTER_CLERIC 	=> 	12
+FIGHTER_THIEF , class , FIGHTER_THIEF 		=> 	13
+FIGHTER_MAGE_THIEF , class , FIGHTER_MAGE_THIEF 	=> 	14
+MAGE_THIEF , class , MAGE_THIEF 			=> 	15
+CLERIC_MAGE , class , CLERIC_MAGE 			=> 	16
+CLERIC_THIEF , class , CLERIC_THIEF 		=> 	17
+FIGHTER_DRUID , class , FIGHTER_DRUID 		=> 	18
+FIGHTER_MAGE_CLERIC , class , FIGHTER_MAGE_CLERIC => 	19
+CLERIC_RANGER , class , CLERIC_RANGER 		=> 	20
+MONK , class , MONK 					=> 	50
 END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~clabshgs.2da~) OR (FILE_EXISTS_IN_GAME ~clabsh01.2da~) BEGIN
-
-  APPEND_OUTER ~npc_ee/files/d5profx.baf~ ~
-IF
-	NumTimesTalkedTo(0)
-	Global("D5_PROFX","GLOBAL",0)
-	Class(LastSummonerOf(Myself),SHAMAN)
-	Kit(LastSummonerOf(Myself),TRUECLASS)
-THEN
-	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHAMAN","LOCALS",1))
-	SetGlobal("D5_PROFX","GLOBAL",1)
-	SetNumTimesTalkedTo(1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
-END
-~ KEEP_CRLF
-
   OUTER_SPRINT $d5_kits_profs(~SHAMAN~ ~class~) ~59~
-
 END
 
 COPY_EXISTING ~kitlist.2da~ ~override~
@@ -855,9 +838,11 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   READ_2DA_ENTRIES_NOW ~r2en_kitlist~ cols
   FOR (row = 1; row < r2en_kitlist; row += 1) BEGIN
 	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 6 prof_col
+	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 8 classids_num
 	READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 9 kitids_num
 	LOOKUP_IDS_SYMBOL_OF_INT kitids_name ~kit~ %kitids_num%
-	SPRINT $d5_kits_profs(~%kitids_name%~ ~kit~) ~%prof_col%~
+	LOOKUP_IDS_SYMBOL_OF_INT classids_name ~class~ %classids_num%
+	SPRINT $d5_kits_profs(~%kitids_name%~ ~kit~ ~%classids_name%~) ~%prof_col%~
   END
 
 ACTION_PHP_EACH d5_kits_profs AS kitidsname => profcol BEGIN
@@ -868,6 +853,7 @@ IF
 	NumTimesTalkedTo(0)
 	Global("D5_PROFX","GLOBAL",0)
 	Kit(LastSummonerOf(Myself),%kitidsname%)
+	Class(LastSummonerOf(Myself),%kitidsname_2%)
 THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%","LOCALS",1))
@@ -876,8 +862,581 @@ THEN
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
 END
 ~ KEEP_CRLF
+	APPEND_OUTER ~npc_ee/files/d5profy.baf~ ~
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Kit(LastSummonerOf(Myself),%kitidsname%)
+	Class(LastSummonerOf(Myself),%kitidsname_2%)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+~ KEEP_CRLF
   END
 END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~clabshgs.2da~) OR (FILE_EXISTS_IN_GAME ~clabsh01.2da~) BEGIN
+
+  APPEND_OUTER ~npc_ee/files/d5profx.baf~ ~
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),SHAMAN)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHAMAN","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+~ KEEP_CRLF
+
+  APPEND_OUTER ~npc_ee/files/d5profy.baf~ ~
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),SHAMAN)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHAMAN","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+~ KEEP_CRLF
+
+END
+
+APPEND_OUTER ~npc_ee/files/d5profx.baf~ ~
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),MAGE)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MAGE","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),BARD)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_BARD","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),PALADIN)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PALADIN","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_DRUID","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),RANGER)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_RANGER","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_CLERIC","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MAGE_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_MAGE","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_DRUID","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_CLERIC","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_RANGER","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFX","GLOBAL",0)
+	Class(LastSummonerOf(Myself),MONK)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MONK","LOCALS",1))
+	SetGlobal("D5_PROFX","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profx",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+	SetGlobal("D5_PROFX","GLOBAL",0)
+	SetGlobal("D5_BASTARD_SWORD","LOCALS",0)
+	SetGlobal("D5_LONG_SWORD","LOCALS",0)
+	SetGlobal("D5_SHORT_SWORD","LOCALS",0)
+	SetGlobal("D5_AXE","LOCALS",0)
+	SetGlobal("D5_GREATSWORD","LOCALS",0)
+	SetGlobal("D5_KATANA","LOCALS",0)
+	SetGlobal("D5_SCIMITAR","LOCALS",0)
+	SetGlobal("D5_DAGGER","LOCALS",0)
+	SetGlobal("D5_HAMMER","LOCALS",0)
+	SetGlobal("D5_CLUB","LOCALS",0)
+	SetGlobal("D5_SPEAR","LOCALS",0)
+	SetGlobal("D5_HALBERD","LOCALS",0)
+	SetGlobal("D5_FLAIL","LOCALS",0)
+	SetGlobal("D5_MACE","LOCALS",0)
+	SetGlobal("D5_STAFF","LOCALS",0)
+	SetGlobal("D5_CROSSBOW","LOCALS",0)
+	SetGlobal("D5_LONG_BOW","LOCALS",0)
+	SetGlobal("D5_SHORT_BOW","LOCALS",0)
+	SetGlobal("D5_DART","LOCALS",0)
+	SetGlobal("D5_SLING","LOCALS",0)
+	SetGlobal("D5_TWO_HAND","LOCALS",0)
+	SetGlobal("D5_SHIELD","LOCALS",0)
+	SetGlobal("D5_SINGLE_WEAPON","LOCALS",0)
+	SetGlobal("D5_TWO_WEAPON","LOCALS",0)
+	SetNumTimesTalkedTo(0)
+	DestroySelf()
+END
+~ KEEP_CRLF
+
+APPEND_OUTER ~npc_ee/files/d5profy.baf~ ~
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),MAGE)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MAGE","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),BARD)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_BARD","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),PALADIN)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PALADIN","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_DRUID","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),RANGER)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_RANGER","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_CLERIC","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MAGE_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_MAGE","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_THIEF","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_DRUID","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_CLERIC","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_RANGER","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Global("D5_PROFY","GLOBAL",0)
+	Class(LastSummonerOf(Myself),MONK)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MONK","LOCALS",1))
+	SetGlobal("D5_PROFY","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5profy",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+	SetGlobal("D5_PROFY","GLOBAL",0)
+	SetGlobal("D5_BASTARD_SWORD","LOCALS",0)
+	SetGlobal("D5_LONG_SWORD","LOCALS",0)
+	SetGlobal("D5_SHORT_SWORD","LOCALS",0)
+	SetGlobal("D5_AXE","LOCALS",0)
+	SetGlobal("D5_GREATSWORD","LOCALS",0)
+	SetGlobal("D5_KATANA","LOCALS",0)
+	SetGlobal("D5_SCIMITAR","LOCALS",0)
+	SetGlobal("D5_DAGGER","LOCALS",0)
+	SetGlobal("D5_HAMMER","LOCALS",0)
+	SetGlobal("D5_CLUB","LOCALS",0)
+	SetGlobal("D5_SPEAR","LOCALS",0)
+	SetGlobal("D5_HALBERD","LOCALS",0)
+	SetGlobal("D5_FLAIL","LOCALS",0)
+	SetGlobal("D5_MACE","LOCALS",0)
+	SetGlobal("D5_STAFF","LOCALS",0)
+	SetGlobal("D5_CROSSBOW","LOCALS",0)
+	SetGlobal("D5_LONG_BOW","LOCALS",0)
+	SetGlobal("D5_SHORT_BOW","LOCALS",0)
+	SetGlobal("D5_DART","LOCALS",0)
+	SetGlobal("D5_SLING","LOCALS",0)
+	SetGlobal("D5_TWO_HAND","LOCALS",0)
+	SetGlobal("D5_SHIELD","LOCALS",0)
+	SetGlobal("D5_SINGLE_WEAPON","LOCALS",0)
+	SetGlobal("D5_TWO_WEAPON","LOCALS",0)
+	SetNumTimesTalkedTo(0)
+	DestroySelf()
+END
+~ KEEP_CRLF
 
 COPY_EXISTING ~weapprof.2da~ ~override~
 	COUNT_2DA_COLS cols
@@ -908,6 +1467,7 @@ COPY_EXISTING ~weapprof.2da~ ~override~
 	  READ_2DA_ENTRY 31 (%profcol% + 1) cols two_weapon_style
 	  INNER_ACTION BEGIN
 		COPY ~npc_ee/files/d5profx.baf~ ~npc_ee/files/d5profx.baf~
+			 ~npc_ee/files/d5profy.baf~ ~npc_ee/files/d5profy.baf~
 		  PATCH_IF (%two_weapon_style% > 0) BEGIN
 			REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%","LOCALS",1))
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_TWO_WEAPON","LOCALS",%two_weapon_style%))~
@@ -1009,41 +1569,6 @@ COPY_EXISTING ~weapprof.2da~ ~override~
 		  
   BUT_ONLY
   
-APPEND_OUTER ~npc_ee/files/d5profx.baf~ ~
-IF
-	True()
-THEN
-	RESPONSE #100
-	SetGlobal("D5_PROFX","GLOBAL",0)
-	SetGlobal("D5_BASTARD_SWORD","LOCALS",0)
-	SetGlobal("D5_LONG_SWORD","LOCALS",0)
-	SetGlobal("D5_SHORT_SWORD","LOCALS",0)
-	SetGlobal("D5_AXE","LOCALS",0)
-	SetGlobal("D5_GREATSWORD","LOCALS",0)
-	SetGlobal("D5_KATANA","LOCALS",0)
-	SetGlobal("D5_SCIMITAR","LOCALS",0)
-	SetGlobal("D5_DAGGER","LOCALS",0)
-	SetGlobal("D5_HAMMER","LOCALS",0)
-	SetGlobal("D5_CLUB","LOCALS",0)
-	SetGlobal("D5_SPEAR","LOCALS",0)
-	SetGlobal("D5_HALBERD","LOCALS",0)
-	SetGlobal("D5_FLAIL","LOCALS",0)
-	SetGlobal("D5_MACE","LOCALS",0)
-	SetGlobal("D5_STAFF","LOCALS",0)
-	SetGlobal("D5_CROSSBOW","LOCALS",0)
-	SetGlobal("D5_LONG_BOW","LOCALS",0)
-	SetGlobal("D5_SHORT_BOW","LOCALS",0)
-	SetGlobal("D5_DART","LOCALS",0)
-	SetGlobal("D5_SLING","LOCALS",0)
-	SetGlobal("D5_TWO_HAND","LOCALS",0)
-	SetGlobal("D5_SHIELD","LOCALS",0)
-	SetGlobal("D5_SINGLE_WEAPON","LOCALS",0)
-	SetGlobal("D5_TWO_WEAPON","LOCALS",0)
-	SetNumTimesTalkedTo(0)
-	DestroySelf()
-END
-~ KEEP_CRLF
-
 COPY_EXISTING ~weapprof.2da~ ~override~
 	COUNT_2DA_COLS cols
 	READ_2DA_ENTRY 8 2 cols bastard_sword_name
@@ -1858,10 +2383,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
   COPY ~npc_ee/files/d5profrx.spl~ ~override~
 //	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5profrx~ END
 
-
+/*
   COPY ~npc_ee/files/d5profx.baf~ ~npc_ee/files/d5profy.baf~
 	REPLACE_TEXTUALLY ~Global("D5_PROFX","GLOBAL",~ ~Global("D5_PROFY","GLOBAL",~
 	REPLACE_TEXTUALLY ~StartDialogOverride("d5profx",Myself)~ ~StartDialogOverride("d5profy",Myself)~
+*/
 
   COMPILE ~npc_ee/files/d5profy.baf~
 

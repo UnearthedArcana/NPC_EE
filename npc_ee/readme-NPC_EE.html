@@ -11,17 +11,19 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 3.0 </strong><br />
+  <p><strong> Version 3.1 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
 <h2>Overview</h2>
 <div class="section">
   <p>This is intended to be a successor to the fantastic "Level 1 NPCs" mod.  L1NPCs was never updated for the EE games, and its author is no longer active, and it is an incredible, complicated piece of work that is difficult for someone else to update.  So I made this.  It's not as complete as L1NPCs, and my techniques are not as sophisticated.  But it aims to reach a similar result: add replayability by allowing players to easily change the class and kit of various NPCs, thus creating different parties with different tactics, for different playthroughs</p>
-  <p>In application, this kind of pales in comparison to Level 1 NPCs, but it should at least let you spice things up a bit.  And it has one real advantage: you can change the kits of every NPC in every playthrough *in-game,* without going back out to Weidu to uninstall/reinstall a mod.</p>
+  <p>In application, this lacks the full flexibility of Level 1 NPCs, but it has one major advantage: you can change the kits of every NPC in every playthrough *in-game,* without going back out to Weidu to uninstall/reinstall a mod.</p>
   <p>The way this works is, during installation you can change the *class* of various NPCs.  Some only have one alternate class, some have more than one, and some don't have any option to change.  This is based on the in-game lore; e.g. Xan is a spellcaster with a Moonblade; that could work as a mage, but also as a fighter/mage or a bard or a sorcerer.  Conversely, Jaheira is a druid, she talks all the time about being a druid, and so there is no option to make her anything other than a druid.</p>
   <p>Once you have decided which <i>class</i> to give each NPC, you have the option to give all of them (even those you didn't change, and including mod NPCs) a special innate ability that you can use in-game to add or change their <i>kit</i>.  This is a single-use ability, so choose wisely!  This ability will trigger a dialogue that gives you the option to adopt any kit for that class... this includes any and all mod kits that you may have installed.  Turn Mazzy into a Dwarven Defender!  Make Keldorn a Blackguard!  Make Minsc a fighter in the Weidu install, and then use this ability to make him a Barbarian!  (Barbarian is actually, technically, a fighter kit.)</p>
-  <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  You can't do that in the Weidu installer, you have to do it in-game.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
+  <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
+  <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
+  <p>New in v3.0, using the kit-change ability will wipe out the NPC's proficiencies and allow you to rebuild them, again through a dialogue.  Even more flexibility!  Yay!</p>
 </div>
 <h2>Installation</h2>
 <div class="section">
@@ -154,6 +156,14 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 3.1 - January 2018</strong></p>
+  <ul>
+    <li>fixed function to rebuild proficiencies</li>
+  </ul>
+  <p><strong>Version 3.0 - January 2018</strong></p>
+  <ul>
+    <li>added function to rebuild proficiencies</li>
+  </ul>
   <p><strong>Version 2.7 - May 2017</strong></p>
   <ul>
     <li>added class-change for Safana: fighter/thief</li>
