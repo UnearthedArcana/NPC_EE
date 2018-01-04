@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.1~
+VERSION ~v3.1.1~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -2914,6 +2914,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 END
 //__________________________________________________________________________________
 
+/*
 //INNATE ABILITIES FOR MULTICLASS PC________________________________________________
 //
 COPY ~npc_ee/pc/d5_gckt.spl~ ~override~
@@ -2950,6 +2951,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~clabth01.2da~ BEGIN
 	BUT_ONLY
 END
 //__________________________________________________________________________________
+*/
 
 CLEAR_ARRAYS
 
