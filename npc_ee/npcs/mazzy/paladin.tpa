@@ -7,11 +7,9 @@
 //__________________________________________________________________________________
 
 
-COPY_EXISTING ~MAZZY8.cre~ ~override~
-			~MAZZY9.cre~ ~override~
-			~MAZZY11.cre~ ~override~
-			~MAZZY12.cre~ ~override~
-			~MAZZY15.cre~ ~override~
+ACTION_FOR_EACH char IN ~mazzy8~ ~mazzy9~ ~mazzy11~ ~mazzy12~ ~mazzy15~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
+	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
@@ -30,7 +28,8 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 			SET_BG2_PROFICIENCY 101 1
 			SET_BG2_PROFICIENCY 105 2
 		BUT_ONLY
-
+	END
+END
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~mazzy.bcs~ BEGIN
