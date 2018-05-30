@@ -29,11 +29,7 @@ ACTION_FOR_EACH char IN ~mazzy8~ ~mazzy9~ ~mazzy11~ ~mazzy12~ ~mazzy15~ BEGIN
 			SET_BG2_PROFICIENCY 105 2
 		BUT_ONLY
 	END
-<<<<<<< HEAD
   END
-=======
-END
->>>>>>> FETCH_HEAD
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~mazzy.bcs~ BEGIN
