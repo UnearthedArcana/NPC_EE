@@ -1,0 +1,17 @@
+IF
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+		SetGlobal("D5MAKIT","GLOBAL",1)    // mage selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5makit",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		SetGlobal("D5MAKIT","GLOBAL",0)
+		SetNumTimesTalkedTo(0)
+		DestroySelf()               // reset all variables, then destroy self
+END

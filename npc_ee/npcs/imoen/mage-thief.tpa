@@ -7,14 +7,14 @@
 //__________________________________________________________________________________
 
 
-ACTION_FOR_EACH char IN ~%tutu_var%imoen1~ ~%tutu_var%imoen2~ ~%tutu_var%imoen4~ ~%tutu_var%%imoen6_var%~ ~%tutu_var%imoen6~ ~imoen10~ ~imoen15~ ~imoen211~ ~imoen213~ BEGIN
+ACTION_FOR_EACH char IN ~imoen1~ ~imoen2~ ~imoen4~ ~imoen6~ ~imoen6_~ ~imoen10~ ~imoen15~ ~imoen211~ ~imoen213~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 // sets level to 1
 		WRITE_BYTE 0x0235 1
 		WRITE_BYTE 0x0236 1
 		WRITE_BYTE 0x273 13 // sets class
-		WRITE_BYTE 0x272 3 // half-elf
+//		WRITE_BYTE 0x272 3 // half-elf
 		READ_BYTE 0x11 rdual 
 		WRITE_BYTE 0x11 (rdual BAND 0b11111110) // uncheck ranger dual-class flag
 		READ_BYTE 0x10 dual 

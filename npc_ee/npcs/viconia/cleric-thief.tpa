@@ -7,7 +7,7 @@
 //__________________________________________________________________________________
 
 
-ACTION_FOR_EACH char IN ~%tutu_var%viconi~ ~%tutu_var%viconi4~ ~%tutu_var%viconi6~ ~%tutu_var%%viconi6_var%~ ~viconi8~ ~viconi9~ ~viconi11~ ~viconi13~ ~viconi16~ BEGIN
+ACTION_FOR_EACH char IN ~viconi~ ~viconi4~ ~viconi6~ ~viconi6_~ ~viconi8~ ~viconi9~ ~viconi11~ ~viconi13~ ~viconi16~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 // sets level to 1

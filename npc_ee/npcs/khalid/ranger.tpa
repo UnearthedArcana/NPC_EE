@@ -7,7 +7,7 @@
 //__________________________________________________________________________________
 
 
-ACTION_FOR_EACH char IN ~%tutu_var%khalid~ ~%tutu_var%khalid2~ ~%tutu_var%khalid4~ ~%tutu_var%khalid6~ ~khalid7~ ~zikhalid~ ~zikhalid25~ BEGIN
+ACTION_FOR_EACH char IN ~khalid~ ~khalid2~ ~khalid4~ ~khalid6~ ~khalid7~ ~zikhalid~ ~zikhalid25~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1

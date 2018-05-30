@@ -24,6 +24,8 @@ ACTION_FOR_EACH char IN ~nalia8~ ~nalia10~ ~nalia11~ ~nalia13~ ~nalia15~ ~nalia1
 		WRITE_BYTE 0x006a 5
 		WRITE_SHORT 0x0024 9
 		WRITE_SHORT 0x0026 9
+        REMOVE_MEMORIZED_SPELLS
+        REMOVE_KNOWN_SPELLS
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ THEN BEGIN
 		COPY_EXISTING ~%char%.cre~ ~override~
 			LPF DELETE_EFFECT INT_VAR match_opcode = 233 END

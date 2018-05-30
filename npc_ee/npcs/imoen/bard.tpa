@@ -7,7 +7,7 @@
 //__________________________________________________________________________________
 
 
-ACTION_FOR_EACH char IN ~%tutu_var%IMOEN1~ ~%tutu_var%IMOEN2~ ~%tutu_var%IMOEN4~ ~%tutu_var%%IMOEN6_var%~ ~%tutu_var%IMOEN6~ ~IMOEN10~ ~IMOEN15~ ~IMOEN211~ ~IMOEN213~ BEGIN
+ACTION_FOR_EACH char IN ~imoen1~ ~imoen2~ ~imoen4~ ~imoen6~ ~imoen6_~ ~imoen10~ ~imoen15~ ~imoen211~ ~imoen213~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 //sets level to 1

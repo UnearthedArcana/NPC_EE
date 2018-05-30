@@ -7,7 +7,7 @@
 //__________________________________________________________________________________
 
 
-ACTION_FOR_EACH char IN ~%tutu_var%alora~ ~%tutu_var%alora6~ ~alora09~ ~alora25~ BEGIN
+ACTION_FOR_EACH char IN ~alora~ ~alora6~ ~alora09~ ~alora25~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~%char%.cre~ BEGIN
 	COPY_EXISTING ~%char%.cre~ ~override~
 		WRITE_BYTE 0x0234 1 // sets level to 1
