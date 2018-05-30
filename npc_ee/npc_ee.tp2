@@ -1,0 +1,1325 @@
+BACKUP ~npc_ee/backup~
+AUTHOR ~SubtleD~
+
+VERSION ~v3.3~
+//README ~npc_ee/readme-NPC_EE.html~
+
+ALWAYS
+
+  INCLUDE ~npc_ee/lib/joinable_npcs.tpa~
+
+  INCLUDE ~npc_ee/NPC_EE_settings.ini~
+
+// joinable NPC issues for tutu/bgt/eet:
+  ACTION_IF GAME_IS ~bgee bg2ee~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen6~
+    OUTER_SPRINT jaheir7_var ~jaheir7~
+    OUTER_SPRINT minsc7_var ~minsc7~
+    OUTER_SPRINT quayle_var ~quayle~
+    OUTER_SPRINT viconi6_var ~viconi6~
+    OUTER_SPRINT xan_var ~xan~
+    OUTER_SPRINT xzar_var ~xzar~
+  END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen6_~
+    OUTER_SPRINT jaheir7_var ~jaheir7_~
+    OUTER_SPRINT minsc7_var ~minsc7_~
+    OUTER_SPRINT quayle_var ~quayle_~
+    OUTER_SPRINT viconi6_var ~viconi6_~
+    OUTER_SPRINT xan_var ~xan_~
+    OUTER_SPRINT xzar_var ~xzar_~
+/*
+  END ELSE ACTION_IF GAME_IS ~bgt~ BEGIN
+    OUTER_SPRINT tutu_var ~~
+    OUTER_SPRINT imoen6_var ~imoen61~
+    OUTER_SPRINT quayle_var ~bgquayle~
+    OUTER_SPRINT viconi6_var ~viconi61~
+    OUTER_SPRINT xan_var ~bgxan~
+    OUTER_SPRINT xzar_var ~bgxzar~
+  END ELSE ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN
+    OUTER_SPRINT tutu_var ~_~
+    OUTER_SPRINT imoen6_var ~imoen6~
+    OUTER_SPRINT quayle_var ~quayle~
+    OUTER_SPRINT viconi6_var ~viconi6~
+    OUTER_SPRINT xan_var ~xan~
+    OUTER_SPRINT xzar_var ~xzar~
+*/
+  END
+END
+
+
+LANGUAGE
+  ~English~
+  ~english~
+  ~npc_ee/language/english/setup.tra~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							IMOEN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// mage/thief_______________________________________________________________________
+BEGIN @102
+DESIGNATED 102
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Imoen~
+GROUP @5
+SUBCOMPONENT @100 
+
+INCLUDE ~npc_ee/npcs/imoen/mage-thief.tpa~
+
+// bard_______________________________________________________________________
+BEGIN @104
+DESIGNATED 104
+GROUP @5
+SUBCOMPONENT @100 
+
+INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							JAHEIRA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// fighter__________________________________________________________________________
+BEGIN @121
+DESIGNATED 121
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Jaheira~
+GROUP @5
+SUBCOMPONENT @120
+
+INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							KHALID
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// cleric/ranger____________________________________________________________________
+BEGIN @141
+DESIGNATED 141
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
+GROUP @5
+SUBCOMPONENT @140
+
+INCLUDE ~npc_ee/npcs/khalid/cleric-ranger.tpa~
+
+
+// ranger___________________________________________________________________________
+BEGIN @143
+DESIGNATED 143
+GROUP @5
+SUBCOMPONENT @140
+
+INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							MINSC
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// fighter__________________________________________________________________________
+BEGIN @161
+DESIGNATED 161
+REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Minsc~
+GROUP @5
+SUBCOMPONENT @160
+
+INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							DYNAHEIR
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// sorcerer_________________________________________________________________________
+BEGIN @181
+DESIGNATED 181
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Dynaheir~
+GROUP @5
+SUBCOMPONENT @180 
+
+INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							KIVAN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							CORAN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// thief____________________________________________________________________________
+BEGIN @221
+DESIGNATED 221
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#coran.cre~) ~Coran~
+GROUP @5
+SUBCOMPONENT @220
+
+INCLUDE ~npc_ee/npcs/coran/thief.tpa~
+
+
+// ranger___________________________________________________________________________
+BEGIN @222
+DESIGNATED 222
+GROUP @5
+SUBCOMPONENT @220
+
+INCLUDE ~npc_ee/npcs/coran/ranger.tpa~
+
+
+// bard_____________________________________________________________________________
+BEGIN @223
+DESIGNATED 223
+GROUP @5
+SUBCOMPONENT @220
+
+INCLUDE ~npc_ee/npcs/coran/bard.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							BRANWEN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// fighter/cleric___________________________________________________________________
+BEGIN @242
+DESIGNATED 242
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
+GROUP @5
+SUBCOMPONENT @240
+
+INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							SAFANA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// fighter/thief___________________________________________________________________
+BEGIN @261
+DESIGNATED 261
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Safana~
+GROUP @5
+SUBCOMPONENT @260
+
+INCLUDE ~npc_ee/npcs/safana/fighter-thief.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							XZAR
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// necromancer/cleric_______________________________________________________________
+BEGIN @302
+DESIGNATED 302
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) ~Xzar~
+GROUP @5
+SUBCOMPONENT @300
+
+INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							MONTARON
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// sc thief_________________________________________________________________________
+BEGIN @321
+DESIGNATED 321
+REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Montaron~
+GROUP @5
+SUBCOMPONENT @320
+
+INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							ALORA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// cleric/thief_____________________________________________________________________
+BEGIN @464
+DESIGNATED 464
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
+GROUP @5
+SUBCOMPONENT @460
+
+INCLUDE ~npc_ee/npcs/alora/cleric-thief.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							XAN
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// bard_____________________________________________________________________________
+BEGIN @482
+DESIGNATED 482
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~xan4.cre~) OR (FILE_EXISTS_IN_GAME ~o#xan09.cre~) ~Xan~
+GROUP @5
+SUBCOMPONENT @480
+
+INCLUDE ~npc_ee/npcs/xan/bard.tpa~
+
+
+// fighter/mage_____________________________________________________________________
+BEGIN @483
+DESIGNATED 483
+GROUP @5
+SUBCOMPONENT @480 
+
+INCLUDE ~npc_ee/npcs/xan/fighter-mage.tpa~
+
+// sorcerer_________________________________________________________________________
+BEGIN @484
+DESIGNATED 484
+GROUP @5
+SUBCOMPONENT @480 
+
+INCLUDE ~npc_ee/npcs/xan/sorcerer.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							VICONIA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// cleric/thief_____________________________________________________________________
+BEGIN @583
+DESIGNATED 583
+REQUIRE_PREDICATE NOT GAME_IS ~iwdee~ ~Viconia~
+GROUP @5
+SUBCOMPONENT @580 
+
+INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							NEERA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// sorcerer_________________________________________________________________________
+BEGIN @621
+DESIGNATED 621
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Neera~
+GROUP @5
+SUBCOMPONENT @620
+
+INCLUDE ~npc_ee/npcs/neera/sorcerer.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							YOSHIMO
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+BEGIN @682
+DESIGNATED 682
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Yoshimo~
+GROUP @5
+SUBCOMPONENT @680
+
+INCLUDE ~npc_ee/npcs/yoshimo/fighter-thief.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							VALYGAR
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// fighter/thief____________________________________________________________________
+BEGIN @702
+DESIGNATED 702
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Valygar~
+GROUP @5
+SUBCOMPONENT @700
+
+INCLUDE ~npc_ee/npcs/valygar/fighter-thief.tpa~
+
+
+// fighter__________________________________________________________________________
+BEGIN @704
+DESIGNATED 704
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Valygar~
+GROUP @5
+SUBCOMPONENT @700
+
+INCLUDE ~npc_ee/npcs/valygar/fighter.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							NALIA
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// thief____________________________________________________________________________
+BEGIN @721
+DESIGNATED 721
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
+
+
+// bard_____________________________________________________________________________
+BEGIN @722
+DESIGNATED 722
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/bard.tpa~
+
+
+// thief____________________________________________________________________________
+BEGIN @721
+DESIGNATED 721
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
+
+
+// cleric/mage______________________________________________________________________
+BEGIN @723
+DESIGNATED 723
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/cleric-mage.tpa~
+
+
+// sorcerer_________________________________________________________________________
+BEGIN @724
+DESIGNATED 724
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/sorcerer.tpa~
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//							MAZZY
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// fighter/cleric___________________________________________________________________
+BEGIN @761
+DESIGNATED 761
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Mazzy~
+GROUP @5
+SUBCOMPONENT @760
+
+INCLUDE ~npc_ee/npcs/mazzy/fighter-cleric.tpa~
+
+
+// paladin__________________________________________________________________________
+BEGIN @762
+DESIGNATED 762
+GROUP @5
+SUBCOMPONENT @760
+
+INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
+
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//					INNATE ABILITIES FOR SINGLE-CLASS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+BEGIN @2000
+DESIGNATED 2000
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
+//GROUP @6
+
+OUTER_SPRINT adopt_kit @2011
+OUTER_SPRINT different_kit @2012
+
+
+//find all kits for each class, build dialogue pieces________________________________
+//
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS ~10~ "rows"
+	FOR ( index = 1 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 9 10 kit_code
+		READ_2DA_ENTRY %index% 3 10 kit_name
+		READ_2DA_ENTRY %index% 4 10 kit_desc
+		READ_2DA_ENTRY %index% 8 10 kit_class
+		DEFINE_ASSOCIATIVE_ARRAY d5_kits BEGIN "%kit_code%" , "%kit_name%" , "%kit_desc%" => "%kit_class%" END
+	END
+BUT_ONLY
+
+OUTER_SET block_num = 0
+
+ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
+	OUTER_SET block_num = (%block_num% + 1)
+	OUTER_PATCH foo BEGIN
+		LOOKUP_IDS_SYMBOL_OF_INT ids_name ~kit~ %zoo%
+	END
+	ACTION_IF (%zu% = 2) BEGIN
+		OUTER_TEXT_SPRINT class ~fi~
+	END
+	ACTION_IF (%zu% = 6) BEGIN
+		OUTER_TEXT_SPRINT class ~pa~
+	END
+	ACTION_IF (%zu% = 12) BEGIN
+		OUTER_TEXT_SPRINT class ~ra~
+	END
+	ACTION_IF (%zu% = 4) BEGIN
+		OUTER_TEXT_SPRINT class ~th~
+	END
+	ACTION_IF (%zu% = 5) BEGIN
+		OUTER_TEXT_SPRINT class ~ba~
+	END
+	ACTION_IF (%zu% = 3) BEGIN
+		OUTER_TEXT_SPRINT class ~cl~
+	END
+	ACTION_IF (%zu% = 11) BEGIN
+		OUTER_TEXT_SPRINT class ~dr~
+	END
+	ACTION_IF (%zu% = 1) BEGIN
+		OUTER_TEXT_SPRINT class ~ma~
+	END
+	ACTION_IF (%zu% = 19) BEGIN
+		OUTER_TEXT_SPRINT class ~so~
+	END
+	ACTION_IF (%zu% = 20) BEGIN
+		OUTER_TEXT_SPRINT class ~mo~
+	END
+	ACTION_IF (%zu% = 21) BEGIN
+		OUTER_TEXT_SPRINT class ~sh~
+	END
+	ACTION_IF (%zu% = 7) OR (%zu% = 8) OR (%zu% = 9) OR (%zu% = 13) OR (%zu% = 14) OR (%zu% = 15) OR (%zu% = 16) OR (%zu% = 18) BEGIN
+		OUTER_TEXT_SPRINT class ~dummy~
+	END
+	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
+	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
+END
+//__________________________________________________________________________________
+
+
+//patch together complete dialogues_________________________________________________
+//
+COPY ~npc_ee/class/fi/d5fikit.d~ ~npc_ee/d5fikit.d~
+	APPEND_FILE ~npc_ee/class/fi/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fi/d5dfile2.txt~
+
+COPY ~npc_ee/class/pa/d5pakit.d~ ~npc_ee/d5pakit.d~
+	APPEND_FILE ~npc_ee/class/pa/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/pa/d5dfile2.txt~
+
+COPY ~npc_ee/class/ra/d5rakit.d~ ~npc_ee/d5rakit.d~
+	APPEND_FILE ~npc_ee/class/ra/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ra/d5dfile2.txt~
+
+COPY ~npc_ee/class/th/d5thkit.d~ ~npc_ee/d5thkit.d~
+	APPEND_FILE ~npc_ee/class/th/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/th/d5dfile2.txt~
+
+COPY ~npc_ee/class/ba/d5bakit.d~ ~npc_ee/d5bakit.d~
+	APPEND_FILE ~npc_ee/class/ba/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ba/d5dfile2.txt~
+
+COPY ~npc_ee/class/cl/d5clkit.d~ ~npc_ee/d5clkit.d~
+	APPEND_FILE ~npc_ee/class/cl/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/cl/d5dfile2.txt~
+
+COPY ~npc_ee/class/dr/d5drkit.d~ ~npc_ee/d5drkit.d~
+	APPEND_FILE ~npc_ee/class/dr/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/dr/d5dfile2.txt~
+
+COPY ~npc_ee/class/sh/d5shkit.d~ ~npc_ee/d5shkit.d~
+	APPEND_FILE ~npc_ee/class/sh/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/sh/d5dfile2.txt~
+
+COPY ~npc_ee/class/mo/d5mokit.d~ ~npc_ee/d5mokit.d~
+	APPEND_FILE ~npc_ee/class/mo/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/mo/d5dfile2.txt~
+
+COPY ~npc_ee/class/ma/d5makit.d~ ~npc_ee/d5makit.d~
+	APPEND_FILE ~npc_ee/class/ma/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ma/d5dfile2.txt~
+
+COPY ~npc_ee/class/so/d5sokit.d~ ~npc_ee/d5sokit.d~
+	APPEND_FILE ~npc_ee/class/so/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/so/d5dfile2.txt~
+//__________________________________________________________________________________
+
+
+//DIALOGUE-BASED PROFICIENCIES______________________________________________________
+//
+ACTION_IF (d5_change_proficiencies = 1) BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
+	INCLUDE ~npc_ee/lib/weapprof_dialogue.tpa~
+// 	LAM SET_UP_PROF_DIALOGUES
+  END
+END
+//__________________________________________________________________________________
+
+
+//copy innate abilities and invisicres into game____________________________________
+//
+COPY ~npc_ee/spl/d5_sckt.spl~ ~override~
+  SAY NAME1 @11
+  SAY UNIDENTIFIED_DESC @11
+  PATCH_IF (d5_change_proficiencies = 1) BEGIN
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppa~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppb~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppc~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppd~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsa~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsb~ END
+	PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
+	  PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
+	  END
+	END
+  END
+COPY ~npc_ee/cre/d5_sckit.cre~ ~override~
+//__________________________________________________________________________________
+
+
+//add innate abilities to single-class NPCs_________________________________________
+//
+LAM JOINABLE_NPC_ARRAYS
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+//  PRINT ~%cre% => %dv%~ 
+  COPY_EXISTING ~%cre%~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+		READ_BYTE 0x273 npc_class
+		PATCH_IF (npc_class = 2) BEGIN // fighter
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 6) BEGIN // paladin
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 12) BEGIN // ranger
+//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+//			END
+		END
+		PATCH_IF (npc_class = 4) BEGIN // thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 5) BEGIN // bard
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 3) BEGIN // cleric
+//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+//			END
+		END
+		PATCH_IF (npc_class = 11) BEGIN // druid
+//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+//			END
+		END
+//		PATCH_IF (npc_class = 21) BEGIN // shaman
+//			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+//		END
+		PATCH_IF (npc_class = 20) BEGIN // monk
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 1) BEGIN // mage
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+		PATCH_IF (npc_class = 19) BEGIN // sorcerer
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_sckt~ END
+		END
+	END
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+
+//compile the scripts and dialogues_________________________________________________
+//
+COMPILE ~npc_ee/d5fikit.d~
+COMPILE ~npc_ee/d5pakit.d~
+COMPILE ~npc_ee/d5rakit.d~
+COMPILE ~npc_ee/d5thkit.d~
+COMPILE ~npc_ee/d5bakit.d~
+COMPILE ~npc_ee/d5clkit.d~
+COMPILE ~npc_ee/d5drkit.d~
+COMPILE ~npc_ee/d5shkit.d~
+COMPILE ~npc_ee/d5mokit.d~
+COMPILE ~npc_ee/d5makit.d~
+COMPILE ~npc_ee/d5sokit.d~
+
+COMPILE ~npc_ee/d5_sckit.baf~
+//__________________________________________________________________________________
+
+
+//add proficiency dialogues to clab tables__________________________________________
+//
+ACTION_IF (d5_change_proficiencies = 1) BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
+	ACTION_FOR_EACH warrior_clab IN ~clabfi01~ ~clabpa01~ ~clabra01~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%warrior_clab%.2da~ BEGIN
+		APPEND ~%warrior_clab%.2da~ ~PROFS       AP_D5PROF1  ****        AP_D5PROF5  ****        ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	END
+ 	ACTION_IF FILE_EXISTS_IN_GAME ~clabra01.2da~ BEGIN
+	  APPEND ~clabra01.2da~ ~PROFS       AP_D52STWF  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+ 	END
+ 	ACTION_FOR_EACH rogue_clab IN ~clabth01~ ~clabba01~ ~clabmo01~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%rogue_clab%.2da~ BEGIN
+		APPEND ~%rogue_clab%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+ 	END
+ 	ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
+	  APPEND ~clabpr01.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+ 	END
+ 	ACTION_FOR_EACH druid_clab IN ~clabdr01~ ~clabsh01~ ~clabshgs~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%druid_clab%.2da~ BEGIN
+		APPEND ~%druid_clab%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+ 	END
+ 	ACTION_FOR_EACH mageclab IN ~clabma01~ ~clabma02~ ~clabma03~ ~clabma04~ ~clabma05~ ~clabma06~ ~clabma07~ ~clabma08~ ~clabma09~ BEGIN
+	  ACTION_IF NOT FILE_EXISTS_IN_GAME ~%mageclab%.2da~ BEGIN
+	    COPY ~npc_ee/files/%mageclab%.2da~ ~override~
+	  END 
+ 	END
+ 	APPEND ~clabma01.2da~ ~PROFS       AP_D5PROF1  ****        ****        ****        ****        AP_D5PROF2  ****        ****        ****        ****        ****        AP_D5PROF3  ****        ****        ****        ****        ****        AP_D5PROF4  ****        ****        ****        ****        ****        AP_D5PROF5  ****        ****        ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+
+ 	COPY_EXISTING ~kitlist.2da~ ~override~
+	  COUNT_2DA_ROWS ~9~ "rows"
+	  FOR ( index = 2 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 5 9 modclab
+		READ_2DA_ENTRY %index% 8 9 modclass
+		DEFINE_ASSOCIATIVE_ARRAY d5_feat_array BEGIN "%modclab%" => "%modclass%" END
+	  END
+ 	BUT_ONLY
+ 	ACTION_PHP_EACH d5_feat_array AS fa => la BEGIN
+	  ACTION_IF (%la% = 2) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	fighter
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        AP_D5PROF5  ****        ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 6) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	paladin
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        AP_D5PROF5  ****        ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 12) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	ranger
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        AP_D5PROF5  ****        ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D52STWF  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 4) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	thief
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 5) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	bard
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 20) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	monk
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 3) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	cleric
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 11) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	druid
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 21) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	shaman
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        AP_D5PROF3  ****        ****        ****        AP_D5PROF4  ****        ****        ****        AP_D5PROF5  ****        ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 1) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	mage
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        ****        ****        AP_D5PROF2  ****        ****        ****        ****        ****        AP_D5PROF3  ****        ****        ****        ****        ****        AP_D5PROF4  ****        ****        ****        ****        ****        AP_D5PROF5  ****        ****        ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+	  END
+	  ACTION_IF (%la% = 19) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	sorcerer
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PROF1  ****        ****        ****        ****        AP_D5PROF2  ****        ****        ****        ****        ****        AP_D5PROF3  ****        ****        ****        ****        ****        AP_D5PROF4  ****        ****        ****        ****        ****        AP_D5PROF5  ****        ****        ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        **** ~
+	  END
+ 	END
+  END
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
+	ACTION_FOR_EACH old_prof_spell IN ~d5wepp1~
+								~d5wepp1~
+								~d5wepp2~
+								~d5wepp3~
+								~d5wepp4~
+								~d5weps2~
+								~d5wepx1~
+								~d5wepx2~
+								~d5wepx3~
+								~d5wepx4~
+								~d5wepx5~ 	BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%old_prof_spell%.spl~ BEGIN
+		COPY_EXISTING ~%old_prof_spell%.spl~ ~override~
+		  LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = EVAL ~%old_prof_spell%~ END
+	  END
+	END
+/*
+	COPY ~npc_ee/files/d5profwx.spl~ ~override~
+//	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5profwx~ END
+	COPY ~npc_ee/files/d5profrx.spl~ ~override~
+//	  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 206 STR_VAR resource = ~d5profrx~ END
+*/
+/*
+	COPY ~npc_ee/files/d5profx.baf~ ~npc_ee/files/d5profy.baf~
+	  REPLACE_TEXTUALLY ~Global("D5_PROFX","GLOBAL",~ ~Global("D5_PROFY","GLOBAL",~
+	  REPLACE_TEXTUALLY ~StartDialogOverride("d5profx",Myself)~ ~StartDialogOverride("d5profy",Myself)~
+*/
+	ACTION_FOR_EACH warrior_clab IN ~clabfi01~ ~clabpa01~ ~clabra01~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%warrior_clab%.2da~ BEGIN
+		APPEND ~%warrior_clab%.2da~ ~PROFS       AP_D5PR0F1  ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        AP_D5PROF15 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F5  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFWX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~clabra01.2da~ BEGIN
+	  APPEND ~clabra01.2da~ ~PROFS       AP_D52STWF  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	END
+	ACTION_FOR_EACH rogue_clab IN ~clabth01~ ~clabba01~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%rogue_clab%.2da~ BEGIN
+		APPEND ~%rogue_clab%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        AP_D5PROF11 ****        ****        ****        AP_D5PROF12 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFRX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~clabmo01.2da~ BEGIN
+	  APPEND ~clabmo01.2da~ ~PROFS       AP_D5PR0F1  ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        AP_D5PROF11 ****        ****        ****        AP_D5PROF12 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
+	  APPEND ~clabpr01.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        AP_D5PROF7  ****        ****        ****        ****        AP_D5PROF8  ****        ****        ****        ****        AP_D5PROF9  ****        ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        AP_D5PROF11 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROF4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	END
+	ACTION_IF FILE_EXISTS_IN_GAME ~clabdr01.2da~ BEGIN
+	  APPEND ~clabdr01.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        AP_D5PROF7  ****        ****        ****        ****        AP_D5PROF8  ****        ****        ****        ****        AP_D5PROF9  ****        ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        AP_D5PROF11 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	END
+	ACTION_FOR_EACH shaman_clab IN ~clabsh01~ ~clabshgs~ BEGIN
+	  ACTION_IF FILE_EXISTS_IN_GAME ~%shaman_clab%.2da~ BEGIN
+		APPEND ~%shaman_clab%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        AP_D5PROF7  ****        ****        ****        ****        AP_D5PROF8  ****        ****        ****        ****        AP_D5PROF9  ****        ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        AP_D5PROF11 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	END
+	ACTION_FOR_EACH mageclab IN ~clabma01~ ~clabma02~ ~clabma03~ ~clabma04~ ~clabma05~ ~clabma06~ ~clabma07~ ~clabma08~ ~clabma09~ BEGIN
+	  ACTION_IF NOT FILE_EXISTS_IN_GAME ~%mageclab%.2da~ BEGIN
+		COPY ~npc_ee/files/%mageclab%.2da~ ~override~
+	  END 
+	END
+	APPEND ~clabma01.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+
+	COPY_EXISTING ~kitlist.2da~ ~override~
+	  COUNT_2DA_ROWS ~9~ "rows"
+	  FOR ( index = 2 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 5 9 modclab
+		READ_2DA_ENTRY %index% 8 9 modclass
+		DEFINE_ASSOCIATIVE_ARRAY d5_feat_array BEGIN "%modclab%" => "%modclass%" END
+	  END
+	BUT_ONLY
+	ACTION_PHP_EACH d5_feat_array AS fa => la BEGIN
+	  ACTION_IF (%la% = 2) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	fighter
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        AP_D5PROF15 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F5  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFWX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 6) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	paladin
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        AP_D5PROF15 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F5  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFWX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 12) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	ranger
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        AP_D5PROF15 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F5  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D52STWF  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFWX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 4) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	thief
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        AP_D5PROF11 ****        ****        ****        AP_D5PROF12 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFRX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 5) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	bard
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        AP_D5PROF11 ****        ****        ****        AP_D5PROF12 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PROFRX ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 20) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	monk
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        AP_D5PROF6  ****        ****        ****        AP_D5PROF7  ****        ****        ****        AP_D5PROF8  ****        ****        ****        AP_D5PROF9  ****        ****        ****        AP_D5PROF10 ****        ****        ****        AP_D5PROF11 ****        ****        ****        AP_D5PROF12 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 3) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	cleric
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        AP_D5PROF7  ****        ****        ****        ****        AP_D5PROF8  ****        ****        ****        ****        AP_D5PROF9  ****        ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        AP_D5PROF11 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 11) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	druid
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        AP_D5PROF7  ****        ****        ****        ****        AP_D5PROF8  ****        ****        ****        ****        AP_D5PROF9  ****        ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        AP_D5PROF11 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F4  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 21) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	shaman
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        AP_D5PROF6  ****        ****        ****        ****        AP_D5PROF7  ****        ****        ****        ****        AP_D5PROF8  ****        ****        ****        ****        AP_D5PROF9  ****        ****        ****        ****        AP_D5PROF10 ****        ****        ****        ****        AP_D5PROF11 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 1) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	mage
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	  ACTION_IF (%la% = 19) AND (FILE_EXISTS_IN_GAME ~%fa%.2da~) BEGIN	//	sorcerer
+		APPEND ~%fa%.2da~ ~PROFS       AP_D5PR0F1  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
+PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
+	  END
+	END
+  END
+END
+//__________________________________________________________________________________
+
+
+//make .CRE proficiencies removable_________________________________________________
+//
+ACTION_IF (d5_change_proficiencies = 1) BEGIN
+
+  LAM JOINABLE_NPC_ARRAYS
+
+  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+// 	PRINT ~%cre% => %dv%~ 
+	COPY_EXISTING ~%cre%~ ~override~
+	  LPF FJ_CRE_EFF_V2 END
+	BUT_ONLY
+  END
+
+  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+	COPY_EXISTING ~%cre%~ ~override~
+	  READ_LONG 0x2c4 eff_offset
+	  READ_LONG 0x2c8 eff_number
+	  WHILE (%eff_number% > 0) BEGIN
+		SET eff_number = (%eff_number% - 1)
+		READ_LONG (%eff_offset% + 0x08 + (0x108 * %eff_number%)) effect
+		PATCH_IF effect = 233 BEGIN
+		  WRITE_LONG (%eff_offset% + 0x88 + (0x108 * %eff_number%)) 1
+		  WRITE_ASCII (%eff_offset% + 0x8c + (0x108 * %eff_number%)) ~D5PROFZ~ #8
+		END
+	  END
+	BUT_ONLY
+  END
+END
+//__________________________________________________________________________________
+
+CLEAR_ARRAYS
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//						INNATE ABILITIES FOR MULTICLASS
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+BEGIN @3000
+DESIGNATED 3000
+REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
+//GROUP @6
+
+
+//prep multiclass working folders___________________________________________________
+//
+COPY ~npc_ee/class/ma/d5dfile1.txt~ ~npc_ee/class/fm/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
+COPY ~npc_ee/class/ma/d5dfile2.txt~ ~npc_ee/class/fm/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
+
+COPY ~npc_ee/class/dr/d5dfile1.txt~ ~npc_ee/class/fd/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
+COPY ~npc_ee/class/dr/d5dfile2.txt~ ~npc_ee/class/fd/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
+
+COPY ~npc_ee/class/th/d5dfile1.txt~ ~npc_ee/class/ft/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
+COPY ~npc_ee/class/th/d5dfile2.txt~ ~npc_ee/class/ft/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
+
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/fc/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/fc/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
+
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/cm/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/cm/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
+
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/ct/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/ct/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
+
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/cr/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/cr/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
+
+COPY ~npc_ee/class/ma/d5dfile1.txt~ ~npc_ee/class/mt/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
+COPY ~npc_ee/class/ma/d5dfile2.txt~ ~npc_ee/class/mt/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
+//__________________________________________________________________________________
+
+
+//find multiclass kits, build dialogue pieces_______________________________________
+//
+OUTER_SPRINT adopt_kit @2011
+OUTER_SPRINT different_kit @2012
+
+COPY_EXISTING ~kitlist.2da~ ~override~
+	COUNT_2DA_ROWS ~10~ "rows"
+	FOR ( index = 1 ; index < rows ; index = index + 1 ) BEGIN
+		READ_2DA_ENTRY %index% 9 10 kit_code
+		READ_2DA_ENTRY %index% 3 10 kit_name
+		READ_2DA_ENTRY %index% 4 10 kit_desc
+		READ_2DA_ENTRY %index% 8 10 kit_class
+		DEFINE_ASSOCIATIVE_ARRAY d5_kits BEGIN "%kit_code%" , "%kit_name%" , "%kit_desc%" => "%kit_class%" END
+	END
+BUT_ONLY
+
+OUTER_SET block_num = 0
+
+ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
+	OUTER_SET block_num = (%block_num% + 1)
+	OUTER_PATCH foo BEGIN
+		LOOKUP_IDS_SYMBOL_OF_INT ids_name ~kit~ %zoo%
+	END
+	ACTION_IF (%zu% = 7) BEGIN
+		OUTER_TEXT_SPRINT class ~fm~
+	END
+	ACTION_IF (%zu% = 8) BEGIN
+		OUTER_TEXT_SPRINT class ~fc~
+	END
+	ACTION_IF (%zu% = 9) BEGIN
+		OUTER_TEXT_SPRINT class ~ft~
+	END
+	ACTION_IF (%zu% = 13) BEGIN
+		OUTER_TEXT_SPRINT class ~mt~
+	END
+	ACTION_IF (%zu% = 14) BEGIN
+		OUTER_TEXT_SPRINT class ~cm~
+	END
+	ACTION_IF (%zu% = 15) BEGIN
+		OUTER_TEXT_SPRINT class ~ct~
+	END
+	ACTION_IF (%zu% = 16) BEGIN
+		OUTER_TEXT_SPRINT class ~fd~
+	END
+	ACTION_IF (%zu% = 18) BEGIN
+		OUTER_TEXT_SPRINT class ~cr~
+	END
+	ACTION_IF (%zu% = 1) OR (%zu% = 2) OR (%zu% = 3) OR (%zu% = 4) OR (%zu% = 5) OR (%zu% = 6) OR (%zu% = 11) OR (%zu% = 12) OR (%zu% = 19) OR (%zu% = 20) OR (%zu% = 21) BEGIN
+		OUTER_TEXT_SPRINT class ~dummy~
+	END
+	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
+	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
+END
+//__________________________________________________________________________________
+
+//patch together multiclass dialogues_______________________________________________
+//
+COPY ~npc_ee/class/fc/d5fckit.d~ ~npc_ee/d5fckit.d~
+	APPEND_FILE ~npc_ee/class/fc/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fc/d5dfile2.txt~
+
+COPY ~npc_ee/class/fd/d5fdkit.d~ ~npc_ee/d5fdkit.d~
+	APPEND_FILE ~npc_ee/class/fd/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fd/d5dfile2.txt~
+
+COPY ~npc_ee/class/fm/d5fmkit.d~ ~npc_ee/d5fmkit.d~
+	APPEND_FILE ~npc_ee/class/fm/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fm/d5dfile2.txt~
+
+COPY ~npc_ee/class/ft/d5ftkit.d~ ~npc_ee/d5ftkit.d~
+	APPEND_FILE ~npc_ee/class/ft/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ft/d5dfile2.txt~
+
+COPY ~npc_ee/class/cm/d5cmkit.d~ ~npc_ee/d5cmkit.d~
+	APPEND_FILE ~npc_ee/class/cm/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/cm/d5dfile2.txt~
+
+COPY ~npc_ee/class/cr/d5crkit.d~ ~npc_ee/d5crkit.d~
+	APPEND_FILE ~npc_ee/class/cr/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/cr/d5dfile2.txt~
+
+COPY ~npc_ee/class/ct/d5ctkit.d~ ~npc_ee/d5ctkit.d~
+	APPEND_FILE ~npc_ee/class/ct/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ct/d5dfile2.txt~
+
+COPY ~npc_ee/class/mt/d5mtkit.d~ ~npc_ee/d5mtkit.d~
+	APPEND_FILE ~npc_ee/class/mt/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/mt/d5dfile2.txt~
+//__________________________________________________________________________________
+
+//copy multiclass abilities and invisicres into game________________________________
+//
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols // amount of columns
+	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
+	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_PROFS_STATE~ BEGIN
+		READ_2DA_ENTRY_FORMER rows row 2 new_profs_state // read column value
+	    SET profs_state = %row%
+	  END
+	END
+BUT_ONLY
+COPY ~npc_ee/spl/d5_mckt.spl~ ~override~
+  SAY NAME1 @11
+  SAY UNIDENTIFIED_DESC @11
+  PATCH_IF (d5_change_proficiencies = 1) BEGIN
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppa~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppb~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppc~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppd~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsa~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsb~ END
+	PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
+	  PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
+	  END
+	END
+  END
+COPY ~npc_ee/cre/d5_mckit.cre~ ~override~
+//__________________________________________________________________________________
+
+//compile mc scripts and dialogues__________________________________________________
+//
+COMPILE ~npc_ee/d5fckit.d~
+COMPILE ~npc_ee/d5fdkit.d~
+COMPILE ~npc_ee/d5fmkit.d~
+COMPILE ~npc_ee/d5ftkit.d~
+COMPILE ~npc_ee/d5cmkit.d~
+COMPILE ~npc_ee/d5crkit.d~
+COMPILE ~npc_ee/d5ctkit.d~
+COMPILE ~npc_ee/d5mtkit.d~
+
+COMPILE ~npc_ee/d5_mckit.baf~
+//__________________________________________________________________________________
+
+//add innate abilities to multiclass NPCs___________________________________________
+//
+LAM JOINABLE_NPC_ARRAYS
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+//  PRINT ~%cre% => %dv%~ 
+  COPY_EXISTING ~%cre%~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+		READ_BYTE 0x273 npc_class
+		PATCH_IF (%npc_class% = 7) BEGIN // fighter/mage
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 8) BEGIN // fighter/cleric
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 14) BEGIN // cleric/mage
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 15) BEGIN // cleric/thief
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+		PATCH_IF (%npc_class% = 16) BEGIN // fighter/druid
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+//		PATCH_IF (%npc_class% = 17) BEGIN // fighter/mage/cleric
+//			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+//		END
+		PATCH_IF (%npc_class% = 18) BEGIN // cleric/ranger
+			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+		END
+	END
+  BUT_ONLY
+END
+//__________________________________________________________________________________
+
+/*
+//INNATE ABILITIES FOR MULTICLASS PC________________________________________________
+//
+COPY ~npc_ee/pc/d5_gckt.spl~ ~override~
+COPY ~npc_ee/pc/d5_gfkt.spl~ ~override~
+COPY ~npc_ee/pc/d5_gtkt.spl~ ~override~
+COPY ~npc_ee/pc/d5_clkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_cmkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_crkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_ctkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fikt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fckt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fdkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_fmkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_ftkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_rakt.eff~ ~override~
+COPY ~npc_ee/pc/d5_thkt.eff~ ~override~
+COPY ~npc_ee/pc/d5_mtkt.eff~ ~override~
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
+	COPY_EXISTING ~clabpr01.2da~ ~override~
+		APPEND_FILE ~npc_ee/pc/cleric_kit_choice.txt~
+	BUT_ONLY
+  END
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabfi01.2da~ BEGIN
+	COPY_EXISTING ~clabfi01.2da~ ~override~
+		APPEND_FILE ~npc_ee/pc/fighter_kit_choice.txt~
+	BUT_ONLY
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~clabth01.2da~ BEGIN
+	COPY_EXISTING ~clabth01.2da~ ~override~
+		APPEND_FILE ~npc_ee/pc/thief_kit_choice.txt~
+	BUT_ONLY
+END
+//__________________________________________________________________________________
+*/
+
+CLEAR_ARRAYS
+
+
