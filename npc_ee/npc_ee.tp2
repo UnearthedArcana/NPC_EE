@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.4~
+VERSION ~v3.5~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -89,7 +89,7 @@ INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
 //__________________________________________________________________________________
 
 
-// fighter__________________________________________________________________________
+// druid____________________________________________________________________________
 BEGIN @121
 DESIGNATED 121
 REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Jaheira~
@@ -97,6 +97,18 @@ GROUP @5
 SUBCOMPONENT @120
 
 INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
+
+
+/*
+// druid/ranger____________________________________________________________________
+BEGIN @143
+DESIGNATED 143
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) && (FILE_EXISTS_IN_GAME ~d5drra.2da~) ~Jaheira~
+GROUP @5
+SUBCOMPONENT @120
+
+INCLUDE ~npc_ee/npcs/jaheira/druid-ranger.tpa~
+*/
 
 
 //__________________________________________________________________________________
@@ -110,7 +122,7 @@ INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
 // cleric/ranger____________________________________________________________________
 BEGIN @141
 DESIGNATED 141
-REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre.2da~) ~Khalid~
+REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre~) ~Khalid~
 GROUP @5
 SUBCOMPONENT @140
 
@@ -124,6 +136,18 @@ GROUP @5
 SUBCOMPONENT @140
 
 INCLUDE ~npc_ee/npcs/khalid/ranger.tpa~
+
+
+/*
+// ranger/sorcerer__________________________________________________________________
+BEGIN @145
+DESIGNATED 145
+REQUIRE_PREDICATE ((GAME_IS ~bgt bgee eet~) && (FILE_EXISTS_IN_GAME ~d5rsorc.2da~)) OR (FILE_EXISTS_IN_GAME ~zikhalid.cre~) && (FILE_EXISTS_IN_GAME ~d5rsorc.2da~)) ~Khalid~
+GROUP @5
+SUBCOMPONENT @140
+
+INCLUDE ~npc_ee/npcs/khalid/ranger-sorcerer.tpa~
+*/
 
 
 //__________________________________________________________________________________
@@ -432,16 +456,6 @@ SUBCOMPONENT @720
 INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
 
 
-// bard_____________________________________________________________________________
-BEGIN @722
-DESIGNATED 722
-REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
-GROUP @5
-SUBCOMPONENT @720 
-
-INCLUDE ~npc_ee/npcs/nalia/bard.tpa~
-
-
 // thief____________________________________________________________________________
 BEGIN @721
 DESIGNATED 721
@@ -450,6 +464,16 @@ GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
+
+
+// bard_____________________________________________________________________________
+BEGIN @722
+DESIGNATED 722
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/bard.tpa~
 
 
 // cleric/mage______________________________________________________________________
@@ -468,6 +492,17 @@ GROUP @5
 SUBCOMPONENT @720 
 
 INCLUDE ~npc_ee/npcs/nalia/sorcerer.tpa~
+
+
+// cleric/thief_____________________________________________________________________
+BEGIN @725
+DESIGNATED 725
+GROUP @5
+SUBCOMPONENT @720 
+
+INCLUDE ~npc_ee/npcs/nalia/cleric-thief.tpa~
+
+
 
 
 //__________________________________________________________________________________
