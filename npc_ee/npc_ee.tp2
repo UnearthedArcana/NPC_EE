@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.5~
+VERSION ~v3.6~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -99,16 +99,14 @@ SUBCOMPONENT @120
 INCLUDE ~npc_ee/npcs/jaheira/druid.tpa~
 
 
-/*
-// druid/ranger____________________________________________________________________
-BEGIN @143
-DESIGNATED 143
+// cleric/ranger____________________________________________________________________
+BEGIN @122
+DESIGNATED 122
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) && (FILE_EXISTS_IN_GAME ~d5drra.2da~) ~Jaheira~
 GROUP @5
 SUBCOMPONENT @120
 
 INCLUDE ~npc_ee/npcs/jaheira/druid-ranger.tpa~
-*/
 
 
 //__________________________________________________________________________________
@@ -456,16 +454,6 @@ SUBCOMPONENT @720
 INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
 
 
-// thief____________________________________________________________________________
-BEGIN @721
-DESIGNATED 721
-REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Nalia~
-GROUP @5
-SUBCOMPONENT @720 
-
-INCLUDE ~npc_ee/npcs/nalia/thief.tpa~
-
-
 // bard_____________________________________________________________________________
 BEGIN @722
 DESIGNATED 722
@@ -669,6 +657,18 @@ ACTION_IF (d5_change_proficiencies = 1) BEGIN
   ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
 	INCLUDE ~npc_ee/lib/weapprof_dialogue.tpa~
 // 	LAM SET_UP_PROF_DIALOGUES
+  END
+  ACTION_IF FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
+	COPY_EXISTING ~splstate.ids~ ~override~
+	  READ_2DA_ENTRIES_NOW states 2
+	  FOR (row=0;row<states;++row) BEGIN
+		READ_2DA_ENTRY_FORMER states row 0 ind
+		READ_2DA_ENTRY_FORMER states row 1 state
+		PATCH_IF (~%state%~ STRING_EQUAL_CASE ~NEW_PROFICIENCIES~) BEGIN
+		  SET new_profs_state = ind
+		END
+	  END
+	BUT_ONLY
   END
 END
 //__________________________________________________________________________________
