@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.6~
+VERSION ~v3.7~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -1226,12 +1226,12 @@ COPY ~npc_ee/class/mt/d5mtkit.d~ ~npc_ee/d5mtkit.d~
 //copy multiclass abilities and invisicres into game________________________________
 //
 COPY_EXISTING ~splprot.2da~ ~override~
-	COUNT_2DA_COLS cols // amount of columns
-	READ_2DA_ENTRIES_NOW rows cols // read all file into memory  
-	FOR (row = 1; row < rows; ++row) BEGIN // iterate over rows
-	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ // read column value
+	COUNT_2DA_COLS cols 
+	READ_2DA_ENTRIES_NOW rows cols 
+	FOR (row = 1; row < rows; ++row) BEGIN 
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~ 
 	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_PROFS_STATE~ BEGIN
-		READ_2DA_ENTRY_FORMER rows row 2 new_profs_state // read column value
+		READ_2DA_ENTRY_FORMER rows row 2 new_profs_state 
 	    SET profs_state = %row%
 	  END
 	END

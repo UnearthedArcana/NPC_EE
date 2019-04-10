@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 3.6 </strong><br />
+  <p><strong> Version 3.7 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -107,7 +107,7 @@
   </div>
   <h4 class="subheader">Component 720: choose a new class for Nalia</h4>
   <div class="section">
-    <p>Make Nalia a bard, or a multiclass cleric/mage, a multiclass cleric/thief, or a sorcerer</p>
+    <p>Make Nalia a bard, or a multiclass cleric/mage, or a multiclass cleric/thief, or a sorcerer</p>
   </div>
   <h4 class="subheader">Component 760: choose a new class for Mazzy</h4>
   <div class="section">
@@ -157,6 +157,10 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 3.7 - April 2019</strong></p>
+  <ul>
+    <li>fixed sorcerer kits</li>
+  </ul>
   <p><strong>Version 3.6 - October 2018</strong></p>
   <ul>
     <li>fixes for proficiencies if prof dialogue already installed</li>
