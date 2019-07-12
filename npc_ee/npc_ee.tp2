@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.7~
+VERSION ~v3.8~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -680,6 +680,7 @@ COPY ~npc_ee/spl/d5_sckt.spl~ ~override~
   SAY NAME1 @11
   SAY UNIDENTIFIED_DESC @11
   PATCH_IF (d5_change_proficiencies = 1) BEGIN
+//	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 opcode = 146 parameter2 = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
@@ -696,6 +697,82 @@ COPY ~npc_ee/spl/d5_sckt.spl~ ~override~
 	END
   END
 COPY ~npc_ee/cre/d5_sckit.cre~ ~override~
+
+//COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfst.spl~
+//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = %new_profs_state% timing = 9 special = 1 END
+
+ACTION_FOR_EACH new_prof_spell IN 
+	~d5pr0f1~
+	~d5pr0f2~
+	~d5pr0f3~
+	~d5pr0f4~
+	~d5pr0f5~
+	~d5pr0f6~
+	~d5pr0f7~
+	~d5pr0f8~
+	~d5pr0f9~
+	~d5prof1~
+	~d5prof2~
+	~d5prof3~
+	~d5prof4~
+	~d5prof5~
+	~d5prof6~
+	~d5prof7~
+	~d5prof8~
+	~d5prof9~
+	~d5prof10~
+	~d5prof11~
+	~d5prof12~
+	~d5prof13~
+	~d5prof14~
+	~d5prof15~
+	~d5prof16~
+	~d5prof17~
+	~d5prof18~
+	~d5prof19~
+	~d5prof20~ BEGIN
+  COPY_EXISTING ~%new_prof_spell%.spl~ ~override~
+//	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 337 parameter2 = 328 parameter1 = %new_profs_state% target = 1 timing = 9 END
+  IF_EXISTS BUT_ONLY
+END
+
+ACTION_FOR_EACH prof_spell IN 
+	~d5pr0fa~
+	~d5pr0fb~
+	~d5pr0fc~
+	~d5pr0fd~
+	~d5pr0fe~
+	~d5pr0ff~
+	~d5pr0fg~
+	~d5pr0fh~
+	~d5pr0fi~
+	~d5profa~
+	~d5profb~
+	~d5profc~
+	~d5profd~
+	~d5profe~
+	~d5proff~
+	~d5profg~
+	~d5profh~
+	~d5profi~
+	~d5profj~
+	~d5profk~
+	~d5profl~
+	~d5profm~
+	~d5profn~
+	~d5profo~
+	~d5profp~
+	~d5profq~
+	~d5profr~
+	~d5profs~
+	~d5proft~ BEGIN
+  COPY_EXISTING ~%prof_spell%.spl~ ~override~
+//	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 337 parameter2 = 328 parameter1 = %new_profs_state% target = 1 timing = 9 END
+  IF_EXISTS BUT_ONLY
+END
+
 //__________________________________________________________________________________
 
 
@@ -1071,7 +1148,7 @@ END
 
 CLEAR_ARRAYS
 
-
+/*
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
@@ -1086,6 +1163,7 @@ DESIGNATED 3000
 REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
 //GROUP @6
 
+*/
 
 //prep multiclass working folders___________________________________________________
 //
@@ -1240,7 +1318,8 @@ COPY ~npc_ee/spl/d5_mckt.spl~ ~override~
   SAY NAME1 @11
   SAY UNIDENTIFIED_DESC @11
   PATCH_IF (d5_change_proficiencies = 1) BEGIN
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
+//	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 opcode = 146 parameter2 = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppa~ END

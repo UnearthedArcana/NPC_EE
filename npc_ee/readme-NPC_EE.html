@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 3.7 </strong><br />
+  <p><strong> Version 3.8 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -117,10 +117,7 @@
   <div class="section">
     <p>As described above, this will add an innate ability to every single-class NPC allowing them to take a kit - or, if they already have a kit, to switch to a new one.</p>
     <p>New to v3.0: now, when you use the kit-choice ability, the NPC's proficiencies will be set to zero, and you will receive a number of innate abilities that will let you rebuild their proficiencies however you like. (Be warned, this follows the basic rules for proficiencies, so any NPCs that have illegal values in some weapon will lose that benefit.)</p>
-  </div>
-  <h4 class="subheader">Component 3000: multiclass kit choices for NPCs</h4>
-  <div class="section">
-    <p>This will give the kit-choice innate ability to multiclass NPCs AND multiclass PCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So:
+    <p>This will also give the kit-choice innate ability to multiclass NPCs AND multiclass PCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So:
     <ul>
       <li>ranger/clerics: choose a ranger kit</li>
 	  <li>fighter/clerics: choose a cleric kit</li>
@@ -157,6 +154,11 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 3.8 - July 2019</strong></p>
+  <ul>
+    <li>fixed proficiencies</li>
+    <li>merged kit-choice components</li>
+  </ul>
   <p><strong>Version 3.7 - April 2019</strong></p>
   <ul>
     <li>fixed sorcerer kits</li>
