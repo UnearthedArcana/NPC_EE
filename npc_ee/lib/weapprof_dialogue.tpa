@@ -2,7 +2,7 @@
 //
 //DEFINE_ACTION_MACRO SET_UP_PROF_DIALOGUES BEGIN
 
-ACTION_IF !(FILE_CONTAINS_EVALUATED (~trigger.ids~ ~ProficiencyGT~)) BEGIN
+ACTION_IF NOT (FILE_CONTAINS_EVALUATED (~trigger.ids~ ~ProficiencyGT~)) BEGIN
 	OUTER_TEXT_SPRINT prof_folder ~prof~
 END
 ACTION_IF (FILE_CONTAINS_EVALUATED (~trigger.ids~ ~ProficiencyGT~)) BEGIN
@@ -12,7 +12,7 @@ END
 //COPY MARKER FILE_________________________________________________________________
 //
 COPY ~%MOD_FOLDER%/lib/%prof_folder%/d5_dialprof.d5~ ~override~
-//_________________________________________________________________________________
+//__________________________________________________________________________________
 
 //first, grab available spellstate_________________________________________________
 //

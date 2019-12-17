@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.9~
+VERSION ~v3.8.1~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -58,7 +58,7 @@ LANGUAGE
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							IMOEN
+//									IMOEN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -84,7 +84,7 @@ INCLUDE ~npc_ee/npcs/imoen/bard.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							JAHEIRA
+//									JAHEIRA
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -112,7 +112,7 @@ INCLUDE ~npc_ee/npcs/jaheira/druid-ranger.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							KHALID
+//									KHALID
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -151,7 +151,7 @@ INCLUDE ~npc_ee/npcs/khalid/ranger-sorcerer.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							MINSC
+//									MINSC
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -169,7 +169,7 @@ INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							DYNAHEIR
+//									DYNAHEIR
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -187,7 +187,7 @@ INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							KIVAN
+//									KIVAN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -197,7 +197,7 @@ INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							CORAN
+//									CORAN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -233,7 +233,7 @@ INCLUDE ~npc_ee/npcs/coran/bard.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							BRANWEN
+//									BRANWEN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -251,7 +251,7 @@ INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							SAFANA
+//									SAFANA
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -269,7 +269,7 @@ INCLUDE ~npc_ee/npcs/safana/fighter-thief.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							XZAR
+//									XZAR
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -287,7 +287,7 @@ INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							MONTARON
+//									MONTARON
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -305,7 +305,7 @@ INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							ALORA
+//									ALORA
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -323,7 +323,7 @@ INCLUDE ~npc_ee/npcs/alora/cleric-thief.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							XAN
+//									XAN
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -358,7 +358,7 @@ INCLUDE ~npc_ee/npcs/xan/sorcerer.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							VICONIA
+//									VICONIA
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -376,7 +376,7 @@ INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							NEERA
+//									NEERA
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -394,7 +394,7 @@ INCLUDE ~npc_ee/npcs/neera/sorcerer.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							YOSHIMO
+//									YOSHIMO
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -411,7 +411,7 @@ INCLUDE ~npc_ee/npcs/yoshimo/fighter-thief.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							VALYGAR
+//									VALYGAR
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -439,7 +439,7 @@ INCLUDE ~npc_ee/npcs/valygar/fighter.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							NALIA
+//									NALIA
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -496,7 +496,7 @@ INCLUDE ~npc_ee/npcs/nalia/cleric-thief.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//							MAZZY
+//									MAZZY
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -525,7 +525,7 @@ INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//					INNATE ABILITIES FOR SINGLE-CLASS
+//						INNATE ABILITIES FOR SINGLE-CLASS
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
@@ -597,77 +597,64 @@ ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
 	END
 	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
 	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
-	COPY ~npc_ee/class/%class%/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/%class%/d5dfile1.txt~
-	APPEND_OUTER ~weidu_external/workspace/npc_ee/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
-	COPY ~npc_ee/class/%class%/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/%class%/d5dfile2.txt~
-	APPEND_OUTER ~weidu_external/workspace/npc_ee/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
 END
 //__________________________________________________________________________________
 
 
 //patch together complete dialogues_________________________________________________
 //
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/fi/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/fi/d5fikit.d~ ~weidu_external/workspace/npc_ee/d5fikit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fi/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fi/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/pa/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/pa/d5pakit.d~ ~weidu_external/workspace/npc_ee/d5pakit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/pa/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/pa/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/ra/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/ra/d5rakit.d~ ~weidu_external/workspace/npc_ee/d5rakit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ra/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ra/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/th/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/th/d5thkit.d~ ~weidu_external/workspace/npc_ee/d5thkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/th/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/th/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/ba/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/ba/d5bakit.d~ ~weidu_external/workspace/npc_ee/d5bakit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ba/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ba/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/cl/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/cl/d5clkit.d~ ~weidu_external/workspace/npc_ee/d5clkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/cl/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/cl/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/dr/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/dr/d5drkit.d~ ~weidu_external/workspace/npc_ee/d5drkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/dr/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/dr/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/sh/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/sh/d5shkit.d~ ~weidu_external/workspace/npc_ee/d5shkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/sh/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/sh/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/mo/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/mo/d5mokit.d~ ~weidu_external/workspace/npc_ee/d5mokit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/mo/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/mo/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/ma/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/ma/d5makit.d~ ~weidu_external/workspace/npc_ee/d5makit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ma/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ma/d5dfile2.txt~
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/so/d5dfile1.txt~) BEGIN
-  COPY ~npc_ee/class/so/d5sokit.d~ ~weidu_external/workspace/npc_ee/d5sokit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/so/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/so/d5dfile2.txt~
-END//__________________________________________________________________________________
+COPY ~npc_ee/class/fi/d5fikit.d~ ~npc_ee/d5fikit.d~
+	APPEND_FILE ~npc_ee/class/fi/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fi/d5dfile2.txt~
+
+COPY ~npc_ee/class/pa/d5pakit.d~ ~npc_ee/d5pakit.d~
+	APPEND_FILE ~npc_ee/class/pa/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/pa/d5dfile2.txt~
+
+COPY ~npc_ee/class/ra/d5rakit.d~ ~npc_ee/d5rakit.d~
+	APPEND_FILE ~npc_ee/class/ra/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ra/d5dfile2.txt~
+
+COPY ~npc_ee/class/th/d5thkit.d~ ~npc_ee/d5thkit.d~
+	APPEND_FILE ~npc_ee/class/th/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/th/d5dfile2.txt~
+
+COPY ~npc_ee/class/ba/d5bakit.d~ ~npc_ee/d5bakit.d~
+	APPEND_FILE ~npc_ee/class/ba/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ba/d5dfile2.txt~
+
+COPY ~npc_ee/class/cl/d5clkit.d~ ~npc_ee/d5clkit.d~
+	APPEND_FILE ~npc_ee/class/cl/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/cl/d5dfile2.txt~
+
+COPY ~npc_ee/class/dr/d5drkit.d~ ~npc_ee/d5drkit.d~
+	APPEND_FILE ~npc_ee/class/dr/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/dr/d5dfile2.txt~
+
+COPY ~npc_ee/class/sh/d5shkit.d~ ~npc_ee/d5shkit.d~
+	APPEND_FILE ~npc_ee/class/sh/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/sh/d5dfile2.txt~
+
+COPY ~npc_ee/class/mo/d5mokit.d~ ~npc_ee/d5mokit.d~
+	APPEND_FILE ~npc_ee/class/mo/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/mo/d5dfile2.txt~
+
+COPY ~npc_ee/class/ma/d5makit.d~ ~npc_ee/d5makit.d~
+	APPEND_FILE ~npc_ee/class/ma/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ma/d5dfile2.txt~
+
+COPY ~npc_ee/class/so/d5sokit.d~ ~npc_ee/d5sokit.d~
+	APPEND_FILE ~npc_ee/class/so/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/so/d5dfile2.txt~
+//__________________________________________________________________________________
 
 
 //DIALOGUE-BASED PROFICIENCIES______________________________________________________
 //
 ACTION_IF (d5_change_proficiencies = 1) BEGIN
-  ACTION_IF !(FILE_EXISTS_IN_GAME ~d5_dialprof.d5~) BEGIN
+  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
 	INCLUDE ~npc_ee/lib/weapprof_dialogue.tpa~
 // 	LAM SET_UP_PROF_DIALOGUES
   END
@@ -845,41 +832,19 @@ END
 
 //compile the scripts and dialogues_________________________________________________
 //
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5fikit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5fikit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5pakit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5pakit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5rakit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5rakit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5thkit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5thkit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5bakit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5bakit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5clkit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5clkit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5drkit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5drkit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5shkit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5shkit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5mokit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5mokit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5makit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5makit.d~ 
-END
-ACTION_IF (FILE_EXISTS ~weidu_external/workspace/npc_ee/d5sokit.d~) BEGIN
-  COMPILE ~weidu_external/workspace/npc_ee/d5sokit.d~ 
-END
+COMPILE ~npc_ee/d5fikit.d~
+COMPILE ~npc_ee/d5pakit.d~
+COMPILE ~npc_ee/d5rakit.d~
+COMPILE ~npc_ee/d5thkit.d~
+COMPILE ~npc_ee/d5bakit.d~
+COMPILE ~npc_ee/d5clkit.d~
+COMPILE ~npc_ee/d5drkit.d~
+COMPILE ~npc_ee/d5shkit.d~
+COMPILE ~npc_ee/d5mokit.d~
+COMPILE ~npc_ee/d5makit.d~
+COMPILE ~npc_ee/d5sokit.d~
 
-COMPILE ~npc_ee/baf/d5_sckit.baf~
+COMPILE ~npc_ee/d5_sckit.baf~
 //__________________________________________________________________________________
 
 
@@ -1202,48 +1167,44 @@ REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
 
 //prep multiclass working folders___________________________________________________
 //
-// I think copying the existing single-class files, which have already been modified above...
-// ...means the MC files offer the SC kits from the underlying single-class
-// ...so, could change the underlying file to change the MC offerings
-// ...eventually. just make all the SC kits into  MC kits and make fresh MC dialogues
-COPY ~npc_ee/class/ma/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/fm/d5dfile1.txt~ 
+COPY ~npc_ee/class/ma/d5dfile1.txt~ ~npc_ee/class/fm/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
-COPY ~npc_ee/class/ma/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/fm/d5dfile2.txt~ 
+COPY ~npc_ee/class/ma/d5dfile2.txt~ ~npc_ee/class/fm/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
 
-COPY ~npc_ee/class/dr/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/fd/d5dfile1.txt~ 
+COPY ~npc_ee/class/dr/d5dfile1.txt~ ~npc_ee/class/fd/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
-COPY ~npc_ee/class/dr/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/fd/d5dfile2.txt~ 
+COPY ~npc_ee/class/dr/d5dfile2.txt~ ~npc_ee/class/fd/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
 
-COPY ~npc_ee/class/th/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/ft/d5dfile1.txt~ 
+COPY ~npc_ee/class/th/d5dfile1.txt~ ~npc_ee/class/ft/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
-COPY ~npc_ee/class/th/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/ft/d5dfile2.txt~ 
+COPY ~npc_ee/class/th/d5dfile2.txt~ ~npc_ee/class/ft/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
 
-COPY ~npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/fc/d5dfile1.txt~ 
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/fc/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
-COPY ~npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/fc/d5dfile2.txt~ 
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/fc/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
 
-COPY ~npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/cm/d5dfile1.txt~ 
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/cm/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
-COPY ~npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/cm/d5dfile2.txt~ 
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/cm/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
 
-COPY ~npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/ct/d5dfile1.txt~ 
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/ct/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
-COPY ~npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/ct/d5dfile2.txt~ 
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/ct/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
 
-COPY ~npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/cr/d5dfile1.txt~ 
+COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/cr/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
-COPY ~npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/cr/d5dfile2.txt~ 
+COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/cr/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
 
-COPY ~npc_ee/class/ma/d5dfile1.txt~ ~weidu_external/workspace/npc_ee/mt/d5dfile1.txt~ 
+COPY ~npc_ee/class/ma/d5dfile1.txt~ ~npc_ee/class/mt/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
-COPY ~npc_ee/class/ma/d5dfile2.txt~ ~weidu_external/workspace/npc_ee/mt/d5dfile2.txt~ 
+COPY ~npc_ee/class/ma/d5dfile2.txt~ ~npc_ee/class/mt/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
 //__________________________________________________________________________________
 
@@ -1300,44 +1261,44 @@ ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
 	END
 	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
 	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
-	APPEND_OUTER ~weidu_external/workspace/npc_ee/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
-	APPEND_OUTER ~weidu_external/workspace/npc_ee/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
+	APPEND_OUTER ~npc_ee/class/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
 END
 //__________________________________________________________________________________
 
 //patch together multiclass dialogues_______________________________________________
 //
-COPY ~npc_ee/class/fc/d5fckit.d~ ~weidu_external/workspace/npc_ee/d5fckit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fc/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fc/d5dfile2.txt~
+COPY ~npc_ee/class/fc/d5fckit.d~ ~npc_ee/d5fckit.d~
+	APPEND_FILE ~npc_ee/class/fc/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fc/d5dfile2.txt~
 
-COPY ~npc_ee/class/fd/d5fdkit.d~ ~weidu_external/workspace/npc_ee/d5fdkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fd/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fd/d5dfile2.txt~
+COPY ~npc_ee/class/fd/d5fdkit.d~ ~npc_ee/d5fdkit.d~
+	APPEND_FILE ~npc_ee/class/fd/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fd/d5dfile2.txt~
 
-COPY ~npc_ee/class/fm/d5fmkit.d~ ~weidu_external/workspace/npc_ee/d5fmkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fm/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/fm/d5dfile2.txt~
+COPY ~npc_ee/class/fm/d5fmkit.d~ ~npc_ee/d5fmkit.d~
+	APPEND_FILE ~npc_ee/class/fm/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/fm/d5dfile2.txt~
 
-COPY ~npc_ee/class/ft/d5ftkit.d~ ~weidu_external/workspace/npc_ee/d5ftkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ft/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ft/d5dfile2.txt~
+COPY ~npc_ee/class/ft/d5ftkit.d~ ~npc_ee/d5ftkit.d~
+	APPEND_FILE ~npc_ee/class/ft/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ft/d5dfile2.txt~
 
-COPY ~npc_ee/class/cm/d5cmkit.d~ ~weidu_external/workspace/npc_ee/d5cmkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/cm/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/cm/d5dfile2.txt~
+COPY ~npc_ee/class/cm/d5cmkit.d~ ~npc_ee/d5cmkit.d~
+	APPEND_FILE ~npc_ee/class/cm/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/cm/d5dfile2.txt~
 
-COPY ~npc_ee/class/cr/d5crkit.d~ ~weidu_external/workspace/npc_ee/d5crkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/cr/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/cr/d5dfile2.txt~
+COPY ~npc_ee/class/cr/d5crkit.d~ ~npc_ee/d5crkit.d~
+	APPEND_FILE ~npc_ee/class/cr/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/cr/d5dfile2.txt~
 
-COPY ~npc_ee/class/ct/d5ctkit.d~ ~weidu_external/workspace/npc_ee/d5ctkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ct/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/ct/d5dfile2.txt~
+COPY ~npc_ee/class/ct/d5ctkit.d~ ~npc_ee/d5ctkit.d~
+	APPEND_FILE ~npc_ee/class/ct/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/ct/d5dfile2.txt~
 
-COPY ~npc_ee/class/mt/d5mtkit.d~ ~weidu_external/workspace/npc_ee/d5mtkit.d~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/mt/d5dfile1.txt~
-	APPEND_FILE ~weidu_external/workspace/npc_ee/mt/d5dfile2.txt~
+COPY ~npc_ee/class/mt/d5mtkit.d~ ~npc_ee/d5mtkit.d~
+	APPEND_FILE ~npc_ee/class/mt/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/mt/d5dfile2.txt~
 //__________________________________________________________________________________
 
 //copy multiclass abilities and invisicres into game________________________________
@@ -1378,16 +1339,16 @@ COPY ~npc_ee/cre/d5_mckit.cre~ ~override~
 
 //compile mc scripts and dialogues__________________________________________________
 //
-COMPILE ~weidu_external/workspace/npc_ee/d5fckit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5fdkit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5fmkit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5ftkit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5cmkit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5crkit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5ctkit.d~
-COMPILE ~weidu_external/workspace/npc_ee/d5mtkit.d~
+COMPILE ~npc_ee/d5fckit.d~
+COMPILE ~npc_ee/d5fdkit.d~
+COMPILE ~npc_ee/d5fmkit.d~
+COMPILE ~npc_ee/d5ftkit.d~
+COMPILE ~npc_ee/d5cmkit.d~
+COMPILE ~npc_ee/d5crkit.d~
+COMPILE ~npc_ee/d5ctkit.d~
+COMPILE ~npc_ee/d5mtkit.d~
 
-COMPILE ~npc_ee/baf/d5_mckit.baf~
+COMPILE ~npc_ee/d5_mckit.baf~
 //__________________________________________________________________________________
 
 //add innate abilities to multiclass NPCs___________________________________________
