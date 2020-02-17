@@ -40,8 +40,8 @@ ACTION_FOR_EACH char IN ~xan~ ~xan_~ ~xan4~ ~xan6~ ~o#xan09~ ~o#xan25~ BEGIN
 			END
 		BUT_ONLY
 		COPY_EXISTING ~%char%.cre~ ~override~
-			WRITE_SHORT 0x244 0
-			WRITE_SHORT 0x246 0x4000 + ~%d5_blads%~ // changes kit
+			WRITE_SHORT 0x244 (%d5_blads% >> 16) & 0xffff
+			WRITE_SHORT 0x246 %d5_blads% & 0xffff
 			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_blad1~ END
 		BUT_ONLY
 	END

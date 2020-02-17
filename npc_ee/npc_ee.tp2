@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.8.1~
+VERSION ~v3.8.2~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -1318,8 +1318,8 @@ COPY ~npc_ee/spl/d5_mckt.spl~ ~override~
   SAY NAME1 @11
   SAY UNIDENTIFIED_DESC @11
   PATCH_IF (d5_change_proficiencies = 1) BEGIN
-//	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 opcode = 146 parameter2 = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
+//	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 opcode = 146 parameter2 = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppa~ END
