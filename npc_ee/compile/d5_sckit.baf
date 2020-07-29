@@ -1,5 +1,15 @@
 IF
+	Global("D5PRFTLK","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRFTLK","GLOBAL",1)
+	SetNumTimesTalkedTo(0)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prftlk",Myself))
+END
+
+IF
 	Class(LastSummonerOf(Myself),FIGHTER)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -10,6 +20,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -20,6 +31,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -30,6 +42,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),THIEF)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -40,6 +53,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -50,6 +64,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -60,6 +75,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -71,6 +87,7 @@ END
 /*
 IF
 	Class(LastSummonerOf(Myself),SHAMAN)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -82,6 +99,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),MONK)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -91,7 +109,20 @@ THEN
 END
 
 IF
+	Class(LastSummonerOf(Myself),MAGE)
+	!Class(LastSummonerOf(Myself),SORCERER)
+	Global("D5CHAKIT","GLOBAL",1)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5MAKIT","GLOBAL",1)    // mage selections
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5makit",Myself))
+END
+
+IF
 	Class(LastSummonerOf(Myself),SORCERER)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -101,21 +132,11 @@ THEN
 END
 
 IF
-	Class(LastSummonerOf(Myself),MAGE)
-	NumTimesTalkedTo(0)
-THEN
-	RESPONSE #100
-	SetGlobal("D5MAKIT","GLOBAL",1)    // mage selections
-	SetNumTimesTalkedTo(1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5makit",Myself))
-END
-
-//
-
-IF
 	True()
 THEN
 	RESPONSE #100
+		SetNumTimesTalkedTo(0)
+		SetGlobal("D5CHAKIT","GLOBAL",0)
 		SetGlobal("D5FIKIT","GLOBAL",0)
 		SetGlobal("D5PAKIT","GLOBAL",0)
 		SetGlobal("D5RAKIT","GLOBAL",0)
@@ -127,6 +148,6 @@ THEN
 		SetGlobal("D5MOKIT","GLOBAL",0)
 		SetGlobal("D5MAKIT","GLOBAL",0)
 		SetGlobal("D5SOKIT","GLOBAL",0)
-		SetNumTimesTalkedTo(0)
+		SetGlobal("D5PRFTLK","GLOBAL",0)
 		DestroySelf()               // reset all variables, then destroy self
 END

@@ -1,5 +1,15 @@
 IF
+	Global("D5PRFTLK","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRFTLK","GLOBAL",1)
+	SetNumTimesTalkedTo(0)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prftlk",Myself))
+END
+
+IF
 	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -10,6 +20,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -20,6 +31,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -30,6 +42,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -40,6 +53,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -50,6 +64,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -60,6 +75,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -70,6 +86,7 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),MAGE_THIEF)
+	Global("D5CHAKIT","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -78,12 +95,12 @@ THEN
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5mtkit",Myself))
 END
 
-//
-
 IF
 	True()
 THEN
 	RESPONSE #100
+		SetNumTimesTalkedTo(0)
+		SetGlobal("D5CHAKIT","GLOBAL",0)
 		SetGlobal("D5FCKIT","GLOBAL",0)
 		SetGlobal("D5FDKIT","GLOBAL",0)
 		SetGlobal("D5FMKIT","GLOBAL",0)
@@ -92,6 +109,6 @@ THEN
 		SetGlobal("D5CTKIT","GLOBAL",0)
 		SetGlobal("D5CMKIT","GLOBAL",0)
 		SetGlobal("D5MTKIT","GLOBAL",0)
-		SetNumTimesTalkedTo(0)
+		SetGlobal("D5PRFTLK","GLOBAL",0)
 		DestroySelf()               // reset all variables, then destroy self
 END

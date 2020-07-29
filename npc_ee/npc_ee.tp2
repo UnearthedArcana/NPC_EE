@@ -1,14 +1,12 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v3.8.2~
+VERSION ~v4.0~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
 
   INCLUDE ~npc_ee/lib/joinable_npcs.tpa~
-
-  INCLUDE ~npc_ee/NPC_EE_settings.ini~
 
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee bg2ee~ BEGIN
@@ -521,6 +519,26 @@ INCLUDE ~npc_ee/npcs/mazzy/paladin.tpa~
 
 
 
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//									FADE
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// mage/thief_______________________________________________________________________
+BEGIN @902
+DESIGNATED 902
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Fade~
+GROUP @5
+SUBCOMPONENT @900 
+
+INCLUDE ~npc_ee/npcs/fade/mage-thief.tpa~
+
+
+
+
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
@@ -605,60 +623,92 @@ END
 
 //patch together complete dialogues_________________________________________________
 //
-COPY ~npc_ee/class/fi/d5fikit.d~ ~npc_ee/d5fikit.d~
+<<<<<<<< d5/d5sckit.d
+BEGIN ~d5sckit~
+
+IF ~Global("d5sckit","GLOBAL",1)~ THEN BEGIN d5sckit
+ SAY @2013
+>>>>>>>> 
+
+ACTION_FOR_EACH sc_class IN ~ba~ ~cl~ ~dr~ ~fi~ ~ma~ ~mo~ ~pa~ ~ra~ ~sh~ ~so~ ~th~ BEGIN
+  COPY ~d5/d5sckit.d~ ~npc_ee/compile/d5%sc_class%kit.d~
+	REPLACE_TEXTUALLY /*CASE_INSENSITIVE*/ ~d5sc~ ~d5%sc_class%~
+	APPEND_FILE ~npc_ee/class/%sc_class%/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/%sc_class%/d5dfile2.txt~
+END
+
+/*
+COPY ~npc_ee/class/fi/d5fikit.d~ ~npc_ee/compile/d5fikit.d~
 	APPEND_FILE ~npc_ee/class/fi/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/fi/d5dfile2.txt~
 
-COPY ~npc_ee/class/pa/d5pakit.d~ ~npc_ee/d5pakit.d~
+COPY ~npc_ee/class/pa/d5pakit.d~ ~npc_ee/compile/d5pakit.d~
 	APPEND_FILE ~npc_ee/class/pa/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/pa/d5dfile2.txt~
 
-COPY ~npc_ee/class/ra/d5rakit.d~ ~npc_ee/d5rakit.d~
+COPY ~npc_ee/class/ra/d5rakit.d~ ~npc_ee/compile/d5rakit.d~
 	APPEND_FILE ~npc_ee/class/ra/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/ra/d5dfile2.txt~
 
-COPY ~npc_ee/class/th/d5thkit.d~ ~npc_ee/d5thkit.d~
+COPY ~npc_ee/class/th/d5thkit.d~ ~npc_ee/compile/d5thkit.d~
 	APPEND_FILE ~npc_ee/class/th/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/th/d5dfile2.txt~
 
-COPY ~npc_ee/class/ba/d5bakit.d~ ~npc_ee/d5bakit.d~
+COPY ~npc_ee/class/ba/d5bakit.d~ ~npc_ee/compile/d5bakit.d~
 	APPEND_FILE ~npc_ee/class/ba/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/ba/d5dfile2.txt~
 
-COPY ~npc_ee/class/cl/d5clkit.d~ ~npc_ee/d5clkit.d~
+COPY ~npc_ee/class/cl/d5clkit.d~ ~npc_ee/compile/d5clkit.d~
 	APPEND_FILE ~npc_ee/class/cl/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/cl/d5dfile2.txt~
 
-COPY ~npc_ee/class/dr/d5drkit.d~ ~npc_ee/d5drkit.d~
+COPY ~npc_ee/class/dr/d5drkit.d~ ~npc_ee/compile/d5drkit.d~
 	APPEND_FILE ~npc_ee/class/dr/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/dr/d5dfile2.txt~
 
-COPY ~npc_ee/class/sh/d5shkit.d~ ~npc_ee/d5shkit.d~
+COPY ~npc_ee/class/sh/d5shkit.d~ ~npc_ee/compile/d5shkit.d~
 	APPEND_FILE ~npc_ee/class/sh/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/sh/d5dfile2.txt~
 
-COPY ~npc_ee/class/mo/d5mokit.d~ ~npc_ee/d5mokit.d~
+COPY ~npc_ee/class/mo/d5mokit.d~ ~npc_ee/compile/d5mokit.d~
 	APPEND_FILE ~npc_ee/class/mo/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/mo/d5dfile2.txt~
 
-COPY ~npc_ee/class/ma/d5makit.d~ ~npc_ee/d5makit.d~
+COPY ~npc_ee/class/ma/d5makit.d~ ~npc_ee/compile/d5makit.d~
 	APPEND_FILE ~npc_ee/class/ma/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/ma/d5dfile2.txt~
 
-COPY ~npc_ee/class/so/d5sokit.d~ ~npc_ee/d5sokit.d~
+COPY ~npc_ee/class/so/d5sokit.d~ ~npc_ee/compile/d5sokit.d~
 	APPEND_FILE ~npc_ee/class/so/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/so/d5dfile2.txt~
+*/
 //__________________________________________________________________________________
 
 
 //DIALOGUE-BASED PROFICIENCIES______________________________________________________
 //
-ACTION_IF (d5_change_proficiencies = 1) BEGIN
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
+<<<<<<<< d5/d5prftlk.d
+BEGIN ~D5PRFTLK~
+
+IF ~Global("D5PRFTLK","GLOBAL",1)~ THEN BEGIN d5prftlk
+ SAY @9
+ IF ~~ THEN REPLY @2013 DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ GOTO d5prftlk_1 
+ IF ~~ THEN REPLY @2014 EXIT 
+END
+
+IF ~~ THEN BEGIN d5prftlk_1
+ SAY @2017
+ IF ~~ THEN REPLY @2018 DO ~ApplySpellRES("D5PRFCH",myself)~ EXIT
+ IF ~~ THEN REPLY @2014 EXIT
+END
+>>>>>>>> 
+COPY ~d5/d5prftlk.d~ ~npc_ee/compile/d5prftlk.d~
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
 	INCLUDE ~npc_ee/lib/weapprof_dialogue.tpa~
 // 	LAM SET_UP_PROF_DIALOGUES
-  END
-  ACTION_IF FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
 	COPY_EXISTING ~splstate.ids~ ~override~
 	  READ_2DA_ENTRIES_NOW states 2
 	  FOR (row=0;row<states;++row) BEGIN
@@ -669,34 +719,47 @@ ACTION_IF (d5_change_proficiencies = 1) BEGIN
 		END
 	  END
 	BUT_ONLY
-  END
 END
 //__________________________________________________________________________________
 
 
-//copy innate abilities and invisicres into game____________________________________
+//copy abilities and invisicres into game___________________________________________
 //
 COPY ~npc_ee/spl/d5_sckt.spl~ ~override~
-  SAY NAME1 @11
-  SAY UNIDENTIFIED_DESC @11
-  PATCH_IF (d5_change_proficiencies = 1) BEGIN
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
 //	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 opcode = 146 parameter2 = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+//	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
+	LPF DELETE_EFFECT INT_VAR match_opcode = 328 /*match_parameter2 = %new_profs_state%*/ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppa~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppb~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppc~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppd~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsa~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsb~ END
-	PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
-	  PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
-		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
-	  END
+
+COPY ~npc_ee/cre/d5_sckit.cre~ ~override~
+
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfch.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = %new_profs_state% timing = 9 special = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+  PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
+	PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
 	END
   END
-COPY ~npc_ee/cre/d5_sckit.cre~ ~override~
+
+/*
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prnch.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 337 parameter2 = 328 parameter1 = %new_profs_state% target = 1 timing = 9 END
+  PATCH_FOR_EACH pr0f_spell_letter IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ BEGIN
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5pr0f%pr0f_spell_letter%~ END
+  END
+  PATCH_FOR_EACH prof_spell_letter IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ BEGIN
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = EVAL ~d5pr0f%prof_spell_letter%~ END
+  END
+*/
 
 //COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfst.spl~
 //  LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = %new_profs_state% timing = 9 special = 1 END
@@ -832,26 +895,27 @@ END
 
 //compile the scripts and dialogues_________________________________________________
 //
-COMPILE ~npc_ee/d5fikit.d~
-COMPILE ~npc_ee/d5pakit.d~
-COMPILE ~npc_ee/d5rakit.d~
-COMPILE ~npc_ee/d5thkit.d~
-COMPILE ~npc_ee/d5bakit.d~
-COMPILE ~npc_ee/d5clkit.d~
-COMPILE ~npc_ee/d5drkit.d~
-COMPILE ~npc_ee/d5shkit.d~
-COMPILE ~npc_ee/d5mokit.d~
-COMPILE ~npc_ee/d5makit.d~
-COMPILE ~npc_ee/d5sokit.d~
+COMPILE ~npc_ee/compile/d5fikit.d~
+COMPILE ~npc_ee/compile/d5pakit.d~
+COMPILE ~npc_ee/compile/d5rakit.d~
+COMPILE ~npc_ee/compile/d5thkit.d~
+COMPILE ~npc_ee/compile/d5bakit.d~
+COMPILE ~npc_ee/compile/d5clkit.d~
+COMPILE ~npc_ee/compile/d5drkit.d~
+COMPILE ~npc_ee/compile/d5shkit.d~
+COMPILE ~npc_ee/compile/d5mokit.d~
+COMPILE ~npc_ee/compile/d5makit.d~
+COMPILE ~npc_ee/compile/d5sokit.d~
 
-COMPILE ~npc_ee/d5_sckit.baf~
+COMPILE ~npc_ee/compile/d5_sckit.baf~
+
+COMPILE ~npc_ee/compile/d5prftlk.d~
 //__________________________________________________________________________________
 
 
 //add proficiency dialogues to clab tables__________________________________________
 //
-ACTION_IF (d5_change_proficiencies = 1) BEGIN
-  ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
 	ACTION_FOR_EACH warrior_clab IN ~clabfi01~ ~clabpa01~ ~clabra01~ BEGIN
 	  ACTION_IF FILE_EXISTS_IN_GAME ~%warrior_clab%.2da~ BEGIN
 		APPEND ~%warrior_clab%.2da~ ~PROFS       AP_D5PROF1  ****        AP_D5PROF5  ****        ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
@@ -1111,25 +1175,22 @@ PROFS       AP_D5PR0F2  ****        ****        ****        ****        ****    
 PROFS       AP_D5PR0F3  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  ~
 	  END
 	END
-  END
 END
 //__________________________________________________________________________________
 
 
 //make .CRE proficiencies removable_________________________________________________
 //
-ACTION_IF (d5_change_proficiencies = 1) BEGIN
+LAM JOINABLE_NPC_ARRAYS
 
-  LAM JOINABLE_NPC_ARRAYS
-
-  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // 	PRINT ~%cre% => %dv%~ 
 	COPY_EXISTING ~%cre%~ ~override~
 	  LPF FJ_CRE_EFF_V2 END
 	BUT_ONLY
-  END
+END
 
-  ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 	COPY_EXISTING ~%cre%~ ~override~
 	  READ_LONG 0x2c4 eff_offset
 	  READ_LONG 0x2c8 eff_number
@@ -1142,7 +1203,6 @@ ACTION_IF (d5_change_proficiencies = 1) BEGIN
 		END
 	  END
 	BUT_ONLY
-  END
 END
 //__________________________________________________________________________________
 
@@ -1167,20 +1227,20 @@ REQUIRE_COMPONENT ~npc_ee.tp2~ ~2000~ @1
 
 //prep multiclass working folders___________________________________________________
 //
-COPY ~npc_ee/class/ma/d5dfile1.txt~ ~npc_ee/class/fm/d5dfile1.txt~ 
-	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
-COPY ~npc_ee/class/ma/d5dfile2.txt~ ~npc_ee/class/fm/d5dfile2.txt~ 
-	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
+COPY ~npc_ee/class/fi/d5dfile1.txt~ ~npc_ee/class/fm/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fmkit~
+COPY ~npc_ee/class/fi/d5dfile2.txt~ ~npc_ee/class/fm/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fmkit~
 
-COPY ~npc_ee/class/dr/d5dfile1.txt~ ~npc_ee/class/fd/d5dfile1.txt~ 
-	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
-COPY ~npc_ee/class/dr/d5dfile2.txt~ ~npc_ee/class/fd/d5dfile2.txt~ 
-	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
+COPY ~npc_ee/class/fi/d5dfile1.txt~ ~npc_ee/class/fd/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fdkit~
+COPY ~npc_ee/class/fi/d5dfile2.txt~ ~npc_ee/class/fd/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fdkit~
 
-COPY ~npc_ee/class/th/d5dfile1.txt~ ~npc_ee/class/ft/d5dfile1.txt~ 
-	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
-COPY ~npc_ee/class/th/d5dfile2.txt~ ~npc_ee/class/ft/d5dfile2.txt~ 
-	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
+COPY ~npc_ee/class/fi/d5dfile1.txt~ ~npc_ee/class/ft/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5ftkit~
+COPY ~npc_ee/class/fi/d5dfile2.txt~ ~npc_ee/class/ft/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5ftkit~
 
 COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/fc/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
@@ -1202,10 +1262,10 @@ COPY ~npc_ee/class/cl/d5dfile1.txt~ ~npc_ee/class/cr/d5dfile1.txt~
 COPY ~npc_ee/class/cl/d5dfile2.txt~ ~npc_ee/class/cr/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
 
-COPY ~npc_ee/class/ma/d5dfile1.txt~ ~npc_ee/class/mt/d5dfile1.txt~ 
-	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
-COPY ~npc_ee/class/ma/d5dfile2.txt~ ~npc_ee/class/mt/d5dfile2.txt~ 
-	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
+COPY ~npc_ee/class/th/d5dfile1.txt~ ~npc_ee/class/mt/d5dfile1.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5mtkit~
+COPY ~npc_ee/class/th/d5dfile2.txt~ ~npc_ee/class/mt/d5dfile2.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5mtkit~
 //__________________________________________________________________________________
 
 
@@ -1268,37 +1328,53 @@ END
 
 //patch together multiclass dialogues_______________________________________________
 //
-COPY ~npc_ee/class/fc/d5fckit.d~ ~npc_ee/d5fckit.d~
+<<<<<<<< d5/d5mckit.d
+BEGIN ~d5mckit~
+
+IF ~Global("d5mckit","GLOBAL",1)~ THEN BEGIN d5mckit
+ SAY @2013
+>>>>>>>> 
+
+ACTION_FOR_EACH mc_class IN ~cm~ ~cr~ ~ct~ ~fc~ ~fd~ ~fm~ ~ft~ ~mt~ BEGIN
+  COPY ~d5/d5mckit.d~ ~npc_ee/compile/d5%mc_class%kit.d~
+	REPLACE_TEXTUALLY CASE_INSENSITIVE ~d5mc~ ~d5%mc_class%~
+	APPEND_FILE ~npc_ee/class/%mc_class%/d5dfile1.txt~
+	APPEND_FILE ~npc_ee/class/%mc_class%/d5dfile2.txt~
+END
+
+/*
+COPY ~npc_ee/class/fc/d5fckit.d~ ~npc_ee/compile/d5fckit.d~
 	APPEND_FILE ~npc_ee/class/fc/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/fc/d5dfile2.txt~
 
-COPY ~npc_ee/class/fd/d5fdkit.d~ ~npc_ee/d5fdkit.d~
+COPY ~npc_ee/class/fd/d5fdkit.d~ ~npc_ee/compile/d5fdkit.d~
 	APPEND_FILE ~npc_ee/class/fd/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/fd/d5dfile2.txt~
 
-COPY ~npc_ee/class/fm/d5fmkit.d~ ~npc_ee/d5fmkit.d~
+COPY ~npc_ee/class/fm/d5fmkit.d~ ~npc_ee/compile/d5fmkit.d~
 	APPEND_FILE ~npc_ee/class/fm/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/fm/d5dfile2.txt~
 
-COPY ~npc_ee/class/ft/d5ftkit.d~ ~npc_ee/d5ftkit.d~
+COPY ~npc_ee/class/ft/d5ftkit.d~ ~npc_ee/compile/d5ftkit.d~
 	APPEND_FILE ~npc_ee/class/ft/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/ft/d5dfile2.txt~
 
-COPY ~npc_ee/class/cm/d5cmkit.d~ ~npc_ee/d5cmkit.d~
+COPY ~npc_ee/class/cm/d5cmkit.d~ ~npc_ee/compile/d5cmkit.d~
 	APPEND_FILE ~npc_ee/class/cm/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/cm/d5dfile2.txt~
 
-COPY ~npc_ee/class/cr/d5crkit.d~ ~npc_ee/d5crkit.d~
+COPY ~npc_ee/class/cr/d5crkit.d~ ~npc_ee/compile/d5crkit.d~
 	APPEND_FILE ~npc_ee/class/cr/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/cr/d5dfile2.txt~
 
-COPY ~npc_ee/class/ct/d5ctkit.d~ ~npc_ee/d5ctkit.d~
+COPY ~npc_ee/class/ct/d5ctkit.d~ ~npc_ee/compile/d5ctkit.d~
 	APPEND_FILE ~npc_ee/class/ct/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/ct/d5dfile2.txt~
 
-COPY ~npc_ee/class/mt/d5mtkit.d~ ~npc_ee/d5mtkit.d~
+COPY ~npc_ee/class/mt/d5mtkit.d~ ~npc_ee/compile/d5mtkit.d~
 	APPEND_FILE ~npc_ee/class/mt/d5dfile1.txt~
 	APPEND_FILE ~npc_ee/class/mt/d5dfile2.txt~
+*/
 //__________________________________________________________________________________
 
 //copy multiclass abilities and invisicres into game________________________________
@@ -1315,40 +1391,33 @@ COPY_EXISTING ~splprot.2da~ ~override~
 	END
 BUT_ONLY
 COPY ~npc_ee/spl/d5_mckt.spl~ ~override~
-  SAY NAME1 @11
-  SAY UNIDENTIFIED_DESC @11
-  PATCH_IF (d5_change_proficiencies = 1) BEGIN
+	SAY NAME1 @11
+	SAY UNIDENTIFIED_DESC @11
 //	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 opcode = 146 parameter2 = 1 timing = 9 STR_VAR resource = ~d5prfst~ END
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
+//	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 328 parameter2 = %new_profs_state% END
+	LPF DELETE_EFFECT INT_VAR match_opcode = 328 /*match_parameter2 = %new_profs_state%*/ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppa~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppb~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppc~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppd~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsa~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsb~ END
-	PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
-	  PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
-		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
-	  END
-	END
-  END
+
 COPY ~npc_ee/cre/d5_mckit.cre~ ~override~
 //__________________________________________________________________________________
 
 //compile mc scripts and dialogues__________________________________________________
 //
-COMPILE ~npc_ee/d5fckit.d~
-COMPILE ~npc_ee/d5fdkit.d~
-COMPILE ~npc_ee/d5fmkit.d~
-COMPILE ~npc_ee/d5ftkit.d~
-COMPILE ~npc_ee/d5cmkit.d~
-COMPILE ~npc_ee/d5crkit.d~
-COMPILE ~npc_ee/d5ctkit.d~
-COMPILE ~npc_ee/d5mtkit.d~
+COMPILE ~npc_ee/compile/d5fckit.d~
+COMPILE ~npc_ee/compile/d5fdkit.d~
+COMPILE ~npc_ee/compile/d5fmkit.d~
+COMPILE ~npc_ee/compile/d5ftkit.d~
+COMPILE ~npc_ee/compile/d5cmkit.d~
+COMPILE ~npc_ee/compile/d5crkit.d~
+COMPILE ~npc_ee/compile/d5ctkit.d~
+COMPILE ~npc_ee/compile/d5mtkit.d~
 
-COMPILE ~npc_ee/d5_mckit.baf~
+COMPILE ~npc_ee/compile/d5_mckit.baf~
 //__________________________________________________________________________________
 
 //add innate abilities to multiclass NPCs___________________________________________
@@ -1369,9 +1438,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 		PATCH_IF (%npc_class% = 9) BEGIN // fighter/thief
 			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
 		END
-		PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
-			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
-		END
+//		PATCH_IF (%npc_class% = 10) BEGIN // fighter/mage/thief
+//			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
+//		END
 		PATCH_IF (%npc_class% = 13) BEGIN // mage/thief
 			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_mckt~ END
 		END
@@ -1392,6 +1461,47 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 		END
 	END
   BUT_ONLY
+END
+//__________________________________________________________________________________
+
+//make sure QDMulti is working______________________________________________________
+//
+APPEND ~splprot.2da~ ~D5_KIT_IS%TAB%152%TAB%-1%TAB%1~ UNLESS ~D5_KIT_IS~
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW rows cols
+	FOR (row = 1; row < rows; ++row) BEGIN
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_KIT_IS~ BEGIN
+	    SET kit_is_row = %row%
+	  END
+	END
+BUT_ONLY
+
+ACTION_FOR_EACH base_class IN ~D~ ~F~ ~M~ ~P~ ~R~ ~T~ BEGIN
+ OUTER_FOR (col = 1; col < 51; ++col) BEGIN
+  ACTION_IF (col < 10) BEGIN
+    OUTER_TEXT_SPRINT resref ~QD_MC%base_class%0%col%~
+  END ELSE BEGIN
+    OUTER_TEXT_SPRINT resref ~QD_MC%base_class%%col%~
+  END
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.spl~) BEGIN
+    COPY_EXISTING ~%resref%.spl~ ~override~
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 0 parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = EVAL ~%resref%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 16384 parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = EVAL ~%resref%~ END
+    BUT_ONLY
+  END
+ END
+ COPY_EXISTING ~d5_mckt.spl~ ~override~
+  FOR (col = 1; col < 51; ++col) BEGIN
+	PATCH_IF (col < 10) BEGIN
+	  TEXT_SPRINT resref2 ~QD#MC%base_class%0%col%~
+	END ELSE BEGIN
+	  TEXT_SPRINT resref2 ~QD#MC%base_class%%col%~
+	END
+	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~%resref2%~ END
+  END
+ IF_EXISTS BUT_ONLY
 END
 //__________________________________________________________________________________
 

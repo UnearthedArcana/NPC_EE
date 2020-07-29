@@ -79,13 +79,19 @@
 //@880  = ~Choose a class for Anomen~
 //
 //
+@900  = ~Choose a class for Fade~
+@902  = ~Make Fade a multiclass mage/thief~
+//
+//
 @2000  = ~NPC kit choices~
 @2011  = ~Adopt this kit~
 @2012  = ~Choose a different kit~
-@2013  = ~Choose a kit:~
+@2013  = ~Choose a kit~
 @2014  = ~No change~
 @2015  = ~Trueclass~
 @2016  = ~Trueclass, no kit~
+@2017  = ~Change weapon proficiencies?~
+@2018  = ~Remove weapon proficiencies and choose new ones~
 //
 @2091  = ~Advance weapon proficiency~
 @2092  = ~Choose a different weapon~

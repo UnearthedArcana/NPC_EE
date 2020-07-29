@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 3.8 </strong><br />
+  <p><strong> Version 4.0 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
@@ -22,9 +22,7 @@
   <p>The way this works is, during installation you can change the *class* of various NPCs.  Some only have one alternate class, some have more than one, and some don't have any option to change.  This is based on the in-game lore; e.g. Xan is a spellcaster with a Moonblade; that could work as a mage, but also as a fighter/mage or a bard or a sorcerer.  Conversely, Jaheira is a druid, she talks all the time about being a druid, and so there is no option to make her anything other than a druid.</p>
   <p>Once you have decided which <i>class</i> to give each NPC, you have the option to give all of them (even those you didn't change, and including mod NPCs) a special innate ability that you can use in-game to add or change their <i>kit</i>.  This is a single-use ability, so choose wisely!  This ability will trigger a dialogue that gives you the option to adopt any kit for that class... this includes any and all mod kits that you may have installed.  Turn Mazzy into a Dwarven Defender!  Make Keldorn a Blackguard!  Make Minsc a fighter in the Weidu install, and then use this ability to make him a Barbarian!  (Barbarian is actually, technically, a fighter kit.)</p>
   <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
-  <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
-  <p><b>New in v3.0:</b> using the kit-change ability will wipe out the NPC's proficiencies and allow you to rebuild them, again through a dialogue.  Even more flexibility!  Yay!</p>
-  <p><b>Note:</b> if you don't like the proficiency dialogues and want to leave NPC proficiencies as they are, you can disable this functionality by editing /npc_ee/NPC_EE_settings.ini.</p>
+  <p>New in v4.0:</b> using the kit-change ability will wipe out the NPC's proficiencies and allow you to rebuild them, again through a dialogue.  Even more flexibility!  Yay!</p>
 </div>
 <h2>Installation</h2>
 <div class="section">
@@ -113,20 +111,24 @@
   <div class="section">
     <p>Make Mazzy a fighter/cleric, or a paladin</p>
   </div>
+  <h4 class="subheader">Component 900: choose a new class for Fade</h4>
+  <div class="section">
+    <p>Make Fade a multiclass mage/thief</p>
+  </div>
   <h4 class="subheader">Component 2000: NPC kit choices</h4>
   <div class="section">
     <p>As described above, this will add an innate ability to every single-class NPC allowing them to take a kit - or, if they already have a kit, to switch to a new one.</p>
     <p>New to v3.0: now, when you use the kit-choice ability, the NPC's proficiencies will be set to zero, and you will receive a number of innate abilities that will let you rebuild their proficiencies however you like. (Be warned, this follows the basic rules for proficiencies, so any NPCs that have illegal values in some weapon will lose that benefit.)</p>
     <p>This will also give the kit-choice innate ability to multiclass NPCs AND multiclass PCs.  They can only choose kits in one of their classes.  The order of priorities is this: 1) rangers; 2) clerics; 3) fighters; 4) druids' 5) thieves; 6) mages. So:
     <ul>
-      <li>ranger/clerics: choose a ranger kit</li>
+      <li>ranger/clerics: choose a cleric kit</li>
 	  <li>fighter/clerics: choose a cleric kit</li>
 	  <li>cleric/thieves: choose a cleric kit</li>
 	  <li>cleric/mages: choose a cleric kit</li>
-	  <li>fighter/druids: choose a druid kit</li>
-	  <li>fighter/thieves: choose a thief kit</li>
-	  <li>fighter/mages: choose a wizard kit</li>
-	  <li>thief/mages: choose a wizard kit</li>
+	  <li>fighter/druids: choose a fighter kit</li>
+	  <li>fighter/thieves: choose a fighter kit</li>
+	  <li>fighter/mages: choose a fighter kit</li>
+	  <li>thief/mages: choose a thief kit</li>
 	  <li>fighter/mage/clerics: choose a cleric kit</li>
 	  <li>fighter/mage/thieves: choose a fighter kit</li>
 	</ul> 
@@ -150,10 +152,14 @@
 </div>
 <h2>Credits and Copyright Information</h2>
 <div class="section">
-  <p>Copyright 2014-2016. If you want to use or adapt any part of this mod in another mod or similar endeavor, please try to contact me at forums.gibberlings3.net or forum.baldursgate.com to discuss it.  As a general rule, I have no problem with that as long as you credit the source of the work.  If you cannot get in touch with me, assume that you have my permission to use any of this code for any project that is non-commercial, offered for free, and intended for the greater enjoyment of players of Infinity Engine games.  If you do so, please credit me, and mention how awesome I am in a comment in the code, or something like that.  You may NOT use this code for any profit-making or commercial venture, without express permission from me.</p>
+  <p>Copyright 2014-2020. If you want to use or adapt any part of this mod in another mod or similar endeavor, please try to contact me at forums.gibberlings3.net or forum.baldursgate.com to discuss it.  As a general rule, I have no problem with that as long as you credit the source of the work.  If you cannot get in touch with me, assume that you have my permission to use any of this code for any project that is non-commercial, offered for free, and intended for the greater enjoyment of players of Infinity Engine games.  If you do so, please credit me, and mention how awesome I am in a comment in the code, or something like that.  You may NOT use this code for any profit-making or commercial venture, without express permission from me.</p>
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 4.0 - July 2020</strong></p>
+  <ul>
+    <li>option to change proficiencies via dialogue, instead of at install-time</li>
+  </ul>
   <p><strong>Version 3.8 - July 2019</strong></p>
   <ul>
     <li>fixed proficiencies</li>
