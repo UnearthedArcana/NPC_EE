@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v4.1~
+VERSION ~v4.2~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -159,7 +159,7 @@ BEGIN @161
 DESIGNATED 161
 REQUIRE_PREDICATE GAME_IS ~bgt bgee tob bg2ee eet~ ~Minsc~
 GROUP @5
-SUBCOMPONENT @160
+//SUBCOMPONENT @160
 
 INCLUDE ~npc_ee/npcs/minsc/fighter.tpa~
 
@@ -177,7 +177,7 @@ BEGIN @181
 DESIGNATED 181
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Dynaheir~
 GROUP @5
-SUBCOMPONENT @180 
+//SUBCOMPONENT @180 
 
 INCLUDE ~npc_ee/npcs/dynaheir/sorcerer.tpa~
 
@@ -241,7 +241,7 @@ BEGIN @242
 DESIGNATED 242
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~o#bran.cre~) ~Branwen~
 GROUP @5
-SUBCOMPONENT @240
+//SUBCOMPONENT @240
 
 INCLUDE ~npc_ee/npcs/branwen/fighter-cleric.tpa~
 
@@ -259,7 +259,7 @@ BEGIN @261
 DESIGNATED 261
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Safana~
 GROUP @5
-SUBCOMPONENT @260
+//SUBCOMPONENT @260
 
 INCLUDE ~npc_ee/npcs/safana/fighter-thief.tpa~
 
@@ -277,7 +277,7 @@ BEGIN @302
 DESIGNATED 302
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) ~Xzar~
 GROUP @5
-SUBCOMPONENT @300
+//SUBCOMPONENT @300
 
 INCLUDE ~npc_ee/npcs/xzar/cleric-mage.tpa~
 
@@ -295,7 +295,7 @@ BEGIN @321
 DESIGNATED 321
 REQUIRE_PREDICATE GAME_IS ~bgt bgee eet~ ~Montaron~
 GROUP @5
-SUBCOMPONENT @320
+//SUBCOMPONENT @320
 
 INCLUDE ~npc_ee/npcs/montaron/thief.tpa~
 
@@ -313,7 +313,7 @@ BEGIN @464
 DESIGNATED 464
 REQUIRE_PREDICATE (GAME_IS ~bgt bgee eet~) OR (FILE_EXISTS_IN_GAME ~alora09.cre~) ~Alora~
 GROUP @5
-SUBCOMPONENT @460
+//SUBCOMPONENT @460
 
 INCLUDE ~npc_ee/npcs/alora/cleric-thief.tpa~
 
@@ -366,7 +366,7 @@ BEGIN @583
 DESIGNATED 583
 REQUIRE_PREDICATE NOT GAME_IS ~iwdee~ ~Viconia~
 GROUP @5
-SUBCOMPONENT @580 
+//SUBCOMPONENT @580 
 
 INCLUDE ~npc_ee/npcs/viconia/cleric-thief.tpa~
 
@@ -384,7 +384,7 @@ BEGIN @621
 DESIGNATED 621
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Neera~
 GROUP @5
-SUBCOMPONENT @620
+//SUBCOMPONENT @620
 
 INCLUDE ~npc_ee/npcs/neera/sorcerer.tpa~
 
@@ -401,7 +401,7 @@ BEGIN @682
 DESIGNATED 682
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Yoshimo~
 GROUP @5
-SUBCOMPONENT @680
+//SUBCOMPONENT @680
 
 INCLUDE ~npc_ee/npcs/yoshimo/fighter-thief.tpa~
 
@@ -533,9 +533,29 @@ DESIGNATED 902
 REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Fade~
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~e3fade13.cre~ ~Fade~
 GROUP @5
-SUBCOMPONENT @900 
+//SUBCOMPONENT @900 
 
 INCLUDE ~npc_ee/npcs/fade/mage-thief.tpa~
+
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+//
+//									KELSEY
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+// mage_____________________________________________________________________________
+BEGIN @921
+DESIGNATED 921
+REQUIRE_PREDICATE GAME_IS ~bgt tob bg2ee eet~ ~Kelsey~
+REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~j#klsy09.cre~ ~Kelsey~
+GROUP @5
+//SUBCOMPONENT @920 
+
+INCLUDE ~npc_ee/npcs/kelsey/mage.tpa~
 
 
 
@@ -818,22 +838,23 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfch.spl~
 	END
   END
 
-//COPY ~npc_ee/data/d5_mckt.spl~ ~override~
 COPY ~npc_ee/lib/d5_base.spl~ ~override/d5_nukt.spl~
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~spcl412~ END
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~spcl414~ END
-//  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~spcl417~ END
-// cancel FnP sphere-immunity spells
-ACTION_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
-  COPY_EXISTING ~d5_nukt.spl~ ~override~
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
 	PATCH_FOR_EACH sphere IN ~aff~ ~air~ ~ani~ ~ast~ ~ben~ ~dea~ ~dec~ ~des~ ~dre~ ~ear~ ~exp~ ~fir~ ~kno~ ~lif~ ~lig~ ~mag~ ~pla~ ~pro~ ~sha~ ~tho~ ~vig~ ~war~ ~wat~ BEGIN
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5sp%sphere%x~ END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5sm%sphere%x~ END
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5sf%sphere%x~ END
 	END
-  IF_EXISTS BUT_ONLY  
-// remove all FnP spells
-// from fnplst.2da
+  END
+  PATCH_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
+	FOR (u = 1; u < 300; ++u) BEGIN
+	  PATCH_IF (FILE_EXISTS_IN_GAME ~d5_u%u%.spl~) BEGIN
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5_u%u%~ END
+	  END
+	END
+  END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
   COPY_EXISTING ~d5fnplst.2da~ ~override~
 	COUNT_2DA_COLS cols
 	READ_2DA_ENTRIES_NOW rows cols
@@ -855,7 +876,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
 	PHP_EACH most_fnp_spells AS spl => one BEGIN
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~%spl%~ END
 	END
-  IF_EXISTS BUT_ONLY
+  BUT_ONLY
 END
 
 /*

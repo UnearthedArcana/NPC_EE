@@ -48,6 +48,7 @@
 //@520  = ~Choose a class for Kagain~
 //@540  = ~Choose a class for Tiax~
 //@560  = ~Choose a class for Baeloth~
+//
 @580  = ~Choose a class for Viconia~
 @583  = ~Make Viconia a cleric/thief~
 //@600  = ~Choose a class for Edwin~
@@ -81,6 +82,8 @@
 //
 @900  = ~Choose a class for Fade~
 @902  = ~Make Fade a multiclass mage/thief~
+@920  = ~Choose a class for Kelsey~
+@921  = ~Make Kelsey a mage~
 //
 //
 @2000  = ~NPC kit choices~
