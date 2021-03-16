@@ -87,6 +87,7 @@
 //
 //
 @2000  = ~NPC kit choices~
+@2010  = ~Make changes to stats/proficiencies/kit~
 @2011  = ~Adopt this kit~
 @2012  = ~Choose a different kit~
 @2013  = ~Choose a kit~
@@ -95,6 +96,37 @@
 @2016  = ~Trueclass, no kit~
 @2017  = ~Change weapon proficiencies?~
 @2018  = ~Remove weapon proficiencies and choose new ones~
+//
+@2051  = ~Change Ability Scores?~
+@2052  = ~Change Strength Score~
+@2053  = ~Change Dexterity Score~
+@2054  = ~Change Constitution Score~
+@2055  = ~Change Intelligence Score~
+@2056  = ~Change Wisdom Score~
+@2057  = ~Change Charisma Score~
+@2058  = ~5~
+@2059  = ~6~
+@2060  = ~7~
+@2061  = ~8~
+@2062  = ~9~
+@2063  = ~10~
+@2064  = ~11~
+@2065  = ~12~
+@2066  = ~13~
+@2067  = ~14~
+@2068  = ~15~
+@2069  = ~16~
+@2070  = ~17~
+@2071  = ~18~
+@2072  = ~19~
+@2073  = ~20~
+@2074  = ~21~
+@2075  = ~22~
+@2076  = ~23~
+@2077  = ~24~
+@2078  = ~25~
+@2079  = ~No change, choose a different ability score~
+@2080  = ~Done with ability score changes~
 //
 @2091  = ~Advance weapon proficiency~
 @2092  = ~Choose a different weapon~

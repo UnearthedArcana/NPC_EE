@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v4.2~
+VERSION ~v4.3~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -578,6 +578,8 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 //
 ACTION_FOR_EACH class_folder IN ~ba~ ~cl~ ~dr~ ~fi~ ~ma~ ~mo~ ~pa~ ~ra~ ~sh~ ~so~ ~th~ ~cm~ ~cr~ ~ct~ ~fc~ ~fd~ ~fm~ ~ft~ ~mt~ ~dummy~ BEGIN
   COPY ~npc_ee/class/%class_folder%/~ ~weidu_external/npc_ee/class/%class_folder%~
+  COPY ~npc_ee/class/dummy/d5dfile1.txt~ ~weidu_external/npc_ee/class/%class_folder%~
+  COPY ~npc_ee/class/dummy/d5dfile2.txt~ ~weidu_external/npc_ee/class/%class_folder%~
 END
 //___________________________________________________________________________________
 
@@ -651,45 +653,109 @@ END
 
 //prep multiclass working folders___________________________________________________
 //
+COPY ~weidu_external/npc_ee/class/ma/d5dfile1.txt~ ~weidu_external/npc_ee/class/fm/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
 COPY ~weidu_external/npc_ee/class/fi/d5dfile1.txt~ ~weidu_external/npc_ee/class/fm/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5fikit~ ~d5fmkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/fm/d5dfilea.txt~
+COPY ~weidu_external/npc_ee/class/ma/d5dfile2.txt~ ~weidu_external/npc_ee/class/fm/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5fmkit~
 COPY ~weidu_external/npc_ee/class/fi/d5dfile2.txt~ ~weidu_external/npc_ee/class/fm/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5fikit~ ~d5fmkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/fm/d5dfileb.txt~
 
+COPY ~weidu_external/npc_ee/class/dr/d5dfile1.txt~ ~weidu_external/npc_ee/class/fd/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
 COPY ~weidu_external/npc_ee/class/fi/d5dfile1.txt~ ~weidu_external/npc_ee/class/fd/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5fikit~ ~d5fdkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/fd/d5dfilea.txt~
+COPY ~weidu_external/npc_ee/class/dr/d5dfile2.txt~ ~weidu_external/npc_ee/class/fd/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5drkit~ ~d5fdkit~
 COPY ~weidu_external/npc_ee/class/fi/d5dfile2.txt~ ~weidu_external/npc_ee/class/fd/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5fikit~ ~d5fdkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/fd/d5dfileb.txt~
 
+COPY ~weidu_external/npc_ee/class/th/d5dfile1.txt~ ~weidu_external/npc_ee/class/ft/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
 COPY ~weidu_external/npc_ee/class/fi/d5dfile1.txt~ ~weidu_external/npc_ee/class/ft/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5fikit~ ~d5ftkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/ft/d5dfilea.txt~
+COPY ~weidu_external/npc_ee/class/th/d5dfile2.txt~ ~weidu_external/npc_ee/class/ft/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5ftkit~
 COPY ~weidu_external/npc_ee/class/fi/d5dfile2.txt~ ~weidu_external/npc_ee/class/ft/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5fikit~ ~d5ftkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/ft/d5dfileb.txt~
 
+COPY ~weidu_external/npc_ee/class/fi/d5dfile1.txt~ ~weidu_external/npc_ee/class/fc/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fckit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/npc_ee/class/fc/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
+  	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/fc/d5dfilea.txt~
+  	END
+COPY ~weidu_external/npc_ee/class/fi/d5dfile2.txt~ ~weidu_external/npc_ee/class/fc/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5fikit~ ~d5fckit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/npc_ee/class/fc/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5fckit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/fc/d5dfileb.txt~
+	END
 
+COPY ~weidu_external/npc_ee/class/ma/d5dfile1.txt~ ~weidu_external/npc_ee/class/cm/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5cmkit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/npc_ee/class/cm/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/cm/d5dfilea.txt~
+	END
+COPY ~weidu_external/npc_ee/class/ma/d5dfile2.txt~ ~weidu_external/npc_ee/class/cm/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5cmkit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/npc_ee/class/cm/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5cmkit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/cm/d5dfileb.txt~
+	END
 
+COPY ~weidu_external/npc_ee/class/th/d5dfile1.txt~ ~weidu_external/npc_ee/class/ct/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5ctkit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/npc_ee/class/ct/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/ct/d5dfilea.txt~
+	END
+COPY ~weidu_external/npc_ee/class/th/d5dfile2.txt~ ~weidu_external/npc_ee/class/ct/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5thkit~ ~d5ctkit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/npc_ee/class/ct/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5ctkit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/ct/d5dfileb.txt~
+	END
 
+COPY ~weidu_external/npc_ee/class/ra/d5dfile1.txt~ ~weidu_external/npc_ee/class/cr/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5rakit~ ~d5crkit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile1.txt~ ~weidu_external/npc_ee/class/cr/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/cr/d5dfilea.txt~
+	END
+COPY ~weidu_external/npc_ee/class/ra/d5dfile2.txt~ ~weidu_external/npc_ee/class/cr/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5rakit~ ~d5crkit~
 COPY ~weidu_external/npc_ee/class/cl/d5dfile2.txt~ ~weidu_external/npc_ee/class/cr/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5clkit~ ~d5crkit~
+	PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+	  APPEND_FILE ~weidu_external/npc_ee/class/cr/d5dfileb.txt~
+	END
 
+COPY ~weidu_external/npc_ee/class/ma/d5dfile1.txt~ ~weidu_external/npc_ee/class/mt/d5dfilea.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
 COPY ~weidu_external/npc_ee/class/th/d5dfile1.txt~ ~weidu_external/npc_ee/class/mt/d5dfile1.txt~ 
 	REPLACE_TEXTUALLY ~d5thkit~ ~d5mtkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/mt/d5dfilea.txt~
+COPY ~weidu_external/npc_ee/class/ma/d5dfile2.txt~ ~weidu_external/npc_ee/class/mt/d5dfileb.txt~ 
+	REPLACE_TEXTUALLY ~d5makit~ ~d5mtkit~
 COPY ~weidu_external/npc_ee/class/th/d5dfile2.txt~ ~weidu_external/npc_ee/class/mt/d5dfile2.txt~ 
 	REPLACE_TEXTUALLY ~d5thkit~ ~d5mtkit~
+	APPEND_FILE ~weidu_external/npc_ee/class/mt/d5dfileb.txt~
 //___________________________________________________________________________________
 
 
@@ -747,6 +813,17 @@ IF ~Global("d5_ckit","GLOBAL",1)~ THEN BEGIN d5_ckit
 >>>>>>>> 
 
 ACTION_FOR_EACH sc_class IN ~ba~ ~cl~ ~dr~ ~fi~ ~ma~ ~mo~ ~pa~ ~ra~ ~sh~ ~so~ ~th~ BEGIN
+  APPEND_OUTER ~weidu_external/npc_ee/class/%sc_class%/d5dfile1.txt~ "IF ~~ THEN REPLY @2015 GOTO d5%sc_class%kit_0 // trueclass
+END
+
+"
+  APPEND_OUTER ~weidu_external/npc_ee/class/%sc_class%/d5dfile1.txt~ "IF ~~ THEN BEGIN d5%sc_class%kit_0 
+ SAY @2016 
+ IF ~~ THEN REPLY @2011 DO ~AddKit(TRUECLASS)~ EXIT 
+ IF ~~ THEN REPLY @2012 GOTO d5%sc_class%kit 
+END 
+
+"
   COPY ~d5/d5_ckit.d~ ~weidu_external/npc_ee/compile/d5%sc_class%kit.d~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~d5_c~ ~d5%sc_class%~
 	APPEND_FILE ~weidu_external/npc_ee/class/%sc_class%/d5dfile1.txt~
@@ -754,6 +831,17 @@ ACTION_FOR_EACH sc_class IN ~ba~ ~cl~ ~dr~ ~fi~ ~ma~ ~mo~ ~pa~ ~ra~ ~sh~ ~so~ ~t
 END
 
 ACTION_FOR_EACH mc_class IN ~cm~ ~cr~ ~ct~ ~fc~ ~fd~ ~fm~ ~ft~ ~mt~ BEGIN
+  APPEND_OUTER ~weidu_external/npc_ee/class/%mc_class%/d5dfile1.txt~ "IF ~~ THEN REPLY @2015 GOTO d5%mc_class%kit_0 // trueclass
+END
+
+"
+  APPEND_OUTER ~weidu_external/npc_ee/class/%mc_class%/d5dfile1.txt~ "IF ~~ THEN BEGIN d5%mc_class%kit_0 
+ SAY @2016 
+ IF ~~ THEN REPLY @2011 DO ~AddKit(TRUECLASS)~ EXIT 
+ IF ~~ THEN REPLY @2012 GOTO d5%mc_class%kit 
+END 
+
+"
   COPY ~d5/d5_ckit.d~ ~weidu_external/npc_ee/compile/d5%mc_class%kit.d~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~d5_c~ ~d5%mc_class%~
 	APPEND_FILE ~weidu_external/npc_ee/class/%mc_class%/d5dfile1.txt~
@@ -770,12 +858,32 @@ BEGIN ~D5KITTLK~
 
 IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  SAY @9
- IF ~~ THEN REPLY @2013 DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
- IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2010 DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
+ IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ EXIT 
 END
 >>>>>>>> 
 COPY ~d5/d5kittlk.d~ ~weidu_external/npc_ee/compile/d5kittlk.d~
 
+
+//stat-change dialogue_______________________________________________________________
+//
+COPY ~npc_ee/data/d5stttlk.d~ ~weidu_external/npc_ee/compile/d5stttlk.d~
+
+// stats: str=44 dex=15 con=10 int=19 wis=49 cha=6 
+ACTION_FOR_EACH value IN ~5~ ~6~ ~7~ ~8~ ~9~ ~10~ ~11~ ~12~ ~13~ ~14~ ~15~ ~16~ ~17~ ~18~ ~19~ ~20~ ~21~ ~22~ ~23~ ~24~ ~25~ BEGIN
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5st_%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 44 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5dx_%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 15 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5cn_%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 10 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5in_%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 19 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5ws_%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 49 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5ch_%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 6 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+END
 
 //proficiency dialogue_______________________________________________________________
 //
@@ -790,11 +898,11 @@ END
 >>>>>>>> 
 COPY ~d5/d5prftlk.d~ ~weidu_external/npc_ee/compile/d5prftlk.d~
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5__dialprof.d5~ BEGIN
 	INCLUDE ~npc_ee/lib/weapprof_dialogue.tpa~
 // 	LAM SET_UP_PROF_DIALOGUES
 END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5_dialprof.d5~ BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~d5__dialprof.d5~ BEGIN
 	COPY_EXISTING ~splstate.ids~ ~override~
 	  READ_2DA_ENTRIES_NOW states 2
 	  FOR (row=0;row<states;++row) BEGIN
@@ -839,6 +947,7 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfch.spl~
   END
 
 COPY ~npc_ee/lib/d5_base.spl~ ~override/d5_nukt.spl~
+/*
   PATCH_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
 	PATCH_FOR_EACH sphere IN ~aff~ ~air~ ~ani~ ~ast~ ~ben~ ~dea~ ~dec~ ~des~ ~dre~ ~ear~ ~exp~ ~fir~ ~kno~ ~lif~ ~lig~ ~mag~ ~pla~ ~pro~ ~sha~ ~tho~ ~vig~ ~war~ ~wat~ BEGIN
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5sp%sphere%x~ END
@@ -846,6 +955,7 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5_nukt.spl~
 	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5sf%sphere%x~ END
 	END
   END
+*/
   PATCH_IF (MOD_IS_INSTALLED ~faiths_and_powers.tp2~ ~75~) BEGIN
 	FOR (u = 1; u < 300; ++u) BEGIN
 	  PATCH_IF (FILE_EXISTS_IN_GAME ~d5_u%u%.spl~) BEGIN
@@ -984,7 +1094,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ckit~ END
 		END
 		PATCH_IF (npc_class = 12) BEGIN // ranger
-//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5__deity.d5~ BEGIN
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ckit~ END
 //			END
 		END
@@ -995,12 +1105,12 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 			LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ckit~ END
 		END
 		PATCH_IF (npc_class = 3) BEGIN // cleric
-//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5__deity.d5~ BEGIN
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ckit~ END
 //			END
 		END
 		PATCH_IF (npc_class = 11) BEGIN // druid
-//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+//			PATCH_IF NOT FILE_EXISTS_IN_GAME ~d5__deity.d5~ BEGIN
 				LPF ADD_CRE_EFFECT INT_VAR opcode=171 target=1 timing=9 power=1 STR_VAR resource=~d5_ckit~ END
 //			END
 		END
@@ -1077,6 +1187,7 @@ COMPILE ~weidu_external/npc_ee/compile/d5mtkit.d~
 
 COMPILE ~npc_ee/data/d5_ckit.baf~
 
+COMPILE ~weidu_external/npc_ee/compile/d5stttlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5kittlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5prftlk.d~
 //__________________________________________________________________________________
@@ -1084,7 +1195,7 @@ COMPILE ~weidu_external/npc_ee/compile/d5prftlk.d~
 
 //add proficiency dialogues to clab tables__________________________________________
 //
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5__profs.d5~ BEGIN
 	ACTION_FOR_EACH warrior_clab IN ~clabfi01~ ~clabpa01~ ~clabra01~ BEGIN
 	  ACTION_IF FILE_EXISTS_IN_GAME ~%warrior_clab%.2da~ BEGIN
 		APPEND ~%warrior_clab%.2da~ ~PROFS       AP_D5PROF1  ****        AP_D5PROF5  ****        ****        AP_D5PROF6  ****        ****        AP_D5PROF7  ****        ****        AP_D5PROF8  ****        ****        AP_D5PROF9  ****        ****        AP_D5PROF10 ****        ****        AP_D5PROF11 ****        ****        AP_D5PROF12 ****        ****        AP_D5PROF13 ****        ****        AP_D5PROF14 ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****  
@@ -1180,7 +1291,7 @@ PROFS       AP_D5PROF2  ****        ****        ****        ****        ****    
  	END
   END
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~d5_profs.d5~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~d5__profs.d5~ BEGIN
 	ACTION_FOR_EACH old_prof_spell IN ~d5wepp1~
 								~d5wepp1~
 								~d5wepp2~
@@ -1441,7 +1552,7 @@ COPY ~npc_ee/pc/d5_rakt.eff~ ~override~
 COPY ~npc_ee/pc/d5_thkt.eff~ ~override~
 COPY ~npc_ee/pc/d5_mtkt.eff~ ~override~
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5_deity.d5~ BEGIN
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5__deity.d5~ BEGIN
   ACTION_IF FILE_EXISTS_IN_GAME ~clabpr01.2da~ BEGIN
 	COPY_EXISTING ~clabpr01.2da~ ~override~
 		APPEND_FILE ~npc_ee/pc/cleric_kit_choice.txt~

@@ -8,8 +8,19 @@ THEN
 END
 
 IF
+	Global("D5STTTLK","GLOBAL",0)
+	Global("D5KITTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STTTLK","GLOBAL",1)
+	SetNumTimesTalkedTo(0)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5stttlk",Myself))
+END
+
+IF
 	Global("D5PRFTLK","GLOBAL",0)
 	Global("D5KITTLK","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRFTLK","GLOBAL",1)
@@ -235,6 +246,7 @@ THEN
 	RESPONSE #100
 		SetNumTimesTalkedTo(0)
 		SetGlobal("D5KITTLK","GLOBAL",0)
+		SetGlobal("D5STTTLK","GLOBAL",0)
 		SetGlobal("D5CHAKIT","GLOBAL",0)
 		SetGlobal("D5PRFTLK","GLOBAL",0)
 		SetGlobal("D5FIKIT","GLOBAL",0)

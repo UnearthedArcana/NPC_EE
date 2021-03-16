@@ -1,8 +1,0 @@
-IF ~~ THEN REPLY @2015 GOTO d5makit_0 // trueclass
-END
-
-IF ~~ THEN BEGIN d5makit_0 
- SAY @2016 
- IF ~~ THEN REPLY @2011 DO ~AddKit(TRUECLASS)~ EXIT 
- IF ~~ THEN REPLY @2012 GOTO d5makit 
-END 
