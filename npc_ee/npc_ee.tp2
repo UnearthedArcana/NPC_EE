@@ -870,7 +870,21 @@ COPY ~d5/d5kittlk.d~ ~weidu_external/npc_ee/compile/d5kittlk.d~
 COPY ~npc_ee/data/d5stttlk.d~ ~weidu_external/npc_ee/compile/d5stttlk.d~
 
 // stats: str=44 dex=15 con=10 int=19 wis=49 cha=6 
-ACTION_FOR_EACH value IN ~5~ ~6~ ~7~ ~8~ ~9~ ~10~ ~11~ ~12~ ~13~ ~14~ ~15~ ~16~ ~17~ ~18~ ~19~ ~20~ ~21~ ~22~ ~23~ ~24~ ~25~ BEGIN
+ACTION_FOR_EACH value IN ~5~ ~6~ ~7~ ~8~ ~9~ BEGIN
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5st_0%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 44 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5dx_0%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 15 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5cn_0%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 10 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5in_0%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 19 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5ws_0%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 49 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5ch_0%value%.spl~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 6 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
+END
+ACTION_FOR_EACH value IN ~10~ ~11~ ~12~ ~13~ ~14~ ~15~ ~16~ ~17~ ~18~ ~19~ ~20~ ~21~ ~22~ ~23~ ~24~ ~25~ BEGIN
   COPY ~npc_ee/lib/d5_base.spl~ ~override/d5st_%value%.spl~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 44 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
   COPY ~npc_ee/lib/d5_base.spl~ ~override/d5dx_%value%.spl~
