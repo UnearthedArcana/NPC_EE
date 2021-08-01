@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v4.3~
+VERSION ~v4.4~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -51,6 +51,7 @@ LANGUAGE
   ~English~
   ~english~
   ~npc_ee/language/english/setup.tra~
+
 
 
 //__________________________________________________________________________________
@@ -560,13 +561,13 @@ INCLUDE ~npc_ee/npcs/kelsey/mage.tpa~
 
 
 
-
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 //
-//						INNATE ABILITIES FOR SINGLE-CLASS
+//						INNATE ABILITIES FOR KIT/STAT CHANGES
 //__________________________________________________________________________________
 //__________________________________________________________________________________
+
 
 BEGIN @2000
 DESIGNATED 2000
@@ -759,7 +760,7 @@ COPY ~weidu_external/npc_ee/class/th/d5dfile2.txt~ ~weidu_external/npc_ee/class/
 //___________________________________________________________________________________
 
 
-//build single-class dialogue pieces_________________________________________________
+//build multiclass dialogue pieces____________________________________________________
 //
 OUTER_SET block_num = 0
 
@@ -798,7 +799,7 @@ ACTION_PHP_EACH d5_kits AS zoo => zu BEGIN
 	ACTION_GET_STRREF EVAL %zoo_1% ~name_string~
 	ACTION_GET_STRREF EVAL %zoo_2% ~desc_string~
 	APPEND_OUTER ~weidu_external/npc_ee/class/%class%/d5dfile1.txt~ "IF ~~ THEN REPLY ~%name_string%~ GOTO d5%class%kit_%block_num%" KEEP_CRLF
-	APPEND_OUTER ~weidu_external/npc_ee/class/%class%/d5dfile2.txt~ "IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%" KEEP_CRLF
+	APPEND_OUTER ~weidu_external/npc_ee/class/%class%/d5dfile2.txt~ ~~~~~IF ~~ THEN BEGIN d5%class%kit_%block_num% %WNL% SAY ~%desc_string%~ %WNL% IF ~~ THEN REPLY ~%adopt_kit%~ DO ~AddKit(%ids_name%)~ DO ~ApplySpellRES("D5MCLAB",Myself)~ EXIT %WNL% IF ~~ THEN REPLY ~%different_kit%~ GOTO d5%class%kit %WNL% END %WNL%~~~~~ KEEP_CRLF
 END
 //__________________________________________________________________________________
 
@@ -950,6 +951,12 @@ COPY ~npc_ee/data/d5_ckit.spl~ ~override~
 
 COPY ~npc_ee/data/d5_ckit.cre~ ~override~
 
+COPY ~npc_ee/data/d5_ckit.itm~ ~override~
+	SAY NAME1 @11
+	SAY NAME2 @11
+	SAY UNIDENTIFIED_DESC @11
+	SAY IDENTIFIED_DESC @11
+
 COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfch.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 328 target = 1 parameter2 = %new_profs_state% timing = 9 special = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
@@ -960,7 +967,114 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfch.spl~
 	END
   END
 
+ACTION_FOR_EACH mclass IN ~f~ ~p~ ~d~ ~r~ ~t~ ~m~ BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~qd_mc%mclass%01.spl~) BEGIN
+    COPY ~npc_ee/lib/d5mclab_.spl~ ~override/d5mclab%mclass%.spl~
+      FOR (h = 1; h < 52; ++h) BEGIN
+        FOR (n = 1; n < h; ++n) BEGIN
+          PATCH_IF (n < 10) BEGIN
+            SPRINT nn ~0%n%~
+          END ELSE BEGIN
+            SPRINT nn ~%n%~
+          END
+          PATCH_IF (FILE_EXISTS_IN_GAME ~qd_mc%mclass%%nn%.spl~) BEGIN
+            LPF ADD_SPELL_EFFECT INT_VAR header = (h - 1) opcode = 146 target = 1 parameter2 = 1 timing = 1 STR_VAR resource = EVAL ~qd_mc%mclass%%nn%~ END
+          END
+        END
+      END
+    BUT_ONLY
+  END
+END
+
+/*
+COPY ~npc_ee/data/d5mclabf.spl~ ~override~
+COPY ~npc_ee/data/d5mclabp.spl~ ~override~
+COPY ~npc_ee/data/d5mclabd.spl~ ~override~
+COPY ~npc_ee/data/d5mclabr.spl~ ~override~
+COPY ~npc_ee/data/d5mclabt.spl~ ~override~
+COPY ~npc_ee/data/d5mclabm.spl~ ~override~
+*/
+
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5mclab.spl~
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabf.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 7 parameter2 = 105 STR_VAR resource = ~d5mclabf~ END  // fm
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabm.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 7 parameter2 = 105 STR_VAR resource = ~d5mclabm~ END  // fm
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabf.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 8 parameter2 = 105 STR_VAR resource = ~d5mclabf~ END  // fc
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabp.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 8 parameter2 = 105 STR_VAR resource = ~d5mclabp~ END  // fc
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabf.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 9 parameter2 = 105 STR_VAR resource = ~d5mclabf~ END  // ft
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabt.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 9 parameter2 = 105 STR_VAR resource = ~d5mclabt~ END  // ft
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabf.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 10 parameter2 = 105 STR_VAR resource = ~d5mclabf~ END  // fmt
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabm.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 10 parameter2 = 105 STR_VAR resource = ~d5mclabm~ END  // fmt
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabt.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 10 parameter2 = 105 STR_VAR resource = ~d5mclabt~ END  // fmt
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabm.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 13 parameter2 = 105 STR_VAR resource = ~d5mclabm~ END  // mt
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabt.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 13 parameter2 = 105 STR_VAR resource = ~d5mclabt~ END  // mt
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabp.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 14 parameter2 = 105 STR_VAR resource = ~d5mclabp~ END  // cm
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabm.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 14 parameter2 = 105 STR_VAR resource = ~d5mclabm~ END  // cm
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabp.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 15 parameter2 = 105 STR_VAR resource = ~d5mclabp~ END  // ct
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabt.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 15 parameter2 = 105 STR_VAR resource = ~d5mclabt~ END  // ct
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabf.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 16 parameter2 = 105 STR_VAR resource = ~d5mclabf~ END  // fd
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabd.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 16 parameter2 = 105 STR_VAR resource = ~d5mclabd~ END  // fd
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabf.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 17 parameter2 = 105 STR_VAR resource = ~d5mclabf~ END  // fmc
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabm.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 17 parameter2 = 105 STR_VAR resource = ~d5mclabm~ END  // fmc
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabp.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 17 parameter2 = 105 STR_VAR resource = ~d5mclabp~ END  // fmc
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabp.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 18 parameter2 = 105 STR_VAR resource = ~d5mclabp~ END  // cr
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5mclabr.spl~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 timing = 4 duration = 1 parameter1 = 18 parameter2 = 105 STR_VAR resource = ~d5mclabr~ END  // cr
+  END
+
+
 COPY ~npc_ee/lib/d5_base.spl~ ~override/d5_nukt.spl~
+// remove kit effects for MnG nubards
+  PATCH_IF (MOD_IS_INSTALLED ~might_and_guile.tp2~ ~210~) BEGIN
+	PATCH_FOR_EACH bard_abil IN ~d5noppb~ ~d5nomsb~ ~d5noftb~ BEGIN
+	  PATCH_IF (FILE_EXISTS_IN_GAME ~%bard_abil%.spl~) BEGIN
+		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~%bard_abil%~ END
+	  END
+	END
+  END
+
+// remove usability constraints (and sphere spells?) for FnP divine casters
 /*
   PATCH_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
 	PATCH_FOR_EACH sphere IN ~aff~ ~air~ ~ani~ ~ast~ ~ben~ ~dea~ ~dec~ ~des~ ~dre~ ~ear~ ~exp~ ~fir~ ~kno~ ~lif~ ~lig~ ~mag~ ~pla~ ~pro~ ~sha~ ~tho~ ~vig~ ~war~ ~wat~ BEGIN
@@ -1089,10 +1203,10 @@ ACTION_FOR_EACH prof_spell IN
   IF_EXISTS BUT_ONLY
 END
 
-//__________________________________________________________________________________
+//___________________________________________________________________________________
 
 
-//add innate abilities to single-class NPCs_________________________________________
+//add innate abilities to NPCs________________________________________________________
 //
 LAM JOINABLE_NPC_ARRAYS
 

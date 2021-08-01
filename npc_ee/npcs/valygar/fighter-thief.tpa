@@ -42,12 +42,14 @@ ACTION_FOR_EACH char IN ~valyg8~ ~valyg9~ ~valyg11~ ~valyg12~ ~valyg14~ BEGIN
   END
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~valygar.bcs~ BEGIN
 	EXTEND_BOTTOM ~valygar.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~valy25.bcs~ BEGIN
 	EXTEND_BOTTOM ~valy25.bcs~ ~npc_ee/npcs/valygar/valygar_f-t.baf~
 END
+*/
 
 ACTION_IF FILE_EXISTS_IN_GAME ~npchan.itm~ THEN BEGIN
 	COPY_EXISTING ~npchan.itm~ ~override~

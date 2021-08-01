@@ -44,9 +44,11 @@ ACTION_IF FILE_EXISTS_IN_GAME ~khalid.cre~ BEGIN
 	BUT_ONLY
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~khalid.bcs~ BEGIN
 	EXTEND_BOTTOM ~khalid.bcs~ ~npc_ee/npcs/khalid/khalid_c-r.baf~
 END
+*/
 
 //__________________________________________________________________________________
 

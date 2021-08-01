@@ -48,8 +48,9 @@ ACTION_FOR_EACH char IN ~xan~ ~xan_~ ~xan4~ ~xan6~ ~o#xan09~ ~o#xan25~ BEGIN
   END
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~sw1h13.itm~ THEN BEGIN
-	COPY_EXISTING ~sw1h13.itm~ ~override~
+ACTION_FOR_EACH sword IN ~sw1h13.itm~ ~o#xandb~ ~o#xanimb~ ~o#xanims~ ~o#xanmb~ ~o#xanms~ BEGIN
+  ACTION_IF FILE_EXISTS_IN_GAME ~%sword%.itm~ THEN BEGIN
+	COPY_EXISTING ~%sword%.itm~ ~override~
 		PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
 			READ_BYTE 0x1f fm 
 			WRITE_BYTE 0x1f (fm BAND 0b11011111)
@@ -68,5 +69,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~sw1h13.itm~ THEN BEGIN
 			END
 		END
 	BUT_ONLY
+  END
 END
 //__________________________________________________________________________________

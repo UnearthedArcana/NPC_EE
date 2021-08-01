@@ -35,12 +35,14 @@ ACTION_FOR_EACH char IN ~nalia8~ ~nalia10~ ~nalia11~ ~nalia13~ ~nalia15~ ~nalia1
   END
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~nalia.bcs~ BEGIN
 	EXTEND_BOTTOM ~nalia.bcs~ ~npc_ee/npcs/nalia/nalia_c-m.baf~
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~nali25.bcs~ BEGIN
 	EXTEND_BOTTOM ~nali25.bcs~ ~npc_ee/npcs/nalia/nalia_c-m.baf~
 END
+*/
 
 //__________________________________________________________________________________
 

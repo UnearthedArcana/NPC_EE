@@ -36,9 +36,11 @@ ACTION_FOR_EACH char IN ~xzar~ ~xzar_~ ~xzar2~ ~xzar4~ ~xzar6~ BEGIN
   END
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~xzar.bcs~ BEGIN
 	EXTEND_BOTTOM ~xzar.bcs~ ~npc_ee/npcs/xzar/xzar_c-m.baf~
 END
+*/
 
 //__________________________________________________________________________________
 

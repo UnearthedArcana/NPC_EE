@@ -42,9 +42,11 @@ ACTION_FOR_EACH char IN ~safana4~ ~safana6~ ~safana7~ BEGIN
   END
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~safana.bcs~ BEGIN
 	EXTEND_BOTTOM ~safana.bcs~ ~npc_ee/npcs/safana/safana_f-t.baf~
 END
+*/
 
 //__________________________________________________________________________________
 

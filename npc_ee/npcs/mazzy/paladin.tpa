@@ -32,12 +32,14 @@ ACTION_FOR_EACH char IN ~mazzy8~ ~mazzy9~ ~mazzy11~ ~mazzy12~ ~mazzy15~ BEGIN
   END
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~mazzy.bcs~ BEGIN
 	EXTEND_BOTTOM ~mazzy.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
 END
 ACTION_IF FILE_EXISTS_IN_GAME ~mazz25.bcs~ BEGIN
 	EXTEND_BOTTOM ~mazz25.bcs~ ~npc_ee/npcs/mazzy/mazzy_paladin.baf~
 END
+*/
 
 ACTION_IF FILE_EXISTS_IN_GAME ~npsw01.itm~ THEN BEGIN
 	COPY_EXISTING ~npsw01.itm~ ~override~

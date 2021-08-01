@@ -60,9 +60,11 @@ ACTION_FOR_EACH char IN ~imoen1~ ~imoen2~ ~imoen4~ ~imoen6~ ~imoen6_~ ~imoen10~ 
   END
 END
 
+/*
 ACTION_IF FILE_EXISTS_IN_GAME ~imoen.bcs~ BEGIN
 	EXTEND_BOTTOM ~imoen.bcs~ ~npc_ee/npcs/imoen/imoen_m-t.baf~
 END
+*/
 
 //__________________________________________________________________________________
 
