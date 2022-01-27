@@ -1,12 +1,12 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v4.4.3~
+VERSION ~v4.5~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
 
-  INCLUDE ~npc_ee/lib/joinable_npcs.tpa~
+  INCLUDE ~%MOD_FOLDER%/lib/misc_functions.tpa~
 
 // joinable NPC issues for tutu/bgt/eet:
   ACTION_IF GAME_IS ~bgee bg2ee~ BEGIN
@@ -568,6 +568,46 @@ INCLUDE ~npc_ee/npcs/kelsey/mage.tpa~
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
+/*
+add MC kits for every SC kit
+- add function in .tpa
+- go through kitlist.2da
+- check each kit's base class, proceed only if base class is SC
+- check clsrcreq.2da, record kit's race options
+- for each valid MC combo with base class, make new version of the kit
+- ...for all valid races
+- ...exclude cleric kits if FnP is installed
+- ...exclude psions
+- ...exclude mana sorcerer
+- ...exclude arcanist?
+- ...how will this work with 5E casting?
+how hard could that be? :P
+
+EDIT - got draft working for druids & rangers... but is this really necessary? Maybe better to just use the SC kits...
+*/
+
+/*
+add stat feedback to stat-change dialogue
+- ...at least with original ones...
+*/
+
+/*
+add class-change option to dialogue
+- set hp to 3
+- set levels to 0
+- set saves to 20
+- set skills to 0
+- what else?
+- ...lore
+- ...
+- use d5nukt to set everything to level 0?
+- ...no, do it in the dialogue after deciding whether to change anything
+- ...might need a broad-spectrum spell full of 172/321 effects for every single CLAB effect...
+- ...then add a CLSTLK dialogue to choose class
+- ...then back to the regular routine (STTTLK, then PRFTLK, the KITTLK)
+- ...hmm - PRFTLK isn't even needed if level goes to 0...
+*/
+
 
 BEGIN @2000
 DESIGNATED 2000
@@ -596,6 +636,11 @@ ACTION_FOR_EACH class_folder IN ~ba~ ~cl~ ~dr~ ~fi~ ~ma~ ~mo~ ~pa~ ~ra~ ~sh~ ~so
   COPY ~npc_ee/class/dummy/d5dfile1.txt~ ~weidu_external/npc_ee/class/%class_folder%~
   COPY ~npc_ee/class/dummy/d5dfile2.txt~ ~weidu_external/npc_ee/class/%class_folder%~
 END
+//___________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//______________________________________KITS_________________________________________
 //___________________________________________________________________________________
 
 
@@ -862,7 +907,11 @@ END
 	APPEND_FILE ~weidu_external/npc_ee/class/%mc_class%/d5dfile1.txt~
 	APPEND_FILE ~weidu_external/npc_ee/class/%mc_class%/d5dfile2.txt~
 END
+//___________________________________________________________________________________
 
+
+//___________________________________________________________________________________
+//_____________________________________CLASS_________________________________________
 //___________________________________________________________________________________
 
 
@@ -880,7 +929,64 @@ END
 COPY ~d5/d5kittlk.d~ ~weidu_external/npc_ee/compile/d5kittlk.d~
 
 
-//stat-change dialogue_______________________________________________________________
+//spell to undo kit abilities________________________________________________________
+//
+COPY_EXISTING ~kitlist.2da~ ~override~
+  READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
+  FOR (row = 2; row < r2en_kitlist; row += 1) BEGIN
+    READ_2DA_ENTRY_FORMER ~r2en_kitlist~ row 5 kit_clab
+    SPRINT $clabs_to_check(~%kit_clab%~)~1~
+  END
+BUT_ONLY
+
+ACTION_PHP_EACH clabs_to_check AS clab => ind BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%clab%.2da~) BEGIN
+    COPY_EXISTING ~%clab%.2da~ ~override~
+      LPF 2DA_MISSING_COLS STR_VAR entry = ~****~ END 
+    BUT_ONLY
+    COPY_EXISTING ~%clab%.2da~ ~override~
+      COUNT_2DA_COLS cols
+      READ_2DA_ENTRIES_NOW r2en_clab cols
+      FOR (col = 1; col < cols; ++col) BEGIN
+        FOR (row = 0; row < r2en_clab; ++row) BEGIN
+          READ_2DA_ENTRY_FORMER r2en_clab row col kit_abil
+          PATCH_IF (~%kit_abil%~ STRING_CONTAINS_REGEXP ~GA_~) = 0 BEGIN
+            SPRINT $ga_abils(~%kit_abil%~)~1~
+          END
+          PATCH_IF (~%kit_abil%~ STRING_CONTAINS_REGEXP ~AP_~) = 0 BEGIN
+            SPRINT $ap_abils(~%kit_abil%~)~1~
+          END
+        END
+      END
+    BUT_ONLY
+  END
+END
+
+COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d500kit.spl~
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+  PHP_EACH ga_abils AS given_abil => ind BEGIN
+    INNER_PATCH_SAVE given_abil ~%given_abil%~ BEGIN
+      REPLACE_TEXTUALLY ~GA_~ ~~
+    END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~%given_abil%~ END
+  END
+  PHP_EACH ap_abils AS applied_abil => ind BEGIN
+    INNER_PATCH_SAVE applied_abil ~%applied_abil%~ BEGIN
+      REPLACE_TEXTUALLY ~AP_~ ~~
+    END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~%applied_abil%~ END
+  END
+BUT_ONLY
+//___________________________________________________________________________________
+
+
+//class-change dialogue_______________________________________________________________
+//
+COPY ~npc_ee/data/d5clstlk.d~ ~weidu_external/npc_ee/compile/d5clstlk.d~
+//___________________________________________________________________________________
+
+
+//stat-change dialogue & spells_______________________________________________________
 //
 COPY ~npc_ee/data/d5stttlk.d~ ~weidu_external/npc_ee/compile/d5stttlk.d~
 
@@ -913,6 +1019,13 @@ ACTION_FOR_EACH value IN ~10~ ~11~ ~12~ ~13~ ~14~ ~15~ ~16~ ~17~ ~18~ ~19~ ~20~ 
   COPY ~npc_ee/lib/d5_base.spl~ ~override/d5ch_%value%.spl~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 6 target = 1 parameter1 = %value% parameter2 = 1 timing = 1 END
 END
+//___________________________________________________________________________________
+
+
+//___________________________________________________________________________________
+//_____________________________________PROFS_________________________________________
+//___________________________________________________________________________________
+
 
 //proficiency dialogue_______________________________________________________________
 //
@@ -1340,7 +1453,51 @@ COMPILE ~weidu_external/npc_ee/compile/d5crkit.d~
 COMPILE ~weidu_external/npc_ee/compile/d5ctkit.d~
 COMPILE ~weidu_external/npc_ee/compile/d5mtkit.d~
 
+OUTER_SPRINT stat_5 @2058 
+OUTER_SET stat_5_strref = RESOLVE_STR_REF (%stat_5%)
+OUTER_SPRINT stat_6 @2059 
+OUTER_SET stat_6_strref = RESOLVE_STR_REF (%stat_6%)
+OUTER_SPRINT stat_7 @2060
+OUTER_SET stat_7_strref = RESOLVE_STR_REF (%stat_7%)
+OUTER_SPRINT stat_8 @2061
+OUTER_SET stat_8_strref = RESOLVE_STR_REF (%stat_8%)
+OUTER_SPRINT stat_9 @2062
+OUTER_SET stat_9_strref = RESOLVE_STR_REF (~9~)
+OUTER_SPRINT stat_10 @2063
+OUTER_SET stat_10_strref = RESOLVE_STR_REF (%stat_10%)
+OUTER_SPRINT stat_11 @2064
+OUTER_SET stat_11_strref = RESOLVE_STR_REF (%stat_11%)
+OUTER_SPRINT stat_12 @2065
+OUTER_SET stat_12_strref = RESOLVE_STR_REF (%stat_12%)
+OUTER_SPRINT stat_13 @2066
+OUTER_SET stat_13_strref = RESOLVE_STR_REF (%stat_13%)
+OUTER_SPRINT stat_14 @2067
+OUTER_SET stat_14_strref = RESOLVE_STR_REF (%stat_14%)
+OUTER_SPRINT stat_15 @2068
+OUTER_SET stat_15_strref = RESOLVE_STR_REF (%stat_15%)
+OUTER_SPRINT stat_16 @2069
+OUTER_SET stat_16_strref = RESOLVE_STR_REF (%stat_16%)
+OUTER_SPRINT stat_17 @2070
+OUTER_SET stat_17_strref = RESOLVE_STR_REF (%stat_17%)
+OUTER_SPRINT stat_18 @2071
+OUTER_SET stat_18_strref = RESOLVE_STR_REF (%stat_18%)
+OUTER_SPRINT stat_19 @2072
+OUTER_SET stat_19_strref = RESOLVE_STR_REF (%stat_19%)
+OUTER_SPRINT stat_20 @2073
+OUTER_SET stat_20_strref = RESOLVE_STR_REF (%stat_20%)
+OUTER_SPRINT stat_21 @2074
+OUTER_SET stat_21_strref = RESOLVE_STR_REF (%stat_21%)
+OUTER_SPRINT stat_22 @2075
+OUTER_SET stat_22_strref = RESOLVE_STR_REF (%stat_22%)
+OUTER_SPRINT stat_23 @2076
+OUTER_SET stat_23_strref = RESOLVE_STR_REF (%stat_23%)
+OUTER_SPRINT stat_24 @2077
+OUTER_SET stat_24_strref = RESOLVE_STR_REF (%stat_24%)
+OUTER_SPRINT stat_25 @2078
+OUTER_SET stat_25_strref = RESOLVE_STR_REF (%stat_25%)
+
 COMPILE ~npc_ee/data/d5_ckit.baf~
+//COMPILE ~npc_ee/data/d5_cstt.baf~
 
 COMPILE ~weidu_external/npc_ee/compile/d5stttlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5kittlk.d~

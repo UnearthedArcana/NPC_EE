@@ -97,7 +97,26 @@
 @2017  = ~Change weapon proficiencies?~
 @2018  = ~Remove weapon proficiencies and choose new ones~
 //
-@2051  = ~Change Ability Scores?~
+@2030  = ~Change class?~
+@2031  = ~Become a fighter~
+@2032  = ~Become a ranger~
+@2033  = ~Become a paladin~
+@2034  = ~Become a cleric~
+@2035  = ~Become a druid~
+@2036  = ~Become a shaman~
+@2037  = ~Become a thief~
+@2038  = ~Become a bard~
+@2039  = ~Become a wizard~
+@2040  = ~Become a sorcerer~
+//
+@2051  = ~Current Strength: <d5_cur_str>
+Current Dexterity: <d5_cur_dex>
+Current Constitution: <d5_cur_con>
+Current Intelligence: <d5_cur_int>
+Current Wisdom: <d5_cur_wis>
+Current Charisma: <d5_cur_chr>
+
+Change Ability Scores?~
 @2052  = ~Change Strength Score~
 @2053  = ~Change Dexterity Score~
 @2054  = ~Change Constitution Score~

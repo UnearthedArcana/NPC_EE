@@ -9,10 +9,1205 @@ END
 
 IF
 	Global("D5STTTLK","GLOBAL",0)
+    Global("D5STRSET","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetTokenGlobal("D5STRVALUE","GLOBAL","d5_cur_str")
+    Continue()
+END
+IF
+	Global("D5STTTLK","GLOBAL",0)
+    Global("D5DEXSET","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetTokenGlobal("D5DEXVALUE","GLOBAL","d5_cur_dex")
+    Continue()
+END
+IF
+	Global("D5STTTLK","GLOBAL",0)
+    Global("D5CONSET","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetTokenGlobal("D5CONVALUE","GLOBAL","d5_cur_con")
+    Continue()
+END
+IF
+	Global("D5STTTLK","GLOBAL",0)
+    Global("D5INTSET","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetTokenGlobal("D5INTVALUE","GLOBAL","d5_cur_int")
+    Continue()
+END
+IF
+	Global("D5STTTLK","GLOBAL",0)
+    Global("D5WISSET","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetTokenGlobal("D5WISVALUE","GLOBAL","d5_cur_wis")
+    Continue()
+END
+IF
+	Global("D5STTTLK","GLOBAL",0)
+    Global("D5CHRSET","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetTokenGlobal("D5CHRVALUE","GLOBAL","d5_cur_chr")
+    Continue()
+END
+
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStatLT(LastSummonerOf(Myself),4,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL",3)
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),4,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","4")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),5,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","5")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),6,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","6")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),7,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","7")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),8,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","8")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),9,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","9")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),10,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","10")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),11,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","11")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),12,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","12")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),13,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","13")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),14,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","14")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),15,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","15")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),16,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","16")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),17,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","17")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),18,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","18")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),19,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","19")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),20,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","20")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),21,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","21")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),22,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","22")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),23,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","23")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),24,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","24")
+	Continue()
+END
+IF
+	Global("D5STRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),25,STR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5STRVALUE","GLOBAL","25")
+	Continue()
+END
+
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStatLT(LastSummonerOf(Myself),4,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","3")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),4,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","4")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),5,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","5")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),6,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","6")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),7,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","7")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),8,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","8")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),9,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","9")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),10,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","10")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),11,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","11")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),12,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","12")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),13,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","13")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),14,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","14")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),15,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","15")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),16,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","16")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),17,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","17")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),18,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","18")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),19,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","19")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),20,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","20")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),21,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","21")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),22,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","22")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),23,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","23")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),24,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","24")
+	Continue()
+END
+IF
+	Global("D5DEXSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),25,DEX)
+THEN
+	RESPONSE #100
+	SetGlobal("D5DEXVALUE","GLOBAL","25")
+	Continue()
+END
+
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStatLT(LastSummonerOf(Myself),4,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","3")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),4,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","4")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),5,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","5")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),6,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","6")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),7,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","7")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),8,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","8")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),9,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","9")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),10,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","10")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),11,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","11")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),12,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","12")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),13,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","13")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),14,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","14")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),15,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","15")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),16,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","16")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),17,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","17")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),18,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","18")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),19,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","19")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),20,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","20")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),21,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","21")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),22,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","22")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),23,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","23")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),24,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","24")
+	Continue()
+END
+IF
+	Global("D5CONSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),25,CON)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CONVALUE","GLOBAL","25")
+	Continue()
+END
+
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStatLT(LastSummonerOf(Myself),4,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","3")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),4,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","4")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),5,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","5")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),6,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","6")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),7,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","7")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),8,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","8")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),9,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","9")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),10,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","10")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),11,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","11")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","12")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),13,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","13")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),14,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","14")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),15,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","15")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),16,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","16")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),17,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","17")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),18,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","18")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),19,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","19")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),20,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","20")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),21,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","21")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),22,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","22")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),23,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","23")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),24,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","24")
+	Continue()
+END
+IF
+	Global("D5INTSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),25,INT)
+THEN
+	RESPONSE #100
+	SetGlobal("D5INTVALUE","GLOBAL","25")
+	Continue()
+END
+
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStatLT(LastSummonerOf(Myself),4,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","3")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),4,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","4")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),5,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","5")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),6,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","6")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),7,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","7")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),8,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","8")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),9,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","9")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),10,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","10")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),11,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","11")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","12")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),13,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","13")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),14,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","14")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),15,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","15")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),16,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","16")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),17,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","17")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),18,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","18")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),19,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","19")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),20,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","20")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),21,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","21")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),22,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","22")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),23,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","23")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),24,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","24")
+	Continue()
+END
+IF
+	Global("D5WISSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),25,WIS)
+THEN
+	RESPONSE #100
+	SetGlobal("D5WISVALUE","GLOBAL","25")
+	Continue()
+END
+
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStatLT(LastSummonerOf(Myself),4,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","3")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),4,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","4")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),5,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","5")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),6,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","6")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),7,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","7")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),8,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","8")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),9,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","9")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),10,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","10")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),11,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","11")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),12,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","12")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),13,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","13")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),14,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","14")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),15,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","15")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),16,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","16")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),17,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","17")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),18,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","18")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),19,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","19")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),20,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","20")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),21,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","21")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),22,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","22")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),23,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","23")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),24,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","24")
+	Continue()
+END
+IF
+	Global("D5CHRSET","GLOBAL",0)
+	CheckStat(LastSummonerOf(Myself),25,CHR)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHRVALUE","GLOBAL","25")
+	Continue()
+END
+
+IF
+    Global("D5STRSET","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("D5STRSET","GLOBAL",1)
+END
+IF
+    Global("D5DEXSET","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("D5DEXSET","GLOBAL",1)
+END
+IF
+    Global("D5CONSET","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("D5CONSET","GLOBAL",1)
+END
+IF
+    Global("D5INTSET","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("D5INTSET","GLOBAL",1)
+END
+IF
+    Global("D5WISSET","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("D5WISSET","GLOBAL",1)
+END
+IF
+    Global("D5CHRSET","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("D5CHRSET","GLOBAL",1)
+END
+
+IF
+	Global("D5STTTLK","GLOBAL",0)
 	Global("D5KITTLK","GLOBAL",1)
 THEN
 	RESPONSE #100
-	SetGlobal("D5STTTLK","GLOBAL",1)
 	SetNumTimesTalkedTo(0)
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5stttlk",Myself))
 END
@@ -31,6 +1226,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),FIGHTER)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -42,6 +1238,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),PALADIN)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -53,6 +1250,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),RANGER)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -64,6 +1262,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),THIEF)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -75,6 +1274,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),BARD)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -86,6 +1286,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),CLERIC)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -97,6 +1298,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),DRUID)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -109,6 +1311,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),SHAMAN)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -121,6 +1324,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),MONK)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -133,6 +1337,7 @@ IF
 	Class(LastSummonerOf(Myself),MAGE)
 	!Class(LastSummonerOf(Myself),SORCERER)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -144,6 +1349,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),SORCERER)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -155,6 +1361,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -166,6 +1373,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -177,6 +1385,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -188,6 +1397,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -199,6 +1409,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),CLERIC_RANGER)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -210,6 +1421,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),CLERIC_THIEF)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -221,6 +1433,7 @@ END
 IF
 	Class(LastSummonerOf(Myself),CLERIC_MAGE)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
@@ -232,10 +1445,11 @@ END
 IF
 	Class(LastSummonerOf(Myself),MAGE_THIEF)
 	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
-		SetGlobal("D5MTKIT","GLOBAL",1)
+	SetGlobal("D5MTKIT","GLOBAL",1)
 	SetNumTimesTalkedTo(1)
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5mtkit",Myself))
 END
@@ -247,6 +1461,18 @@ THEN
 		SetNumTimesTalkedTo(0)
 		SetGlobal("D5KITTLK","GLOBAL",0)
 		SetGlobal("D5STTTLK","GLOBAL",0)
+		SetGlobal("D5STRSET","GLOBAL",0)
+		SetGlobal("D5DEXSET","GLOBAL",0)
+		SetGlobal("D5CONSET","GLOBAL",0)
+		SetGlobal("D5INTSET","GLOBAL",0)
+		SetGlobal("D5WISSET","GLOBAL",0)
+		SetGlobal("D5CHRSET","GLOBAL",0)
+		SetGlobal("D5STRVALUE","GLOBAL",0)
+		SetGlobal("D5DEXVALUE","GLOBAL",0)
+		SetGlobal("D5CONVALUE","GLOBAL",0)
+		SetGlobal("D5INTVALUE","GLOBAL",0)
+		SetGlobal("D5WISVALUE","GLOBAL",0)
+		SetGlobal("D5CHRVALUE","GLOBAL",0)
 		SetGlobal("D5CHAKIT","GLOBAL",0)
 		SetGlobal("D5PRFTLK","GLOBAL",0)
 		SetGlobal("D5FIKIT","GLOBAL",0)
