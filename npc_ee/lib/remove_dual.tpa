@@ -1,0 +1,104 @@
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION remove_all_dual_flags BEGIN
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+BUT_ONLY
+
+END	//	end define function
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION remove_imoen_dual_flags BEGIN
+
+ACTION_FOR_EACH imoen IN 
+    ~imoen6~
+    ~imoen10~
+    ~imoen15~
+    ~imoen211~
+    ~imoen213~
+BEGIN
+  COPY_EXISTING ~%imoen%.cre~ ~override~
+    WRITE_BYTE 0x10 (THIS BAND 0b00000111)
+    WRITE_BYTE 0x11 (THIS BAND 0b11111110)
+  IF_EXISTS BUT_ONLY
+END
+
+END	//	end define function
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION remove_nalia_dual_flags BEGIN
+
+ACTION_FOR_EACH nalia IN 
+    ~nalia8~
+    ~nalia10~
+    ~nalia11~
+    ~nalia13~
+    ~nalia15~
+    ~nalia18~
+BEGIN
+  COPY_EXISTING ~%nalia%.cre~ ~override~
+    WRITE_BYTE 0x10 (THIS BAND 0b00000111)
+    WRITE_BYTE 0x11 (THIS BAND 0b11111110)
+  IF_EXISTS BUT_ONLY
+END
+
+END	//	end define function
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION remove_anomen_dual_flags BEGIN
+
+ACTION_FOR_EACH anomen IN 
+    ~anomen6~
+    ~anomen7~
+    ~anomen8~
+    ~anomen9~
+    ~anomen10~
+    ~anomen12~
+BEGIN
+  COPY_EXISTING ~%anomen%.cre~ ~override~
+    WRITE_BYTE 0x10 (THIS BAND 0b00000111)
+    WRITE_BYTE 0x11 (THIS BAND 0b11111110)
+  IF_EXISTS BUT_ONLY
+END
+
+END	//	end define function
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+DEFINE_ACTION_FUNCTION remove_other_dual_flags BEGIN
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  PATCH_IF (%SOURCE_SIZE% > 0x2a8) BEGIN
+    PATCH_IF !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~imoen6~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~imoen10~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~imoen15~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~imoen211~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~imoen213~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~nalia8~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~nali10~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~nali11~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~nalia13~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~nalia15~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~nalia18~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~anomen6~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~anomen7~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~anomen8~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~anomen9~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~anomen10~) 
+         AND !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~anomen12~) 
+    BEGIN
+      WRITE_BYTE 0x10 (THIS BAND 0b00000111)
+      WRITE_BYTE 0x11 (THIS BAND 0b11111110)
+    END
+  END
+BUT_ONLY
+
+END	//	end define function

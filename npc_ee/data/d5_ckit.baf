@@ -1,5 +1,79 @@
 IF
 	Global("D5KITTLK","GLOBAL",0)
+	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,FIGHTER))
+THEN
+	RESPONSE #100
+	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
+	SetGlobal("D5ISDUAL","GLOBAL",1)
+	SetGlobal("D5KITTLK","GLOBAL",1)
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetGlobal("D5STTTLK","GLOBAL",1)
+END
+IF
+	Global("D5KITTLK","GLOBAL",0)
+	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,RANGER))
+THEN
+	RESPONSE #100
+	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
+	SetGlobal("D5ISDUAL","GLOBAL",1)
+	SetGlobal("D5KITTLK","GLOBAL",1)
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetGlobal("D5STTTLK","GLOBAL",1)
+END
+IF
+	Global("D5KITTLK","GLOBAL",0)
+	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,CLERIC))
+THEN
+	RESPONSE #100
+	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
+	SetGlobal("D5ISDUAL","GLOBAL",1)
+	SetGlobal("D5KITTLK","GLOBAL",1)
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetGlobal("D5STTTLK","GLOBAL",1)
+END
+IF
+	Global("D5KITTLK","GLOBAL",0)
+	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,DRUID))
+THEN
+	RESPONSE #100
+	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
+	SetGlobal("D5ISDUAL","GLOBAL",1)
+	SetGlobal("D5KITTLK","GLOBAL",1)
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetGlobal("D5STTTLK","GLOBAL",1)
+END
+IF
+	Global("D5KITTLK","GLOBAL",0)
+	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,THIEF))
+THEN
+	RESPONSE #100
+	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
+	SetGlobal("D5ISDUAL","GLOBAL",1)
+	SetGlobal("D5KITTLK","GLOBAL",1)
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetGlobal("D5STTTLK","GLOBAL",1)
+END
+IF
+	Global("D5KITTLK","GLOBAL",0)
+	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,MAGE))
+THEN
+	RESPONSE #100
+	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
+	SetGlobal("D5ISDUAL","GLOBAL",1)
+	SetGlobal("D5KITTLK","GLOBAL",1)
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetGlobal("D5STTTLK","GLOBAL",1)
+END
+
+IF
+	Global("D5KITTLK","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
 	RESPONSE #100
 	SetGlobal("D5KITTLK","GLOBAL",1)
@@ -8,8 +82,42 @@ THEN
 END
 
 IF
+	Global("D5CLSTLK","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetNumTimesTalkedTo(0)
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5PRFCH",Myself)) 
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,LEVEL,0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,LEVEL2,0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,LEVEL3,0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"THAC0",20,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"LOCKPICKING",0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"STEALTH",0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"TRAPS",0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"PICKPOCKET",0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"HIDEINSHADOWS",0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"DETECTILLUSIONS",0,SET))
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,"SETTRAPS",0,SET))
+	SetGlobal("D5CHACLS","GLOBAL",2)
+END
+
+IF
+	Global("D5KITTLK","GLOBAL",1)
+	Global("D5CLSTLK","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CLSTLK","GLOBAL",1)
+	SetNumTimesTalkedTo(0)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5clstlk",Myself))
+END
+
+IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5STRSET","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5STRVALUE","GLOBAL","d5_cur_str")
@@ -18,6 +126,7 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5DEXSET","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5DEXVALUE","GLOBAL","d5_cur_dex")
@@ -26,6 +135,7 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5CONSET","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5CONVALUE","GLOBAL","d5_cur_con")
@@ -34,6 +144,7 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5INTSET","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5INTVALUE","GLOBAL","d5_cur_int")
@@ -42,6 +153,7 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5WISSET","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5WISVALUE","GLOBAL","d5_cur_wis")
@@ -50,6 +162,7 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5CHRSET","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5CHRVALUE","GLOBAL","d5_cur_chr")
@@ -1168,36 +1281,44 @@ END
 
 IF
     Global("D5STRSET","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5STRSET","GLOBAL",1)
+	DisplayStringNoName(LastSummonerOf(Myself),"patience_strref") 
+	DisplayStringHead(LastSummonerOf(Myself),"patience_strref") 
 END
 IF
     Global("D5DEXSET","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5DEXSET","GLOBAL",1)
 END
 IF
     Global("D5CONSET","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5CONSET","GLOBAL",1)
 END
 IF
     Global("D5INTSET","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5INTSET","GLOBAL",1)
 END
 IF
     Global("D5WISSET","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5WISSET","GLOBAL",1)
 END
 IF
     Global("D5CHRSET","GLOBAL",0)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5CHRSET","GLOBAL",1)
@@ -1206,6 +1327,7 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
 	Global("D5KITTLK","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
 	RESPONSE #100
 	SetNumTimesTalkedTo(0)
@@ -1213,19 +1335,55 @@ THEN
 END
 
 IF
-	Global("D5PRFTLK","GLOBAL",0)
-	Global("D5KITTLK","GLOBAL",1)
+	Global("D5REMSPLS","GLOBAL",0)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
+	Global("D5ISDUAL","GLOBAL",0)
 THEN
 	RESPONSE #100
-	SetGlobal("D5PRFTLK","GLOBAL",1)
-	SetNumTimesTalkedTo(0)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prftlk",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5NSPLD",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5NSPLW",Myself))
+	SetGlobal("D5REMSPLS","GLOBAL",1)
 END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),fighter_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswar,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1236,20 +1394,73 @@ THEN
 END
 
 IF
-	Class(LastSummonerOf(Myself),PALADIN)
-	Global("D5CHAKIT","GLOBAL",1)
+	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
-	NumTimesTalkedTo(0)
+	CheckStatGT(LastSummonerOf(Myself),ranger_xp,XP)
 THEN
 	RESPONSE #100
-	SetGlobal("D5PAKIT","GLOBAL",1)
-	SetNumTimesTalkedTo(1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5pakit",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
 END
-
 IF
 	Class(LastSummonerOf(Myself),RANGER)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),13,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,13,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),13,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,13,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),14,CON)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CON,14,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),14,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,14,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswar,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),RANGER)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1260,32 +1471,120 @@ THEN
 END
 
 IF
-	Class(LastSummonerOf(Myself),THIEF)
-	Global("D5CHAKIT","GLOBAL",1)
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
-	NumTimesTalkedTo(0)
+	CheckStatGT(LastSummonerOf(Myself),paladin_xp,XP)
 THEN
 	RESPONSE #100
-	SetGlobal("D5THKIT","GLOBAL",1)
-	SetNumTimesTalkedTo(1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5thkit",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
 END
-
 IF
-	Class(LastSummonerOf(Myself),BARD)
-	Global("D5CHAKIT","GLOBAL",1)
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),9,CON)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CON,9,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),13,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,13,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),17,CHR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,17,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswar,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),PALADIN)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
 	RESPONSE #100
-	SetGlobal("D5BAKIT","GLOBAL",1)
+	SetGlobal("D5PAKIT","GLOBAL",1)
 	SetNumTimesTalkedTo(1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5bakit",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5pakit",Myself))
 END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),cleric_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1297,7 +1596,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),DRUID)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),druid_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),15,CHR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,15,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1307,10 +1651,53 @@ THEN
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5drkit",Myself))
 END
 
-/*
 IF
 	Class(LastSummonerOf(Myself),SHAMAN)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),shaman_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),SHAMAN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,CON)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CON,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),SHAMAN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),SHAMAN)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+END
+IF
+	Class(LastSummonerOf(Myself),SHAMAN)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1319,11 +1706,179 @@ THEN
 	SetNumTimesTalkedTo(1)
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5shkit",Myself))
 END
-*/
+
+IF
+	Class(LastSummonerOf(Myself),THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),thief_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsrog,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5THKIT","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5thkit",Myself))
+END
+
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),bard_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),13,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,13,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),15,CHR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,15,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathrog,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsrog,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),BARD)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5BAKIT","GLOBAL",1)
+	SetNumTimesTalkedTo(1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5bakit",Myself))
+END
 
 IF
 	Class(LastSummonerOf(Myself),MONK)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),monk_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MONK)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),9,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,9,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MONK)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),9,CON)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CON,9,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MONK)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),9,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,9,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MONK)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathmonk,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsmonk,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolymonk,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathmonk,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsmonk,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MONK)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1335,8 +1890,44 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),mage_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE)
 	!Class(LastSummonerOf(Myself),SORCERER)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswiz,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE)
+	!Class(LastSummonerOf(Myself),SORCERER)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1348,7 +1939,17 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),SORCERER)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),9,CHR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,9,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),SORCERER)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1360,7 +1961,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2fighter_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1372,7 +2018,62 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2fighter_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),15,CHR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,15,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1384,7 +2085,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2fighter_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswiz,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1396,7 +2142,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2thief_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwar,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswar,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1408,7 +2199,72 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC_RANGER)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2cleric_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),13,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,13,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),13,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,13,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),14,CON)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CON,14,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),14,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,14,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1420,7 +2276,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC_THIEF)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2thief_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1432,7 +2333,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),CLERIC_MAGE)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2cleric_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),CLERIC_MAGE)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1444,7 +2390,52 @@ END
 
 IF
 	Class(LastSummonerOf(Myself),MAGE_THIEF)
-	Global("D5CHAKIT","GLOBAL",1)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),2thief_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswiz,SET)
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
 	NumTimesTalkedTo(0)
 THEN
@@ -1455,44 +2446,158 @@ THEN
 END
 
 IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),3fighter_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,DEX)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,DEX,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwiz,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswiz,SET)
+END
+
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),3fighter_xp,XP)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,STR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,STR,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,INT)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,INT,12,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),10,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,10,SET))
+	Continue()
+END
+IF
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+END
+
+IF
 	True()
 THEN
 	RESPONSE #100
-		SetNumTimesTalkedTo(0)
-		SetGlobal("D5KITTLK","GLOBAL",0)
-		SetGlobal("D5STTTLK","GLOBAL",0)
-		SetGlobal("D5STRSET","GLOBAL",0)
-		SetGlobal("D5DEXSET","GLOBAL",0)
-		SetGlobal("D5CONSET","GLOBAL",0)
-		SetGlobal("D5INTSET","GLOBAL",0)
-		SetGlobal("D5WISSET","GLOBAL",0)
-		SetGlobal("D5CHRSET","GLOBAL",0)
-		SetGlobal("D5STRVALUE","GLOBAL",0)
-		SetGlobal("D5DEXVALUE","GLOBAL",0)
-		SetGlobal("D5CONVALUE","GLOBAL",0)
-		SetGlobal("D5INTVALUE","GLOBAL",0)
-		SetGlobal("D5WISVALUE","GLOBAL",0)
-		SetGlobal("D5CHRVALUE","GLOBAL",0)
-		SetGlobal("D5CHAKIT","GLOBAL",0)
-		SetGlobal("D5PRFTLK","GLOBAL",0)
-		SetGlobal("D5FIKIT","GLOBAL",0)
-		SetGlobal("D5PAKIT","GLOBAL",0)
-		SetGlobal("D5RAKIT","GLOBAL",0)
-		SetGlobal("D5THKIT","GLOBAL",0)
-		SetGlobal("D5BAKIT","GLOBAL",0)
-		SetGlobal("D5CLKIT","GLOBAL",0)
-		SetGlobal("D5DRKIT","GLOBAL",0)
-		SetGlobal("D5SHKIT","GLOBAL",0)
-		SetGlobal("D5MOKIT","GLOBAL",0)
-		SetGlobal("D5MAKIT","GLOBAL",0)
-		SetGlobal("D5SOKIT","GLOBAL",0)
-		SetGlobal("D5FCKIT","GLOBAL",0)
-		SetGlobal("D5FDKIT","GLOBAL",0)
-		SetGlobal("D5FMKIT","GLOBAL",0)
-		SetGlobal("D5FTKIT","GLOBAL",0)
-		SetGlobal("D5CRKIT","GLOBAL",0)
-		SetGlobal("D5CTKIT","GLOBAL",0)
-		SetGlobal("D5CMKIT","GLOBAL",0)
-		SetGlobal("D5MTKIT","GLOBAL",0)
-		DestroySelf()               // reset all variables, then destroy self
+	SetNumTimesTalkedTo(0)
+	SetGlobal("D5KITTLK","GLOBAL",0)
+	SetGlobal("D5ISDUAL","GLOBAL",0)
+	SetGlobal("D5CLSTLK","GLOBAL",0)
+	SetGlobal("D5CHACLS","GLOBAL",0)
+	SetGlobal("D5STRSET","GLOBAL",0)
+	SetGlobal("D5DEXSET","GLOBAL",0)
+	SetGlobal("D5CONSET","GLOBAL",0)
+	SetGlobal("D5INTSET","GLOBAL",0)
+	SetGlobal("D5WISSET","GLOBAL",0)
+	SetGlobal("D5CHRSET","GLOBAL",0)
+	SetGlobal("D5STRVALUE","GLOBAL",0)
+	SetGlobal("D5DEXVALUE","GLOBAL",0)
+	SetGlobal("D5CONVALUE","GLOBAL",0)
+	SetGlobal("D5INTVALUE","GLOBAL",0)
+	SetGlobal("D5WISVALUE","GLOBAL",0)
+	SetGlobal("D5CHRVALUE","GLOBAL",0)
+	SetGlobal("D5STTTLK","GLOBAL",0)
+	SetGlobal("D5PRFTLK","GLOBAL",0)
+	SetGlobal("D5CHAKIT","GLOBAL",0)
+	SetGlobal("D5FIKIT","GLOBAL",0)
+	SetGlobal("D5PAKIT","GLOBAL",0)
+	SetGlobal("D5RAKIT","GLOBAL",0)
+	SetGlobal("D5THKIT","GLOBAL",0)
+	SetGlobal("D5BAKIT","GLOBAL",0)
+	SetGlobal("D5CLKIT","GLOBAL",0)
+	SetGlobal("D5DRKIT","GLOBAL",0)
+	SetGlobal("D5SHKIT","GLOBAL",0)
+	SetGlobal("D5MOKIT","GLOBAL",0)
+	SetGlobal("D5MAKIT","GLOBAL",0)
+	SetGlobal("D5SOKIT","GLOBAL",0)
+	SetGlobal("D5FCKIT","GLOBAL",0)
+	SetGlobal("D5FDKIT","GLOBAL",0)
+	SetGlobal("D5FMKIT","GLOBAL",0)
+	SetGlobal("D5FTKIT","GLOBAL",0)
+	SetGlobal("D5CRKIT","GLOBAL",0)
+	SetGlobal("D5CTKIT","GLOBAL",0)
+	SetGlobal("D5CMKIT","GLOBAL",0)
+	SetGlobal("D5MTKIT","GLOBAL",0)
+	SetGlobal("D5REMSPLS","GLOBAL",0)
+	DestroySelf()               // reset all variables, then destroy self
 END
