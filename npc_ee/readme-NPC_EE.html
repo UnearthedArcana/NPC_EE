@@ -11,20 +11,14 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 4.4 </strong><br />
+  <p><strong> Version 5.0 beta 1 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
 <h2>Overview</h2>
 <div class="section">
-  <p>This is intended to be a successor to the fantastic "Level 1 NPCs" mod.  L1NPCs was never updated for the EE games, and its author is no longer active, and it is an incredible, complicated piece of work that is difficult for someone else to update.  So I made this.  It's not as complete as L1NPCs, and my techniques are not as sophisticated.  But it aims to reach a similar result: add replayability by allowing players to easily change the class and kit of various NPCs, thus creating different parties with different tactics, for different playthroughs</p>
-  <p>In application, this lacks the full flexibility of Level 1 NPCs, but it has one major advantage: you can change the kits of every NPC in every playthrough *in-game,* without going back out to Weidu to uninstall/reinstall a mod.</p>
-  <p>The way this works is, during installation you can change the *class* of various NPCs.  Some only have one alternate class, some have more than one, and some don't have any option to change.  This is based on the in-game lore; e.g. Xan is a spellcaster with a Moonblade; that could work as a mage, but also as a fighter/mage or a bard or a sorcerer.  Conversely, Jaheira is a druid, she talks all the time about being a druid, and so there is no option to make her anything other than a druid.</p>
-  <p>Once you have decided which <i>class</i> to give each NPC, you have the option to give all of them (even those you didn't change, and including mod NPCs) a special innate ability that you can use in-game to add or change their <i>kit</i>.  This is a single-use ability, so choose wisely!  This ability will trigger a dialogue that gives you the option to adopt any kit for that class... this includes any and all mod kits that you may have installed.  Turn Mazzy into a Dwarven Defender!  Make Keldorn a Blackguard!  Make Minsc a fighter in the Weidu install, and then use this ability to make him a Barbarian!  (Barbarian is actually, technically, a fighter kit.)</p>
-  <p>The reason I split up the class changes and kit changes is simple: Weidu installation code is static, and there are only a certain number of class in the game; no mod can add new ones.  On the other hand, you can install <i>hundreds</i> of kits into the game; this mod automatically detects <i>all</i> of them and makes <i>all</i> of them available.  Yes, it breaks the 4th wall very slightly, but it is the only way to achieve that kind of flexibility.  It means that this mod can automatically adapt to and work with every other kit mod you can possibly install.</p>
-  <p>New in v3.0:</b> using the kit-change ability will wipe out the NPC's proficiencies and allow you to rebuild them, again through a dialogue.  Even more flexibility!  Yay!</p>
-</div>
-  <p>New in v4.3:</b> using the (increasingly inaccurately named) 'kit-change ability' will allow you to change the NPC's ability scores.</p>
+  <p>This is intended to be a successor to the fantastic "Level 1 NPCs" mod.  L1NPCs was not, at the time I made this, updated for the EE games, and it was an incredible, complicated piece of work that is difficult for someone else to update.  NPC_EE aims to reach a similar result: add replayability by allowing players to easily change the class and kit of various NPCs, thus creating different parties with different tactics, for different playthroughs.</p>
+  <p>In application, as of version 5, this takes the most direct inspiration from the old "Kit Tomes" mod. But this mod will let you choose any kit - not just the original ones - and also let you choose any class, and change your attribute scores, and re-select proficiencies and rogue skills.</p>
 </div>
 <h2>Installation</h2>
 <div class="section">
@@ -37,94 +31,41 @@
 <h2>Compatibility</h2>
 <div class="section">
   <p>This mod covers the same ground as 'Level 1 NPCs' and the 'NPC Customization' component of Sword Coast Stratagems. Best to choose only one of the three.</p>
-  <p><strong>This mod should be LAST - with one exception (see below) -</strong> I know a lot of mods say that, but this one really should be installed last. I would install this AFTER Generalized Biffing, so NPC_EE can be easily uninstalled and reinstalled to change NPCs for new playthroughs.</p>
-  <p>One mod you should install after this is Kjeron's "Dual-to-Kit" mod. One optional way to install that mod will zero out the values in weapprof.2da... but this mod  needs to read those values in order for the proficiency-changing mechanism to work. So install NPC_EE first before Dual-to-Kit.</p>
+  <p><strong>This mod should be near the end of your install order. </strong></p>
+  <p>However, one mod you should definitely definitely install <b>after</b> this one is Kjeron's "Dual-to-Kit" mod. One optional way to install that mod will change the values in weapprof.2da... but this mod needs to read those values in order for the proficiency-changing mechanism to work. So install NPC_EE first before Dual-to-Kit.</p>
 </div>
 <h2>Contents</h2>
 <div class="section">
-  <h4 class="subheader">Component 100: choose a new class for Imoen</h4>
+  <h4 class="subheader">Component 1010: Remove Imoen's dual-class flag</h4>
   <div class="section">
-    <p>Make Imoen a multiclass mage/thief, or a bard</p>
+    <p>The class/stat/kit-change mechanism does not work with dual-class NPCs, including Imoen. This component will make Imoen a multiclass mage/thief. Her class levels will equalize and some stats might be a bit out of balance. But that can be fixed by using the class/stat/kit-change tome. So decide whether you want her to be able to change her characteristics, or whether you want to function as a dual-class without extra fiddling. (You <b>can</b> build her back up to be a dual-class thief-mage... but it would take a bit of tinkering, including some console commands to get her XP right in each class.)</p>
   </div>
-  <h4 class="subheader">Component 120: choose a new class for Jaheira</h4>
+  <h4 class="subheader">Component 1020: Remove Nalia's dual-class flag</h4>
   <div class="section">
-    <p>Make Jaheira a single-class druid, or (if Faiths & Powers is installed) a druid/ranger</p>
+    <p>The class/stat/kit-change mechanism does not work with dual-class NPCs, including Nalia. This component will make Nalia a multiclass mage/thief. Her class levels will equalize and some stats might be a bit out of balance. But that can be fixed by using the class/stat/kit-change tome. So decide whether you want her to be able to change her characteristics, or whether you want to function as a dual-class without extra fiddling. (You <b>can</b> build her back up to be a dual-class thief-mage... but it would take a bit of tinkering, including some console commands to get her XP right in each class.)</p>
   </div>
-  <h4 class="subheader">Component 140: choose a new class for Khalid</h4>
+  <h4 class="subheader">Component 1030: Remove Anomen's dual-class flag</h4>
   <div class="section">
-    <p>Make Khalid a multiclass ranger/cleric, or a ranger</p>
+    <p>The class/stat/kit-change mechanism does not work with dual-class NPCs, including Anomen. This component will make Anomen a multiclass mage/thief. Her class levels will equalize and some stats might be a bit out of balance. But that can be fixed by using the class/stat/kit-change tome. So decide whether you want her to be able to change her characteristics, or whether you want to function as a dual-class without extra fiddling. (You <b>can</b> build her back up to be a dual-class thief-mage... but it would take a bit of tinkering, including some console commands to get his XP right in each class.)</p>
   </div>
-  <h4 class="subheader">Component 160: choose a new class for Minsc</h4>
+  <h4 class="subheader">Component 1200: Remove all other NPCs' dual-class flags</h4>
   <div class="section">
-    <p>Make Minsc a fighter</p>
+    <p>This does the same thing as the above components, changing them from dual-class to multiclass and thereby allowing them to use the class/stat/kit-change tomes added by component 2000. This will affect all joinable NPCs other than Imoen, Nalia, and Anomen. So if you have any mod NPCs installed who are dual-class, and you want them to be able to use the tomes, this component will do it. (Again, though, it will change them to multiclass without changing anything else about them, so their levels and skills etc. might be out of alignment, and might therefore <i>need</i> to use the tome to rebuild them and fix the issues.)</p>
   </div>
-  <h4 class="subheader">Component 180: choose a new class for Dynaheir</h4>
+  <h4 class="subheader">Component 2000: NPC class/stat//kit choices</h4>
   <div class="section">
-    <p>Make Dynaheir a sorcerer</p>
-  </div>
-  <h4 class="subheader">Component 220: choose a new class for Coran</h4>
-  <div class="section">
-    <p>Make Coran a single-class thief, or a ranger, or a bard</p>
-  </div>
-  <h4 class="subheader">Component 240: choose a new class for Branwen</h4>
-  <div class="section">
-    <p>Make Branwen a fighter/cleric (multiclass)</p>
-  </div>
-  <h4 class="subheader">Component 260: choose a new class for Safana</h4>
-  <div class="section">
-    <p>Make Safana a fighter/thief (multiclass)</p>
-  </div>
-  <h4 class="subheader">Component 300: choose a new class for Xzar</h4>
-  <div class="section">
-    <p>Make Xzar a multiclass necromancer/cleric</p>
-  </div>
-  <h4 class="subheader">Component 320: choose a new class for Montaron</h4>
-  <div class="section">
-    <p>Make Montaron a single-class thief</p>
-  </div>
-  <h4 class="subheader">Component 460: choose a new class for Alora</h4>
-  <div class="section">
-    <p>Make Alora a cleric/thief</p>
-  </div>
-  <h4 class="subheader">Component 480: choose a new class for Xan</h4>
-  <div class="section">
-    <p>Make Xan a bard, or a fighter/mage, or a sorcerer</p>
-  </div>
-  <h4 class="subheader">Component 580: choose a new class for Viconia</h4>
-  <div class="section">
-    <p>Make Viconia a cleric/thief</p>
-  </div>
-  <h4 class="subheader">Component 620: choose a new class for Neera</h4>
-  <div class="section">
-    <p>Make Neera a sorcerer (still subject to wild magic)</p>
-  </div>
-  <h4 class="subheader">Component 680: choose a new class for Yoshimo</h4>
-  <div class="section">
-    <p>Make Yoshimo a multiclass fighter/thief</p>
-  </div>
-  <h4 class="subheader">Component 700: choose a new class for Valygar</h4>
-  <div class="section">
-    <p>Make Valygar a multiclass fighter/thief, or a single-class fighter</p>
-  </div>
-  <h4 class="subheader">Component 720: choose a new class for Nalia</h4>
-  <div class="section">
-    <p>Make Nalia a bard, or a multiclass cleric/mage, or a multiclass cleric/thief, or a sorcerer</p>
-  </div>
-  <h4 class="subheader">Component 760: choose a new class for Mazzy</h4>
-  <div class="section">
-    <p>Make Mazzy a fighter/cleric, or a paladin</p>
-  </div>
-  <h4 class="subheader">Component 900: choose a new class for Fade</h4>
-  <div class="section">
-    <p>Make Fade a multiclass mage/thief</p>
-  </div>
-  <h4 class="subheader">Component 2000: NPC stat/prof/kit choices</h4>
-  <div class="section">
-    <p>As described above, this will add an innate ability to every single-class NPC allowing them to take a kit - or, if they already have a kit, to switch to a new one.</p>
-    <p>(New to v4.3) Upon first using the innate aability and deciding to make changes to the NPC, you will be given a chance to change their ability scores. You can choose a new value for any of the six ability scores... however, for now, this cannot set any ability score to a lower value than it already is.</p>
-    <p>(New to v3.0) Next the dialogue will let you set the NPC's proficiencies to zero, and they will then receive a number of innate abilities that will allow you rebuild their proficiencies however you like. (Be warned, this follows the normal rules for proficiencies, so any NPCs that have illegal values in some weapon will lose that benefit.) The yellow ability allows you to move a proficiency from zero to proficient; the green ability allows you to move a proficiency from any one level to the next level up, as long as that increase is allowed under the rules. (You cannot set a paladin's proficiency higher than specialization, for example.) This will work for both the standard game's proficiency rules and for </p>
-    <p>Finally, the dialogue will allow you to choose a new kit for the NPC. This will allow you to choose any kit in the game that is present at the time this mod is installed (which is one reason you should install this almost last). So there might be some wacky options, like the 'Wilson the Bear' kit for fighters. Go crazy.</p>
-    <p>Multiclass characters will be able to choose any kit from either of their base classes, or any multiclass kit that matches their actual class. The only exception to this is if you have the Faiths & Powers sphere system installed, then multiclass clerics will have to choose a cleric or multiclass cleric kit (since in that system, spells are granted according to your cleric kit).</p>
+    <p>This will add a tome to every joinable NPC. Place the tome in a quickslot and use it, and it will trigger a series of dialogues:
+    <ul>
+      <li><b>1. Do you want to make any changes?</b> If no, then the tome disappears and nothing happens. If you choose yes, then the dialogue continues.<br />
+      <li><b>2. Choose a class.</b> You can pick any class or multiclass combination. If you choose 'no changes,' then again nothing will be changed and the dialogue will end. If you want to keep the same class but choose a new kit, then make an affirmative choice of the same class here.<br />
+      <li><b>3. Set your stats.</b> Here you can make any changes to your STR, Dex, CON, INT, WIS, and CHA stats. You can set them to anything between 5 and 25, but if you set one below your class's minimum, it will automatically be raised to the minimum when the dialogue ends.<br />
+      <li><b>4. Choose a kit.</b> You can choose any kit that is valid for your chosen class. If you are multiclassed or you are becoming multiclassed, then you can choose any multiclass kits for your class, or any single-class kit valid for either one of your underlying classes. (<b>NOTE: triple-classes are an exception.</b> Triple-class characters cannot choose a kit.)<br />
+    </ul>
+    <p>When the dialogues are complete, you will end up at level 0, with 2 hit points, and no proficiencies. Your XP will be the same as it was before, so you can level up immediately to your old level, choosing proficiencies and, if necessary, thief skills. <b>NOTE:</b> if you level up from level 0 to a level higher than 1, then you will not get your 1st-level proficiencies. In this case you will get an innate ability that will initiate a dialogue that gives you the missing proficiencies.</p>
+    <p>It appears that, if you level up from level 0 to level 1, then you will be able to choose spells if you have chosen an arcane spellcasting class. If you level up directly to level 2 or higher, then this will be skipped. I do not as yet have a solution for this. If you want to, you can use the console when the dialogue ends to change your XP to 100 or so, then level up to level 1, then use the console again to change your XP back to what it was.</p>
+    <p>As noted above, this dialogue system <b>will not work with dual-class characters</b>. They have information indelibly etched into their game files that cannot be changed in-game. So Imoen, Nalia, and Anomen cannot make use of these tomes, unless you enable it with the earlier components.</p>
+    <p>You <b>can</b> use this to create dual-class characters. To rebuild Nalia back to her original form, for example, you would use this tome to make her a thief; then, use the console to change her XP to the amount for a 4th-level thief. Now level her up, then dual-class to mage. Then use the console to set her XP back to what it was originally.</p>
+    <p>If you combine this with Kjeron's 'Dual-to-Kit' mod, then you can have a kit for either class of a dual-classed character made this way. To have a kit for your first class, select it in the NPC_EE dialogue. To have a kit in your second class, make sure you choose 'trueclass/no kit' in the dialogue, then you will be able to select a kit in your second class when you dual.</p>
   </div>
 </div>
 <h2>Contact Information</h2>
@@ -148,6 +89,10 @@
 </div>
 <h2>Version History</h2>
 <div class="section">
+  <p><strong>Version 5.0 - February 2022</strong></p>
+  <ul>
+    <li>total rewrite, now can change class in-game</li>
+  </ul>
   <p><strong>Version 4.3 - March 2021</strong></p>
   <ul>
     <li>option to change ability scores via dialogue</li>
