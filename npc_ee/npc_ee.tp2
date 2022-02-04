@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v5.0~
+VERSION ~v5.0b2~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -25,22 +25,8 @@ LANGUAGE
 //__________________________________________________________________________________
 //__________________________________________________________________________________
 
-// ***** strip dual-class flags from everyone
-// ... make components to exempt this or that NPC
-// ... check dual-class in script
-// ... and don't allow class-change if detected
 
-// ***** need to revive the 1st-level prof dialogue!
-// ... have the mod check xplevel.2da to see 1st-level XP amounts for each class
-// ... in script, if NPC's XP is greater than that, then give them the prof dialogue innate 
-
-// ***** how can this work with 5E and multisorc? And Manasorc and Psions?
-// ... some of them are mean to have kit characteristics initialized that are not easily undone
-// ... will need to make a list of spells to hit with 321
-// ... - initialization abilities
-// ... - spell slot 233 abilities/PSP abilities
-// ... - 'learned spell' 206 abilities
-// ... bit of a project here...
+// ***** make sure all NPC items lack class exclusion
 
 	
 

@@ -1020,6 +1020,192 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5nsplw.spl~
 //___________________________________________________________________________________
 
 
+//arcane spell picks_________________________________________________________________
+//
+COPY ~npc_ee/data/npc_ee_splskn.2da~ ~override~
+
+INCLUDE ~%MOD_FOLDER%/lib/semi_spontaneous.tpa~
+
+LAF sorcerer_spell_learning STR_VAR menu_suffix = ~u~ spl_list = ~d5clsp~ spl_clon_list = ~d5xclons~ itm_name = ~d5clsp~ itm_ga_spl = ~d5clsp1~ spl_ap_spl = ~d5clsp2~ spl_tbl = ~NPC_EE_SPLSKN~ END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5clsp.itm~) BEGIN
+  COPY_EXISTING ~d5clsp.itm~ ~override~
+    SAY NAME1 @2008
+    SAY NAME1 @2008
+    SAY IDENTIFIED_DESC @2009
+    WRITE_BYTE 0x18 (THIS BOR 0b00000100)
+    WRITE_SHORT 0x1c 0
+    WRITE_ASCII 0x3a ~d5lernwi~ #8
+  BUT_ONLY
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5clsp1.spl~) BEGIN
+  COPY_EXISTING ~d5clsp1.spl~ ~override~
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 143 opcode = 122 parameter1 = 1 parameter2 = 0 END
+  BUT_ONLY
+END
+//___________________________________________________________________________________
+
+
+//memorize spells_____________________________________________________________________
+//
+COPY ~npc_ee/data/d5spm3mb.bam~ ~override~
+
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5spmem.spl~
+  	SAY NAME1 @2007
+	SAY UNIDENTIFIED_DESC @2007
+	WRITE_ASCII 0x3a ~d5spm3mb~ #8
+	LPF ALTER_SPELL_HEADER INT_VAR speed = 0 target = 7 STR_VAR icon = ~d5spm3mb~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5spm3m~ END
+
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5spm3m.spl~
+  	SAY NAME1 @2007
+	SAY UNIDENTIFIED_DESC @2007
+	WRITE_ASCII 0x3a ~d5spm3mb~ #8
+	LPF ALTER_SPELL_HEADER INT_VAR speed = 0 target = 7 STR_VAR icon = ~d5spm3mb~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 316 timing = 1 END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = ~d5spmem~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5spm3m~ END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5zlotr.spl~) BEGIN
+  ACTION_IF (FILE_CONTAINS_EVALUATED (~splstate.ids~ ~D5_SEMI_ARCANE~)) BEGIN
+    COPY_EXISTING ~splstate.ids~ ~override~
+	  COUNT_2DA_COLS cols
+	  READ_2DA_ENTRIES_NOW rows cols
+	  FOR (row = 1; row < rows; ++row) BEGIN
+	    READ_2DA_ENTRY_FORMER rows row 1 ~state_name~
+	    READ_2DA_ENTRY_FORMER rows row 0 ~state_ind~
+	    PATCH_IF (~%state_name%~ STRING_EQUAL_CASE ~D5_SEMI_ARCANE~) BEGIN
+		  SET semi_spont_arcane = %state_ind%
+	    END
+	  END
+    BUT_ONLY
+  END
+  ACTION_IF (FILE_CONTAINS_EVALUATED (~splstate.ids~ ~D5_SEMI_DIVINE~)) BEGIN
+    COPY_EXISTING ~splstate.ids~ ~override~
+	  COUNT_2DA_COLS cols
+	  READ_2DA_ENTRIES_NOW rows cols
+	  FOR (row = 1; row < rows; ++row) BEGIN
+	    READ_2DA_ENTRY_FORMER rows row 1 ~state_name~
+	    READ_2DA_ENTRY_FORMER rows row 0 ~state_ind~
+	    PATCH_IF (~%state_name%~ STRING_EQUAL_CASE ~D5_SEMI_DIVINE~) BEGIN
+		  SET semi_spont_divine = %state_ind%
+	    END
+	  END
+    BUT_ONLY
+  END
+  COPY_EXISTING ~d5spm3m.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_spont_arcane% parameter2 = 110 timing = 4 duration = 1 STR_VAR resource = ~d5zlotr~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_spont_divine% parameter2 = 110 timing = 4 duration = 1 STR_VAR resource = ~d5zlotr~ END
+  BUT_ONLY
+END
+//___________________________________________________________________________________
+
+
+//no class exclusion for NPC items____________________________________________________
+//
+ACTION_FOR_EACH npc_item IN 
+  ~pgkcloak~
+  ~e3amul01~
+  ~nparm~  
+  ~npmisc1~
+  ~npmisc2~
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1e (THIS BAND 0b00111111)
+      WRITE_BYTE 0x1f (THIS BAND 0b00000000)
+      WRITE_BYTE 0x20 (THIS BAND 0b10000000)
+      WRITE_BYTE 0x21 (THIS BAND 0b10011111)
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH npc_sword IN 
+  ~sw1h13.itm~
+  ~o#xandb~
+  ~o#xanimb~
+  ~o#xanims~
+  ~o#xanmb~
+  ~o#xanms~ 
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_sword%.itm~) BEGIN
+    COPY_EXISTING ~%npc_sword%.itm~ ~override~
+      WRITE_BYTE 0x1e (THIS BAND 0b10111111)
+      WRITE_BYTE 0x1f (THIS BAND 0b11000111)
+      WRITE_BYTE 0x20 (THIS BAND 0b10000100)
+      WRITE_BYTE 0x21 (THIS BAND 0b11011111)
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH mazzy_item IN 
+  ~npbow~ // mazzy's bow, enable fd+p+r
+  ~npswo1~ // mazzy's sword, enable fd+p+r
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1e (THIS BAND 0b10111111) // +bard
+      WRITE_BYTE 0x1f (THIS BAND 0b11000111) // 
+      WRITE_BYTE 0x20 (THIS BAND 0b10000100) // 
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH cernd_item IN 
+  ~npclck~ // cernd's cloak, enable fd+r
+  ~npstaf~ // cernd's staff, enable fd+r
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1f (THIS BAND 0b11101111) // 
+      WRITE_BYTE 0x20 (THIS BAND 0b11011111) // 
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH keldorn_item IN 
+  ~npplat~ // keldorn's armor, enable f
+  ~npswo3~ // keldorn's sword, enable f
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1f (THIS BAND 0b11110111) // 
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH yoshimo_item IN 
+  ~npswo2~ // yoshimo's sword, enable fd+mt+b
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1e (THIS BAND 0b10111111) // +bard
+      WRITE_BYTE 0x1f (THIS BAND 0b11000111) // 
+      WRITE_BYTE 0x20 (THIS BAND 0b10000100) // 
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH valygar_item IN 
+  ~npswo4~ // valygar's sword, enable f+fd+fm+ft+p+b
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1e (THIS BAND 0b10111111) // +bard
+      WRITE_BYTE 0x1f (THIS BAND 0b11000111) // 
+      WRITE_BYTE 0x20 (THIS BAND 0b10001101) // 
+    BUT_ONLY
+  END
+END
+ACTION_FOR_EACH haerdalis_item IN 
+  ~npswo5~ // hd's sword, enable f+fm+fmt+ft+mt+r
+  ~npswo6~ // hd's sword, enable f+fm+fmt+ft+mt+r 
+BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%npc_item%.itm~) BEGIN
+    COPY_EXISTING ~%npc_item%.itm~ ~override~
+      WRITE_BYTE 0x1f (THIS BAND 0b11010111) // 
+      WRITE_BYTE 0x20 (THIS BAND 0b10010100) // 
+    BUT_ONLY
+  END
+END
+//___________________________________________________________________________________
+
+
 //main script_________________________________________________________________________
 //
 OUTER_SPRINT patience_string @2001
@@ -1085,6 +1271,7 @@ COPY ~npc_ee/data/d5_ckit.spl~ ~override~
 
 COPY ~npc_ee/data/d5_ckit.eff~ ~override~
 COPY ~npc_ee/data/d5_ckit.cre~ ~override~
+  WRITE_ASCII 0x248 ~d5_ckit~ #8
 COPY ~npc_ee/data/d5_ckit.bam~ ~override~
 
 COPY ~npc_ee/data/d5_ckit.itm~ ~override~

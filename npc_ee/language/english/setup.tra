@@ -16,6 +16,9 @@
 @2000  = ~NPC class/stat/kit choices~
 @2001  = ~This will take a few moments, please be patient...~
 @2002  = ~This tome does not work with dual-class characters~
+@2007  = ~Memorize spells~
+@2008  = ~Learn spells~
+@2009  = ~Use this item from a quickslot to learn up to two spells per level. Discard it when finished.~
 @2010  = ~Make changes to class/stats/kit~
 @2011  = ~Adopt this kit~
 @2012  = ~Choose a different kit~
