@@ -1455,6 +1455,9 @@ END
 
 COPY_EXISTING ~d5_nukt.spl~ ~override~
   PATCH_FOR_EACH 321_spl IN
+    ~d5zrest~
+    ~d5absp5~
+    ~d5abspp~
     ~d5nctua~
     ~d5nctub~
     ~d5srcnq~
