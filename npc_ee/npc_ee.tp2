@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~v5.0b6~
+VERSION ~v5.0b7~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -27,7 +27,6 @@ LANGUAGE
 
 
 // ***** make sure all NPC items lack class exclusion
-
 	
 
 BEGIN @1010
