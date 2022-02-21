@@ -325,6 +325,18 @@ COPY ~d5/d5kittlk.d~ ~weidu_external/npc_ee/compile/d5kittlk.d~
 
 //spell to undo kit abilities________________________________________________________
 //
+ACTION_DEFINE_ASSOCIATIVE_ARRAY clabs_to_check BEGIN
+  clabfi01    =>  1
+  clabrn01    =>  1
+  clabpa01    =>  1
+  clabpr01    =>  1
+  clabdr01    =>  1
+  clabmo01    =>  1
+  clabth01    =>  1
+  clabba01    =>  1
+  clabma01    =>  1
+END
+
 COPY_EXISTING ~kitlist.2da~ ~override~
   READ_2DA_ENTRIES_NOW ~r2en_kitlist~ 10
   FOR (row = 2; row < r2en_kitlist; row += 1) BEGIN
@@ -1397,19 +1409,6 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5_nukt.spl~
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5weppd~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsa~ END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5wepsb~ END
-// remove kit effects for MnG/FnP kits
-  PATCH_IF (MOD_IS_INSTALLED ~might_and_guile.tp2~ ~210~) BEGIN
-	PATCH_FOR_EACH bard_abil IN ~d5noppb~ ~d5nomsb~ ~d5noftb~ BEGIN
-	  PATCH_IF (FILE_EXISTS_IN_GAME ~%bard_abil%.spl~) BEGIN
-		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~%bard_abil%~ END
-	  END
-	END
-	PATCH_FOR_EACH div_abil IN ~d5dr206~ BEGIN
-	  PATCH_IF (FILE_EXISTS_IN_GAME ~%div_abil%.spl~) BEGIN
-		LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~%div_abil%~ END
-	  END
-	END
-  END
 // remove usability constraints (and sphere spells?) for FnP divine casters
 /*
   PATCH_IF (FILE_EXISTS_IN_GAME ~d5fnplst.2da~) BEGIN
@@ -1455,6 +1454,10 @@ END
 
 COPY_EXISTING ~d5_nukt.spl~ ~override~
   PATCH_FOR_EACH 321_spl IN
+    ~d5dr206~
+    ~d5noppb~ 
+    ~d5nomsb~ 
+    ~d5noftb~ 
     ~d5zrest~
     ~d5absp5~
     ~d5abspp~
@@ -1547,11 +1550,19 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~%321_spl%~ END
     END
   END
+  PATCH_FOR_EACH letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~ BEGIN
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5feat%letr%.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5feat%letr%~ END
+    END
+  END
   FOR (num = 1; num < 20; ++num) BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5feat%num%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5feat%num%~ END
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5mcft%num%.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5mcft%num%~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5mcfb%num%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5mcft%num%~ END
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5prof%num%.spl~) BEGIN
@@ -1658,13 +1669,16 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
   END
   PATCH_FOR_EACH letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ ~l~ ~m~ ~n~ ~o~ ~p~ ~q~ ~r~ ~s~ ~t~ BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5feat%letr%.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode =172 timing = 1 STR_VAR resource = EVAL ~d5feat%letr%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5feat%letr%~ END
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5mcft%letr%.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode =172 timing = 1 STR_VAR resource = EVAL ~d5mcft%letr%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5mcft%letr%~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5mcfb%letr%.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5mcft%letr%~ END
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5prof%letr%.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode =172 timing = 1 STR_VAR resource = EVAL ~d5prof%letr%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5prof%letr%~ END
     END
   END
   FOR (bd_num = 1; bd_num < 9; ++bd_num) BEGIN
@@ -1786,6 +1800,46 @@ ACTION_FOR_EACH mc IN ~7~ ~8~ ~9~ ~13~ ~14~ ~15~ ~16~ ~18~ BEGIN
   COPY_EXISTING ~d5_ckit.spl~ ~override~
 	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 target = 1 opcode = 326 parameter1 = %mc% parameter2 = 105 timing = 1 STR_VAR resource = ~d5_nukt~ END
   BUT_ONLY
+END
+//__________________________________________________________________________________
+
+
+//no kit abilities at level zero____________________________________________________
+//
+APPEND ~splprot.2da~ ~D5_LEVEL_IS%TAB%34%TAB%0%TAB%1~ UNLESS ~D5_LEVEL_IS~
+COPY_EXISTING ~splprot.2da~ ~override~
+	COUNT_2DA_COLS cols
+	READ_2DA_ENTRIES_NOW rows cols
+	FOR (row = 1; row < rows; ++row) BEGIN
+	  READ_2DA_ENTRY_FORMER rows row 0 ~stat~
+	  PATCH_IF ~%stat%~ STRING_EQUAL_CASE ~D5_LEVEL_IS~ BEGIN
+	    SET level_is_row = %row%
+	  END
+	END
+BUT_ONLY
+
+ACTION_PHP_EACH clabs_to_check AS clab => ind BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%clab%.2da~) BEGIN
+    COPY_EXISTING ~%clab%.2da~ ~override~
+      COUNT_2DA_COLS cols
+      READ_2DA_ENTRIES_NOW r2en_clab cols
+      FOR (row = 0; row < r2en_clab; ++row) BEGIN
+        READ_2DA_ENTRY_FORMER r2en_clab row 1 kit_abil
+        PATCH_IF (~%kit_abil%~ STRING_CONTAINS_REGEXP ~AP_~) = 0 BEGIN
+          SPRINT $ap_l1_abils(~%kit_abil%~)~1~
+        END
+      END
+    BUT_ONLY
+  END
+END
+
+ACTION_PHP_EACH ap_l1_abils AS l1_abil => ind BEGIN
+  OUTER_INNER_PATCH_SAVE l1_abil ~%l1_abil%~ BEGIN
+    REPLACE_TEXTUALLY ~AP_~ ~~
+  END
+  COPY_EXISTING ~%l1_abil%.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 target = 1 opcode = 318 parameter1 = 0 parameter2 = %level_is_row% timing = 0 duration = 1 STR_VAR resource = EVAL ~%l1_abil%~ END
+  IF_EXISTS BUT_ONLY
 END
 //__________________________________________________________________________________
 
