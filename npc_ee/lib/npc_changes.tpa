@@ -745,23 +745,24 @@ BUT_ONLY
 //
 COPY_EXISTING ~xplevel.2da~ ~override~
   COUNT_2DA_COLS cols
-  READ_2DA_ENTRY 0 2 cols mage_xp
-  READ_2DA_ENTRY 1 2 cols fighter_xp
-  READ_2DA_ENTRY 2 2 cols paladin_xp
-  READ_2DA_ENTRY 3 2 cols ranger_xp
-  READ_2DA_ENTRY 4 2 cols cleric_xp
-  READ_2DA_ENTRY 5 2 cols druid_xp
-  READ_2DA_ENTRY 6 2 cols thief_xp
-  READ_2DA_ENTRY 7 2 cols bard_xp
-  READ_2DA_ENTRY 8 2 cols sorcerer_xp
-  READ_2DA_ENTRY 9 2 cols monk_xp
-  READ_2DA_ENTRY 10 2 cols shaman_xp
+  READ_2DA_ENTRY 0 2 cols 1_mage_xp
+  READ_2DA_ENTRY 1 2 cols 1_fighter_xp
+  READ_2DA_ENTRY 2 2 cols 1_paladin_xp
+  READ_2DA_ENTRY 3 2 cols 1_ranger_xp
+  READ_2DA_ENTRY 4 2 cols 1_cleric_xp
+  READ_2DA_ENTRY 5 2 cols 1_druid_xp
+  READ_2DA_ENTRY 6 2 cols 1_thief_xp
+  READ_2DA_ENTRY 7 2 cols 1_bard_xp
+  READ_2DA_ENTRY 8 2 cols 1_sorcerer_xp
+  READ_2DA_ENTRY 9 2 cols 1_monk_xp
+  READ_2DA_ENTRY 10 2 cols 1_shaman_xp
 BUT_ONLY  
 
-OUTER_SET 2fighter_xp = (fighter_xp * 2)
-OUTER_SET 3fighter_xp = (fighter_xp * 3)
-OUTER_SET 2cleric_xp = (cleric_xp * 2)
-OUTER_SET 2thief_xp = (thief_xp * 2)
+OUTER_SET 2_fighter_xp = (1_fighter_xp * 2)
+OUTER_SET 2_ranger_xp = (1_ranger_xp * 2)
+OUTER_SET 2_mage_xp = (1_mage_xp * 2)
+OUTER_SET 3_mage_xp = (1_mage_xp * 3)
+OUTER_SET 2_cleric_xp = (1_cleric_xp * 2)
 //___________________________________________________________________________________
 
 
@@ -1254,21 +1255,22 @@ COPY ~npc_ee/data/d5_ckit.baf~ ~weidu_external/npc_ee/compile/d5_ckit.baf~
   REPLACE_TEXTUALLY CASE_INSENSITIVE ~savepolymonk~ ~%savepolymonk%~
   REPLACE_TEXTUALLY CASE_INSENSITIVE ~savebreathmonk~ ~%savebreathmonk%~
   REPLACE_TEXTUALLY CASE_INSENSITIVE ~savespellsmonk~ ~%savespellsmonk%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~mage_xp~ ~%mage_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~fighter_xp~ ~%fighter_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~paladin_xp~ ~%paladin_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~ranger_xp~ ~%ranger_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~cleric_xp~ ~%cleric_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~druid_xp~ ~%druid_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~thief_xp~ ~%thief_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~bard_xp~ ~%bard_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~sorcerer_xp~ ~%sorcerer_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~monk_xp~ ~%monk_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~shaman_xp~ ~%shaman_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2fighter_xp~ ~%2fighter_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~3fighter_xp~ ~%3fighter_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2cleric_xp~ ~%2cleric_xp%~
-  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2thief_xp~ ~%2thief_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_mage_xp~ ~%1_mage_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_fighter_xp~ ~%1_fighter_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_paladin_xp~ ~%1_paladin_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_ranger_xp~ ~%1_ranger_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_cleric_xp~ ~%1_cleric_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_druid_xp~ ~%1_druid_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_thief_xp~ ~%1_thief_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_bard_xp~ ~%1_bard_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_sorcerer_xp~ ~%1_sorcerer_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_monk_xp~ ~%1_monk_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~1_shaman_xp~ ~%1_shaman_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2_fighter_xp~ ~%2_fighter_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2_ranger_xp~ ~%2_ranger_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2_mage_xp~ ~%2_mage_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~3_mage_xp~ ~%3_mage_xp%~
+  REPLACE_TEXTUALLY CASE_INSENSITIVE ~2_cleric_xp~ ~%2_cleric_xp%~
 
 //___________________________________________________________________________________
 
