@@ -1075,7 +1075,7 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5spm3m.spl~
 	SAY UNIDENTIFIED_DESC @2007
 	WRITE_ASCII 0x3a ~d5spm3mb~ #8
 	LPF ALTER_SPELL_HEADER INT_VAR speed = 0 target = 7 STR_VAR icon = ~d5spm3mb~ END
-	LPF ADD_SPELL_EFFECT INT_VAR opcode = 316 timing = 1 END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 316 target = 1 timing = 1 END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 206 target = 1 parameter1 = (0 - 1) timing = 9 STR_VAR resource = ~d5spmem~ END
 	LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 9 STR_VAR resource = ~d5spm3m~ END
 
