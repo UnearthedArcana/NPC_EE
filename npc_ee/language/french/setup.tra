@@ -1,0 +1,253 @@
+@1   = ~...~
+@2   = ~Desoles, c'est seulement pour EE~
+@5   = ~Composants de changement de classe~
+@6   = ~Composants de changement de kit~
+@9   = ~Changement de kit~
+@11   = ~Choisir un kit~
+//
+//
+@1000  = ~Retirer l'indicateur de classe jumelee pour tous les PNJ~
+@1010  = ~Retirer l'indicateur de classe jumelee pour Imoen (attention, lire le fichier Readme)~
+@1020  = ~Retirer l'indicateur de classe jumelee pour Nalia (attention, lire le fichier Readme)~
+@1030  = ~Retirer l'indicateur de classe jumelee pour Anomen (attention, lire le fichier Readme)~
+@1200  = ~Retirer l'indicateur de classe jumelee pour tous les autres PNJ (attention, lire le fichier Readme)~
+//
+//
+@2000  = ~Choix des classes/caracteristiques/kits des PNJ~
+@2001  = ~Ceci va prendre quelques instants, veuillez patienter...~
+@2002  = ~Ce tome ne fonctionne pas pour les personnages avec classes jumelées~
+@2003  = ~Changer les compétences~
+@2004  = ~Changer la classe, le kit et les scores de caractéristique en repartant du niveau 0~
+@2005  = ~Changer le kit (et les scores de caractéristique et les compétences)~
+@2006  = ~Changer les scores de caractéristique~
+@2007  = ~Mémoriser des sorts~
+@2008  = ~Apprendre des sorts~
+@2009  = ~Utiliser cet objet depuis un emplacement rapide pour apprendre jusqu'à deux sorts par niveau. Jeter l'objet après usage.~
+@2010  = ~Utiliser ce tome à partir d'un emplacement rapide permet de modifier le personnage (classe, caractéristiques, compétences ou kit).
+
+NOTE : Il faut l'utiliser aussitôt ou ne pas l'utiliser du tout. Si le personnage gagne un niveau et fait progresser une compétence, ce tome ne pourra pas attribuer le nombre de points de compétence correct.
+
+Si vous disposez en plus d'un autre tome qui permet de re-sélectionner des compétences, vous devrez décider lequel utiliser. En utiliser un fera disparaître l'autre.~
+@2011  = ~Adopt this kit~
+@2011  = ~Choisir ce kit~
+@2012  = ~Choisir un autre kit~
+@2013  = ~Choisir un kit~
+@2014  = ~Pas de changement~
+@2015  = ~Classe de base~
+@2016  = ~Classe de base, pas de kit~
+@2017  = ~Modifier les compétences d'armes ?~
+@2018  = ~Effacer les compétences d'armes et en choisir de nouvelles~
+@2019  = ~Choisir cette classe~
+@2020  = ~Choisir une autre classe~
+//
+@2029  = ~Changer de classe ?~
+@2030  = ~Devenir un guerrier~
+@2031  = ~Devenir un rôdeur~
+@2032  = ~Devenir un paladin~
+@2033  = ~Devenir un clerc~
+@2034  = ~Devenir un druide~
+@2035  = ~Devenir un chaman~
+@2036  = ~Devenir un voleur~
+@2037  = ~Devenir un barde~
+@2038  = ~Devenir un mage~
+@2039  = ~Devenir un ensorceleur~
+@2040  = ~Devenir un moine~
+@2041  = ~Devenir un guerrier/mage~
+@2042  = ~Devenir un guerrier/voleur~
+@2043  = ~Devenir un guerrier/clerc~
+@2044  = ~Devenir un guerrier/druide~
+@2045  = ~Devenir un rôdeur/clerc~
+@2046  = ~Devenir un clerc/voleur~
+@2047  = ~Devenir un clerc/mage~
+@2048  = ~Devenir un mage/voleur~
+@2049  = ~Devenir un guerrier/mage/voleur~
+@2050  = ~Devenir un guerrier/mage/clerc~
+//
+@2051  = ~Force actuelle : <d5_cur_str>
+Dextérité actuelle : <d5_cur_dex>
+Constitution actuelle : <d5_cur_con>
+Intelligence actuelle : <d5_cur_int>
+Sagesse actuelle : <d5_cur_wis>
+Charisme actuel : <d5_cur_chr>
+
+Modifier des valeurs de caractéristique ?~
+@2052  = ~Modifier la force~
+@2053  = ~Modifier la dextérité~
+@2054  = ~Modifier la constitution~
+@2055  = ~Modifier l'intelligence~
+@2056  = ~Modifier la sagesse~
+@2057  = ~Modifier le charisme~
+@2058  = ~Fixer à 5~
+@2059  = ~Fixer à 6~
+@2060  = ~Fixer à 7~
+@2061  = ~Fixer à 8~
+@2062  = ~Fixer à 9~
+@2063  = ~Fixer à 10~
+@2064  = ~Fixer à 11~
+@2065  = ~Fixer à 12~
+@2066  = ~Fixer à 13~
+@2067  = ~Fixer à 14~
+@2068  = ~Fixer à 15~
+@2069  = ~Fixer à 16~
+@2070  = ~Fixer à 17~
+@2071  = ~Fixer à 18~
+@2072  = ~Fixer à 19~
+@2073  = ~Fixer à 20~
+@2074  = ~Fixer à 21~
+@2075  = ~Fixer à 22~
+@2076  = ~Fixer à 23~
+@2077  = ~Fixer à 24~
+@2078  = ~Fixer à 25~
+@2079  = ~Pas de modification, modifier une autre caractéristique~
+@2080  = ~Modification des caractéristiques terminée~
+//
+@2090  = ~Compétence d'arme initiale~
+@2091  = ~Faire progresser une compétence d'arme~
+@2092  = ~Choisir une autre arme~
+@2093 = ~Restaurer les compétences d'armes de niveau 1~
+@2094 = ~Choisir toutes les compétences d'armes~
+//
+@2100  = ~Progresser jusqu'à Initié (+)~
+@2101  = ~Progresser jusqu'à Initié (+) pour les épées bâtardes~
+@2102  = ~Progresser jusqu'à Initié (+) pour les épées longues~
+@2103  = ~Progresser jusqu'à Initié (+) pour les épées courtes~
+@2104  = ~Progresser jusqu'à Initié (+) pour les haches~
+@2105  = ~Progresser jusqu'à Initié (+) pour les épées à deux mains~
+@2106  = ~Progresser jusqu'à Initié (+) pour les katanas~
+@2107  = ~Progresser jusqu'à Initié (+) pour les cimeterres~
+@2108  = ~Progresser jusqu'à Initié (+) pour les dagues ~
+@2109  = ~Progresser jusqu'à Initié (+) pour les marteaux de guerre~
+@2110  = ~Progresser jusqu'à Initié (+) pour les lances~
+@2111  = ~Progresser jusqu'à Initié (+) pour les hallebardes~
+@2112  = ~Progresser jusqu'à Initié (+) pour les fléaux~
+@2113  = ~Progresser jusqu'à Initié (+) pour les masses~
+@2114  = ~Progresser jusqu'à Initié (+) pour les gourdins~
+@2115  = ~Progresser jusqu'à Initié (+) pour les bâtons~
+@2116  = ~Progresser jusqu'à Initié (+) pour les arbalètes~
+@2117  = ~Progresser jusqu'à Initié (+) pour les arcs longs~
+@2118  = ~Progresser jusqu'à Initié (+) pour les arcs courts~
+@2119  = ~Progresser jusqu'à Initié (+) pour les fléchettes~
+@2120  = ~Progresser jusqu'à Initié (+) pour les frondes~
+@2121  = ~Progresser jusqu'à Initié (+) dans le style à deux mains~
+@2122  = ~Progresser jusqu'à Initié (+) dans le style arme et bouclier~
+@2123  = ~Progresser jusqu'à Initié (+) dans le style combat à une main~
+@2124  = ~Progresser jusqu'à Initié (+) dans le style combat à deux armes~
+//
+@2200  = ~Progresser jusqu'à Spécialiste (++)~
+@2201  = ~Progresser jusqu'à Spécialiste (++) pour les épées bâtardes~
+@2202  = ~Progresser jusqu'à Spécialiste (++) pour les épées longues~
+@2203  = ~Progresser jusqu'à Spécialiste (++) pour les épées courtes~
+@2204  = ~Progresser jusqu'à Spécialiste (++) pour les haches~
+@2205  = ~Progresser jusqu'à Spécialiste (++) pour les épées à deux mains~
+@2206  = ~Progresser jusqu'à Spécialiste (++) pour les katanas~
+@2207  = ~Progresser jusqu'à Spécialiste (++) pour les cimeterres~
+@2208  = ~Progresser jusqu'à Spécialiste (++) pour les dagues ~
+@2209  = ~Progresser jusqu'à Spécialiste (++) pour les marteaux de guerre~
+@2210  = ~Progresser jusqu'à Spécialiste (++) pour les lances~
+@2211  = ~Progresser jusqu'à Spécialiste (++) pour les hallebardes~
+@2212  = ~Progresser jusqu'à Spécialiste (++) pour les fléaux~
+@2213  = ~Progresser jusqu'à Spécialiste (++) pour les masses~
+@2214  = ~Progresser jusqu'à Spécialiste (++) pour les gourdins~
+@2215  = ~Progresser jusqu'à Spécialiste (++) pour les bâtons~
+@2216  = ~Progresser jusqu'à Spécialiste (++) pour les arbalètes~
+@2217  = ~Progresser jusqu'à Spécialiste (++) pour les arcs longs~
+@2218  = ~Progresser jusqu'à Spécialiste (++) pour les arcs courts~
+@2219  = ~Progresser jusqu'à Spécialiste (++) pour les fléchettes~
+@2220  = ~Progresser jusqu'à Spécialiste (++) pour les frondes~
+@2221  = ~Progresser jusqu'à Spécialiste (++) dans le style à deux mains~
+@2222  = ~Progresser jusqu'à Spécialiste (++) dans le style arme et bouclier~
+@2223  = ~Progresser jusqu'à Spécialiste (++) dans le style combat à une main~
+@2224  = ~Progresser jusqu'à Spécialiste (++) dans le style combat à deux armes~
+//
+@2300  = ~Progresser jusqu'à Maître (+++)~
+@2301  = ~Progresser jusqu'à Maître (+++) pour les épées bâtardes~
+@2302  = ~Progresser jusqu'à Maître (+++) pour les épées longues~
+@2303  = ~Progresser jusqu'à Maître (+++) pour les épées courtes~
+@2304  = ~Progresser jusqu'à Maître (+++) pour les haches~
+@2305  = ~Progresser jusqu'à Maître (+++) pour les épées à deux mains~
+@2306  = ~Progresser jusqu'à Maître (+++) pour les katanas~
+@2307  = ~Progresser jusqu'à Maître (+++) pour les cimeterres~
+@2308  = ~Progresser jusqu'à Maître (+++) pour les dagues ~
+@2309  = ~Progresser jusqu'à Maître (+++) pour les marteaux de guerre~
+@2310  = ~Progresser jusqu'à Maître (+++) pour les lances~
+@2311  = ~Progresser jusqu'à Maître (+++) pour les hallebardes~
+@2312  = ~Progresser jusqu'à Maître (+++) pour les fléaux~
+@2313  = ~Progresser jusqu'à Maître (+++) pour les masses~
+@2314  = ~Progresser jusqu'à Maître (+++) pour les gourdins~
+@2315  = ~Progresser jusqu'à Maître (+++) pour les bâtons~
+@2316  = ~Progresser jusqu'à Maître (+++) pour les arbalètes~
+@2317  = ~Progresser jusqu'à Maître (+++) pour les arcs longs~
+@2318  = ~Progresser jusqu'à Maître (+++) pour les arcs courts~
+@2319  = ~Progresser jusqu'à Maître (+++) pour les fléchettes~
+@2320  = ~Progresser jusqu'à Maître (+++) pour les frondes~
+@2321  = ~Progresser jusqu'à Maître (+++) dans le style à deux mains~
+@2322  = ~Progresser jusqu'à Maître (+++) dans le style arme et bouclier~
+@2323  = ~Progresser jusqu'à Maître (+++) dans le style combat à une main~
+@2324  = ~Progresser jusqu'à Maître (+++) dans le style combat à deux armes~
+//
+@2400  = ~Progresser jusqu'à Supérieur (++++)~
+@2401  = ~Progresser jusqu'à Supérieur (++++) pour les épées bâtardes~
+@2402  = ~Progresser jusqu'à Supérieur (++++) pour les épées longues~
+@2403  = ~Progresser jusqu'à Supérieur (++++) pour les épées courtes~
+@2404  = ~Progresser jusqu'à Supérieur (++++) pour les haches~
+@2405  = ~Progresser jusqu'à Supérieur (++++) pour les épées à deux mains~
+@2406  = ~Progresser jusqu'à Supérieur (++++) pour les katanas~
+@2407  = ~Progresser jusqu'à Supérieur (++++) pour les cimeterres~
+@2408  = ~Progresser jusqu'à Supérieur (++++) pour les dagues ~
+@2409  = ~Progresser jusqu'à Supérieur (++++) pour les marteaux de guerre~
+@2410  = ~Progresser jusqu'à Supérieur (++++) pour les lances~
+@2411  = ~Progresser jusqu'à Supérieur (++++) pour les hallebardes~
+@2412  = ~Progresser jusqu'à Supérieur (++++) pour les fléaux~
+@2413  = ~Progresser jusqu'à Supérieur (++++) pour les masses~
+@2414  = ~Progresser jusqu'à Supérieur (++++) pour les gourdins~
+@2415  = ~Progresser jusqu'à Supérieur (++++) pour les bâtons~
+@2416  = ~Progresser jusqu'à Supérieur (++++) pour les arbalètes~
+@2417  = ~Progresser jusqu'à Supérieur (++++) pour les arcs longs~
+@2418  = ~Progresser jusqu'à Supérieur (++++) pour les arcs courts~
+@2419  = ~Progresser jusqu'à Supérieur (++++) pour les fléchettes~
+@2420  = ~Progresser jusqu'à Supérieur (++++) pour les frondes~
+@2421  = ~Progresser jusqu'à Supérieur (++++) dans le style à deux mains~
+@2422  = ~Progresser jusqu'à Supérieur (++++) dans le style arme et bouclier~
+@2423  = ~Progresser jusqu'à Supérieur (++++) dans le style combat à une main~
+@2424  = ~Progresser jusqu'à Supérieur (++++) dans le style combat à deux armes~
+//
+@2500  = ~Progresser jusqu'à Grand-Maître (+++++)~
+@2501  = ~Progresser jusqu'à Grand-Maître (+++++) pour les épées bâtardes~
+@2502  = ~Progresser jusqu'à Grand-Maître (+++++) pour les épées longues~
+@2503  = ~Progresser jusqu'à Grand-Maître (+++++) pour les épées courtes~
+@2504  = ~Progresser jusqu'à Grand-Maître (+++++) pour les haches~
+@2505  = ~Progresser jusqu'à Grand-Maître (+++++) pour les épées à deux mains~
+@2506  = ~Progresser jusqu'à Grand-Maître (+++++) pour les katanas~
+@2507  = ~Progresser jusqu'à Grand-Maître (+++++) pour les cimeterres~
+@2508  = ~Progresser jusqu'à Grand-Maître (+++++) pour les dagues ~
+@2509  = ~Progresser jusqu'à Grand-Maître (+++++) pour les marteaux de guerre~
+@2510  = ~Progresser jusqu'à Grand-Maître (+++++) pour les lances~
+@2511  = ~Progresser jusqu'à Grand-Maître (+++++) pour les hallebardes~
+@2512  = ~Progresser jusqu'à Grand-Maître (+++++) pour les fléaux~
+@2513  = ~Progresser jusqu'à Grand-Maître (+++++) pour les masses~
+@2514  = ~Progresser jusqu'à Grand-Maître (+++++) pour les gourdins~
+@2515  = ~Progresser jusqu'à Grand-Maître (+++++) pour les bâtons~
+@2516  = ~Progresser jusqu'à Grand-Maître (+++++) pour les arbalètes~
+@2517  = ~Progresser jusqu'à Grand-Maître (+++++) pour les arcs longs~
+@2518  = ~Progresser jusqu'à Grand-Maître (+++++) pour les arcs courts~
+@2519  = ~Progresser jusqu'à Grand-Maître (+++++) pour les fléchettes~
+@2520  = ~Progresser jusqu'à Grand-Maître (+++++) pour les frondes~
+@2521  = ~Progresser jusqu'à Grand-Maître (+++++) dans le style à deux mains~
+@2522  = ~Progresser jusqu'à Grand-Maître (+++++) dans le style arme et bouclier~
+@2523  = ~Progresser jusqu'à Grand-Maître (+++++) dans le style combat à une main~
+@2524  = ~Progresser jusqu'à Grand-Maître (+++++) dans le style combat à deux armes~
+//
+@3000  = ~choix de kit multiclasse~
+@4000  = ~kits multiclasses pour le personnage joueur~
+//
+@12301  = ~Choisir une compétence~
+@12302  = ~Choisir cette compétence~
+@12303  = ~Choisir une autre compétence~
+@12367  = ~Compétence de prédilection~
+@12368  = ~Compétence de prédilection : cette aptitude permet l'amélioration de 20 % d'une compétence de voleur.~
+@12411  = ~Bonus de furtivité (Déplacement silencieux + Se cacher dans les ombres)~
+@12412  = ~Bonus de vol à la tire~
+@12413  = ~Bonus de crochetage~
+@12414  = ~Bonus de détection des pièges~
+@12415  = ~Bonus de détection des illusions~
+@12416  = ~Bonus de pose de pièges~

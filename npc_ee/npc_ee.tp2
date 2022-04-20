@@ -16,6 +16,10 @@ LANGUAGE
   ~english~
   ~npc_ee/language/english/setup.tra~
 
+LANGUAGE
+  ~French~
+  ~french~
+  ~npc_ee/language/french/setup.tra~
 
 
 //__________________________________________________________________________________
