@@ -1312,14 +1312,16 @@ ACTION_FOR_EACH mclass IN ~f~ ~p~ ~d~ ~r~ ~t~ ~m~ BEGIN
       END
     BUT_ONLY
   END
+/* this is here twice, see line 1776
   ACTION_FOR_EACH num IN ~01~ ~02~ ~03~ ~04~ ~05~ ~06~ ~07~ ~08~ ~09~ ~10~ ~11~ ~12~ ~13~ ~14~ ~15~ ~16~ ~17~ ~18~ ~19~ ~20~ ~21~ ~22~ ~23~ ~24~ ~25~ ~26~ ~27~ ~28~ ~29~ ~30~ ~31~ ~32~ ~33~ ~34~ ~35~ ~36~ ~37~ ~38~ ~39~ ~40~ ~41~ ~42~ ~43~ ~44~ ~45~ ~46~ ~47~ ~48~ ~49~ ~50~ BEGIN
     ACTION_IF (FILE_EXISTS_IN_GAME ~qd_mc%mclass%%num%.spl~) BEGIN
       COPY_EXISTING ~qd_mc%mclass%%num%.spl~ ~override~
-        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 0 parameter2 = %kit_is_row% timing = 9 STR_VAR resource = EVAL ~qd_mc%mclass%%num%~ END
-        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 16384 parameter2 = %kit_is_row% timing = 9 STR_VAR resource = EVAL ~qd_mc%mclass%%num%~ END
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 0 parameter2 = %kit_is_row% timing = 0 duration = 1 STR_VAR resource = EVAL ~qd_mc%mclass%%num%~ END
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 16384 parameter2 = %kit_is_row% timing = 0 duration = 1 STR_VAR resource = EVAL ~qd_mc%mclass%%num%~ END
       BUT_ONLY
     END
   END
+*/
 END
 
 COPY ~npc_ee/lib/d5_base.spl~ ~override/d5mclab.spl~
@@ -1782,8 +1784,8 @@ ACTION_FOR_EACH base_class IN ~D~ ~F~ ~M~ ~P~ ~R~ ~T~ BEGIN
 	END
 	ACTION_IF (FILE_EXISTS_IN_GAME ~%resref%.spl~) BEGIN
       COPY_EXISTING ~%resref%.spl~ ~override~
-    	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 0 parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = EVAL ~%resref%~ END
-    	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 16384 parameter2 = %kit_is_row% timing = 0 duration = 6 STR_VAR resource = EVAL ~%resref%~ END
+    	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 0 parameter2 = %kit_is_row% timing = 0 duration = 1 STR_VAR resource = EVAL ~%resref%~ END
+    	LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 318 target = 1 parameter1 = 16384 parameter2 = %kit_is_row% timing = 0 duration = 1 STR_VAR resource = EVAL ~%resref%~ END
       BUT_ONLY
 	END
   END

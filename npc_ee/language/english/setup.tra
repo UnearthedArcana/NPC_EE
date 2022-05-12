@@ -95,6 +95,7 @@ Change Ability Scores?~
 @2091  = ~Advance weapon proficiency~
 @2092  = ~Choose a different weapon~
 //
+@2100  = ~Advance to Proficiency (+)~
 @2101  = ~Advance to Proficiency (+) with Bastard Swords~
 @2102  = ~Advance to Proficiency (+) with Long Swords~
 @2103  = ~Advance to Proficiency (+) with Short Swords~
@@ -120,6 +121,7 @@ Change Ability Scores?~
 @2123  = ~Advance to Proficiency (+) in Single-Weapon Style~
 @2124  = ~Advance to Proficiency (+) in Two-Weapon Style~
 //
+@2200  = ~Advance to Specialization (++)~
 @2201  = ~Advance to Specialization (++) with Bastard Swords~
 @2202  = ~Advance to Specialization (++) with Long Swords~
 @2203  = ~Advance to Specialization (++) with Short Swords~
@@ -145,6 +147,7 @@ Change Ability Scores?~
 @2223  = ~Advance to Specialization (++) in Single-Weapon Style~
 @2224  = ~Advance to Specialization (++) in Two-Weapon Style~
 //
+@2300  = ~Advance to Mastery (+++)~
 @2301  = ~Advance to Mastery (+++) with Bastard Swords~
 @2302  = ~Advance to Mastery (+++) with Long Swords~
 @2303  = ~Advance to Mastery (+++) with Short Swords~
@@ -170,6 +173,7 @@ Change Ability Scores?~
 @2323  = ~Advance to Mastery (+++) in Single-Weapon Style~
 @2324  = ~Advance to Mastery (+++) in Two-Weapon Style~
 //
+@2400  = ~Advance to High Mastery (++++)~
 @2401  = ~Advance to High Mastery (++++) with Bastard Swords~
 @2402  = ~Advance to High Mastery (++++) with Long Swords~
 @2403  = ~Advance to High Mastery (++++) with Short Swords~
@@ -195,6 +199,7 @@ Change Ability Scores?~
 @2423  = ~Advance to High Mastery (++++) in Single-Weapon Style~
 @2424  = ~Advance to High Mastery (++++) in Two-Weapon Style~
 //
+@2500  = ~Advance to Grandmastery (+++++)~
 @2501  = ~Advance to Grandmastery (+++++) with Bastard Swords~
 @2502  = ~Advance to Grandmastery (+++++) with Long Swords~
 @2503  = ~Advance to Grandmastery (+++++) with Short Swords~

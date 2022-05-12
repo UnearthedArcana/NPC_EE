@@ -128,605 +128,605 @@ END
 
 IF ~~ THEN BEGIN d5profx_189
  SAY #bastard_sword_desc
- IF ~~ THEN REPLY @2101 DO ~ApplySpellRES("D51BSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51BSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_190
  SAY #long_sword_desc
- IF ~~ THEN REPLY @2102 DO ~ApplySpellRES("D51LSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51LSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_191
  SAY #short_sword_desc
- IF ~~ THEN REPLY @2103 DO ~ApplySpellRES("D51SSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_192
  SAY #axe_desc
- IF ~~ THEN REPLY @2104 DO ~ApplySpellRES("D51BAXE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51BAXE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_193
  SAY #greatsword_desc
- IF ~~ THEN REPLY @2105 DO ~ApplySpellRES("D512SWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D512SWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_194
  SAY #katana_desc
- IF ~~ THEN REPLY @2106 DO ~ApplySpellRES("D51KATA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51KATA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_195
  SAY #scimitar_desc
- IF ~~ THEN REPLY @2107 DO ~ApplySpellRES("D51SCIM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SCIM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_196
  SAY #dagger_desc
- IF ~~ THEN REPLY @2108 DO ~ApplySpellRES("D51DAGG",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51DAGG",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_197
  SAY #hammer_desc
- IF ~~ THEN REPLY @2109 DO ~ApplySpellRES("D51HAMM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51HAMM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_198
  SAY #spear_desc
- IF ~~ THEN REPLY @2110 DO ~ApplySpellRES("D51SPEA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SPEA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_199
  SAY #halberd_desc
- IF ~~ THEN REPLY @2111 DO ~ApplySpellRES("D51HALB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51HALB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1100
  SAY #flail_desc
- IF ~~ THEN REPLY @2112 DO ~ApplySpellRES("D51FLAI",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51FLAI",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1101
  SAY #mace_desc
- IF ~~ THEN REPLY @2113 DO ~ApplySpellRES("D51MACE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51MACE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1115
  SAY #club_desc
- IF ~~ THEN REPLY @2114 DO ~ApplySpellRES("D51CLUB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51CLUB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1102
  SAY #staff_desc
- IF ~~ THEN REPLY @2115 DO ~ApplySpellRES("D51STAF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51STAF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1103
  SAY #crossbow_desc
- IF ~~ THEN REPLY @2116 DO ~ApplySpellRES("D51XBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51XBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1104
  SAY #long_bow_desc
- IF ~~ THEN REPLY @2117 DO ~ApplySpellRES("D51LBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51LBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1105
  SAY #short_bow_desc
- IF ~~ THEN REPLY @2118 DO ~ApplySpellRES("D51SBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1106
  SAY #dart_desc
- IF ~~ THEN REPLY @2119 DO ~ApplySpellRES("D51DART",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51DART",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1107
  SAY #sling_desc
- IF ~~ THEN REPLY @2120 DO ~ApplySpellRES("D51SLIN",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SLIN",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1111
  SAY #two_hand_desc
- IF ~~ THEN REPLY @2121 DO ~ApplySpellRES("D51S2HW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51S2HW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1112
  SAY #shield_fighting_desc
- IF ~~ THEN REPLY @2122 DO ~ApplySpellRES("D51SSNS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SSNS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1113
  SAY #single_weapon_desc
- IF ~~ THEN REPLY @2123 DO ~ApplySpellRES("D51SSWS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51SSWS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_1114
  SAY #two_weapon_desc
- IF ~~ THEN REPLY @2124 DO ~ApplySpellRES("D51STWF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2100 DO ~ApplySpellRES("D51STWF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 
 IF ~~ THEN BEGIN d5profx_289
  SAY #bastard_sword_desc
- IF ~~ THEN REPLY @2201 DO ~ApplySpellRES("D52BSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52BSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_290
  SAY #long_sword_desc
- IF ~~ THEN REPLY @2202 DO ~ApplySpellRES("D52LSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52LSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_291
  SAY #short_sword_desc
- IF ~~ THEN REPLY @2203 DO ~ApplySpellRES("D52SSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_292
  SAY #axe_desc
- IF ~~ THEN REPLY @2204 DO ~ApplySpellRES("D52BAXE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52BAXE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_293
  SAY #greatsword_desc
- IF ~~ THEN REPLY @2205 DO ~ApplySpellRES("D522SWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D522SWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_294
  SAY #katana_desc
- IF ~~ THEN REPLY @2206 DO ~ApplySpellRES("D52KATA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52KATA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_295
  SAY #scimitar_desc
- IF ~~ THEN REPLY @2207 DO ~ApplySpellRES("D52SCIM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SCIM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_296
  SAY #dagger_desc
- IF ~~ THEN REPLY @2208 DO ~ApplySpellRES("D52DAGG",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52DAGG",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_297
  SAY #hammer_desc
- IF ~~ THEN REPLY @2209 DO ~ApplySpellRES("D52HAMM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52HAMM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_298
  SAY #spear_desc
- IF ~~ THEN REPLY @2210 DO ~ApplySpellRES("D52SPEA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SPEA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_299
  SAY #halberd_desc
- IF ~~ THEN REPLY @2211 DO ~ApplySpellRES("D52HALB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52HALB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2100
  SAY #flail_desc
- IF ~~ THEN REPLY @2212 DO ~ApplySpellRES("D52FLAI",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52FLAI",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2101
  SAY #mace_desc
- IF ~~ THEN REPLY @2213 DO ~ApplySpellRES("D52MACE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52MACE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2115
  SAY #club_desc
- IF ~~ THEN REPLY @2214 DO ~ApplySpellRES("D52CLUB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52CLUB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2102
  SAY #staff_desc
- IF ~~ THEN REPLY @2215 DO ~ApplySpellRES("D52STAF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52STAF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2103
  SAY #crossbow_desc
- IF ~~ THEN REPLY @2216 DO ~ApplySpellRES("D52XBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52XBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2104
  SAY #long_bow_desc
- IF ~~ THEN REPLY @2217 DO ~ApplySpellRES("D52LBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52LBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2105
  SAY #short_bow_desc
- IF ~~ THEN REPLY @2218 DO ~ApplySpellRES("D52SBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2106
  SAY #dart_desc
- IF ~~ THEN REPLY @2219 DO ~ApplySpellRES("D52DART",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52DART",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2107
  SAY #sling_desc
- IF ~~ THEN REPLY @2220 DO ~ApplySpellRES("D52SLIN",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SLIN",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2111
  SAY #two_hand_desc
- IF ~~ THEN REPLY @2221 DO ~ApplySpellRES("D52S2HW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52S2HW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2112
  SAY #shield_fighting_desc
- IF ~~ THEN REPLY @2222 DO ~ApplySpellRES("D52SSNS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SSNS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2113
  SAY #single_weapon_desc
- IF ~~ THEN REPLY @2223 DO ~ApplySpellRES("D52SSWS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52SSWS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_2114
  SAY #two_weapon_desc
- IF ~~ THEN REPLY @2224 DO ~ApplySpellRES("D52STWF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2200 DO ~ApplySpellRES("D52STWF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 
 IF ~~ THEN BEGIN d5profx_389
  SAY #bastard_sword_desc
- IF ~~ THEN REPLY @2301 DO ~ApplySpellRES("D53BSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53BSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_390
  SAY #long_sword_desc
- IF ~~ THEN REPLY @2302 DO ~ApplySpellRES("D53LSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53LSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_391
  SAY #short_sword_desc
- IF ~~ THEN REPLY @2303 DO ~ApplySpellRES("D53SSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_392
  SAY #axe_desc
- IF ~~ THEN REPLY @2304 DO ~ApplySpellRES("D53BAXE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53BAXE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_393
  SAY #greatsword_desc
- IF ~~ THEN REPLY @2305 DO ~ApplySpellRES("D532SWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D532SWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_394
  SAY #katana_desc
- IF ~~ THEN REPLY @2306 DO ~ApplySpellRES("D53KATA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53KATA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_395
  SAY #scimitar_desc
- IF ~~ THEN REPLY @2307 DO ~ApplySpellRES("D53SCIM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SCIM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_396
  SAY #dagger_desc
- IF ~~ THEN REPLY @2308 DO ~ApplySpellRES("D53DAGG",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53DAGG",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_397
  SAY #hammer_desc
- IF ~~ THEN REPLY @2309 DO ~ApplySpellRES("D53HAMM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53HAMM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_398
  SAY #spear_desc
- IF ~~ THEN REPLY @2310 DO ~ApplySpellRES("D53SPEA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SPEA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_399
  SAY #halberd_desc
- IF ~~ THEN REPLY @2311 DO ~ApplySpellRES("D53HALB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53HALB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3100
  SAY #flail_desc
- IF ~~ THEN REPLY @2312 DO ~ApplySpellRES("D53FLAI",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53FLAI",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3101
  SAY #mace_desc
- IF ~~ THEN REPLY @2313 DO ~ApplySpellRES("D53MACE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53MACE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3115
  SAY #club_desc
- IF ~~ THEN REPLY @2314 DO ~ApplySpellRES("D53CLUB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53CLUB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3102
  SAY #staff_desc
- IF ~~ THEN REPLY @2315 DO ~ApplySpellRES("D53STAF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53STAF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3103
  SAY #crossbow_desc
- IF ~~ THEN REPLY @2316 DO ~ApplySpellRES("D53XBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53XBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3104
  SAY #long_bow_desc
- IF ~~ THEN REPLY @2317 DO ~ApplySpellRES("D53LBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53LBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3105
  SAY #short_bow_desc
- IF ~~ THEN REPLY @2318 DO ~ApplySpellRES("D53SBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3106
  SAY #dart_desc
- IF ~~ THEN REPLY @2319 DO ~ApplySpellRES("D53DART",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53DART",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3107
  SAY #sling_desc
- IF ~~ THEN REPLY @2320 DO ~ApplySpellRES("D53SLIN",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SLIN",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3111
  SAY #two_hand_desc
- IF ~~ THEN REPLY @2321 DO ~ApplySpellRES("D53S2HW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53S2HW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3112
  SAY #shield_fighting_desc
- IF ~~ THEN REPLY @2322 DO ~ApplySpellRES("D53SSNS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SSNS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3113
  SAY #single_weapon_desc
- IF ~~ THEN REPLY @2323 DO ~ApplySpellRES("D53SSWS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53SSWS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_3114
  SAY #two_weapon_desc
- IF ~~ THEN REPLY @2324 DO ~ApplySpellRES("D53STWF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2300 DO ~ApplySpellRES("D53STWF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 
 IF ~~ THEN BEGIN d5profx_489
  SAY #bastard_sword_desc
- IF ~~ THEN REPLY @2401 DO ~ApplySpellRES("D54BSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54BSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_490
  SAY #long_sword_desc
- IF ~~ THEN REPLY @2402 DO ~ApplySpellRES("D54LSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54LSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_491
  SAY #short_sword_desc
- IF ~~ THEN REPLY @2403 DO ~ApplySpellRES("D54SSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_492
  SAY #axe_desc
- IF ~~ THEN REPLY @2404 DO ~ApplySpellRES("D54BAXE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54BAXE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_493
  SAY #greatsword_desc
- IF ~~ THEN REPLY @2405 DO ~ApplySpellRES("D542SWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D542SWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_494
  SAY #katana_desc
- IF ~~ THEN REPLY @2406 DO ~ApplySpellRES("D54KATA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54KATA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_495
  SAY #scimitar_desc
- IF ~~ THEN REPLY @2407 DO ~ApplySpellRES("D54SCIM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SCIM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_496
  SAY #dagger_desc
- IF ~~ THEN REPLY @2408 DO ~ApplySpellRES("D54DAGG",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54DAGG",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_497
  SAY #hammer_desc
- IF ~~ THEN REPLY @2409 DO ~ApplySpellRES("D54HAMM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54HAMM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_498
  SAY #spear_desc
- IF ~~ THEN REPLY @2410 DO ~ApplySpellRES("D54SPEA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SPEA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_499
  SAY #halberd_desc
- IF ~~ THEN REPLY @2411 DO ~ApplySpellRES("D54HALB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54HALB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4100
  SAY #flail_desc
- IF ~~ THEN REPLY @2412 DO ~ApplySpellRES("D54FLAI",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54FLAI",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4101
  SAY #mace_desc
- IF ~~ THEN REPLY @2413 DO ~ApplySpellRES("D54MACE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54MACE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4115
  SAY #club_desc
- IF ~~ THEN REPLY @2414 DO ~ApplySpellRES("D54CLUB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54CLUB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4102
  SAY #staff_desc
- IF ~~ THEN REPLY @2415 DO ~ApplySpellRES("D54STAF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54STAF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4103
  SAY #crossbow_desc
- IF ~~ THEN REPLY @2416 DO ~ApplySpellRES("D54XBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54XBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4104
  SAY #long_bow_desc
- IF ~~ THEN REPLY @2417 DO ~ApplySpellRES("D54LBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54LBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4105
  SAY #short_bow_desc
- IF ~~ THEN REPLY @2418 DO ~ApplySpellRES("D54SBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4106
  SAY #dart_desc
- IF ~~ THEN REPLY @2419 DO ~ApplySpellRES("D54DART",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54DART",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4107
  SAY #sling_desc
- IF ~~ THEN REPLY @2420 DO ~ApplySpellRES("D54SLIN",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SLIN",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4111
  SAY #two_hand_desc
- IF ~~ THEN REPLY @2421 DO ~ApplySpellRES("D54S2HW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54S2HW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4112
  SAY #shield_fighting_desc
- IF ~~ THEN REPLY @2422 DO ~ApplySpellRES("D54SSNS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SSNS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4113
  SAY #single_weapon_desc
- IF ~~ THEN REPLY @2423 DO ~ApplySpellRES("D54SSWS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54SSWS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_4114
  SAY #two_weapon_desc
- IF ~~ THEN REPLY @2424 DO ~ApplySpellRES("D54STWF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2400 DO ~ApplySpellRES("D54STWF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 
 IF ~~ THEN BEGIN d5profx_589
  SAY #bastard_sword_desc
- IF ~~ THEN REPLY @2501 DO ~ApplySpellRES("D55BSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55BSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_590
  SAY #long_sword_desc
- IF ~~ THEN REPLY @2502 DO ~ApplySpellRES("D55LSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55LSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_591
  SAY #short_sword_desc
- IF ~~ THEN REPLY @2503 DO ~ApplySpellRES("D55SSWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SSWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_592
  SAY #axe_desc
- IF ~~ THEN REPLY @2504 DO ~ApplySpellRES("D55BAXE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55BAXE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_593
  SAY #greatsword_desc
- IF ~~ THEN REPLY @2505 DO ~ApplySpellRES("D552SWO",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D552SWO",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_594
  SAY #katana_desc
- IF ~~ THEN REPLY @2506 DO ~ApplySpellRES("D55KATA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55KATA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_595
  SAY #scimitar_desc
- IF ~~ THEN REPLY @2507 DO ~ApplySpellRES("D55SCIM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SCIM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_596
  SAY #dagger_desc
- IF ~~ THEN REPLY @2508 DO ~ApplySpellRES("D55DAGG",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55DAGG",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_597
  SAY #hammer_desc
- IF ~~ THEN REPLY @2509 DO ~ApplySpellRES("D55HAMM",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55HAMM",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_598
  SAY #spear_desc
- IF ~~ THEN REPLY @2510 DO ~ApplySpellRES("D55SPEA",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SPEA",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_599
  SAY #halberd_desc
- IF ~~ THEN REPLY @2511 DO ~ApplySpellRES("D55HALB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55HALB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5100
  SAY #flail_desc
- IF ~~ THEN REPLY @2512 DO ~ApplySpellRES("D55FLAI",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55FLAI",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5101
  SAY #mace_desc
- IF ~~ THEN REPLY @2513 DO ~ApplySpellRES("D55MACE",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55MACE",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5115
  SAY #club_desc
- IF ~~ THEN REPLY @2514 DO ~ApplySpellRES("D55CLUB",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55CLUB",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5102
  SAY #staff_desc
- IF ~~ THEN REPLY @2515 DO ~ApplySpellRES("D55STAF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55STAF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5103
  SAY #crossbow_desc
- IF ~~ THEN REPLY @2516 DO ~ApplySpellRES("D55XBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55XBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5104
  SAY #long_bow_desc
- IF ~~ THEN REPLY @2517 DO ~ApplySpellRES("D55LBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55LBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5105
  SAY #short_bow_desc
- IF ~~ THEN REPLY @2518 DO ~ApplySpellRES("D55SBOW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SBOW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5106
  SAY #dart_desc
- IF ~~ THEN REPLY @2519 DO ~ApplySpellRES("D55DART",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55DART",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5107
  SAY #sling_desc
- IF ~~ THEN REPLY @2520 DO ~ApplySpellRES("D55SLIN",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SLIN",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5111
  SAY #two_hand_desc
- IF ~~ THEN REPLY @2521 DO ~ApplySpellRES("D55S2HW",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55S2HW",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5112
  SAY #shield_fighting_desc
- IF ~~ THEN REPLY @2522 DO ~ApplySpellRES("D55SSNS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SSNS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5113
  SAY #single_weapon_desc
- IF ~~ THEN REPLY @2523 DO ~ApplySpellRES("D55SSWS",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55SSWS",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
 IF ~~ THEN BEGIN d5profx_5114
  SAY #two_weapon_desc
- IF ~~ THEN REPLY @2524 DO ~ApplySpellRES("D55STWF",myself)~ EXIT 
+ IF ~~ THEN REPLY @2500 DO ~ApplySpellRES("D55STWF",myself)~ EXIT 
  IF ~~ THEN REPLY @2092 GOTO d5profx 
 END 
