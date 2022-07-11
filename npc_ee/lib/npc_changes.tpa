@@ -316,8 +316,9 @@ BEGIN ~D5KITTLK~
 
 IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  SAY @9
- IF ~~ THEN REPLY @2010 DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
- IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ EXIT 
+ IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2010 DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
+ IF ~~ THEN REPLY @2012 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5STRSET","GLOBAL",1)~ DO ~SetGlobal("D5DEXSET","GLOBAL",1)~ DO ~SetGlobal("D5CONSET","GLOBAL",1)~ DO ~SetGlobal("D5INTSET","GLOBAL",1)~ DO ~SetGlobal("D5WISSET","GLOBAL",1)~ DO ~SetGlobal("D5CHRSET","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",0)~ EXIT 
+ IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
 END
 >>>>>>>> 
 COPY ~d5/d5kittlk.d~ ~weidu_external/npc_ee/compile/d5kittlk.d~
@@ -770,7 +771,13 @@ OUTER_SET 2_cleric_xp = (1_cleric_xp * 2)
 //
 ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
   COPY_EXISTING_REGEXP ~^[Ss][Pp][Pp][Rr][1-7]\([0-4][0-9]\|50\)\.spl$~ ~override~
-	SPRINT $divine_spells(~%SOURCE_RES%~)~ d~
+    READ_BYTE 0x21 divine_type
+    PATCH_IF (divine_type BOR 0b01111111 = 0b11111111) BEGIN 
+	  SPRINT $cleric_spells(~%SOURCE_RES%~)~ c~
+	END
+    PATCH_IF (divine_type BOR 0b10111111 = 0b11111111) BEGIN 
+	  SPRINT $druid_spells(~%SOURCE_RES%~)~ d~
+	END
   BUT_ONLY
 END
 
@@ -936,15 +943,34 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5shclon.2da~) BEGIN
   BUT_ONLY
 END
 
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5nsplc.spl~
+  PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+    PHP_EACH cleric_spells AS rem_dspl => type BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%rem_dspl%~ END
+    END
+  END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+    PHP_EACH 321_div_spls AS 321_dspl => bleh BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~%321_dspl%~ END
+    END
+    PHP_EACH 172_div_spls AS 172_dspl => blah BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%172_dspl%~ END
+    END
+  END
+
 COPY ~npc_ee/lib/d5_base.spl~ ~override/d5nspld.spl~
-  PHP_EACH divine_spells AS rem_dspl => type BEGIN
-    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%rem_dspl%~ END
+  PATCH_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+    PHP_EACH druid_spells AS rem_dspl => type BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%rem_dspl%~ END
+    END
   END
-  PHP_EACH 321_div_spls AS 321_dspl => bleh BEGIN
-    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~%321_dspl%~ END
-  END
-  PHP_EACH 172_div_spls AS 172_dspl => blah BEGIN
-    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%172_dspl%~ END
+  PATCH_IF (FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
+    PHP_EACH 321_div_spls AS 321_dspl => bleh BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~%321_dspl%~ END
+    END
+    PHP_EACH 172_div_spls AS 172_dspl => blah BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%172_dspl%~ END
+    END
   END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5clonmn.2da~) BEGIN
