@@ -5,7 +5,6 @@ THEN
 	RESPONSE #100
 	SetGlobal("D5ISDUAL","GLOBAL",1)
 	SetGlobal("D5CLSTLK","GLOBAL",1)
-	SetGlobal("D5STTTLK","GLOBAL",1)
 END
 IF
 	Global("D5CLSTLK","GLOBAL",0)
@@ -14,7 +13,6 @@ THEN
 	RESPONSE #100
 	SetGlobal("D5ISDUAL","GLOBAL",1)
 	SetGlobal("D5CLSTLK","GLOBAL",1)
-	SetGlobal("D5STTTLK","GLOBAL",1)
 END
 IF
 	Global("D5CLSTLK","GLOBAL",0)
@@ -23,7 +21,6 @@ THEN
 	RESPONSE #100
 	SetGlobal("D5ISDUAL","GLOBAL",1)
 	SetGlobal("D5CLSTLK","GLOBAL",1)
-	SetGlobal("D5STTTLK","GLOBAL",1)
 END
 IF
 	Global("D5CLSTLK","GLOBAL",0)
@@ -32,7 +29,6 @@ THEN
 	RESPONSE #100
 	SetGlobal("D5ISDUAL","GLOBAL",1)
 	SetGlobal("D5CLSTLK","GLOBAL",1)
-	SetGlobal("D5STTTLK","GLOBAL",1)
 END
 IF
 	Global("D5CLSTLK","GLOBAL",0)
@@ -41,19 +37,14 @@ THEN
 	RESPONSE #100
 	SetGlobal("D5ISDUAL","GLOBAL",1)
 	SetGlobal("D5CLSTLK","GLOBAL",1)
-	SetGlobal("D5STTTLK","GLOBAL",1)
 END
 IF
 	Global("D5CLSTLK","GLOBAL",0)
 	TriggerOverride(LastSummonerOf(Myself),OriginalClass(Myself,MAGE))
 THEN
 	RESPONSE #100
-	DisplayStringNoName(LastSummonerOf(Myself),"dualclass_strref") 
-	DisplayStringHead(LastSummonerOf(Myself),"dualclass_strref") 
 	SetGlobal("D5ISDUAL","GLOBAL",1)
-	SetGlobal("D5KITTLK","GLOBAL",1)
 	SetGlobal("D5CLSTLK","GLOBAL",1)
-	SetGlobal("D5STTTLK","GLOBAL",1)
 END
 
 IF
@@ -102,7 +93,6 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5STRSET","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5STRVALUE","GLOBAL","d5_cur_str")
@@ -111,7 +101,6 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5DEXSET","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5DEXVALUE","GLOBAL","d5_cur_dex")
@@ -120,7 +109,6 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5CONSET","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5CONVALUE","GLOBAL","d5_cur_con")
@@ -129,7 +117,6 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5INTSET","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5INTVALUE","GLOBAL","d5_cur_int")
@@ -138,7 +125,6 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5WISSET","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5WISVALUE","GLOBAL","d5_cur_wis")
@@ -147,7 +133,6 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
     Global("D5CHRSET","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetTokenGlobal("D5CHRVALUE","GLOBAL","d5_cur_chr")
@@ -1266,7 +1251,6 @@ END
 
 IF
     Global("D5STRSET","GLOBAL",0)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5STRSET","GLOBAL",1)
@@ -1275,35 +1259,30 @@ THEN
 END
 IF
     Global("D5DEXSET","GLOBAL",0)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5DEXSET","GLOBAL",1)
 END
 IF
     Global("D5CONSET","GLOBAL",0)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5CONSET","GLOBAL",1)
 END
 IF
     Global("D5INTSET","GLOBAL",0)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5INTSET","GLOBAL",1)
 END
 IF
     Global("D5WISSET","GLOBAL",0)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5WISSET","GLOBAL",1)
 END
 IF
     Global("D5CHRSET","GLOBAL",0)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("D5CHRSET","GLOBAL",1)
@@ -1312,10 +1291,8 @@ END
 IF
 	Global("D5STTTLK","GLOBAL",0)
 	Global("D5KITTLK","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 THEN
 	RESPONSE #100
-	SetNumTimesTalkedTo(0)
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5stttlk",Myself))
 END
 
@@ -1323,7 +1300,6 @@ IF
 	Global("D5REMCSPLS","GLOBAL",0)
 	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 	!Class(LastSummonerOf(Myself),CLERIC)
 	!Class(LastSummonerOf(Myself),PALADIN)
 	!Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
@@ -1340,7 +1316,6 @@ IF
 	Global("D5REMDSPLS","GLOBAL",0)
 	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 	!Class(LastSummonerOf(Myself),DRUID)
 	!Class(LastSummonerOf(Myself),RANGER)
 	!Class(LastSummonerOf(Myself),CLERIC_RANGER)
@@ -1354,7 +1329,6 @@ IF
 	Global("D5REMWSPLS","GLOBAL",0)
 	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
-	Global("D5ISDUAL","GLOBAL",0)
 	!Class(LastSummonerOf(Myself),MAGE)
 	!Class(LastSummonerOf(Myself),BARD)
 	!Class(LastSummonerOf(Myself),SORCERER)
