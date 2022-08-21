@@ -745,18 +745,18 @@ BUT_ONLY
 //initial saving throw values________________________________________________________
 //
 COPY_EXISTING ~xplevel.2da~ ~override~
-  COUNT_2DA_COLS cols
-  READ_2DA_ENTRY 0 2 cols 1_mage_xp
-  READ_2DA_ENTRY 1 2 cols 1_fighter_xp
-  READ_2DA_ENTRY 2 2 cols 1_paladin_xp
-  READ_2DA_ENTRY 3 2 cols 1_ranger_xp
-  READ_2DA_ENTRY 4 2 cols 1_cleric_xp
-  READ_2DA_ENTRY 5 2 cols 1_druid_xp
-  READ_2DA_ENTRY 6 2 cols 1_thief_xp
-  READ_2DA_ENTRY 7 2 cols 1_bard_xp
-  READ_2DA_ENTRY 8 2 cols 1_sorcerer_xp
-  READ_2DA_ENTRY 9 2 cols 1_monk_xp
-  READ_2DA_ENTRY 10 2 cols 1_shaman_xp
+//  COUNT_2DA_COLS cols
+  READ_2DA_ENTRY 1 2 39 1_mage_xp
+  READ_2DA_ENTRY 2 2 39 1_fighter_xp
+  READ_2DA_ENTRY 3 2 39 1_paladin_xp
+  READ_2DA_ENTRY 4 2 39 1_ranger_xp
+  READ_2DA_ENTRY 5 2 39 1_cleric_xp
+  READ_2DA_ENTRY 6 2 39 1_druid_xp
+  READ_2DA_ENTRY 7 2 39 1_thief_xp
+  READ_2DA_ENTRY 8 2 39 1_bard_xp
+  READ_2DA_ENTRY 9 2 39 1_sorcerer_xp
+  READ_2DA_ENTRY 10 2 39 1_monk_xp
+  READ_2DA_ENTRY 11 2 39 1_shaman_xp
 BUT_ONLY  
 
 OUTER_SET 2_fighter_xp = (1_fighter_xp * 2)

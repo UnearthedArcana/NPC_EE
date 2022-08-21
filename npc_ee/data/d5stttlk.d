@@ -39,7 +39,7 @@ IF ~~ THEN BEGIN d5stttlk_20
 END 
 
 IF ~~ THEN BEGIN d5stttlk_30 
- SAY @2052
+ SAY @2053
  IF ~~ THEN REPLY @2058 DO ~ApplySpellRES("D5DX_05",myself)~ DO ~SetGlobal("D5DEXVALUE","GLOBAL","5")~ EXIT
  IF ~~ THEN REPLY @2059 DO ~ApplySpellRES("D5DX_06",myself)~ DO ~SetGlobal("D5DEXVALUE","GLOBAL","6")~ EXIT
  IF ~~ THEN REPLY @2060 DO ~ApplySpellRES("D5DX_07",myself)~ DO ~SetGlobal("D5DEXVALUE","GLOBAL","7")~ EXIT
@@ -65,7 +65,7 @@ IF ~~ THEN BEGIN d5stttlk_30
 END 
 
 IF ~~ THEN BEGIN d5stttlk_40 
- SAY @2052
+ SAY @2054
  IF ~~ THEN REPLY @2058 DO ~ApplySpellRES("D5CN_05",myself)~ DO ~SetGlobal("D5CONVALUE","GLOBAL","5")~ EXIT
  IF ~~ THEN REPLY @2059 DO ~ApplySpellRES("D5CN_06",myself)~ DO ~SetGlobal("D5CONVALUE","GLOBAL","6")~ EXIT
  IF ~~ THEN REPLY @2060 DO ~ApplySpellRES("D5CN_07",myself)~ DO ~SetGlobal("D5CONVALUE","GLOBAL","7")~ EXIT
@@ -91,7 +91,7 @@ IF ~~ THEN BEGIN d5stttlk_40
 END 
 
 IF ~~ THEN BEGIN d5stttlk_50 
- SAY @2052
+ SAY @2055
  IF ~~ THEN REPLY @2058 DO ~ApplySpellRES("D5IN_05",myself)~ DO ~SetGlobal("D5INTVALUE","GLOBAL","5")~ EXIT
  IF ~~ THEN REPLY @2059 DO ~ApplySpellRES("D5IN_06",myself)~ DO ~SetGlobal("D5INTVALUE","GLOBAL","6")~ EXIT
  IF ~~ THEN REPLY @2060 DO ~ApplySpellRES("D5IN_07",myself)~ DO ~SetGlobal("D5INTVALUE","GLOBAL","7")~ EXIT
@@ -117,7 +117,7 @@ IF ~~ THEN BEGIN d5stttlk_50
 END 
 
 IF ~~ THEN BEGIN d5stttlk_60 
- SAY @2052
+ SAY @2056
  IF ~~ THEN REPLY @2058 DO ~ApplySpellRES("D5WS_05",myself)~ DO ~SetGlobal("D5WISVALUE","GLOBAL","5")~ EXIT
  IF ~~ THEN REPLY @2059 DO ~ApplySpellRES("D5WS_06",myself)~ DO ~SetGlobal("D5WISVALUE","GLOBAL","6")~ EXIT
  IF ~~ THEN REPLY @2060 DO ~ApplySpellRES("D5WS_07",myself)~ DO ~SetGlobal("D5WISVALUE","GLOBAL","7")~ EXIT
@@ -143,7 +143,7 @@ IF ~~ THEN BEGIN d5stttlk_60
 END 
 
 IF ~~ THEN BEGIN d5stttlk_70 
- SAY @2052
+ SAY @2057
  IF ~~ THEN REPLY @2058 DO ~ApplySpellRES("D5CH_05",myself)~ DO ~SetGlobal("D5CHRVALUE","GLOBAL","5")~ EXIT
  IF ~~ THEN REPLY @2059 DO ~ApplySpellRES("D5CH_06",myself)~ DO ~SetGlobal("D5CHRVALUE","GLOBAL","6")~ EXIT
  IF ~~ THEN REPLY @2060 DO ~ApplySpellRES("D5CH_07",myself)~ DO ~SetGlobal("D5CHRVALUE","GLOBAL","7")~ EXIT
