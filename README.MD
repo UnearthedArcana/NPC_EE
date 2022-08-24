@@ -11,13 +11,13 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 5.4</strong><br />
+  <p><strong> Version 5.6</strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
 <h2>Overview</h2>
 <div class="section">
-  <p>This is intended to be a successor to the fantastic "Level 1 NPCs" mod.  L1NPCs was not, at the time I made this, updated for the EE games, and it was an incredible, complicated piece of work that is difficult for someone else to update.  NPC_EE aims to reach a similar result: add replayability by allowing players to easily change the class and kit of various NPCs, thus creating different parties with different tactics, for different playthroughs.</p>
+  <p>This is intended to be a successor to the fantastic "Level 1 NPCs" mod, and an alternative to the SCS "NPC Customization" component.  Level 1 NPCs was not, at the time I made this, updated for the EE games, and it was an incredible, complicated piece of work that is difficult for people other than its author to update.  NPC_EE aims to reach a similar result: add replayability by allowing players to easily change the class, stats, and kit of various NPCs, thus creating different parties with different tactics, for different playthroughs.</p>
   <p>In application, as of version 5, this takes the most direct inspiration from the old "Kit Tomes" mod. But this mod will let you choose any kit - not just the original ones - and also let you choose any class, and change your attribute scores, and re-select proficiencies and rogue skills.</p>
 </div>
 <h2>Installation</h2>
@@ -32,7 +32,7 @@
 <div class="section">
   <p>This mod covers the same ground as 'Level 1 NPCs' and the 'NPC Customization' component of Sword Coast Stratagems. Best to choose only one of the three.</p>
   <p><strong>This mod should be near the end of your install order. </strong></p>
-  <p>However, one mod you should definitely definitely install <b>after</b> this one is Kjeron's "Dual-to-Kit" mod. One optional way to install that mod will change the values in weapprof.2da... but this mod needs to read those values in order for the proficiency-changing mechanism to work. So install NPC_EE first before Dual-to-Kit.</p>
+  <p>However, one mod you should definitely definitely install <b>after</b> this one is Kjeron's "Dual-to-Kit" mod. One optional way to install that mod will change the values in weapprof.2da... but this mod needs to read those values in order for the proficiency-changing mechanism to work. So install NPC_EE before Dual-to-Kit.</p>
 </div>
 <h2>Contents</h2>
 <div class="section">
@@ -64,7 +64,8 @@
     <p>When the dialogues are complete, you will end up at level 0, with 2 hit points, and no proficiencies. Your XP will be the same as it was before, so you can level up immediately to your old level, choosing proficiencies and, if necessary, thief skills. <b>NOTE:</b> if you level up from level 0 to a level higher than 1, then you will not get your 1st-level proficiencies. In this case you will get an innate ability that will initiate a dialogue that gives you the missing proficiencies.</p>
     <p>It appears that, if you level up from level 0 to level 1, then you will be able to choose spells if you have chosen an arcane spellcasting class. If you level up directly to level 2 or higher, then this will be skipped. I do not as yet have a solution for this. If you want to, you can use the console when the dialogue ends to change your XP to 100 or so, then level up to level 1, then use the console again to change your XP back to what it was.</p>
     <p>As noted above, the class/stat/proficiency portion of this dialogue system <b>will not work with dual-class characters</b>. They have information indelibly etched into their game files that cannot be changed in-game. So Imoen, Nalia, and Anomen cannot make full use of these tomes, unless you enable it with the earlier components. However, dual-class characters can still use the tomes in a more limited fashion, choosing a kit for one of their classes.</p>
-    <p>You <b>can</b> use this to <b>create</b> dual-class characters. To rebuild Nalia back to her original form, for example, you would use this tome to make her a thief; then, use the console to change her XP to the amount for a 4th-level thief. Now level her up, then dual-class to mage. Then use the console to set her XP back to what it was originally.</p>
+    <p><b>Af of version 5.6</b>, there are two additional options which <b>do</b> work with dual-class characters. There is now an option to retain your class and proficiencies, and only change your kit. (This will allow you to change ability scores as well.) The other option is to keep your class, proficiencies, and kit the same, and only change your ability scores.
+    <p>You <b>can</b> use this to <b>create</b> dual-class characters. To rebuild Nalia back to her original form, for example, you would 1) use the mod to remove her dual-class flag; 2) use the tome to make her a single-class thief; then 3) use the console to change her XP to the amount for a 4th-level thief. 4) Level her up, then dual-class to mage. Then 5) use the console to set her XP back to what it was originally.</p>
     <p>If you combine this with Kjeron's 'Dual-to-Kit' mod, then you can have a kit for either class of a dual-classed character made this way. To have a kit for your first class, select it in the NPC_EE dialogue. To have a kit in your second class, make sure you choose 'trueclass/no kit' in the dialogue, then you will be able to select a kit in your second class when you dual.</p>
   </div>
 </div>

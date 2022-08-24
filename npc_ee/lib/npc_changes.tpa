@@ -318,6 +318,7 @@ IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  SAY @9
  IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2010 DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
  IF ~~ THEN REPLY @2012 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",0)~ EXIT 
+ IF ~~ THEN REPLY @2006 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
  IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
 END
 >>>>>>>> 
@@ -1081,6 +1082,13 @@ END
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5clsp1.spl~) BEGIN
   COPY_EXISTING ~d5clsp1.spl~ ~override~
     LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 143 opcode = 122 parameter1 = 1 parameter2 = 0 END
+  BUT_ONLY
+END
+
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5clsp1.spl~) BEGIN
+  COPY ~npc_ee/lib/d5_base.spl~ ~override/d5clsp1.spl~
+    LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 122 target = 1 parameter1 = 1 timing = 9 STR_VAR resource = ~d5clsp~ END
   BUT_ONLY
 END
 //___________________________________________________________________________________
