@@ -24,6 +24,22 @@ ACTION_FOR_EACH class_folder IN ~ba~ ~cl~ ~dr~ ~fi~ ~ma~ ~mo~ ~pa~ ~ra~ ~sh~ ~so
 END
 //___________________________________________________________________________________
 
+/*
+//set up unselectable spell__________________________________________________________
+//
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5selno.spl~
+  PATCH_IF (GAME_IS ~bgee sod iwdee~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 365 parameter1 = 0 parameter2 = 1 duration = 126144000 END
+  END
+  PATCH_IF (GAME_IS ~bg2ee eet~) BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 365 parameter1 = 1 parameter2 = 1 duration = 126144000 END
+  END
+
+COPY ~npc_ee/lib/d5_base.spl~ ~override/d5selnx.spl~
+  LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = ~d5selno~ END
+//___________________________________________________________________________________
+*/
+
 
 //___________________________________________________________________________________
 //______________________________________KITS_________________________________________

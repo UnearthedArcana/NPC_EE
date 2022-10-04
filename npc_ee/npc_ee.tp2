@@ -1,7 +1,7 @@
 BACKUP ~npc_ee/backup~
 AUTHOR ~SubtleD~
 
-VERSION ~5.7.1~
+VERSION ~5.7.2~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -31,6 +31,7 @@ LANGUAGE
 
 BEGIN @1010
 DESIGNATED 1010
+LABEL ~D5_IMOEN_NOT_DUAL~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 
 INCLUDE ~npc_ee/lib/remove_dual.tpa~
@@ -41,6 +42,7 @@ LAF remove_imoen_dual_flags END
 
 BEGIN @1020
 DESIGNATED 1020
+LABEL ~D5_NALIA_NOT_DUAL~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 
 INCLUDE ~npc_ee/lib/remove_dual.tpa~
@@ -51,6 +53,7 @@ LAF remove_nalia_dual_flags END
 
 BEGIN @1030
 DESIGNATED 1030
+LABEL ~D5_ANOMEN_NOT_DUAL~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 
 INCLUDE ~npc_ee/lib/remove_dual.tpa~
@@ -61,6 +64,7 @@ LAF remove_anomen_dual_flags END
 
 BEGIN @1200
 DESIGNATED 1200
+LABEL ~D5_OTHER_NPCS_NOT_DUAL~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 
 INCLUDE ~npc_ee/lib/remove_dual.tpa~
@@ -71,6 +75,7 @@ LAF remove_other_dual_flags END
 
 BEGIN @2000
 DESIGNATED 2000
+LABEL ~D5_NPC_CUSTOMIZATION~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
 
 INCLUDE ~npc_ee/lib/npc_changes.tpa~
