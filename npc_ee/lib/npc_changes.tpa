@@ -635,7 +635,7 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5prfch.spl~) BEGIN
     END
 // should also remove any proficiency-related effects... e.g. from SoB CSP
     PATCH_FOR_EACH d5_csp_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ BEGIN
-      PATCH_FOR_EACH d5_csp_stat IN ~104~ ~105~ ~106~ ~107~ ~108~ ~110~ BEGIN
+      PATCH_FOR_EACH d5_csp_stat IN ~104~ ~105~ ~106~ ~107~ ~108~ ~109~ ~110~ BEGIN
         LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cs%d5_csp_stat%%d5_csp_letr%b~ END
       END
     END
@@ -1659,7 +1659,7 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5iprx%iprof%~ END
     END
   END
-  PATCH_FOR_EACH stats IN ~104~ ~105~ ~106~ ~107~ ~108~ ~110~ ~115~ ~124~ ~127~ BEGIN
+  PATCH_FOR_EACH stats IN ~104~ ~105~ ~106~ ~107~ ~108~ ~109~ ~110~ ~115~ ~124~ ~127~ BEGIN
     PATCH_FOR_EACH lets IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ BEGIN
       PATCH_IF (FILE_EXISTS_IN_GAME ~d5cs%stats%%lets%.spl~) BEGIN
         LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5cs%stats%%lets%.spl~ END
