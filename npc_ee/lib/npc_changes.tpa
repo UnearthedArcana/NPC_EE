@@ -714,8 +714,10 @@ OUTER_SET script_higher_levels = 0
 
 LAM PROF_DIALOGUE
 
-COPY_EXISTING ~d5cprfa.spl~ ~override~
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 5 STR_VAR resource = ~d5cs000~ END
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5cs000.spl~) BEGIN
+  COPY_EXISTING ~d5cprfa.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 5 STR_VAR resource = ~d5cs000~ END
+END
 
 //__________________________________________________________________________________
 
