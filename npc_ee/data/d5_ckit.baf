@@ -1351,7 +1351,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_fighter_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1399,7 +1399,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_ranger_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1481,7 +1481,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_paladin_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1562,7 +1562,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_cleric_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1611,7 +1611,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_druid_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1671,7 +1671,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_shaman_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1731,7 +1731,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_thief_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1779,7 +1779,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_bard_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1851,7 +1851,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_monk_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -1921,7 +1921,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),1_mage_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2012,7 +2012,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_fighter_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2072,7 +2072,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_fighter_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2143,7 +2143,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_mage_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2203,7 +2203,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_fighter_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2262,7 +2262,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_ranger_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2345,7 +2345,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_cleric_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2405,7 +2405,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_mage_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2465,7 +2465,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),2_mage_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2525,7 +2525,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),3_mage_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF
@@ -2596,7 +2596,7 @@ IF
 	CheckStatGT(LastSummonerOf(Myself),3_mage_xp,XP)
 THEN
 	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5_CPR1",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CPRF1",Myself))
 	Continue()
 END
 IF

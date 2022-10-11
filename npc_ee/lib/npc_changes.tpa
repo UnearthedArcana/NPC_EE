@@ -613,26 +613,65 @@ BUT_ONLY
 
 //make .CRE proficiencies removable_________________________________________________
 //
-COPY ~npc_ee/lib/d5_base.spl~ ~override/d5prfch.spl~
-  LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5profz~ END
-  PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
-	PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
-	END
-  END
-  PATCH_FOR_EACH d5_prof_level IN ~1~ ~2~ ~3~ ~4~ ~5~ BEGIN
-	PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
-	  LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
-	END
-  END
-// don't need this anymore!
-//  LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 171 timing = 1 STR_VAR resource = ~d5_cpra~ END
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5prfch.spl~) BEGIN
+  COPY ~%MOD_FOLDER%/lib/d5_base.spl~ ~override/d5prfch.spl~
+    LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5profz~ END
+//    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 4 duration = 1 STR_VAR resource = ~d5profz~ END
+    PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
+      PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
+      END
+    END
+    PATCH_FOR_EACH d5_prof_level IN ~1~ ~2~ ~3~ ~4~ ~5~ BEGIN
+      PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
+      END
+    END
+    PATCH_FOR_EACH d5_prof_level IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ BEGIN
+      PATCH_FOR_EACH d5_prof_wep IN ~89~ ~90~ ~91~ ~92~ ~93~ ~94~ ~95~ ~96~ ~97~ ~98~ ~99~ ~100~ ~101~ ~102~ ~103~ ~104~ ~105~ ~106~ ~107~ ~108~ ~109~ ~110~ ~111~ ~112~ ~113~ ~114~ ~115~ ~124~ ~127~ ~134~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5%d5_prof_level%P%d5_prof_wep%~ END
+      END
+    END
+// should also remove any proficiency-related effects... e.g. from SoB CSP
+    PATCH_FOR_EACH d5_csp_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ BEGIN
+      PATCH_FOR_EACH d5_csp_stat IN ~104~ ~105~ ~106~ ~107~ ~108~ ~110~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cs%d5_csp_stat%%d5_csp_letr%b~ END
+      END
+    END
+    PATCH_FOR_EACH d5_csp_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ BEGIN
+      PATCH_FOR_EACH d5_csp_stat IN ~115~ ~124~ ~127~ ~134~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5c%d5_csp_stat%%d5_csp_letr%~ END
+      END
+    END
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5c%d5_csp_stat%%d5_csp_letr%~ END
+
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cx115~ END
+    PATCH_FOR_EACH d5_csp_num IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ ~8~ ~9~ BEGIN
+      PATCH_FOR_EACH d5_csp_dlg IN ~f~ ~m~ ~i~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cs%d5_csp_dlg%%d5_csp_num%~ END
+      END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csi%d5_csp_num%i~ END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csi%d5_csp_num%b~ END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csi%d5_csp_num%g~ END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csp%d5_csp_num%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csp%d5_csp_num%a~ END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cxp%d5_csp_num%b~ END
+      LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cxp%d5_csp_num%l~ END
+    END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cilts~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5ciltz~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5ciltf~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cix1a~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cix1z~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cix-1~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cistt~ END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5ci000~ END
+END
 
 
 // ***** create spell to apply 206 vs. d5prfch
-// ... and ApplySpellRES it at the end of d5_cprf.baf
+// ... and ApplySpellRES it at the end of d5cprf.baf
 // ... or maybe not necessary?
 
 
@@ -667,40 +706,14 @@ END
 
 //proficiency dialogue_______________________________________________________________
 //
-INCLUDE ~npc_ee/lib/dialprof.tpa~
+INCLUDE ~%MOD_FOLDER%/lib/dialprof.tpa~
+
+OUTER_SPRINT prof_script_name ~d5cprf~
+OUTER_SET script_level_one = 1
+OUTER_SET script_higher_levels = 0
 
 LAM PROF_DIALOGUE
 
-
-/*
-<<<<<<<< d5/d5prftlk.d
-BEGIN ~D5PRFTLK~
-
-IF ~Global("D5PRFTLK","GLOBAL",1)~ THEN BEGIN d5prftlk
- SAY @2017
- IF ~~ THEN REPLY @2018 DO ~ApplySpellRES("D5PRFCH",myself)~ EXIT
- IF ~~ THEN REPLY @2014 EXIT
-END
->>>>>>>> 
-COPY ~d5/d5prftlk.d~ ~weidu_external/npc_ee/compile/d5prftlk.d~
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5__dialprof.d5~ BEGIN
-	INCLUDE ~npc_ee/lib/weapprof_dialogue.tpa~
-// 	LAM SET_UP_PROF_DIALOGUES
-END
-ACTION_IF FILE_EXISTS_IN_GAME ~d5__dialprof.d5~ BEGIN
-	COPY_EXISTING ~splstate.ids~ ~override~
-	  READ_2DA_ENTRIES_NOW states 2
-	  FOR (row=0;row<states;++row) BEGIN
-		READ_2DA_ENTRY_FORMER states row 0 ind
-		READ_2DA_ENTRY_FORMER states row 1 state
-		PATCH_IF (~%state%~ STRING_EQUAL_CASE ~D5_NEW_PROFS~) BEGIN
-		  SET new_profs_state = ind
-		END
-	  END
-	BUT_ONLY
-END
-*/
 //__________________________________________________________________________________
 
 
@@ -1339,11 +1352,11 @@ COPY ~npc_ee/data/d5_ckit.cre~ ~override~
 COPY ~npc_ee/data/d5_ckit.bam~ ~override~
 
 COPY ~npc_ee/data/d5_ckit.itm~ ~override~
-	SAY NAME1 @2010
-	SAY NAME2 @2010
+	SAY NAME1 @2000
+	SAY NAME2 @2000
 	SAY UNIDENTIFIED_DESC @2010
 	SAY IDENTIFIED_DESC @2010
-LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5_ckit~ tooltips = ~@2010~ END
+LAF ~ADD_ITEM_TOOLTIPS~ STR_VAR item = ~d5_ckit~ tooltips = ~@2000~ END
 
 ACTION_FOR_EACH mclass IN ~f~ ~p~ ~d~ ~r~ ~t~ ~m~ BEGIN
   ACTION_IF (FILE_EXISTS_IN_GAME ~qd_mc%mclass%01.spl~) BEGIN
@@ -1584,6 +1597,9 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     ~d5zltmb~
     ~d5zstta~
     ~d5zsttd~
+    ~d5z17wz~
+    ~d5z89wz~
+    ~d5z17wz~
     ~d5yinit~
     ~d5ylots~
     ~d5yy206~
@@ -1599,6 +1615,16 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     ~d5psaura~
     ~d5nfeats~
     ~d5featx~
+    ~d5csran1~
+    ~d5csarc1~
+    ~d5csear1~
+    ~d5csbar1~
+    ~d5csswa1~
+    ~d5csass1~
+    ~d5cssha1~
+    ~d5z17wz~
+    ~d5z89wz~
+    ~d5strid~
   BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~%321_spl%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~%321_spl%~ END
@@ -1621,6 +1647,25 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5prof%num%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5prof%num%~ END
+    END
+  END
+  PATCH_FOR_EACH iprof IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ BEGIN
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5iprx%iprof%.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5iprx%iprof%~ END
+    END
+  END
+  PATCH_FOR_EACH stats IN ~104~ ~105~ ~106~ ~107~ ~108~ ~110~ ~115~ ~124~ ~127~ BEGIN
+    PATCH_FOR_EACH lets IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ BEGIN
+      PATCH_IF (FILE_EXISTS_IN_GAME ~d5cs%stats%%lets%.spl~) BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5cs%stats%%lets%.spl~ END
+      END
+    END
+  END
+  PATCH_FOR_EACH feats IN ~p~ ~f~ ~m~ ~i~ BEGIN
+    PATCH_FOR_EACH nums IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
+      PATCH_IF (FILE_EXISTS_IN_GAME ~d5cs%feats%%nums%.spl~) BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5cs%feats%%nums%~ END
+      END
     END
   END
   PATCH_FOR_EACH disc IN ~1~ ~2~ ~3~ ~4~ ~5~ ~9~ BEGIN
@@ -1699,6 +1744,19 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     ~d5shmdn~
     ~d5shmdi~
     ~d5bdxxx~
+    ~d5iprxa~
+    ~d5iprxb~
+    ~d5iprxc~
+    ~d5iprxd~
+    ~d5iprxe~
+    ~d5iprxf~
+    ~d5strid~
+    ~d5swalk~
+    ~d5strid~
+    ~spcl922~
+    ~d5csm3~
+    ~d5csm4a~
+    ~d5csm4b~
   BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~%172_spl%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~%172_spl%~ END
@@ -1769,12 +1827,41 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
   BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~%112_itm%.itm~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 112 timing = 9 STR_VAR resource = EVAL ~%112_itm%~ END
-/* necessary? shouldn't these all be equipped?
+/* necessary? shouldn't those all be equipped?
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 123 timing = 9 STR_VAR resource = EVAL ~%112_itm%~ END
 */
     END
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 123 timing = 1 STR_VAR resource = ~d5cspra~ END
   END
 BUT_ONLY
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5cspra.itm~) BEGIN
+  COPY_EXISTING ~d5cspra.itm~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 123 timing = 1 STR_VAR resource = ~d5_ckit~ END
+  BUT_ONLY
+END
+
+/* this doesn't work... how get rid of a local variable??
+ACTION_FOR_EACH feats IN ~P~ ~F~ ~M~ ~I~ BEGIN
+  ACTION_FOR_EACH nums IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ ~8~ ~9~ BEGIN
+    ACTION_IF (FILE_EXISTS_IN_GAME ~d5cs%feats%%nums%.eff~) BEGIN
+      CREATE EFF ~d5cx%feats%%nums%~
+	    WRITE_LONG 0x10 187
+	    WRITE_LONG 0x14 1
+	    WRITE_LONG 0x1c 0
+	    WRITE_LONG 0x20 0
+	    WRITE_LONG 0x24 9
+	    WRITE_SHORT 0x2c 100
+	    WRITE_EVALUATED_ASCII 0xa8 ~D5CS%feats%%num%~ #32
+	    WRITE_LONG 0x90 1
+	    WRITE_EVALUATED_ASCII 0x94 ~D5CX%feats%%nums%~ #8
+	  COPY_EXISTING ~d5_nukt.spl~ ~override~
+	    LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter2 = 2 timing = 9 STR_VAR resource = ~d5cx%feats%%nums%~ END
+	END
+  END
+END
+*/
+
 //___________________________________________________________________________________
 
 

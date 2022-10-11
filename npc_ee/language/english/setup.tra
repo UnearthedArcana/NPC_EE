@@ -19,8 +19,12 @@
 @2006  = ~Only change ability scores~
 @2007  = ~Memorize spells~
 @2008  = ~Learn spells~
-@2009  = ~Use this item from a quickslot to learn up to two spells per level. Discard it when finished.~
-@2010  = ~Make changes to class/stats/proficiencies/kit~
+@2009  = ~Use this item from a quickslot to learn up to two spells per level. You can discard it when finished.~
+@2010  = ~Using this tome from a quickslot allows you to make changes to class/stats/proficiencies/kit.
+
+NOTE: this should be used right away (or not at all). If the character levels up and advances a proficiency, it will prevent this tome from granting the correct number of proficiency points.
+
+If you also have another tome specifically for reselecting proficiencies, you should decide whether you want to use that tome or this one. Each will make the other one disappear.~
 @2011  = ~Adopt this kit~
 @2012  = ~Choose a different kit~
 @2013  = ~Choose a kit~

@@ -1,24 +1,412 @@
-//SET UP PROFICIENCY DIALOGUE_______________________________________________________
+// v2.1 - many more options
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+DEFINE_ACTION_FUNCTION set_lang RET game_lang BEGIN
+
+ACTION_IF !(VARIABLE_IS_SET %EE_LANGUAGE%) BEGIN
+  COPY_EXISTING ~spwi101.spl~ ~override~
+	READ_STRREF 0x50 description_string
+  BUT_ONLY
+  ACTION_FOR_EACH lang IN ~en_US~ ~fr_FR~/* ~pl_PL~ ~de_DE~ ~es_ES~ ~cs_CZ~ ~ru_RU~ ~ko_KR~*/ BEGIN
+	WITH_TRA ~%MOD_FOLDER%/lib/dialprof/%lang%/dialprof.tra~ BEGIN
+	  OUTER_SPRINT duration_lang @10 
+	END	
+	ACTION_IF !(~%description_string%~ STRING_CONTAINS_REGEXP ~%duration_lang%~) BEGIN
+	  OUTER_SPRINT game_lang ~%lang%~
+	END
+  END
+END
+ACTION_IF (VARIABLE_IS_SET %EE_LANGUAGE%) BEGIN
+  OUTER_SPRINT ee_lang ~%EE_LANGUAGE%~
+  ACTION_IF (FILE_EXISTS ~%MOD_FOLDER%/lib/dialprof/%ee_lang%/dialprof.tra~) BEGIN
+	OUTER_SPRINT game_lang ~%EE_LANGUAGE%~
+  END
+END
+ACTION_IF !(VARIABLE_IS_SET %game_lang%) BEGIN
+	OUTER_SPRINT game_lang ~en_US~
+END
+
+END		//	end define function
+
+
+//__________________________________________________________________________________
+//__________________________________________________________________________________
+
+
+//SET UP PROFICIENCY DIALOGUE________________________________________________________
 //
 DEFINE_ACTION_MACRO PROF_DIALOGUE BEGIN
 
+// this is not a function BUT: some important variables to consider seting when running this:
+
+//  - %prof_script_name% - SPRINT to a ~5-6 letter string that you will then call from a spell or item or something
+
+//    ^^^ SIX LETTERS MAX LENGTH!
+
+//  - %script_level_one% - SET to 1 to include 1st-level prof  points
+
+//  - %script_higher_levels% - SET to 1 to include prof points for levels higher than 1
+
+//  - ...if both of those last two are 0, it will only let you advance one prof once
+
 /*
-//COPY MARKER FILE_________________________________________________________________
+//COPY MARKER FILE__________________________________________________________________
 //
 COPY ~%MOD_FOLDER%/lib/dialprof/d5__dialprof.d5~ ~override~
 //__________________________________________________________________________________
 */
 
-WITH_TRA ~%MOD_FOLDER%/lib/dialprof/dialprof.tra~ BEGIN
+//find game install language__________________________________________________________
+//
+LAF set_lang RET game_lang END
+
+WITH_TRA ~%MOD_FOLDER%/lib/dialprof/%game_lang%/dialprof.tra~ BEGIN
+
+//macro defaults____________________________________________________________________
+//
+ACTION_IF !(VARIABLE_IS_SET %prof_script_name%) BEGIN
+  OUTER_SPRINT prof_script_name ~d5cprf~
+END
+
+ACTION_IF !(VARIABLE_IS_SET %script_level_one%) BEGIN
+  OUTER_SET script_level_one = 0
+END
+
+ACTION_IF !(VARIABLE_IS_SET %script_higher_levels%) BEGIN
+  OUTER_SET script_higher_levels = 0
+END
+
+COPY_EXISTING ~weapprof.2da~ ~override~
+  COUNT_2DA_COLS cols
+  COUNT_2DA_ROWS 5 rows
+  FOR (row = 7; row < rows; ++row) BEGIN
+    READ_2DA_ENTRY row 1 cols stat
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~89~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_89
+      READ_2DA_ENTRY row 3 cols desc_89
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~90~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_90
+      READ_2DA_ENTRY row 3 cols desc_90
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~91~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_91
+      READ_2DA_ENTRY row 3 cols desc_91
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~92~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_92
+      READ_2DA_ENTRY row 3 cols desc_92
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~93~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_93
+      READ_2DA_ENTRY row 3 cols desc_93
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~94~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_94
+      READ_2DA_ENTRY row 3 cols desc_94
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~95~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_95
+      READ_2DA_ENTRY row 3 cols desc_95
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~96~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_96
+      READ_2DA_ENTRY row 3 cols desc_96
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~97~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_97
+      READ_2DA_ENTRY row 3 cols desc_97
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~98~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_98
+      READ_2DA_ENTRY row 3 cols desc_98
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~99~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_99
+      READ_2DA_ENTRY row 3 cols desc_99
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~100~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_100
+      READ_2DA_ENTRY row 3 cols desc_100
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~101~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_101
+      READ_2DA_ENTRY row 3 cols desc_101
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~102~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_102
+      READ_2DA_ENTRY row 3 cols desc_102
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~103~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_103
+      READ_2DA_ENTRY row 3 cols desc_103
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~104~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_104
+      READ_2DA_ENTRY row 3 cols desc_104
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~105~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_105
+      READ_2DA_ENTRY row 3 cols desc_105
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~106~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_106
+      READ_2DA_ENTRY row 3 cols desc_106
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~107~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_107
+      READ_2DA_ENTRY row 3 cols desc_107
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~108~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_108
+      READ_2DA_ENTRY row 3 cols desc_108
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~109~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_109
+      READ_2DA_ENTRY row 3 cols desc_109
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~110~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_110
+      READ_2DA_ENTRY row 3 cols desc_110
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~111~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_111
+      READ_2DA_ENTRY row 3 cols desc_111
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~112~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_112
+      READ_2DA_ENTRY row 3 cols desc_112
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~113~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_113
+      READ_2DA_ENTRY row 3 cols desc_113
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~114~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_114
+      READ_2DA_ENTRY row 3 cols desc_114
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~115~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_115
+      READ_2DA_ENTRY row 3 cols desc_115
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~124~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_124
+      READ_2DA_ENTRY row 3 cols desc_124
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~127~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_127
+      READ_2DA_ENTRY row 3 cols desc_127
+    END
+    PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~134~) BEGIN
+      READ_2DA_ENTRY row 2 cols name_134
+      READ_2DA_ENTRY row 3 cols desc_134
+    END
+  END
+BUT_ONLY
+
+ACTION_IF !(VARIABLE_IS_SET %name_89%) BEGIN
+  OUTER_SET name_89 = RESOLVE_STR_REF (~stat_89 ~)
+  OUTER_SET desc_89 = RESOLVE_STR_REF (~stat_89 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_90%) BEGIN
+  OUTER_SET name_90 = RESOLVE_STR_REF (~stat_90 ~)
+  OUTER_SET desc_90 = RESOLVE_STR_REF (~stat_90 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_91%) BEGIN
+  OUTER_SET name_91 = RESOLVE_STR_REF (~stat_91 ~)
+  OUTER_SET desc_91 = RESOLVE_STR_REF (~stat_91 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_92%) BEGIN
+  OUTER_SET name_92 = RESOLVE_STR_REF (~stat_92 ~)
+  OUTER_SET desc_92 = RESOLVE_STR_REF (~stat_92 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_93%) BEGIN
+  OUTER_SET name_93 = RESOLVE_STR_REF (~stat_93 ~)
+  OUTER_SET desc_93 = RESOLVE_STR_REF (~stat_93 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_94%) BEGIN
+  OUTER_SET name_94 = RESOLVE_STR_REF (~stat_94 ~)
+  OUTER_SET desc_94 = RESOLVE_STR_REF (~stat_94 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_95%) BEGIN
+  OUTER_SET name_95 = RESOLVE_STR_REF (~stat_95 ~)
+  OUTER_SET desc_95 = RESOLVE_STR_REF (~stat_95 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_96%) BEGIN
+  OUTER_SET name_96 = RESOLVE_STR_REF (~stat_96 ~)
+  OUTER_SET desc_96 = RESOLVE_STR_REF (~stat_96 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_97%) BEGIN
+  OUTER_SET name_97 = RESOLVE_STR_REF (~stat_97 ~)
+  OUTER_SET desc_97 = RESOLVE_STR_REF (~stat_97 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_98%) BEGIN
+  OUTER_SET name_98 = RESOLVE_STR_REF (~stat_98 ~)
+  OUTER_SET desc_98 = RESOLVE_STR_REF (~stat_98 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_99%) BEGIN
+  OUTER_SET name_99 = RESOLVE_STR_REF (~stat_99 ~)
+  OUTER_SET desc_99 = RESOLVE_STR_REF (~stat_99 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_100%) BEGIN
+  OUTER_SET name_100 = RESOLVE_STR_REF (~stat_100 ~)
+  OUTER_SET desc_100 = RESOLVE_STR_REF (~stat_100 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_101%) BEGIN
+  OUTER_SET name_101 = RESOLVE_STR_REF (~stat_101 ~)
+  OUTER_SET desc_101 = RESOLVE_STR_REF (~stat_101 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_102%) BEGIN
+  OUTER_SET name_102 = RESOLVE_STR_REF (~stat_102 ~)
+  OUTER_SET desc_102 = RESOLVE_STR_REF (~stat_102 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_103%) BEGIN
+  OUTER_SET name_103 = RESOLVE_STR_REF (~stat_103 ~)
+  OUTER_SET desc_103 = RESOLVE_STR_REF (~stat_103 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_104%) BEGIN
+  OUTER_SET name_104 = RESOLVE_STR_REF (~stat_104 ~)
+  OUTER_SET desc_104 = RESOLVE_STR_REF (~stat_104 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_105%) BEGIN
+  OUTER_SET name_105 = RESOLVE_STR_REF (~stat_105 ~)
+  OUTER_SET desc_105 = RESOLVE_STR_REF (~stat_105 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_106%) BEGIN
+  OUTER_SET name_106 = RESOLVE_STR_REF (~stat_106 ~)
+  OUTER_SET desc_106 = RESOLVE_STR_REF (~stat_106 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_107%) BEGIN
+  OUTER_SET name_107 = RESOLVE_STR_REF (~stat_107 ~)
+  OUTER_SET desc_107 = RESOLVE_STR_REF (~stat_107 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_108%) BEGIN
+  OUTER_SET name_108 = RESOLVE_STR_REF (~stat_108 ~)
+  OUTER_SET desc_108 = RESOLVE_STR_REF (~stat_108 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_109%) BEGIN
+  OUTER_SET name_109 = RESOLVE_STR_REF (~stat_109 ~)
+  OUTER_SET desc_109 = RESOLVE_STR_REF (~stat_109 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_110%) BEGIN
+  OUTER_SET name_110 = RESOLVE_STR_REF (~stat_110 ~)
+  OUTER_SET desc_110 = RESOLVE_STR_REF (~stat_110 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_111%) BEGIN
+  OUTER_SET name_111 = RESOLVE_STR_REF (~stat_111 ~)
+  OUTER_SET desc_111 = RESOLVE_STR_REF (~stat_111 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_112%) BEGIN
+  OUTER_SET name_112 = RESOLVE_STR_REF (~stat_112 ~)
+  OUTER_SET desc_112 = RESOLVE_STR_REF (~stat_112 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_113%) BEGIN
+  OUTER_SET name_113 = RESOLVE_STR_REF (~stat_113 ~)
+  OUTER_SET desc_113 = RESOLVE_STR_REF (~stat_113 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_114%) BEGIN
+  OUTER_SET name_114 = RESOLVE_STR_REF (~stat_114 ~)
+  OUTER_SET desc_114 = RESOLVE_STR_REF (~stat_114 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_115%) BEGIN
+  OUTER_SET name_115 = RESOLVE_STR_REF (~stat_115 ~)
+  OUTER_SET desc_115 = RESOLVE_STR_REF (~stat_115 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_124%) BEGIN
+  OUTER_SET name_124 = RESOLVE_STR_REF (~stat_124 ~)
+  OUTER_SET desc_124 = RESOLVE_STR_REF (~stat_124 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_127%) BEGIN
+  OUTER_SET name_127 = RESOLVE_STR_REF (~stat_127 ~)
+  OUTER_SET desc_127 = RESOLVE_STR_REF (~stat_127 ~)
+END
+ACTION_IF !(VARIABLE_IS_SET %name_134%) BEGIN
+  OUTER_SET name_134 = RESOLVE_STR_REF (~stat_134 ~)
+  OUTER_SET desc_134 = RESOLVE_STR_REF (~stat_134 ~)
+END
+
+//__________________________________________________________________________________
 
 <<<<<<<< d5/d5_cprf_temp.baf
+
+>>>>>>>>
+
+COPY ~d5/d5_cprf_temp.baf~ ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~
+
+
+//initial proficiencies______________________________________________________________
+//
+COPY_EXISTING ~profs.2da~ ~override~
+  COUNT_2DA_COLS cols
+  READ_2DA_ENTRIES_NOW ~profs~ cols
+  FOR (row = 0; row < profs; ++row) BEGIN
+    READ_2DA_ENTRY_FORMER profs row 0 prof_class
+    READ_2DA_ENTRY_FORMER profs row 1 init_profs
+    READ_2DA_ENTRY_FORMER profs row 2 prof_rate
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~FIGHTER~) BEGIN
+      SET fighter_init_profs = init_profs
+      SPRINT $class_init_profs(~fi~)~%fighter_init_profs%~
+      SET fighter_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~RANGER~) BEGIN
+      SET ranger_init_profs = init_profs
+      SET ranger_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~PALADIN~) BEGIN
+      SET paladin_init_profs = init_profs
+      SET paladin_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~CLERIC~) BEGIN
+      SET cleric_init_profs = init_profs
+      SET cleric_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~DRUID~) BEGIN
+      SET druid_init_profs = init_profs
+      SET druid_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~SHAMAN~) BEGIN
+      SET shaman_init_profs = init_profs
+      SET shaman_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~THIEF~) BEGIN
+      SET thief_init_profs = init_profs
+      SET thief_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~BARD~) BEGIN
+      SET bard_init_profs = init_profs
+      SET bard_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~MAGE~) BEGIN
+      SET mage_init_profs = init_profs
+      SET mage_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~SORCERER~) BEGIN
+      SET sorcerer_init_profs = init_profs
+      SET sorcerer_prof_rate = prof_rate
+    END
+    PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~MONK~) BEGIN
+      SET monk_init_profs = init_profs
+      SET monk_prof_rate = prof_rate
+    END
+  END
+BUT_ONLY
+
+//__________________________________________________________________________________
+
+ACTION_IF (script_level_one = 1) BEGIN
+  APPEND_OUTER ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~
+~
 IF
 	Global("D5PRSET","GLOBAL",0)
 	Class(LastSummonerOf(Myself),FIGHTER)
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%fighter_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -26,7 +414,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -34,7 +422,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -42,7 +430,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -50,7 +438,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%fighter_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -58,7 +446,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -66,7 +454,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",fighter_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 
 IF
@@ -75,7 +463,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",ranger_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -83,7 +471,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",ranger_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%ranger_init_profs%)
 END
 
 IF
@@ -92,7 +480,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",paladin_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%paladin_init_profs%)
 END
 
 IF
@@ -101,7 +489,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",cleric_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%cleric_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -109,7 +497,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",cleric_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%cleric_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -117,7 +505,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",cleric_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%cleric_init_profs%)
 END
 
 IF
@@ -126,7 +514,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",druid_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%druid_init_profs%)
 END
 
 IF
@@ -135,7 +523,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",shaman_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%shaman_init_profs%)
 END
 
 IF
@@ -144,7 +532,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",thief_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%thief_init_profs%)
 END
 IF
 	Global("D5PRSET","GLOBAL",0)
@@ -152,7 +540,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",thief_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%thief_init_profs%)
 END
 
 IF
@@ -161,7 +549,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",bard_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%bard_init_profs%)
 END
 
 IF
@@ -171,7 +559,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",mage_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%mage_init_profs%)
 END
 
 IF
@@ -180,7 +568,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",sorcerer_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%sorcerer_init_profs%)
 END
 
 IF
@@ -189,11 +577,15 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",1)
-	SetGlobal("D5_KIT_PRF","GLOBAL",monk_init_profs)
+	SetGlobal("D5_KIT_PRF","GLOBAL",%monk_init_profs%)
+END
+~ KEEP_CRLF
 END
 
->>>>>>>> 
-COPY ~d5/d5_cprf_temp.baf~ ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp.baf~
+//__________________________________________________________________________________
+
+/* don't need to do this anymore
+COPY ~d5/d5_cprf_temp.baf~ ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~
   REPLACE_TEXTUALLY ~fighter_init_profs~ ~%fighter_init_profs%~
   REPLACE_TEXTUALLY ~ranger_init_profs~ ~%ranger_init_profs%~
   REPLACE_TEXTUALLY ~paladin_init_profs~ ~%paladin_init_profs%~
@@ -205,7 +597,234 @@ COPY ~d5/d5_cprf_temp.baf~ ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp
   REPLACE_TEXTUALLY ~mage_init_profs~ ~%mage_init_profs%~
   REPLACE_TEXTUALLY ~sorcerer_init_profs~ ~%sorcerer_init_profs%~
   REPLACE_TEXTUALLY ~monk_init_profs~ ~%monk_init_profs%~
+*/
 
+//__________________________________________________________________________________
+
+ACTION_IF (script_higher_levels = 1) BEGIN
+  OUTER_FOR (lvl = 1; lvl < 25; ++lvl) BEGIN
+    OUTER_SET more_fighter_profs = (lvl/%fighter_prof_rate%)
+    OUTER_SET more_ranger_profs = (lvl/%ranger_prof_rate%)
+    OUTER_SET more_paladin_profs = (lvl/%paladin_prof_rate%)
+    OUTER_SET more_cleric_profs = (lvl/%cleric_prof_rate%)
+    OUTER_SET more_druid_profs = (lvl/%druid_prof_rate%)
+    OUTER_SET more_shaman_profs = (lvl/%shaman_prof_rate%)
+    OUTER_SET more_thief_profs = (lvl/%thief_prof_rate%)
+    OUTER_SET more_bard_profs = (lvl/%bard_prof_rate%)
+    OUTER_SET more_mage_profs = (lvl/%mage_prof_rate%)
+    OUTER_SET more_sorcerer_profs = (lvl/%sorcerer_prof_rate%)
+    OUTER_SET more_monk_profs = (lvl/%monk_prof_rate%)
+    APPEND_OUTER ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~
+~IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),THIEF)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_thief_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),PALADIN)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_paladin_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),RANGER)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_ranger_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),CLERIC)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_cleric_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),DRUID)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_druid_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),BARD)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_bard_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),MAGE)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_mage_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),SORCERER)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_sorcerer_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),MONK)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_monk_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER_CLERIC)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER_THIEF)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER_DRUID)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),CLERIC_RANGER)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_ranger_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),CLERIC_THIEF)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_thief_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),MAGE_THIEF)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_thief_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_CLERIC)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+IF
+	Global("D5PRSET","GLOBAL",1)
+	Global("D5PRMOR","GLOBAL",0)
+	Level(LastSummonerOf(Myself),%lvl%)
+	Class(LastSummonerOf(Myself),FIGHTER_MAGE_THIEF)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRMOR","GLOBAL",1)
+	IncrementGlobal("D5_KIT_PRF","GLOBAL",%more_fighter_profs%)
+END
+~ KEEP_CRLF
+  END
+END
+
+//__________________________________________________________________________________
+
+ACTION_IF (%script_level_one% = 0) AND (%script_higher_levels% = 0) BEGIN
+  APPEND_OUTER ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~
+~
+IF
+	Global("D5PRSET","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRSET","GLOBAL",1)
+	SetGlobal("D5_KIT_PRF","GLOBAL",1)
+END
+~ KEEP_CRLF
+END
+
+//__________________________________________________________________________________
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY d5_kits_profs BEGIN
  MAGE , class , MAGE					=> 	3
@@ -283,7 +902,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
 ACTION_PHP_EACH d5_kits_profs AS kitidsname => profcol BEGIN
 //  PRINT ~%kitidsname% = %kitidsname_1% = column %profcol%~
   ACTION_IF (~%kitidsname_1%~ STRING_EQUAL_CASE ~kit~) BEGIN
-	APPEND_OUTER ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp.baf~ ~
+	APPEND_OUTER ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~ ~
 IF
 	Global("D5PRSET","GLOBAL",1)
 	GlobalGT("D5_KIT_PRF","GLOBAL",0)
@@ -293,7 +912,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prf%kitidsname_3%",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%%kitidsname_3%",Myself))
 END
 ~ KEEP_CRLF
   END
@@ -301,7 +920,7 @@ END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~clabshgs.2da~) OR (FILE_EXISTS_IN_GAME ~clabsh01.2da~) BEGIN
 
-  APPEND_OUTER ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp.baf~ ~
+  APPEND_OUTER ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~ ~
 IF
 	Global("D5PRSET","GLOBAL",1)
 	GlobalGT("D5_KIT_PRF","GLOBAL",0)
@@ -310,13 +929,13 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHAMAN_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfsh",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%sh",Myself))
 END
 ~ KEEP_CRLF
 
 END
 
-APPEND_OUTER ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp.baf~ ~
+APPEND_OUTER ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~ ~
 IF
 	Global("D5PRSET","GLOBAL",1)
 	GlobalGT("D5_KIT_PRF","GLOBAL",0)
@@ -325,7 +944,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MAGE_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfma",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%ma",Myself))
 END
 
 IF
@@ -336,7 +955,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -347,7 +966,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfcl",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%cl",Myself))
 END
 
 IF
@@ -358,7 +977,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_THIEF_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfth",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%th",Myself))
 END
 
 IF
@@ -369,7 +988,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_BARD_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfba",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%ba",Myself))
 END
 
 IF
@@ -380,7 +999,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PALADIN_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfpa",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%pa",Myself))
 END
 
 IF
@@ -391,7 +1010,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_DRUID_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfdr",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%dr",Myself))
 END
 
 IF
@@ -402,7 +1021,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_RANGER_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfra",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%ra",Myself))
 END
 
 IF
@@ -413,7 +1032,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -424,7 +1043,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_CLERIC_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -435,7 +1054,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_THIEF_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -446,7 +1065,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_THIEF_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -457,7 +1076,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MAGE_THIEF_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfth",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%th",Myself))
 END
 
 IF
@@ -468,7 +1087,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_MAGE_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfcl",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%cl",Myself))
 END
 
 IF
@@ -479,7 +1098,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_THIEF_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfcl",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%cl",Myself))
 END
 
 IF
@@ -490,7 +1109,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_DRUID_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -501,7 +1120,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FIGHTER_MAGE_CLERIC_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prffi",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%fi",Myself))
 END
 
 IF
@@ -512,7 +1131,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLERIC_RANGER_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfra",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%ra",Myself))
 END
 
 IF
@@ -523,7 +1142,7 @@ THEN
 	RESPONSE #100
 	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MONK_PRF","LOCALS",1))
 	IncrementGlobal("D5_KIT_PRF","GLOBAL",-1)
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prfmo",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("%prof_script_name%mo",Myself))
 END
 
 IF
@@ -532,161 +1151,347 @@ THEN
 	RESPONSE #100
 	SetGlobal("D5PRSET","GLOBAL",0)
 	SetGlobal("D5_KIT_PRF","GLOBAL",0)
-	SetGlobal("D5_BASTARD_SWORD","LOCALS",0)
-	SetGlobal("D5_LONG_SWORD","LOCALS",0)
-	SetGlobal("D5_SHORT_SWORD","LOCALS",0)
-	SetGlobal("D5_AXE","LOCALS",0)
-	SetGlobal("D5_GREATSWORD","LOCALS",0)
-	SetGlobal("D5_KATANA","LOCALS",0)
-	SetGlobal("D5_SCIMITAR","LOCALS",0)
-	SetGlobal("D5_DAGGER","LOCALS",0)
-	SetGlobal("D5_HAMMER","LOCALS",0)
-	SetGlobal("D5_CLUB","LOCALS",0)
-	SetGlobal("D5_SPEAR","LOCALS",0)
-	SetGlobal("D5_HALBERD","LOCALS",0)
-	SetGlobal("D5_FLAIL","LOCALS",0)
-	SetGlobal("D5_MACE","LOCALS",0)
-	SetGlobal("D5_STAFF","LOCALS",0)
-	SetGlobal("D5_CROSSBOW","LOCALS",0)
-	SetGlobal("D5_LONG_BOW","LOCALS",0)
-	SetGlobal("D5_SHORT_BOW","LOCALS",0)
-	SetGlobal("D5_DART","LOCALS",0)
-	SetGlobal("D5_SLING","LOCALS",0)
-	SetGlobal("D5_TWO_HAND","LOCALS",0)
-	SetGlobal("D5_SHIELD","LOCALS",0)
-	SetGlobal("D5_SINGLE_WEAPON","LOCALS",0)
-	SetGlobal("D5_TWO_WEAPON","LOCALS",0)
+	SetGlobal("D5_PROF_89","LOCALS",0)
+	SetGlobal("D5_PROF_90","LOCALS",0)
+	SetGlobal("D5_PROF_91","LOCALS",0)
+	SetGlobal("D5_PROF_92","LOCALS",0)
+	SetGlobal("D5_PROF_93","LOCALS",0)
+	SetGlobal("D5_PROF_94","LOCALS",0)
+	SetGlobal("D5_PROF_95","LOCALS",0)
+	SetGlobal("D5_PROF_96","LOCALS",0)
+	SetGlobal("D5_PROF_97","LOCALS",0)
+	SetGlobal("D5_PROF_115","LOCALS",0)
+	SetGlobal("D5_PROF_98","LOCALS",0)
+	SetGlobal("D5_PROF_99","LOCALS",0)
+	SetGlobal("D5_PROF_100","LOCALS",0)
+	SetGlobal("D5_PROF_101","LOCALS",0)
+	SetGlobal("D5_PROF_102","LOCALS",0)
+	SetGlobal("D5_PROF_103","LOCALS",0)
+	SetGlobal("D5_PROF_104","LOCALS",0)
+	SetGlobal("D5_PROF_105","LOCALS",0)
+	SetGlobal("D5_PROF_106","LOCALS",0)
+	SetGlobal("D5_PROF_107","LOCALS",0)
+	SetGlobal("D5_PROF_111","LOCALS",0)
+	SetGlobal("D5_PROF_112","LOCALS",0)
+	SetGlobal("D5_PROF_113","LOCALS",0)
+	SetGlobal("D5_PROF_114","LOCALS",0)
 	SetNumTimesTalkedTo(0)
 	DestroySelf()
 END
 ~ KEEP_CRLF
 
-COPY ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp.baf~ ~weidu_external/%MOD_FOLDER%/compile/d5_cprf.baf~
+// *****  need to find/replace all those variables ^^ and vv with stat numbers
+
+COPY ~weidu_external/%MOD_FOLDER%/dialprof/%prof_script_name%_temp.baf~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%.baf~
   PHP_EACH d5_kits_profs AS kitidsname => profcol BEGIN
     INNER_ACTION BEGIN
       COPY_EXISTING ~weapprof.2da~ ~override~
-	    COUNT_2DA_COLS cols
-	    READ_2DA_ENTRY 8 (%profcol% + 1) cols bastard_sword_prof
-	    READ_2DA_ENTRY 9 (%profcol% + 1) cols long_sword_prof
-	    READ_2DA_ENTRY 10 (%profcol% + 1) cols short_sword_prof
-	    READ_2DA_ENTRY 11 (%profcol% + 1) cols axe_prof
-	    READ_2DA_ENTRY 12 (%profcol% + 1) cols greatsword_prof
-	    READ_2DA_ENTRY 13 (%profcol% + 1) cols katana_prof
-	    READ_2DA_ENTRY 14 (%profcol% + 1) cols scimitar_prof
-	    READ_2DA_ENTRY 15 (%profcol% + 1) cols dagger_prof
-	    READ_2DA_ENTRY 16 (%profcol% + 1) cols hammer_prof
-	    READ_2DA_ENTRY 17 (%profcol% + 1) cols club_prof
-	    READ_2DA_ENTRY 18 (%profcol% + 1) cols spear_prof
-	    READ_2DA_ENTRY 19 (%profcol% + 1) cols halberd_prof
-	    READ_2DA_ENTRY 20 (%profcol% + 1) cols flail_prof
-	    READ_2DA_ENTRY 21 (%profcol% + 1) cols mace_prof
-	    READ_2DA_ENTRY 22 (%profcol% + 1) cols staff_prof
-	    READ_2DA_ENTRY 23 (%profcol% + 1) cols crossbow_prof
-	    READ_2DA_ENTRY 24 (%profcol% + 1) cols long_bow_prof
-	    READ_2DA_ENTRY 25 (%profcol% + 1) cols short_bow_prof
-	    READ_2DA_ENTRY 26 (%profcol% + 1) cols dart_prof
-	    READ_2DA_ENTRY 27 (%profcol% + 1) cols sling_prof
-	    READ_2DA_ENTRY 28 (%profcol% + 1) cols two_hand_style
-	    READ_2DA_ENTRY 29 (%profcol% + 1) cols shield_style
-	    READ_2DA_ENTRY 30 (%profcol% + 1) cols single_weapon_style
-	    READ_2DA_ENTRY 31 (%profcol% + 1) cols two_weapon_style
-	  BUT_ONLY
+        COUNT_2DA_COLS cols
+        COUNT_2DA_ROWS 5 rows
+        FOR (row = 7; row < rows; ++row) BEGIN
+          READ_2DA_ENTRY row 1 cols stat
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~89~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_89
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~90~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_90
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~91~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_91
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~92~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_92
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~93~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_93
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~94~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_94
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~95~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_95
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~96~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_96
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~97~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_97
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~98~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_98
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~99~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_99
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~100~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_100
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~101~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_101
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~102~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_102
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~103~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_103
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~104~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_104
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~105~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_105
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~106~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_106
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~107~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_107
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~108~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_108
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~109~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_109
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~110~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_110
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~111~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_111
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~112~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_112
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~113~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_113
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~114~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_114
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~115~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_115
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~124~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_124
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~127~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_127
+          END
+          PATCH_IF (~%stat%~ STRING_EQUAL_CASE ~134~) BEGIN
+	        READ_2DA_ENTRY row (%profcol% + 1) cols prof_134
+          END
+        END
+      BUT_ONLY
 	END
-	PATCH_IF (%two_weapon_style% > 0) BEGIN
+    PATCH_IF !(VARIABLE_IS_SET %prof_89%) BEGIN
+      SET prof_89 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_90%) BEGIN
+      SET prof_90 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_91%) BEGIN
+      SET prof_91 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_92%) BEGIN
+      SET prof_92 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_93%) BEGIN
+      SET prof_93 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_94%) BEGIN
+      SET prof_94 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_95%) BEGIN
+      SET prof_95 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_96%) BEGIN
+      SET prof_96 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_97%) BEGIN
+      SET prof_97 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_98%) BEGIN
+      SET prof_98 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_99%) BEGIN
+      SET prof_99 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_100%) BEGIN
+      SET prof_100 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_101%) BEGIN
+      SET prof_101 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_102%) BEGIN
+      SET prof_102 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_103%) BEGIN
+      SET prof_103 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_104%) BEGIN
+      SET prof_104 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_105%) BEGIN
+      SET prof_105 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_106%) BEGIN
+      SET prof_106 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_107%) BEGIN
+      SET prof_107 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_108%) BEGIN
+      SET prof_108 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_109%) BEGIN
+      SET prof_109 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_110%) BEGIN
+      SET prof_110 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_111%) BEGIN
+      SET prof_111 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_112%) BEGIN
+      SET prof_112 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_113%) BEGIN
+      SET prof_113 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_114%) BEGIN
+      SET prof_114 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_115%) BEGIN
+      SET prof_115 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_124%) BEGIN
+      SET prof_124 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_127%) BEGIN
+      SET prof_127 = 0
+    END
+    PATCH_IF !(VARIABLE_IS_SET %prof_134%) BEGIN
+      SET prof_134 = 0
+    END
+	PATCH_IF (%prof_134% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_TWO_WEAPON","LOCALS",%two_weapon_style%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_134","LOCALS",%prof_134%))~
 	END
-	PATCH_IF (%single_weapon_style% > 0) BEGIN
+	PATCH_IF (%prof_127% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SINGLE_WEAPON","LOCALS",%single_weapon_style%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_127","LOCALS",%prof_127%))~
 	END
-	PATCH_IF (%shield_style% > 0) BEGIN
+	PATCH_IF (%prof_124% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHIELD","LOCALS",%shield_style%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_124","LOCALS",%prof_124%))~
 	END
-	PATCH_IF (%two_hand_style% > 0) BEGIN
+	PATCH_IF (%prof_115% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_TWO_HAND","LOCALS",%two_hand_style%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_115","LOCALS",%prof_115%))~
 	END
-	PATCH_IF (%sling_prof% > 0) BEGIN
+	PATCH_IF (%prof_114% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SLING","LOCALS",%sling_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_114","LOCALS",%prof_114%))~
 	END
-	PATCH_IF (%dart_prof% > 0) BEGIN
+	PATCH_IF (%prof_113% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_DART","LOCALS",%dart_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_113","LOCALS",%prof_113%))~
 	END
-	PATCH_IF (%short_bow_prof% > 0) BEGIN
+	PATCH_IF (%prof_112% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHORT_BOW","LOCALS",%short_bow_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_112","LOCALS",%prof_112%))~
 	END
-	PATCH_IF (%long_bow_prof% > 0) BEGIN
+	PATCH_IF (%prof_111% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_LONG_BOW","LOCALS",%long_bow_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_111","LOCALS",%prof_111%))~
 	END
-	PATCH_IF (%crossbow_prof% > 0) BEGIN
+	PATCH_IF (%prof_110% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CROSSBOW","LOCALS",%crossbow_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_110","LOCALS",%prof_110%))~
 	END
-	PATCH_IF (%staff_prof% > 0) BEGIN
+	PATCH_IF (%prof_109% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_STAFF","LOCALS",%staff_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_109","LOCALS",%prof_109%))~
 	END
-	PATCH_IF (%mace_prof% > 0) BEGIN
+	PATCH_IF (%prof_108% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_MACE","LOCALS",%mace_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_108","LOCALS",%prof_108%))~
 	END
-	PATCH_IF (%flail_prof% > 0) BEGIN
+	PATCH_IF (%prof_107% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_FLAIL","LOCALS",%flail_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_107","LOCALS",%prof_107%))~
 	END
-	PATCH_IF (%halberd_prof% > 0) BEGIN
+	PATCH_IF (%prof_106% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_HALBERD","LOCALS",%halberd_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_106","LOCALS",%prof_106%))~
 	END
-	PATCH_IF (%spear_prof% > 0) BEGIN
+	PATCH_IF (%prof_105% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SPEAR","LOCALS",%spear_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_105","LOCALS",%prof_105%))~
 	END
-	PATCH_IF (%club_prof% > 0) BEGIN
+	PATCH_IF (%prof_104% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_CLUB","LOCALS",%club_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_104","LOCALS",%prof_104%))~
 	END
-	PATCH_IF (%hammer_prof% > 0) BEGIN
+	PATCH_IF (%prof_103% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_HAMMER","LOCALS",%hammer_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_103","LOCALS",%prof_103%))~
 	END
-	PATCH_IF (%dagger_prof% > 0) BEGIN
+	PATCH_IF (%prof_102% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_DAGGER","LOCALS",%dagger_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_102","LOCALS",%prof_102%))~
 	END
-	PATCH_IF (%scimitar_prof% > 0) BEGIN
+	PATCH_IF (%prof_101% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SCIMITAR","LOCALS",%scimitar_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_101","LOCALS",%prof_101%))~
 	END
-	PATCH_IF (%katana_prof% > 0) BEGIN
+	PATCH_IF (%prof_100% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_KATANA","LOCALS",%katana_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_100","LOCALS",%prof_100%))~
 	END
-	PATCH_IF (%greatsword_prof% > 0) BEGIN
+	PATCH_IF (%prof_99% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_GREATSWORD","LOCALS",%greatsword_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_99","LOCALS",%prof_99%))~
 	END
-	PATCH_IF (%axe_prof% > 0) BEGIN
+	PATCH_IF (%prof_98% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_AXE","LOCALS",%axe_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_98","LOCALS",%prof_98%))~
 	END
-	PATCH_IF (%short_sword_prof% > 0) BEGIN
+	PATCH_IF (%prof_97% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_SHORT_SWORD","LOCALS",%short_sword_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_97","LOCALS",%prof_97%))~
 	END
-	PATCH_IF (%long_sword_prof% > 0) BEGIN
+	PATCH_IF (%prof_96% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_LONG_SWORD","LOCALS",%long_sword_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_96","LOCALS",%prof_96%))~
 	END
-	PATCH_IF (%bastard_sword_prof% > 0) BEGIN
+	PATCH_IF (%prof_95% > 0) BEGIN
 	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
-	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_BASTARD_SWORD","LOCALS",%bastard_sword_prof%))~
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_95","LOCALS",%prof_95%))~
+	END
+	PATCH_IF (%prof_94% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_94","LOCALS",%prof_94%))~
+	END
+	PATCH_IF (%prof_93% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_93","LOCALS",%prof_93%))~
+	END
+	PATCH_IF (%prof_92% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_92","LOCALS",%prof_92%))~
+	END
+	PATCH_IF (%prof_91% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_91","LOCALS",%prof_91%))~
+	END
+	PATCH_IF (%prof_90% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_90","LOCALS",%prof_90%))~
+	END
+	PATCH_IF (%prof_89% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))~ ~	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_%kitidsname%_PRF","LOCALS",1))
+	ActionOverride(LastSummonerOf(Myself),SetGlobal("D5_PROF_89","LOCALS",%prof_89%))~
 	END
   END
 
@@ -695,7 +1500,7 @@ COPY ~weidu_external/%MOD_FOLDER%/d5_dialprof/d5_cprf_temp.baf~ ~weidu_external/
 COPY_EXISTING ~profsmax.2da~ ~override~
   COUNT_2DA_COLS cols
   READ_2DA_ENTRIES_NOW ~profsmax~ cols
-  FOR (row = 0; row < profs; ++row) BEGIN
+  FOR (row = 0; row < profsmax; ++row) BEGIN
     READ_2DA_ENTRY_FORMER profsmax row 0 prof_class
     READ_2DA_ENTRY_FORMER profsmax row 1 level_1_max
     READ_2DA_ENTRY_FORMER profsmax row 2 overall_max
@@ -707,10 +1512,10 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET fighter_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET fighter_sp_min_level = 2
+        SET fighter_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET fighter_sp_min_level = 5
+        SET fighter_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET fighter_sp_min_level = 8
@@ -718,14 +1523,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET fighter_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET fighter_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET fighter_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET fighter_ma_min_level = 2
+        SET fighter_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET fighter_ma_min_level = 5
+        SET fighter_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET fighter_ma_min_level = 8
@@ -733,14 +1541,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET fighter_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET fighter_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET fighter_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET fighter_hi_min_level = 2
+        SET fighter_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET fighter_hi_min_level = 5
+        SET fighter_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET fighter_hi_min_level = 8
@@ -748,14 +1559,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET fighter_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET fighter_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET fighter_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET fighter_gm_min_level = 2
+        SET fighter_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET fighter_gm_min_level = 5
+        SET fighter_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET fighter_gm_min_level = 8
@@ -763,16 +1577,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET fighter_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET fighter_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET ranger_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET ranger_sp_min_level = 2
+        SET ranger_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET ranger_sp_min_level = 5
+        SET ranger_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET ranger_sp_min_level = 8
@@ -780,14 +1597,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET ranger_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET ranger_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET ranger_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET ranger_ma_min_level = 2
+        SET ranger_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET ranger_ma_min_level = 5
+        SET ranger_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET ranger_ma_min_level = 8
@@ -795,14 +1615,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET ranger_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET ranger_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET ranger_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET ranger_hi_min_level = 2
+        SET ranger_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET ranger_hi_min_level = 5
+        SET ranger_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET ranger_hi_min_level = 8
@@ -810,14 +1633,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET ranger_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET ranger_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET ranger_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET ranger_gm_min_level = 2
+        SET ranger_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET ranger_gm_min_level = 5
+        SET ranger_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET ranger_gm_min_level = 8
@@ -825,16 +1651,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET ranger_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET ranger_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~paladin~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET paladin_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET paladin_sp_min_level = 2
+        SET paladin_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET paladin_sp_min_level = 5
+        SET paladin_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET paladin_sp_min_level = 8
@@ -842,14 +1671,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET paladin_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET paladin_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET paladin_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET paladin_ma_min_level = 2
+        SET paladin_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET paladin_ma_min_level = 5
+        SET paladin_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET paladin_ma_min_level = 8
@@ -857,14 +1689,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET paladin_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET paladin_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET paladin_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET paladin_hi_min_level = 2
+        SET paladin_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET paladin_hi_min_level = 5
+        SET paladin_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET paladin_hi_min_level = 8
@@ -872,14 +1707,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET paladin_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET paladin_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET paladin_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET paladin_gm_min_level = 2
+        SET paladin_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET paladin_gm_min_level = 5
+        SET paladin_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET paladin_gm_min_level = 8
@@ -887,16 +1725,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET paladin_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET paladin_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET cleric_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET cleric_sp_min_level = 2
+        SET cleric_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET cleric_sp_min_level = 5
+        SET cleric_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET cleric_sp_min_level = 8
@@ -904,14 +1745,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET cleric_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET cleric_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET cleric_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET cleric_ma_min_level = 2
+        SET cleric_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET cleric_ma_min_level = 5
+        SET cleric_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET cleric_ma_min_level = 8
@@ -919,14 +1763,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET cleric_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET cleric_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET cleric_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET cleric_hi_min_level = 2
+        SET cleric_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET cleric_hi_min_level = 5
+        SET cleric_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET cleric_hi_min_level = 8
@@ -934,14 +1781,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET cleric_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET cleric_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET cleric_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET cleric_gm_min_level = 2
+        SET cleric_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET cleric_gm_min_level = 5
+        SET cleric_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET cleric_gm_min_level = 8
@@ -949,16 +1799,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET cleric_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET cleric_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~druid~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET druid_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET druid_sp_min_level = 2
+        SET druid_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET druid_sp_min_level = 5
+        SET druid_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET druid_sp_min_level = 8
@@ -966,14 +1819,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET druid_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET fighter_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
-        SET druid_ma_min_level = 0
+        SET fighter_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET druid_ma_min_level = 2
+        SET druid_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET druid_ma_min_level = 5
+        SET druid_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET druid_ma_min_level = 8
@@ -981,14 +1837,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET druid_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET druid_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET druid_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET druid_hi_min_level = 2
+        SET druid_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET druid_hi_min_level = 5
+        SET druid_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET druid_hi_min_level = 8
@@ -996,14 +1855,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET druid_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET druid_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET druid_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET druid_gm_min_level = 2
+        SET druid_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET druid_gm_min_level = 5
+        SET druid_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET druid_gm_min_level = 8
@@ -1011,16 +1873,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET druid_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET druid_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~shaman~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET shaman_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET shaman_sp_min_level = 2
+        SET shaman_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET shaman_sp_min_level = 5
+        SET shaman_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET shaman_sp_min_level = 8
@@ -1028,14 +1893,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET shaman_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET shaman_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET shaman_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET shaman_ma_min_level = 2
+        SET shaman_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET shaman_ma_min_level = 5
+        SET shaman_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET shaman_ma_min_level = 8
@@ -1043,14 +1911,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET shaman_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET shaman_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET shaman_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET shaman_hi_min_level = 2
+        SET shaman_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET shaman_hi_min_level = 5
+        SET shaman_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET shaman_hi_min_level = 8
@@ -1058,14 +1929,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET shaman_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET shaman_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET shaman_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET shaman_gm_min_level = 2
+        SET shaman_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET shaman_gm_min_level = 5
+        SET shaman_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET shaman_gm_min_level = 8
@@ -1073,16 +1947,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET shaman_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET shaman_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~thief~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET thief_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET thief_sp_min_level = 2
+        SET thief_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET thief_sp_min_level = 5
+        SET thief_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET thief_sp_min_level = 8
@@ -1090,14 +1967,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET thief_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET thief_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET thief_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET thief_ma_min_level = 2
+        SET thief_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET thief_ma_min_level = 5
+        SET thief_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET thief_ma_min_level = 8
@@ -1105,14 +1985,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET thief_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET thief_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET thief_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET thief_hi_min_level = 2
+        SET thief_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET thief_hi_min_level = 5
+        SET thief_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET thief_hi_min_level = 8
@@ -1120,14 +2003,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET thief_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET thief_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET thief_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET thief_gm_min_level = 2
+        SET thief_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET thief_gm_min_level = 5
+        SET thief_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET thief_gm_min_level = 8
@@ -1135,16 +2021,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET thief_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET thief_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~bard~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET bard_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET bard_sp_min_level = 2
+        SET bard_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET bard_sp_min_level = 5
+        SET bard_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET bard_sp_min_level = 8
@@ -1152,14 +2041,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET bard_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET bard_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET bard_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET bard_ma_min_level = 2
+        SET bard_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET bard_ma_min_level = 5
+        SET bard_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET bard_ma_min_level = 8
@@ -1167,14 +2059,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET bard_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET bard_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET bard_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET bard_hi_min_level = 2
+        SET bard_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET bard_hi_min_level = 5
+        SET bard_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET bard_hi_min_level = 8
@@ -1182,14 +2077,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET bard_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET bard_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET bard_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET bard_gm_min_level = 2
+        SET bard_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET bard_gm_min_level = 5
+        SET bard_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET bard_gm_min_level = 8
@@ -1197,16 +2095,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET bard_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET bard_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~mage~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET mage_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET mage_sp_min_level = 2
+        SET mage_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET mage_sp_min_level = 5
+        SET mage_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET mage_sp_min_level = 8
@@ -1214,14 +2115,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET mage_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET mage_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET mage_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET mage_ma_min_level = 2
+        SET mage_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET mage_ma_min_level = 5
+        SET mage_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET mage_ma_min_level = 8
@@ -1229,14 +2133,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET mage_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET fighter_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET mage_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET mage_hi_min_level = 2
+        SET mage_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET mage_hi_min_level = 5
+        SET mage_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET mage_hi_min_level = 8
@@ -1244,14 +2151,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET mage_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET mage_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
-        SET mage_gm_min_level = 0
+        SET fighter_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET mage_gm_min_level = 2
+        SET mage_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET mage_gm_min_level = 5
+        SET mage_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET mage_gm_min_level = 8
@@ -1259,16 +2169,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET mage_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET mage_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~sorcerer~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET sorcerer_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET sorcerer_sp_min_level = 2
+        SET sorcerer_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET sorcerer_sp_min_level = 5
+        SET sorcerer_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET sorcerer_sp_min_level = 8
@@ -1276,14 +2189,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET sorcerer_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET sorcerer_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET sorcerer_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET sorcerer_ma_min_level = 2
+        SET sorcerer_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET sorcerer_ma_min_level = 5
+        SET sorcerer_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET sorcerer_ma_min_level = 8
@@ -1291,14 +2207,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET sorcerer_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET sorcerer_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET sorcerer_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET sorcerer_hi_min_level = 2
+        SET sorcerer_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET sorcerer_hi_min_level = 5
+        SET sorcerer_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET sorcerer_hi_min_level = 8
@@ -1306,14 +2225,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET sorcerer_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET fighter_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
-        SET sorcerer_gm_min_level = 0
+        SET sorcerer_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET sorcerer_gm_min_level = 2
+        SET sorcerer_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET sorcerer_gm_min_level = 5
+        SET sorcerer_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET sorcerer_gm_min_level = 8
@@ -1321,16 +2243,19 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET sorcerer_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET sorcerer_gm_min_level = 9
+      END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~monk~) BEGIN
       PATCH_IF (~%level_1_max%~ = 2) OR (~%level_1_max%~ > 2) BEGIN
         SET monk_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 2) BEGIN
-        SET monk_sp_min_level = 2
+        SET monk_sp_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 2) BEGIN
-        SET monk_sp_min_level = 5
+        SET monk_sp_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 2) BEGIN
          SET monk_sp_min_level = 8
@@ -1338,14 +2263,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ < 2) BEGIN
         SET monk_sp_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
+        SET monk_sp_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET monk_ma_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
-        SET monk_ma_min_level = 2
+        SET monk_ma_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 3) BEGIN
-        SET monk_ma_min_level = 5
+        SET monk_ma_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 3) BEGIN
         SET monk_ma_min_level = 8
@@ -1353,14 +2281,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ < 3) BEGIN
         SET monk_ma_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
+        SET monk_ma_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET monk_hi_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 4) BEGIN
-        SET monk_hi_min_level = 2
+        SET monk_hi_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 4) BEGIN
-        SET monk_hi_min_level = 5
+        SET monk_hi_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 4) BEGIN
         SET monk_hi_min_level = 8
@@ -1368,14 +2299,17 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ < 4) BEGIN
         SET monk_hi_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
+        SET monk_hi_min_level = 9
+      END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET monk_gm_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 5) BEGIN
-        SET monk_gm_min_level = 2
+        SET monk_gm_min_level = 1
       END
       PATCH_IF (~%level_6_max%~ = 5) BEGIN
-        SET monk_gm_min_level = 5
+        SET monk_gm_min_level = 4
       END
       PATCH_IF (~%level_9_max%~ = 5) BEGIN
         SET monk_gm_min_level = 8
@@ -1383,498 +2317,588 @@ COPY_EXISTING ~profsmax.2da~ ~override~
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ < 5) BEGIN
         SET monk_gm_min_level = 50
       END
+      PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
+        SET monk_gm_min_level = 9
+      END
     END
   END
 BUT_ONLY
 
-DEFINE_PATCH_FUNCTION prof_name_replacements BEGIN
-  INNER_ACTION BEGIN
-   COPY_EXISTING ~weapprof.2da~ ~override~
-	COUNT_2DA_COLS cols
-	READ_2DA_ENTRY 8 2 cols bastard_sword_name
-	READ_2DA_ENTRY 8 3 cols bastard_sword_desc
-	READ_2DA_ENTRY 9 2 cols long_sword_name
-	READ_2DA_ENTRY 9 3 cols long_sword_desc
-	READ_2DA_ENTRY 10 2 cols short_sword_name
-	READ_2DA_ENTRY 10 3 cols short_sword_desc
-	READ_2DA_ENTRY 11 2 cols axe_name
-	READ_2DA_ENTRY 11 3 cols axe_desc
-	READ_2DA_ENTRY 12 2 cols greatsword_name
-	READ_2DA_ENTRY 12 3 cols greatsword_desc
-	READ_2DA_ENTRY 13 2 cols katana_name
-	READ_2DA_ENTRY 13 3 cols katana_desc
-	READ_2DA_ENTRY 14 2 cols scimitar_name
-	READ_2DA_ENTRY 14 3 cols scimitar_desc
-	READ_2DA_ENTRY 15 2 cols dagger_name
-	READ_2DA_ENTRY 15 3 cols dagger_desc
-	READ_2DA_ENTRY 16 2 cols hammer_name
-	READ_2DA_ENTRY 16 3 cols hammer_desc
-	READ_2DA_ENTRY 18 2 cols spear_name
-	READ_2DA_ENTRY 18 3 cols spear_desc
-	READ_2DA_ENTRY 19 2 cols halberd_name
-	READ_2DA_ENTRY 19 3 cols halberd_desc
-	READ_2DA_ENTRY 20 2 cols flail_name
-	READ_2DA_ENTRY 20 3 cols flail_desc
-	READ_2DA_ENTRY 21 2 cols mace_name
-	READ_2DA_ENTRY 21 3 cols mace_desc
-	READ_2DA_ENTRY 17 2 cols club_name
-	READ_2DA_ENTRY 17 3 cols club_desc
-	READ_2DA_ENTRY 22 2 cols staff_name
-	READ_2DA_ENTRY 22 3 cols staff_desc
-	READ_2DA_ENTRY 23 2 cols crossbow_name
-	READ_2DA_ENTRY 23 3 cols crossbow_desc
-	READ_2DA_ENTRY 24 2 cols long_bow_name
-	READ_2DA_ENTRY 24 3 cols long_bow_desc
-	READ_2DA_ENTRY 25 2 cols short_bow_name
-	READ_2DA_ENTRY 25 3 cols short_bow_desc
-	READ_2DA_ENTRY 26 2 cols dart_name
-	READ_2DA_ENTRY 26 3 cols dart_desc
-	READ_2DA_ENTRY 27 2 cols sling_name
-	READ_2DA_ENTRY 27 3 cols sling_desc
-	READ_2DA_ENTRY 28 2 cols two_hand_name
-	READ_2DA_ENTRY 28 3 cols two_hand_desc
-	READ_2DA_ENTRY 29 2 cols shield_fighting_name
-	READ_2DA_ENTRY 29 3 cols shield_fighting_desc
-	READ_2DA_ENTRY 30 2 cols single_weapon_name
-	READ_2DA_ENTRY 30 3 cols single_weapon_desc
-	READ_2DA_ENTRY 31 2 cols two_weapon_name
-	READ_2DA_ENTRY 31 3 cols two_weapon_desc
-   BUT_ONLY
-  END
-	REPLACE_TEXTUALLY ~bastard_sword_name~ ~%bastard_sword_name%~
-	REPLACE_TEXTUALLY ~bastard_sword_desc~ ~%bastard_sword_desc%~
-	REPLACE_TEXTUALLY ~long_sword_name~ ~%long_sword_name%~
-	REPLACE_TEXTUALLY ~long_sword_desc~ ~%long_sword_desc%~
-	REPLACE_TEXTUALLY ~short_sword_name~ ~%short_sword_name%~
-	REPLACE_TEXTUALLY ~short_sword_desc~ ~%short_sword_desc%~
-	REPLACE_TEXTUALLY ~axe_name~ ~%axe_name%~
-	REPLACE_TEXTUALLY ~axe_desc~ ~%axe_desc%~
-	REPLACE_TEXTUALLY ~greatsword_name~ ~%greatsword_name%~
-	REPLACE_TEXTUALLY ~greatsword_desc~ ~%greatsword_desc%~
-	REPLACE_TEXTUALLY ~katana_name~ ~%katana_name%~
-	REPLACE_TEXTUALLY ~katana_desc~ ~%katana_desc%~
-	REPLACE_TEXTUALLY ~scimitar_name~ ~%scimitar_name%~
-	REPLACE_TEXTUALLY ~scimitar_desc~ ~%scimitar_desc%~
-	REPLACE_TEXTUALLY ~dagger_name~ ~%dagger_name%~
-	REPLACE_TEXTUALLY ~dagger_desc~ ~%dagger_desc%~
-	REPLACE_TEXTUALLY ~hammer_name~ ~%hammer_name%~
-	REPLACE_TEXTUALLY ~hammer_desc~ ~%hammer_desc%~
-	REPLACE_TEXTUALLY ~spear_name~ ~%spear_name%~
-	REPLACE_TEXTUALLY ~spear_desc~ ~%spear_desc%~
-	REPLACE_TEXTUALLY ~halberd_name~ ~%halberd_name%~
-	REPLACE_TEXTUALLY ~halberd_desc~ ~%halberd_desc%~
-	REPLACE_TEXTUALLY ~flail_name~ ~%flail_name%~
-	REPLACE_TEXTUALLY ~flail_desc~ ~%flail_desc%~
-	REPLACE_TEXTUALLY ~mace_name~ ~%mace_name%~
-	REPLACE_TEXTUALLY ~mace_desc~ ~%mace_desc%~
-	REPLACE_TEXTUALLY ~club_name~ ~%club_name%~
-	REPLACE_TEXTUALLY ~club_desc~ ~%club_desc%~
-	REPLACE_TEXTUALLY ~staff_name~ ~%staff_name%~
-	REPLACE_TEXTUALLY ~staff_desc~ ~%staff_desc%~
-	REPLACE_TEXTUALLY ~crossbow_name~ ~%crossbow_name%~
-	REPLACE_TEXTUALLY ~crossbow_desc~ ~%crossbow_desc%~
-	REPLACE_TEXTUALLY ~long_bow_name~ ~%long_bow_name%~
-	REPLACE_TEXTUALLY ~long_bow_desc~ ~%long_bow_desc%~
-	REPLACE_TEXTUALLY ~short_bow_name~ ~%short_bow_name%~
-	REPLACE_TEXTUALLY ~short_bow_desc~ ~%short_bow_desc%~
-	REPLACE_TEXTUALLY ~dart_name~ ~%dart_name%~
-	REPLACE_TEXTUALLY ~dart_desc~ ~%dart_desc%~
-	REPLACE_TEXTUALLY ~sling_name~ ~%sling_name%~
-	REPLACE_TEXTUALLY ~sling_desc~ ~%sling_desc%~
-	REPLACE_TEXTUALLY ~two_hand_name~ ~%two_hand_name%~
-	REPLACE_TEXTUALLY ~two_hand_desc~ ~%two_hand_desc%~
-	REPLACE_TEXTUALLY ~shield_fighting_name~ ~%shield_fighting_name%~
-	REPLACE_TEXTUALLY ~shield_fighting_desc~ ~%shield_fighting_desc%~
-	REPLACE_TEXTUALLY ~single_weapon_name~ ~%single_weapon_name%~
-	REPLACE_TEXTUALLY ~single_weapon_desc~ ~%single_weapon_desc%~
-	REPLACE_TEXTUALLY ~two_weapon_name~ ~%two_weapon_name%~
-	REPLACE_TEXTUALLY ~two_weapon_desc~ ~%two_weapon_desc%~
+OUTER_SET no_set = RESOLVE_STR_REF (~no stat~)
+
+DEFINE_PATCH_MACRO prof_name_replacements BEGIN
+	REPLACE_TEXTUALLY ~name_89~ ~%name_89%~
+	REPLACE_TEXTUALLY ~desc_89~ ~%desc_89%~
+	REPLACE_TEXTUALLY ~name_90~ ~%name_90%~
+	REPLACE_TEXTUALLY ~desc_90~ ~%desc_90%~
+	REPLACE_TEXTUALLY ~name_91~ ~%name_91%~
+	REPLACE_TEXTUALLY ~desc_91~ ~%desc_91%~
+	REPLACE_TEXTUALLY ~name_92~ ~%name_92%~
+	REPLACE_TEXTUALLY ~desc_92~ ~%desc_92%~
+	REPLACE_TEXTUALLY ~name_93~ ~%name_93%~
+	REPLACE_TEXTUALLY ~desc_93~ ~%desc_93%~
+	REPLACE_TEXTUALLY ~name_94~ ~%name_94%~
+	REPLACE_TEXTUALLY ~desc_94~ ~%desc_94%~
+	REPLACE_TEXTUALLY ~name_95~ ~%name_95%~
+	REPLACE_TEXTUALLY ~desc_95~ ~%desc_95%~
+	REPLACE_TEXTUALLY ~name_96~ ~%name_96%~
+	REPLACE_TEXTUALLY ~desc_96~ ~%desc_96%~
+	REPLACE_TEXTUALLY ~name_97~ ~%name_97%~
+	REPLACE_TEXTUALLY ~desc_97~ ~%desc_97%~
+	REPLACE_TEXTUALLY ~name_98~ ~%name_98%~
+	REPLACE_TEXTUALLY ~desc_98~ ~%desc_98%~
+	REPLACE_TEXTUALLY ~name_99~ ~%name_99%~
+	REPLACE_TEXTUALLY ~desc_99~ ~%desc_99%~
+	REPLACE_TEXTUALLY ~name_100~ ~%name_100%~
+	REPLACE_TEXTUALLY ~desc_100~ ~%desc_100%~
+	REPLACE_TEXTUALLY ~name_101~ ~%name_101%~
+	REPLACE_TEXTUALLY ~desc_101~ ~%desc_101%~
+	REPLACE_TEXTUALLY ~name_102~ ~%name_102%~
+	REPLACE_TEXTUALLY ~desc_102~ ~%desc_102%~
+	REPLACE_TEXTUALLY ~name_103~ ~%name_103%~
+	REPLACE_TEXTUALLY ~desc_103~ ~%desc_103%~
+	REPLACE_TEXTUALLY ~name_104~ ~%name_104%~
+	REPLACE_TEXTUALLY ~desc_104~ ~%desc_104%~
+	REPLACE_TEXTUALLY ~name_105~ ~%name_105%~
+	REPLACE_TEXTUALLY ~desc_105~ ~%desc_105%~
+	REPLACE_TEXTUALLY ~name_106~ ~%name_106%~
+	REPLACE_TEXTUALLY ~desc_106~ ~%desc_106%~
+	REPLACE_TEXTUALLY ~name_107~ ~%name_107%~
+	REPLACE_TEXTUALLY ~desc_107~ ~%desc_107%~
+	REPLACE_TEXTUALLY ~name_108~ ~%name_108%~
+	REPLACE_TEXTUALLY ~desc_108~ ~%desc_108%~
+	REPLACE_TEXTUALLY ~name_109~ ~%name_109%~
+	REPLACE_TEXTUALLY ~desc_109~ ~%desc_109%~
+	REPLACE_TEXTUALLY ~name_110~ ~%name_110%~
+	REPLACE_TEXTUALLY ~desc_110~ ~%desc_110%~
+	REPLACE_TEXTUALLY ~name_111~ ~%name_111%~
+	REPLACE_TEXTUALLY ~desc_111~ ~%desc_111%~
+	REPLACE_TEXTUALLY ~name_112~ ~%name_112%~
+	REPLACE_TEXTUALLY ~desc_112~ ~%desc_112%~
+	REPLACE_TEXTUALLY ~name_113~ ~%name_113%~
+	REPLACE_TEXTUALLY ~desc_113~ ~%desc_113%~
+	REPLACE_TEXTUALLY ~name_114~ ~%name_114%~
+	REPLACE_TEXTUALLY ~desc_114~ ~%desc_114%~
+	REPLACE_TEXTUALLY ~name_115~ ~%name_115%~
+	REPLACE_TEXTUALLY ~desc_115~ ~%desc_115%~
+	REPLACE_TEXTUALLY ~name_124~ ~%name_124%~
+	REPLACE_TEXTUALLY ~desc_124~ ~%desc_124%~
+	REPLACE_TEXTUALLY ~name_127~ ~%name_127%~
+	REPLACE_TEXTUALLY ~desc_127~ ~%desc_127%~
+	REPLACE_TEXTUALLY ~name_134~ ~%name_134%~
+	REPLACE_TEXTUALLY ~desc_134~ ~%desc_134%~
+	REPLACE_TEXTUALLY ~4294967296~ ~%no_set%~
 END
 
-/*
+/* this doesn't work...
 ACTION_FOR_EACH class IN ~fighter~ ~ranger~ ~paladin~ ~cleric~ ~druid~ ~shaman~ ~thief~ ~bard~ ~mage~ ~sorcerer~ ~monk~ BEGIN
   SNPRINT 2 shortclass ~%class%~
-  COPY ~%MOD_FOLDER%/lib/dialprof/profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prf%shortclass%.d~
+  COPY ~%MOD_FOLDER%/lib/dialprof/profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%%shortclass%.d~
 	REPLACE_TEXTUALLY ~%class%_sp_min_level%~ ~%"class"_sp_min_level%~
 	REPLACE_TEXTUALLY ~%class%_ma_min_level%~ ~%"class"_ma_min_level%~
 	REPLACE_TEXTUALLY ~%class%_hi_min_level%~ ~%"class"_hi_min_level%~
 	REPLACE_TEXTUALLY ~%class%_gm_min_level%~ ~%"class"_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 */
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prffi.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prffi~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFFI~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%fi.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%fi~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%FI~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%fighter_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%fighter_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%fighter_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%fighter_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfra.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfra~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFRA~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%ra.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%ra~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%RA~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%ranger_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%ranger_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%ranger_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%ranger_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfpa.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfpa~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFPA~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%pa.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%pa~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%PA~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%paladin_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%paladin_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%paladin_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%paladin_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfcl.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfcl~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFCL~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%cl.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%cl~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%CL~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%cleric_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%cleric_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%cleric_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%cleric_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfdr.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfdr~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFDR~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%dr.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%dr~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%DR~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%druid_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%druid_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%druid_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%druid_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfsh.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfsh~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFSH~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%sh.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%sh~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%SH~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%shaman_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%shaman_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%shaman_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%shaman_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfth.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfth~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFTH~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%th.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%th~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%TH~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%thief_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%thief_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%thief_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%thief_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfba.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfba~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFBA~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%ba.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%ba~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%BA~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%bard_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%bard_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%bard_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%bard_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfma.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfma~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFMA~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%ma.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%ma~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%MA~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%mage_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%mage_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%mage_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%mage_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfso.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfso~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFSO~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%so.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%so~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%SO~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%sorcerer_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%sorcerer_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%sorcerer_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%sorcerer_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
-COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/d5prfmo.d~
-	REPLACE_TEXTUALLY ~d5profx~ ~d5prfmo~
-	REPLACE_TEXTUALLY ~D5PROFX~ ~D5PRFMO~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%mo.d~
+	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%mo~
+	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%MO~
 	REPLACE_TEXTUALLY ~sp_min_level~ ~%monk_sp_min_level%~
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%monk_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%monk_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%monk_gm_min_level%~
-    LPF prof_name_replacements END
+    LPM prof_name_replacements
 	
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override~
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51lswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P89.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/D51P90.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 90 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51sswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/D51P91.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 91 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51baxe.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P92.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 92 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d512swo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P93.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 93 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51kata.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P94.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 94 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51scim.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P95.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 95 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51dagg.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P96.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 96 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51hamm.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P97.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 97 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51spea.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P98.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 98 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51halb.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P99.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 99 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51flai.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P100.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 100 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51mace.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P101.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 101 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51club.spl~
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 115 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51staf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P102.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 102 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51xbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P103.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 103 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51lbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P104.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 104 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51sbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P105.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 105 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51dart.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P106.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 106 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51slin.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P107.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 107 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51s2hw.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P108.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 108 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P109.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 109 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P110.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 110 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P111.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 111 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51ssns.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P112.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 112 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51ssws.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P113.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 113 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d51stwf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P114.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 114 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P115.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 115 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P124.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 124 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P127.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 127 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d51P134.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter2 = 134 END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52bswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P89.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52lswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/D52P90.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 90 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52sswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/D52P91.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 91 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52baxe.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P92.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 92 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d522swo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P93.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 93 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52kata.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P94.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 94 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52scim.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P95.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 95 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52dagg.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P96.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 96 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52hamm.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P97.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 97 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52spea.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P98.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 98 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52halb.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P99.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 99 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52flai.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P100.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 100 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52mace.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P101.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 101 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52club.spl~
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 115 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52staf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P102.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 102 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52xbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P103.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 103 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52lbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P104.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 104 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52sbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P105.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 105 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52dart.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P106.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 106 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52slin.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P107.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 107 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52s2hw.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P108.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 108 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P109.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 109 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P110.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 110 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P111.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 111 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52ssns.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P112.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 112 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52ssws.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P113.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 113 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d52stwf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P114.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 114 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P115.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 115 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P124.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 124 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P127.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 127 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d52P134.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 parameter2 = 134 END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53bswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P89.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53lswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P90.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 90 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53sswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/D53P91.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 91 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53baxe.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P92.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 92 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d532swo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P93.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 93 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53kata.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P94.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 94 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53scim.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P95.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 95 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53dagg.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P96.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 96 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53hamm.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P97.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 97 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53spea.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P98.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 98 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53halb.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P99.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 99 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53flai.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P100.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 100 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53mace.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P101.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 101 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53club.spl~
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 115 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53staf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P102.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 102 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53xbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P103.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 103 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53lbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P104.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 104 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53sbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P105.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 105 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53dart.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P106.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 106 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53slin.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P107.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 107 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53s2hw.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P108.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 108 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P109.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 109 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P110.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 110 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P111.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 111 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53ssns.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P112.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 112 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53ssws.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P113.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 113 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d53stwf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P114.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 114 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P115.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 115 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P124.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 124 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P127.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 127 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d53P134.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 3 parameter2 = 134 END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54bswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P89.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54lswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P90.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 90 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54sswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/D54P91.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 91 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54baxe.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P92.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 92 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d542swo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P93.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 93 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54kata.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P94.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 94 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54scim.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P95.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 95 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54dagg.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P96.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 96 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54hamm.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P97.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 97 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54spea.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P98.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 98 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54halb.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P99.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 99 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54flai.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P100.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 100 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54mace.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P101.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 101 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54club.spl~
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 115 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54staf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P102.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 102 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54xbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P103.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 103 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54lbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P104.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 104 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54sbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P105.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 105 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54dart.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P106.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 106 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54slin.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P107.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 107 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54s2hw.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P108.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 108 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P109.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 109 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P110.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 110 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P111.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 111 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54ssns.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P112.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 112 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54ssws.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P113.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 113 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d54stwf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P114.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 114 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P115.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 115 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P124.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 124 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P127.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 127 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d54P134.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 4 parameter2 = 134 END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55bswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P89.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55lswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P90.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 90 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55sswo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P91.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 91 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55baxe.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P92.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 92 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d552swo.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P93.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 93 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55kata.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P94.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 94 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55scim.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P95.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 95 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55dagg.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P96.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 96 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55hamm.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P97.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 97 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55spea.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P98.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 98 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55halb.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P99.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 99 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55flai.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P100.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 100 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55mace.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P101.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 101 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55club.spl~
-	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 115 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55staf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P102.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 102 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55xbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P103.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 103 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55lbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P104.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 104 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55sbow.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P105.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 105 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55dart.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P106.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 106 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55slin.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P107.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 107 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55s2hw.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P108.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 108 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P109.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 109 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P110.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 110 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P111.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 111 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55ssns.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P112.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 112 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55ssws.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P113.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 113 END
-COPY ~%MOD_FOLDER%/lib/dialprof/d51bswo.spl~ ~override/d55stwf.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P114.spl~
 	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 114 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P115.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 115 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P124.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 124 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P127.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 127 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d55P134.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 5 parameter2 = 134 END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d5_cprf.bam~ ~override~
-COPY ~%MOD_FOLDER%/lib/dialprof/d5_cprf.eff~ ~override~
-COPY ~%MOD_FOLDER%/lib/dialprof/d5_cprf.cre~ ~override~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P89.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P90.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 90 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P91.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 91 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P92.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 92 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P93.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 93 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P94.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 94 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P95.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 95 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P96.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 96 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P97.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 97 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P98.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 98 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P99.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 99 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P100.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 100 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P101.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 101 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P102.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 102 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P103.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 103 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P104.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 104 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P105.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 105 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P106.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 106 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P107.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 107 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P108.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 108 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P109.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 109 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P110.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 110 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P111.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 111 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P112.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 112 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P113.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 113 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P114.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 114 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P115.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 115 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P124.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 124 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P127.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 127 END
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_1prf.spl~ ~override/d56P134.spl~
+	LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 6 parameter2 = 134 END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d5_base.spl~ ~override/d5_cpr1.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_prof.bam~ ~override~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_cprf.eff~ ~override/%prof_script_name%.eff~
+  WRITE_EVALUATED_ASCII 0x30 ~%prof_script_name%~ #8
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_cprf.cre~ ~override/%prof_script_name%.cre~
+  WRITE_EVALUATED_ASCII 0x248 ~%prof_script_name%~ #8
+
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_base.spl~ ~override/%prof_script_name%1.spl~
   LPF ALTER_SPELL_HEADER INT_VAR target = 5 END
-  LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 171 timing = 1 STR_VAR resource = ~d5_cpra~ END
+  LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 171 timing = 1 STR_VAR resource = EVAL ~%prof_script_name%a~ END
 
-COPY ~%MOD_FOLDER%/lib/dialprof/d5_base.spl~ ~override/d5_cpra.spl~
+COPY ~%MOD_FOLDER%/lib/dialprof/d5_base.spl~ ~override/%prof_script_name%a.spl~
   SAY NAME1 @2091
   SAY UNIDENTIFIED_DESC @2091
-  WRITE_ASCII 0x3a ~d5_cprf~ #8
-  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5_cprf~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 1 duration = 300 STR_VAR resource = ~d5_cprf~ END
-  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5_cpra~ END
+  WRITE_ASCII 0x3a ~d5_prof~ #8
+  LPF ALTER_SPELL_HEADER INT_VAR target = 5 STR_VAR icon = ~d5_prof~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 1 duration = 30 STR_VAR resource = EVAL ~%prof_script_name%~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~%prof_script_name%a~ END
 
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5_cprf.baf~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prffi.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfra.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfpa.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfcl.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfdr.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfsh.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfth.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfba.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfma.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfso.d~
-COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5prfmo.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%.baf~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%fi.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%ra.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%pa.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%cl.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%dr.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%sh.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%th.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%ba.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%ma.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%so.d~
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%mo.d~
 
 END	//	end with_tra
 
 END	//	end define macro
+
+//
