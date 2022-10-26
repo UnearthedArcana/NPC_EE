@@ -711,6 +711,7 @@ INCLUDE ~%MOD_FOLDER%/lib/dialprof.tpa~
 OUTER_SPRINT prof_script_name ~d5cprf~
 OUTER_SET script_level_one = 1
 OUTER_SET script_higher_levels = 0
+OUTER_SPRINT class_dlgs ~all~
 
 LAM PROF_DIALOGUE
 
