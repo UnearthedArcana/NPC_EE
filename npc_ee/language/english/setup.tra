@@ -16,6 +16,9 @@
 @2000  = ~NPC class/stat/kit choices~
 @2001  = ~This will take a few moments, please be patient...~
 @2002  = ~This tome does not work with dual-class characters~
+@2003  = ~~
+@2004  = ~Change class/kit/ability scores and level up from 0~
+@2005  = ~Change kit and ability scores~
 @2006  = ~Only change ability scores~
 @2007  = ~Memorize spells~
 @2008  = ~Learn spells~
@@ -54,7 +57,7 @@ If you also have another tome specifically for reselecting proficiencies, you sh
 @2045  = ~Become a ranger/cleric~
 @2046  = ~Become a cleric/thief~
 @2047  = ~Become a cleric/mage~
-@2048  = ~Become a thief/mage~
+@2048  = ~Become a mage/thief~
 @2049  = ~Become a fighter/mage/thief~
 @2050  = ~Become a fighter/mage/cleric~
 //
