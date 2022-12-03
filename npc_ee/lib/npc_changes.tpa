@@ -454,6 +454,10 @@ COPY_EXISTING ~clastext.2da~ ~override~
       SET so_desc = class_desc
       GET_STRREF %so_desc% so_desc_string
     END
+    PATCH_IF (~%class_name%~ STRING_EQUAL_CASE ~MONK~) BEGIN
+      SET m_desc = class_desc
+      GET_STRREF %m_desc% mo_desc_string
+    END
     PATCH_IF (~%class_name%~ STRING_EQUAL_CASE ~FIGHTER_MAGE~) BEGIN
       SET fm_desc = class_desc
       GET_STRREF %fm_desc% fm_desc_string
@@ -508,6 +512,7 @@ COPY ~npc_ee/data/d5clstlk.d~ ~weidu_external/npc_ee/compile/d5clstlk.d~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~b_desc_string~ ~%b_desc_string%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~m_desc_string~ ~%m_desc_string%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~so_desc_string~ ~%so_desc_string%~
+	REPLACE_TEXTUALLY CASE_INSENSITIVE ~mo_desc_string~ ~%mo_desc_string%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~fm_desc_string~ ~%fm_desc_string%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~ft_desc_string~ ~%ft_desc_string%~
 	REPLACE_TEXTUALLY CASE_INSENSITIVE ~fc_desc_string~ ~%fc_desc_string%~

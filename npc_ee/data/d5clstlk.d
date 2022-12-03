@@ -1,8 +1,9 @@
 BEGIN ~d5clstlk~
 
 IF ~Global("d5clstlk","GLOBAL",1)~ THEN BEGIN d5clstlk
- SAY @2030
+ SAY @2029
 
+IF ~~ THEN REPLY @2030 GOTO d5clstlk_30
 IF ~~ THEN REPLY @2031 GOTO d5clstlk_31
 IF ~~ THEN REPLY @2032 GOTO d5clstlk_32
 IF ~~ THEN REPLY @2033 GOTO d5clstlk_33
@@ -26,63 +27,69 @@ IF ~~ THEN REPLY @2050 GOTO d5clstlk_50
 IF ~~ THEN REPLY @2014 EXIT
 END
 
-IF ~~ THEN BEGIN d5clstlk_31 
+IF ~~ THEN BEGIN d5clstlk_30
   SAY ~f_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,FIGHTER)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_32
+IF ~~ THEN BEGIN d5clstlk_31
   SAY ~r_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,RANGER)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_33
+IF ~~ THEN BEGIN d5clstlk_32
   SAY ~p_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,PALADIN)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_34
+IF ~~ THEN BEGIN d5clstlk_33
   SAY ~c_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,CLERIC)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_35
+IF ~~ THEN BEGIN d5clstlk_34
   SAY ~d_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,DRUID)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_36
+IF ~~ THEN BEGIN d5clstlk_35
   SAY ~sh_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,SHAMAN)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_37
+IF ~~ THEN BEGIN d5clstlk_36
   SAY ~t_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,THIEF)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_38
+IF ~~ THEN BEGIN d5clstlk_37
   SAY ~b_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,BARD)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_39
+IF ~~ THEN BEGIN d5clstlk_38
   SAY ~m_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,MAGE)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
-IF ~~ THEN BEGIN d5clstlk_40
+IF ~~ THEN BEGIN d5clstlk_39
   SAY ~so_desc_string~ 
   IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,SORCERER)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
+  IF ~~ THEN REPLY @2020 GOTO d5clstlk 
+END
+
+IF ~~ THEN BEGIN d5clstlk_40
+  SAY ~mo_desc_string~ 
+  IF ~~ THEN REPLY @2019 DO ~ChangeClass(Myself,MONK)~ DO ~SetGlobal("D5CHACLS","GLOBAL",1)~ EXIT
   IF ~~ THEN REPLY @2020 GOTO d5clstlk 
 END
 
