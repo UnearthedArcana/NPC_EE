@@ -2660,7 +2660,70 @@ THEN
 END
 
 IF
-	True()
+	Global("D5PRFTLK","GLOBAL",0)
+	Global("D5CLSTLK","GLOBAL",1)
+	Global("D5STTTLK","GLOBAL",1)
+	Global("D5CHAKIT","GLOBAL",1)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PRFTLK","GLOBAL",1)
+	SetNumTimesTalkedTo(0)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5prftlk",Myself))
+END
+
+IF
+	Global("D5CHAPRF","GLOBAL",1)
+THEN
+	RESPONSE #100
+	SetNumTimesTalkedTo(0)
+	SetGlobal("D5KITTLK","GLOBAL",0)
+	SetGlobal("D5ISDUAL","GLOBAL",0)
+	SetGlobal("D5CLSTLK","GLOBAL",0)
+	SetGlobal("D5CHACLS","GLOBAL",0)
+	SetGlobal("D5STRSET","GLOBAL",0)
+	SetGlobal("D5DEXSET","GLOBAL",0)
+	SetGlobal("D5CONSET","GLOBAL",0)
+	SetGlobal("D5INTSET","GLOBAL",0)
+	SetGlobal("D5WISSET","GLOBAL",0)
+	SetGlobal("D5CHRSET","GLOBAL",0)
+	SetGlobal("D5STRVALUE","GLOBAL",0)
+	SetGlobal("D5DEXVALUE","GLOBAL",0)
+	SetGlobal("D5CONVALUE","GLOBAL",0)
+	SetGlobal("D5INTVALUE","GLOBAL",0)
+	SetGlobal("D5WISVALUE","GLOBAL",0)
+	SetGlobal("D5CHRVALUE","GLOBAL",0)
+	SetGlobal("D5STTTLK","GLOBAL",0)
+	SetGlobal("D5PRFTLK","GLOBAL",0)
+	SetGlobal("D5CHAKIT","GLOBAL",0)
+	SetGlobal("D5FIKIT","GLOBAL",0)
+	SetGlobal("D5PAKIT","GLOBAL",0)
+	SetGlobal("D5RAKIT","GLOBAL",0)
+	SetGlobal("D5THKIT","GLOBAL",0)
+	SetGlobal("D5BAKIT","GLOBAL",0)
+	SetGlobal("D5CLKIT","GLOBAL",0)
+	SetGlobal("D5DRKIT","GLOBAL",0)
+	SetGlobal("D5SHKIT","GLOBAL",0)
+	SetGlobal("D5MOKIT","GLOBAL",0)
+	SetGlobal("D5MAKIT","GLOBAL",0)
+	SetGlobal("D5SOKIT","GLOBAL",0)
+	SetGlobal("D5FCKIT","GLOBAL",0)
+	SetGlobal("D5FDKIT","GLOBAL",0)
+	SetGlobal("D5FMKIT","GLOBAL",0)
+	SetGlobal("D5FTKIT","GLOBAL",0)
+	SetGlobal("D5CRKIT","GLOBAL",0)
+	SetGlobal("D5CTKIT","GLOBAL",0)
+	SetGlobal("D5CMKIT","GLOBAL",0)
+	SetGlobal("D5MTKIT","GLOBAL",0)
+	SetGlobal("D5REMWSPLS","GLOBAL",0)
+	SetGlobal("D5REMCSPLS","GLOBAL",0)
+	SetGlobal("D5REMDSPLS","GLOBAL",0)
+	SetGlobal("D5CHAPRF","GLOBAL",0)
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSPRA",Myself))
+	DestroySelf()               // reset all variables, then destroy self
+END
+
+IF
+	Global("D5CHAPRF","GLOBAL",0)
 THEN
 	RESPONSE #100
 	SetNumTimesTalkedTo(0)

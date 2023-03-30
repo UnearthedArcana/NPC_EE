@@ -1,4 +1,4 @@
-// v2.4 - classes var fix fix
+// v2.5 - profsmax partial fix
 
 
 //__________________________________________________________________________________
@@ -1612,7 +1612,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET fighter_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET fighter_sp_min_level = 9
+        SET fighter_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET fighter_ma_min_level = 0
@@ -1630,7 +1630,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET fighter_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET fighter_ma_min_level = 9
+        SET fighter_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET fighter_hi_min_level = 0
@@ -1648,7 +1648,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET fighter_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET fighter_hi_min_level = 9
+        SET fighter_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET fighter_gm_min_level = 0
@@ -1666,7 +1666,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET fighter_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET fighter_gm_min_level = 9
+        SET fighter_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~ranger~) BEGIN
@@ -1686,7 +1686,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET ranger_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET ranger_sp_min_level = 9
+        SET ranger_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET ranger_ma_min_level = 0
@@ -1704,7 +1704,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET ranger_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET ranger_ma_min_level = 9
+        SET ranger_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET ranger_hi_min_level = 0
@@ -1722,7 +1722,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET ranger_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET ranger_hi_min_level = 9
+        SET ranger_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET ranger_gm_min_level = 0
@@ -1740,7 +1740,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET ranger_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET ranger_gm_min_level = 9
+        SET ranger_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~paladin~) BEGIN
@@ -1760,7 +1760,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET paladin_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET paladin_sp_min_level = 9
+        SET paladin_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET paladin_ma_min_level = 0
@@ -1778,7 +1778,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET paladin_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET paladin_ma_min_level = 9
+        SET paladin_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET paladin_hi_min_level = 0
@@ -1796,7 +1796,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET paladin_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET paladin_hi_min_level = 9
+        SET paladin_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET paladin_gm_min_level = 0
@@ -1814,7 +1814,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET paladin_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET paladin_gm_min_level = 9
+        SET paladin_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~cleric~) BEGIN
@@ -1834,7 +1834,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET cleric_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET cleric_sp_min_level = 9
+        SET cleric_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET cleric_ma_min_level = 0
@@ -1852,7 +1852,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET cleric_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET cleric_ma_min_level = 9
+        SET cleric_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET cleric_hi_min_level = 0
@@ -1870,7 +1870,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET cleric_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET cleric_hi_min_level = 9
+        SET cleric_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET cleric_gm_min_level = 0
@@ -1888,7 +1888,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET cleric_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET cleric_gm_min_level = 9
+        SET cleric_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~druid~) BEGIN
@@ -1908,10 +1908,10 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET druid_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET fighter_sp_min_level = 9
+        SET druid_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
-        SET fighter_sp_min_level = 0
+        SET druid_sp_min_level = 0
       END
       PATCH_IF (~%level_3_max%~ = 3) BEGIN
         SET druid_ma_min_level = 1
@@ -1926,7 +1926,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET druid_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET druid_ma_min_level = 9
+        SET druid_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET druid_hi_min_level = 0
@@ -1944,7 +1944,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET druid_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET druid_hi_min_level = 9
+        SET druid_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET druid_gm_min_level = 0
@@ -1962,7 +1962,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET druid_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET druid_gm_min_level = 9
+        SET druid_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~shaman~) BEGIN
@@ -1982,7 +1982,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET shaman_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET shaman_sp_min_level = 9
+        SET shaman_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET shaman_ma_min_level = 0
@@ -2000,7 +2000,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET shaman_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET shaman_ma_min_level = 9
+        SET shaman_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET shaman_hi_min_level = 0
@@ -2018,7 +2018,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET shaman_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET shaman_hi_min_level = 9
+        SET shaman_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET shaman_gm_min_level = 0
@@ -2036,7 +2036,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET shaman_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET shaman_gm_min_level = 9
+        SET shaman_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~thief~) BEGIN
@@ -2056,7 +2056,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET thief_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET thief_sp_min_level = 9
+        SET thief_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET thief_ma_min_level = 0
@@ -2074,7 +2074,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET thief_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET thief_ma_min_level = 9
+        SET thief_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET thief_hi_min_level = 0
@@ -2092,7 +2092,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET thief_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET thief_hi_min_level = 9
+        SET thief_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET thief_gm_min_level = 0
@@ -2110,7 +2110,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET thief_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET thief_gm_min_level = 9
+        SET thief_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~bard~) BEGIN
@@ -2130,7 +2130,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET bard_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET bard_sp_min_level = 9
+        SET bard_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET bard_ma_min_level = 0
@@ -2148,7 +2148,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET bard_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET bard_ma_min_level = 9
+        SET bard_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET bard_hi_min_level = 0
@@ -2166,7 +2166,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET bard_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET bard_hi_min_level = 9
+        SET bard_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET bard_gm_min_level = 0
@@ -2184,7 +2184,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET bard_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET bard_gm_min_level = 9
+        SET bard_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~mage~) BEGIN
@@ -2204,7 +2204,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET mage_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET mage_sp_min_level = 9
+        SET mage_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET mage_ma_min_level = 0
@@ -2222,7 +2222,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET mage_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET fighter_ma_min_level = 9
+        SET fighter_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET mage_hi_min_level = 0
@@ -2240,7 +2240,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET mage_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET mage_hi_min_level = 9
+        SET mage_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET fighter_hi_min_level = 0
@@ -2258,7 +2258,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET mage_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET mage_gm_min_level = 9
+        SET mage_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~sorcerer~) BEGIN
@@ -2278,7 +2278,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET sorcerer_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET sorcerer_sp_min_level = 9
+        SET sorcerer_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET sorcerer_ma_min_level = 0
@@ -2296,7 +2296,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET sorcerer_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET sorcerer_ma_min_level = 9
+        SET sorcerer_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET sorcerer_hi_min_level = 0
@@ -2314,7 +2314,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET sorcerer_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET fighter_hi_min_level = 9
+        SET fighter_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET sorcerer_hi_min_level = 0
@@ -2332,7 +2332,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET sorcerer_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET sorcerer_gm_min_level = 9
+        SET sorcerer_gm_min_level = 0
       END
     END
     PATCH_IF (~%prof_class%~ STRING_EQUAL_CASE ~monk~) BEGIN
@@ -2352,7 +2352,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET monk_sp_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 2) AND !(~%level_6_max%~ = 2) AND !(~%level_9_max%~ = 2) AND (~%overall_max%~ > 1) BEGIN
-        SET monk_sp_min_level = 9
+        SET monk_sp_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 3) OR (~%level_1_max%~ > 3) BEGIN
         SET monk_ma_min_level = 0
@@ -2370,7 +2370,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET monk_ma_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 3) AND !(~%level_6_max%~ = 3) AND !(~%level_9_max%~ = 3) AND (~%overall_max%~ > 2) BEGIN
-        SET monk_ma_min_level = 9
+        SET monk_ma_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 4) OR (~%level_1_max%~ > 4) BEGIN
         SET monk_hi_min_level = 0
@@ -2388,7 +2388,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET monk_hi_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 4) AND !(~%level_6_max%~ = 4) AND !(~%level_9_max%~ = 4) AND (~%overall_max%~ > 3) BEGIN
-        SET monk_hi_min_level = 9
+        SET monk_hi_min_level = 0
       END
       PATCH_IF (~%level_1_max%~ = 5) OR (~%level_1_max%~ > 5) BEGIN
         SET monk_gm_min_level = 0
@@ -2406,7 +2406,7 @@ COPY_EXISTING ~profsmax.2da~ ~override~
         SET monk_gm_min_level = 50
       END
       PATCH_IF !(~%level_3_max%~ = 5) AND !(~%level_6_max%~ = 5) AND !(~%level_9_max%~ = 5) AND (~%overall_max%~ > 4) BEGIN
-        SET monk_gm_min_level = 9
+        SET monk_gm_min_level = 0
       END
     END
   END

@@ -335,6 +335,7 @@ IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2004 DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
  IF ~~ THEN REPLY @2005 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",0)~ EXIT 
  IF ~~ THEN REPLY @2006 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2003 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAPRF","GLOBAL",1)~ EXIT 
  IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
 END
 >>>>>>>> 
@@ -563,6 +564,21 @@ END
 //___________________________________________________________________________________
 
 
+//proficiency-change dialogue_________________________________________________________
+//
+<<<<<<<< d5/d5prftlk.d
+BEGIN ~D5PRFTLK~
+
+IF ~Global("D5PRFTLK","GLOBAL",1)~ THEN BEGIN d5prftlk
+ SAY @2017
+ IF ~~ THEN REPLY @2018 DO ~SetGlobal("D5CHAPRF","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CHAPRF","GLOBAL",0)~ EXIT 
+END
+>>>>>>>> 
+COPY ~d5/d5prftlk.d~ ~weidu_external/npc_ee/compile/d5prftlk.d~
+//___________________________________________________________________________________
+
+
 
 //___________________________________________________________________________________
 //_____________________________________PROFS_________________________________________
@@ -725,7 +741,20 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5cs000.spl~) BEGIN
   COPY_EXISTING ~d5cprfa.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 5 STR_VAR resource = ~d5cs000~ END
 END
+//__________________________________________________________________________________
 
+//distinct prof-only dlg_____________________________________________________________
+//
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5cspra.spl~) BEGIN
+
+ OUTER_SPRINT prof_script_name ~d5cspr~
+ OUTER_SET script_level_one = 1
+ OUTER_SET script_higher_levels = 1
+ OUTER_SPRINT class_dlgs ~all~
+
+ LAM PROF_DIALOGUE
+
+END
 //__________________________________________________________________________________
 
 
@@ -1916,6 +1945,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
   COPY_EXISTING ~%cre%~ ~override~
 	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
 	  ADD_CRE_ITEM ~d5_ckit~ #1 #0 #0 ~IDENTIFIED~ ~INV~
+	  REMOVE_CRE_ITEM ~d5cspra~
 	END
   BUT_ONLY
 END
@@ -1950,6 +1980,7 @@ COMPILE ~weidu_external/npc_ee/compile/d5_ckit.baf~
 COMPILE ~weidu_external/npc_ee/compile/d5stttlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5kittlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5clstlk.d~
+COMPILE ~weidu_external/npc_ee/compile/d5prftlk.d~
 //__________________________________________________________________________________
 
 
