@@ -11,7 +11,7 @@
 <div class="section">
   <p><strong>Author:</strong> <a href="http://forums.gibberlings3.net/index.php?showuser=6306">Duns Scotus, the SubtleDoctor</a><br />
 </p>
-  <p><strong> Version 5.8 </strong><br />
+  <p><strong> Version 5.9 </strong><br />
     <strong> Languages:</strong> English<br />
     <strong>Platforms: </strong>Windows, Mac OS X</p>
 </div>
