@@ -1460,7 +1460,7 @@ THEN
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywar,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathwar,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellswar,SET)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D52STWF",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D52P114",Myself))
 	Continue()
 END
 IF
@@ -2323,7 +2323,7 @@ THEN
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D52STWF",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D52P114",Myself))
 	Continue()
 END
 IF
@@ -2718,7 +2718,7 @@ THEN
 	SetGlobal("D5REMCSPLS","GLOBAL",0)
 	SetGlobal("D5REMDSPLS","GLOBAL",0)
 	SetGlobal("D5CHAPRF","GLOBAL",0)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSPRA",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5NPRFA",Myself))
 	DestroySelf()               // reset all variables, then destroy self
 END
 
