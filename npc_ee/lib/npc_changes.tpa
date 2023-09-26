@@ -1759,12 +1759,18 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5vb%bd_num%~ END
     END
   END
-  PATCH_FOR_EACH ki IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5ki%ki%l~ END
+  FOR (ki_num = 1; ki_num < 30; ++ki_num) BEGIN
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5ki%ki_num%l.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5ki%ki_num%l~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5nj%ki_num%l.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5nj%ki_num%l~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc%ki_num%l.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5sc%ki_num%l~ END
+    END
   END
-  PATCH_FOR_EACH nj IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5nj%nj%l~ END
-  END
+// fnp druid sc stuff
   PATCH_FOR_EACH 172_spl IN
     ~d5nctua~
     ~d5nctux~
@@ -1829,6 +1835,9 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5prof%letr%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5prof%letr%~ END
     END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc00%letr%.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5sc00%letr%~ END
+    END
   END
   FOR (bd_num = 1; bd_num < 9; ++bd_num) BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5bd0%bd_num%a.spl~) BEGIN
@@ -1839,6 +1848,9 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5vb0%bd_num%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5vb0%bd_num%~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc%bd_num%i.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5sc%bd_num%i~ END
     END
   END
   FOR (bd_num = 10; bd_num < 99; ++bd_num) BEGIN
@@ -1852,11 +1864,16 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5vb%bd_num%~ END
     END
   END
-  PATCH_FOR_EACH ki IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5ki%ki%i~ END
-  END
-  PATCH_FOR_EACH nj IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5nj%nj%i~ END
+  FOR (ki_num = 1; ki_num < 30; ++ki_num) BEGIN
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5ki%ki_num%i.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5ki%ki_num%i~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5nj%ki_num%i.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5nj%ki_num%i~ END
+    END
+    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc%ki_num%i.spl~) BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5sc%ki_num%i~ END
+    END
   END
   PATCH_FOR_EACH 112_itm IN
     ~d5mana~
