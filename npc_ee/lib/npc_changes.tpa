@@ -335,6 +335,7 @@ IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2004 DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
  IF ~~ THEN REPLY @2005 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",0)~ EXIT 
  IF ~~ THEN REPLY @2006 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2003 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAPRF","GLOBAL",1)~ EXIT 
  IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
 END
 >>>>>>>> 
@@ -563,6 +564,21 @@ END
 //___________________________________________________________________________________
 
 
+//proficiency-change dialogue_________________________________________________________
+//
+<<<<<<<< d5/d5prftlk.d
+BEGIN ~D5PRFTLK~
+
+IF ~Global("D5PRFTLK","GLOBAL",1)~ THEN BEGIN d5prftlk
+ SAY @2017
+ IF ~~ THEN REPLY @2018 DO ~SetGlobal("D5CHAPRF","GLOBAL",1)~ EXIT
+ IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CHAPRF","GLOBAL",0)~ EXIT
+END
+>>>>>>>> 
+COPY ~d5/d5prftlk.d~ ~weidu_external/npc_ee/compile/d5prftlk.d~
+//___________________________________________________________________________________
+
+
 
 //___________________________________________________________________________________
 //_____________________________________PROFS_________________________________________
@@ -649,7 +665,6 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5prfch.spl~) BEGIN
         LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5c%d5_csp_stat%%d5_csp_letr%~ END
       END
     END
-    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5c%d5_csp_stat%%d5_csp_letr%~ END
 
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cx115~ END
     PATCH_FOR_EACH d5_csp_num IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ ~8~ ~9~ BEGIN
@@ -714,18 +729,90 @@ END
 //
 INCLUDE ~%MOD_FOLDER%/lib/dialprof.tpa~
 
+/*
 OUTER_SPRINT prof_script_name ~d5cprf~
 OUTER_SET script_level_one = 1
 OUTER_SET script_higher_levels = 0
 OUTER_SPRINT class_dlgs ~all~
+*/
 
-LAM PROF_DIALOGUE
+LAF PROF_DIALOGUE INT_VAR script_level_one = 1 script_higher_levels = 0 ignore_max = 0 STR_VAR prof_script_name = ~d5cprf~ class_dlgs = ~all~ END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5cs000.spl~) BEGIN
-  COPY_EXISTING ~d5cprfa.spl~ ~override~
+  COPY_EXISTING ~d5cprf.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 4 duration = 5 STR_VAR resource = ~d5cs000~ END
 END
+//__________________________________________________________________________________
 
+
+//distinct prof-only dlg_____________________________________________________________
+//
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5nprfa.spl~) BEGIN
+
+/*
+ OUTER_SPRINT prof_script_name ~d5nprfa~
+ OUTER_SET script_level_one = 1
+ OUTER_SET script_higher_levels = 1
+ OUTER_SPRINT class_dlgs ~all~
+*/
+
+ LAF PROF_DIALOGUE INT_VAR script_level_one = 1 script_higher_levels = 1 ignore_max = 0 STR_VAR prof_script_name = ~d5nprf~ class_dlgs = ~all~ END
+ 
+ COPY_EXISTING ~d5nprfa.spl~ ~override~
+//    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 12 parameter2 = 105 timing = 1 STR_VAR resource = ~d52P114~ END
+//    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 18 parameter2 = 105 timing = 1 STR_VAR resource = ~d52P114~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5profz~ END
+    PATCH_FOR_EACH d5_prof_level IN ~p~ ~s~ ~m~ ~h~ BEGIN
+      PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
+      END
+    END
+    PATCH_FOR_EACH d5_prof_level IN ~1~ ~2~ ~3~ ~4~ ~5~ BEGIN
+      PATCH_FOR_EACH d5_prof_wep IN ~lswo~ ~sswo~ ~dagg~ ~scim~ ~2swo~ ~spea~ ~staf~ ~club~ ~flai~ ~hamm~ ~baxe~ ~bows~ ~slin~ ~xbow~ ~s2hw~ ~ssws~ ~ssns~ ~sdw~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5%d5_prof_level%%d5_prof_wep%~ END
+      END
+    END
+    PATCH_FOR_EACH d5_prof_level IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ BEGIN
+      PATCH_FOR_EACH d5_prof_wep IN ~89~ ~90~ ~91~ ~92~ ~93~ ~94~ ~95~ ~96~ ~97~ ~98~ ~99~ ~100~ ~101~ ~102~ ~103~ ~104~ ~105~ ~106~ ~107~ ~108~ ~109~ ~110~ ~111~ ~112~ ~113~ ~114~ ~115~ ~124~ ~127~ ~134~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5%d5_prof_level%P%d5_prof_wep%~ END
+      END
+    END
+// should also remove any proficiency-related effects... e.g. from SoB CSP
+    PATCH_FOR_EACH d5_csp_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ BEGIN
+      PATCH_FOR_EACH d5_csp_stat IN ~104~ ~105~ ~106~ ~107~ ~108~ ~109~ ~110~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cs%d5_csp_stat%%d5_csp_letr%b~ END
+      END
+    END
+    PATCH_FOR_EACH d5_csp_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ BEGIN
+      PATCH_FOR_EACH d5_csp_stat IN ~115~ ~124~ ~127~ ~134~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5c%d5_csp_stat%%d5_csp_letr%~ END
+      END
+    END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cx115~ END
+    PATCH_FOR_EACH d5_csp_num IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ ~8~ ~9~ BEGIN
+      PATCH_FOR_EACH d5_csp_dlg IN ~f~ ~m~ ~i~ BEGIN
+        LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cs%d5_csp_dlg%%d5_csp_num%~ END
+      END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csi%d5_csp_num%i~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csi%d5_csp_num%b~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csi%d5_csp_num%g~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csp%d5_csp_num%~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5csp%d5_csp_num%a~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cxp%d5_csp_num%b~ END
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cxp%d5_csp_num%l~ END
+    END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5cilts~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5ciltz~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5ciltf~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5cix1a~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5cix1z~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5cix-1~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5cistt~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5ci206~ END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5ci000~ END
+ IF_EXISTS
+
+END
 //__________________________________________________________________________________
 
 
@@ -734,6 +821,194 @@ END
 //_____________________________________MISC__________________________________________
 //___________________________________________________________________________________
 
+
+//bump for thief skills______________________________________________________________
+//
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5csm8.spl~) BEGIN
+
+<<<<<<<< d5/d5thskl.d
+BEGIN ~D5THSKL~
+
+IF ~Global("D5THSKL","GLOBAL",1)~ THEN BEGIN d5thskl
+ SAY @12301
+ IF ~Global("D5SNEAK","GLOBAL",0)~ THEN REPLY @12411 GOTO d5thskl_1				//	sneak
+ IF ~Global("D5PIKPOK","GLOBAL",0)~ THEN REPLY @12412 GOTO d5thskl_2			//	pick pockets
+ IF ~Global("D5PIKLOK","GLOBAL",0)~ THEN REPLY @12413 GOTO d5thskl_3			//	pick locks
+ IF ~Global("D5FITRAP","GLOBAL",0)~ THEN REPLY @12414 GOTO d5thskl_4			//	find traps
+ IF ~Global("D5DETILL","GLOBAL",0)~ THEN REPLY @12415 GOTO d5thskl_5			//	detect illusions
+ IF ~Global("D5SETTRP","GLOBAL",0)~ THEN REPLY @12416 GOTO d5thskl_6			//	set traps
+END
+
+IF ~~ THEN BEGIN d5thskl_1 											// 
+ SAY @12411
+ IF ~~ THEN REPLY @12302 DO ~ApplySpellRES("D5CSM8U",Myself)~ EXIT 
+ IF ~~ THEN REPLY @12303 GOTO d5thskl 
+END
+IF ~~ THEN BEGIN d5thskl_2												// 
+ SAY @12412
+ IF ~~ THEN REPLY @12302 DO ~ApplySpellRES("D5CSM8V",Myself)~ EXIT 
+ IF ~~ THEN REPLY @12303 GOTO d5thskl 
+END
+IF ~~ THEN BEGIN d5thskl_3 											// 
+ SAY @12413
+ IF ~~ THEN REPLY @12302 DO ~ApplySpellRES("D5CSM8W",Myself)~ EXIT 
+ IF ~~ THEN REPLY @12303 GOTO d5thskl 
+END
+IF ~~ THEN BEGIN d5thskl_4 											// 
+ SAY @12414
+ IF ~~ THEN REPLY @12302 DO ~ApplySpellRES("D5CSM8X",Myself)~ EXIT 
+ IF ~~ THEN REPLY @12303 GOTO d5thskl 
+END
+IF ~~ THEN BEGIN d5thskl_5 											// 
+ SAY @12415
+ IF ~~ THEN REPLY @12302 DO ~ApplySpellRES("D5CSM8Y",Myself)~ EXIT 
+ IF ~~ THEN REPLY @12303 GOTO d5thskl 
+END
+IF ~~ THEN BEGIN d5thskl_6 											// 
+ SAY @12416
+ IF ~~ THEN REPLY @12302 DO ~ApplySpellRES("D5CSM8Z",Myself)~ EXIT 
+ IF ~~ THEN REPLY @12303 GOTO d5thskl 
+END
+>>>>>>>>
+COPY ~d5/d5thskl.d~ ~weidu_external/%MOD_FOLDER%/compile/d5thskl.d~
+
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5thskl.d~
+
+<<<<<<<< d5/d5thskl.baf
+IF
+	Global("D5THSKL","GLOBAL",0)
+	Class(LastSummonerOf(Myself),BARD)
+THEN
+	RESPONSE #100
+	SetGlobal("D5SNEAK","GLOBAL",1)
+	SetGlobal("D5PIKLOK","GLOBAL",1)
+	SetGlobal("D5FITRAP","GLOBAL",1)
+	SetGlobal("D5DETILL","GLOBAL",1)
+	SetGlobal("D5SETTRP","GLOBAL",1)	
+	SetGlobal("D5THSKL","GLOBAL",1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("D5THSKL",Myself))
+END
+
+IF
+	Global("D5THSKL","GLOBAL",0)
+	OR(2)
+	  Class(LastSummonerOf(Myself),RANGER)
+	  Class(LastSummonerOf(Myself),MONK)
+THEN
+	RESPONSE #100
+	SetGlobal("D5PIKPOK","GLOBAL",1)
+	SetGlobal("D5PIKLOK","GLOBAL",1)
+	SetGlobal("D5FITRAP","GLOBAL",1)
+	SetGlobal("D5DETILL","GLOBAL",1)
+	SetGlobal("D5SETTRP","GLOBAL",1)	
+	SetGlobal("D5THSKL","GLOBAL",1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("D5THSKL",Myself))
+END
+
+IF
+	Global("D5THSKL","GLOBAL",0)
+	!Class(LastSummonerOf(Myself),RANGER)
+	!Class(LastSummonerOf(Myself),MONK)
+	!Class(LastSummonerOf(Myself),BARD)
+THEN
+	RESPONSE #100
+	SetGlobal("D5THSKL","GLOBAL",1)
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("D5THSKL",Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+	SetGlobal("D5THSKL","GLOBAL",0)
+	SetGlobal("D5SNEAK","GLOBAL",0)
+	SetGlobal("D5PIKPOK","GLOBAL",0)
+	SetGlobal("D5PIKLOK","GLOBAL",0)
+	SetGlobal("D5FITRAP","GLOBAL",0)
+	SetGlobal("D5DETILL","GLOBAL",0)
+	SetGlobal("D5SETTRP","GLOBAL",0)	
+	DestroySelf() 
+END
+
+>>>>>>>>
+COPY ~d5/d5thskl.baf~ ~weidu_external/%MOD_FOLDER%/compile/d5thskl.baf~
+
+COMPILE ~weidu_external/%MOD_FOLDER%/compile/d5thskl.baf~
+
+CREATE SPL ~d5csm8~	//	skill focus spell
+  SAY NAME1 @12367
+  SAY UNIDENTIFIED_DESC @12368
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 STR_VAR icon = ~d5csm8~ END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 0 parameter2 = 2 timing = 0 duration = 12 STR_VAR resource = ~d5csm8~ END
+
+CREATE EFF ~d5csm8~
+  WRITE_LONG 0x10 67
+  WRITE_LONG 0x14 1
+  WRITE_LONG 0x28 12
+  WRITE_SHORT 0x2c 100
+  WRITE_ASCII 0x30 ~d5csm8~ #8
+  WRITE_ASCII 0x70 ~shskull~ #8
+
+COPY ~%MOD_FOLDER%/data/csp/d5_dlg.cre~ ~override/d5csm8.cre~
+  WRITE_EVALUATED_ASCII 0x248 ~d5thskl~ #8
+
+COPY ~%MOD_FOLDER%/data/d5csm8.bam~ ~override~
+
+CREATE SPL ~d5csm8t~	//	skill focus spell
+  SAY NAME1 ~~
+  SAY UNIDENTIFIED_DESC ~~
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
+
+CREATE SPL ~d5csm8u~	//	skill focus spell
+  SAY NAME1 @12411
+  SAY UNIDENTIFIED_DESC @12411
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 275 target = 1 parameter1 = 10 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 59 target = 1 parameter1 = 10 parameter2 = 0 timing = 9 END
+CREATE SPL ~d5csm8v~	//	skill focus spell
+  SAY NAME1 @12412
+  SAY UNIDENTIFIED_DESC @12412
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 92 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+CREATE SPL ~d5csm8w~	//	skill focus spell
+  SAY NAME1 @12413
+  SAY UNIDENTIFIED_DESC @12413
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 90 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+CREATE SPL ~d5csm8x~	//	skill focus spell
+  SAY NAME1 @12414
+  SAY UNIDENTIFIED_DESC @12414
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 91 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+CREATE SPL ~d5csm8y~	//	skill focus spell
+  SAY NAME1 @12415
+  SAY UNIDENTIFIED_DESC @12415
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 276 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+CREATE SPL ~d5csm8z~	//	skill focus spell
+  SAY NAME1 @12416
+  SAY UNIDENTIFIED_DESC @12416
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 277 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+
+END
 
 //initial saving throw values________________________________________________________
 //
@@ -1105,6 +1380,7 @@ COPY ~npc_ee/lib/d5_base.spl~ ~override/d5nsplw.spl~
 //
 COPY ~npc_ee/data/npc_ee_splskn.2da~ ~override~
 
+INCLUDE ~%MOD_FOLDER%/lib/semi_sorcerer.tpa~
 INCLUDE ~%MOD_FOLDER%/lib/semi_spontaneous.tpa~
 
 LAF sorcerer_spell_learning STR_VAR menu_suffix = ~u~ spl_list = ~d5clsp~ spl_clon_list = ~d5xclons~ itm_name = ~d5clsp~ itm_ga_spl = ~d5clsp1~ spl_ap_spl = ~d5clsp2~ spl_tbl = ~NPC_EE_SPLSKN~ END
@@ -1759,18 +2035,12 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5vb%bd_num%~ END
     END
   END
-  FOR (ki_num = 1; ki_num < 30; ++ki_num) BEGIN
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5ki%ki_num%l.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5ki%ki_num%l~ END
-    END
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5nj%ki_num%l.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5nj%ki_num%l~ END
-    END
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc%ki_num%l.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5sc%ki_num%l~ END
-    END
+  PATCH_FOR_EACH ki IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5ki%ki%l~ END
   END
-// fnp druid sc stuff
+  PATCH_FOR_EACH nj IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 321 timing = 1 STR_VAR resource = EVAL ~d5nj%nj%l~ END
+  END
   PATCH_FOR_EACH 172_spl IN
     ~d5nctua~
     ~d5nctux~
@@ -1835,9 +2105,6 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5prof%letr%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5prof%letr%~ END
     END
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc00%letr%.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5sc00%letr%~ END
-    END
   END
   FOR (bd_num = 1; bd_num < 9; ++bd_num) BEGIN
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5bd0%bd_num%a.spl~) BEGIN
@@ -1848,9 +2115,6 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     END
     PATCH_IF (FILE_EXISTS_IN_GAME ~d5vb0%bd_num%.spl~) BEGIN
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5vb0%bd_num%~ END
-    END
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc%bd_num%i.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5sc%bd_num%i~ END
     END
   END
   FOR (bd_num = 10; bd_num < 99; ++bd_num) BEGIN
@@ -1864,16 +2128,11 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
       LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5vb%bd_num%~ END
     END
   END
-  FOR (ki_num = 1; ki_num < 30; ++ki_num) BEGIN
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5ki%ki_num%i.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5ki%ki_num%i~ END
-    END
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5nj%ki_num%i.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5nj%ki_num%i~ END
-    END
-    PATCH_IF (FILE_EXISTS_IN_GAME ~d5sc%ki_num%i.spl~) BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5sc%ki_num%i~ END
-    END
+  PATCH_FOR_EACH ki IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5ki%ki%i~ END
+  END
+  PATCH_FOR_EACH nj IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5nj%nj%i~ END
   END
   PATCH_FOR_EACH 112_itm IN
     ~d5mana~
@@ -1933,6 +2192,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
   COPY_EXISTING ~%cre%~ ~override~
 	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
 	  ADD_CRE_ITEM ~d5_ckit~ #1 #0 #0 ~IDENTIFIED~ ~INV~
+	  REMOVE_CRE_ITEM ~d5cspra~
 	END
   BUT_ONLY
 END
@@ -1967,6 +2227,7 @@ COMPILE ~weidu_external/npc_ee/compile/d5_ckit.baf~
 COMPILE ~weidu_external/npc_ee/compile/d5stttlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5kittlk.d~
 COMPILE ~weidu_external/npc_ee/compile/d5clstlk.d~
+COMPILE ~weidu_external/npc_ee/compile/d5prftlk.d~
 //__________________________________________________________________________________
 
 
