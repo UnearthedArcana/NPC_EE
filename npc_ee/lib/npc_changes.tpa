@@ -951,7 +951,7 @@ CREATE EFF ~d5csm8~
   WRITE_ASCII 0x30 ~d5csm8~ #8
   WRITE_ASCII 0x70 ~shskull~ #8
 
-COPY ~%MOD_FOLDER%/data/csp/d5_dlg.cre~ ~override/d5csm8.cre~
+COPY ~%MOD_FOLDER%/data/d5_dlg.cre~ ~override/d5csm8.cre~
   WRITE_EVALUATED_ASCII 0x248 ~d5thskl~ #8
 
 COPY ~%MOD_FOLDER%/data/d5csm8.bam~ ~override~
