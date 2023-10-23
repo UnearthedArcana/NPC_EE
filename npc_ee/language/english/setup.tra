@@ -103,6 +103,8 @@ Change Ability Scores?~
 @2090  = ~Initial weapon proficiency~
 @2091  = ~Advance weapon proficiency~
 @2092  = ~Choose a different weapon~
+@2093  = ~Restore Level 1 Weapon Proficiencies~
+@2094  = ~Select All Weapon Proficiencies~
 //
 @2100  = ~Advance to Proficiency (+)~
 @2101  = ~Advance to Proficiency (+) with Bastard Swords~

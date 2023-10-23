@@ -332,11 +332,11 @@ BEGIN ~D5KITTLK~
 
 IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  SAY @9
- IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2004 DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
+ IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2004 DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
  IF ~~ THEN REPLY @2005 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",0)~ EXIT 
  IF ~~ THEN REPLY @2006 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
- IF ~~ THEN REPLY @2003 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAPRF","GLOBAL",1)~ EXIT 
- IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2003 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAPRF","GLOBAL",0)~ EXIT 
 END
 >>>>>>>> 
 COPY ~d5/d5kittlk.d~ ~weidu_external/npc_ee/compile/d5kittlk.d~
@@ -729,14 +729,19 @@ END
 //
 INCLUDE ~%MOD_FOLDER%/lib/dialprof.tpa~
 
-/*
-OUTER_SPRINT prof_script_name ~d5cprf~
-OUTER_SET script_level_one = 1
-OUTER_SET script_higher_levels = 0
-OUTER_SPRINT class_dlgs ~all~
-*/
-
 LAF PROF_DIALOGUE INT_VAR script_level_one = 1 script_higher_levels = 0 ignore_max = 0 STR_VAR prof_script_name = ~d5cprf~ class_dlgs = ~all~ END
+
+COPY_EXISTING ~d5cprf.spl~ ~override~
+  	SAY NAME1 @2093
+	SAY UNIDENTIFIED_DESC @2093
+
+CREATE SPL ~d5cprf1~	
+  SAY NAME1 @2093
+  SAY UNIDENTIFIED_DESC @2093
+  WRITE_SHORT 0x1c 4
+  WRITE_LONG 0x34 1
+  LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5cprf~ END
 
 ACTION_IF (FILE_EXISTS_IN_GAME ~d5cs000.spl~) BEGIN
   COPY_EXISTING ~d5cprf.spl~ ~override~
@@ -747,18 +752,23 @@ END
 
 //distinct prof-only dlg_____________________________________________________________
 //
-ACTION_IF !(FILE_EXISTS_IN_GAME ~d5nprfa.spl~) BEGIN
-
-/*
- OUTER_SPRINT prof_script_name ~d5nprfa~
- OUTER_SET script_level_one = 1
- OUTER_SET script_higher_levels = 1
- OUTER_SPRINT class_dlgs ~all~
-*/
+ACTION_IF !(FILE_EXISTS_IN_GAME ~d5nprf.spl~) BEGIN
 
  LAF PROF_DIALOGUE INT_VAR script_level_one = 1 script_higher_levels = 1 ignore_max = 0 STR_VAR prof_script_name = ~d5nprf~ class_dlgs = ~all~ END
  
- COPY_EXISTING ~d5nprfa.spl~ ~override~
+ COPY_EXISTING ~d5nprf.spl~ ~override~
+    SAY NAME1 @2094
+    SAY UNIDENTIFIED_DESC @2094
+
+ CREATE SPL ~d5nprf1~	
+    SAY NAME1 @2094
+    SAY UNIDENTIFIED_DESC @2094
+    WRITE_SHORT 0x1c 4
+    WRITE_LONG 0x34 1
+    LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
+    LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 1 STR_VAR resource = ~d5nprf~ END
+ 
+ COPY_EXISTING ~d5nprf.spl~ ~override~
 //    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 12 parameter2 = 105 timing = 1 STR_VAR resource = ~d52P114~ END
 //    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 326 target = 1 parameter1 = 18 parameter2 = 105 timing = 1 STR_VAR resource = ~d52P114~ END
     LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 321 target = 1 timing = 1 STR_VAR resource = ~d5profz~ END

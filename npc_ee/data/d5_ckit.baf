@@ -2728,7 +2728,7 @@ THEN
 	SetGlobal("D5REMCSPLS","GLOBAL",0)
 	SetGlobal("D5REMDSPLS","GLOBAL",0)
 	SetGlobal("D5CHAPRF","GLOBAL",0)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5NPRFA",Myself))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5NPRF",Myself))
 	DestroySelf()               // reset all variables, then destroy self
 END
 
