@@ -19,6 +19,7 @@ LANGUAGE
 LANGUAGE
   ~French~
   ~french~
+  ~npc_ee/language/english/setup.tra~ // fallback to english
   ~npc_ee/language/french/setup.tra~
 
 
