@@ -9,7 +9,7 @@
 <body>
 <h1>NPCs Enhanced... um, for Everyone! (a.k.a. NPC_EE)</h1>
 <div class="section">
-  <p><strong> Version 6.3 </strong><br />
+  <p><strong> Version 6.4 </strong><br />
   <strong> Languages:</strong> English</p>
   <p><strong>Author: <a href="http://forums.gibberlings3.net/index.php?showuser=6306">The Subtle Doctor</a></strong></p>
   <p><strong><a href="https://github.com/UnearthedArcana/NPC_EE">Home page</a></strong></p>

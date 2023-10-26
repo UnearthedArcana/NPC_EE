@@ -334,7 +334,7 @@ IF ~Global("D5KITTLK","GLOBAL",1)~ THEN BEGIN d5kittlk
  SAY @9
  IF ~Global("D5ISDUAL","GLOBAL",0)~ THEN REPLY @2004 DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~ApplySpellRES("D5_NUKT",myself)~ EXIT 
  IF ~~ THEN REPLY @2005 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",0)~ EXIT 
- IF ~~ THEN REPLY @2006 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
+ IF ~~ THEN REPLY @2006 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAPRF","GLOBAL",0)~ EXIT 
  IF ~~ THEN REPLY @2003 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ EXIT 
  IF ~~ THEN REPLY @2014 DO ~SetGlobal("D5CLSTLK","GLOBAL",1)~ DO ~SetGlobal("D5STTTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAKIT","GLOBAL",1)~ DO ~SetGlobal("D5PRFTLK","GLOBAL",1)~ DO ~SetGlobal("D5CHAPRF","GLOBAL",0)~ EXIT 
 END
@@ -730,6 +730,14 @@ END
 INCLUDE ~%MOD_FOLDER%/lib/dialprof.tpa~
 
 LAF PROF_DIALOGUE INT_VAR script_level_one = 1 script_higher_levels = 0 ignore_max = 0 STR_VAR prof_script_name = ~d5cprf~ class_dlgs = ~all~ END
+
+/*
+ACTION_FOR_EACH class_let IN ~b~ ~c~ ~d~ ~f~ ~h~ ~k~ ~p~ ~r~ ~s~ ~t~ ~w~ BEGIN
+  COPY ~weidu_external/npc_ee/compile/d5cprf%class_let%.d~ ~weidu_external/npc_ee/compile/d5cprf%class_let%.d~
+    REPLACE_TEXTUALLY ~~~~~) CheckStatGT(myself,0,LEVEL)~ THEN~~~~~ ~~~~~)~ THEN~~~~~
+  COMPILE ~weidu_external/npc_ee/compile/d5cprf%class_let%.d~
+END
+*/
 
 COPY_EXISTING ~d5cprf.spl~ ~override~
   	SAY NAME1 @2093

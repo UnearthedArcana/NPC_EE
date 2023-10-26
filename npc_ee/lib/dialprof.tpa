@@ -1,6 +1,5 @@
-/* v4.3
+/* v4.4
 	- better handling of PROFSMAX
-	- improved option to exceed max value
 */
 
 //__________________________________________________________________________________
@@ -2357,23 +2356,17 @@ DEFINE_PATCH_MACRO prof_name_replacements BEGIN
 	REPLACE_TEXTUALLY ~4294967296~ ~%no_set%~
 END
 
-/* this doesn't work...
-ACTION_FOR_EACH class IN ~fighter~ ~ranger~ ~paladin~ ~cleric~ ~druid~ ~shaman~ ~thief~ ~bard~ ~mage~ ~sorcerer~ ~monk~ BEGIN
-  SNPRINT 2 shortclass ~%class%~
-  COPY ~%MOD_FOLDER%/lib/dialprof/profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%%shortclass%.d~
-	REPLACE_TEXTUALLY ~%class%_sp_min_level%~ ~%"class"_sp_min_level%~
-	REPLACE_TEXTUALLY ~%class%_ma_min_level%~ ~%"class"_ma_min_level%~
-	REPLACE_TEXTUALLY ~%class%_hi_min_level%~ ~%"class"_hi_min_level%~
-	REPLACE_TEXTUALLY ~%class%_gm_min_level%~ ~%"class"_gm_min_level%~
-    LPM prof_name_replacements
-*/
-
 LAM BASE_DLG
 
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%f.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%f~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%F~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%fighter_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%fighter_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%fighter_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%fighter_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%fighter_gm_min_level%~
@@ -2382,7 +2375,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%f
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%r.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%r~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%R~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%ranger_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%ranger_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%ranger_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%ranger_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%ranger_gm_min_level%~
@@ -2391,7 +2389,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%r
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%p.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%p~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%P~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%paladin_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%paladin_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%paladin_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%paladin_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%paladin_gm_min_level%~
@@ -2400,7 +2403,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%p
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%c.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%c~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%C~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%cleric_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%cleric_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%cleric_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%cleric_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%cleric_gm_min_level%~
@@ -2409,7 +2417,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%c
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%d.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%d~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%D~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%druid_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%druid_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%druid_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%druid_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%druid_gm_min_level%~
@@ -2418,7 +2431,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%d
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%h.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%h~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%H~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%shaman_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%shaman_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%shaman_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%shaman_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%shaman_gm_min_level%~
@@ -2427,7 +2445,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%h
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%t.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%t~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%T~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%thief_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%thief_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%thief_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%thief_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%thief_gm_min_level%~
@@ -2436,7 +2459,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%t
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%b.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%b~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%B~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%bard_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%bard_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%bard_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%bard_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%bard_gm_min_level%~
@@ -2445,7 +2473,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%b
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%w.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%w~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%W~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%mage_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%mage_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%mage_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%mage_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%mage_gm_min_level%~
@@ -2454,7 +2487,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%w
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%s.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%s~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%S~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%sorcerer_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%sorcerer_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%sorcerer_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%sorcerer_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%sorcerer_gm_min_level%~
@@ -2463,7 +2501,12 @@ COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%s
 COPY ~inline/d5profx.d~ ~weidu_external/%MOD_FOLDER%/compile/%prof_script_name%k.d~
 	REPLACE_TEXTUALLY ~d5profx~ ~%prof_script_name%k~
 	REPLACE_TEXTUALLY ~D5PROFX~ ~%prof_script_name%K~
-	REPLACE_TEXTUALLY ~sp_min_level~ ~%monk_sp_min_level%~
+	PATCH_IF (%fighter_sp_min_level% > 0) BEGIN
+	  REPLACE_TEXTUALLY ~sp_min_level~ ~%monk_sp_min_level%~
+	END
+	PATCH_IF (%fighter_sp_min_level% = 0) BEGIN
+	  REPLACE_TEXTUALLY ~) CheckStatGT(myself,sp_min_level,LEVEL)~ ~)~
+	END
 	REPLACE_TEXTUALLY ~ma_min_level~ ~%monk_ma_min_level%~
 	REPLACE_TEXTUALLY ~hi_min_level~ ~%monk_hi_min_level%~
 	REPLACE_TEXTUALLY ~gm_min_level~ ~%monk_gm_min_level%~
