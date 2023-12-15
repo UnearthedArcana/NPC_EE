@@ -1,5 +1,5 @@
 
-// v11.3
+// v11.5 - support DW spells
 
 /*
 
@@ -1286,7 +1286,8 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zclons.2da~) BEGIN
   BUT_ONLY
 
   ACTION_IF !(FILE_EXISTS_IN_GAME ~d5__spheres.d5~) BEGIN
-    COPY_EXISTING_REGEXP ~^[Ss][Pp][Pp][Rr][1-7]\([0-4][0-9]\|50\)\.spl$~ ~override~
+    COPY_EXISTING_REGEXP ~^[Ss][Pp][Pp][Rr][1-7][0-5a-zA-Z][0-9a-zA-Z]\.spl$~ ~override~
+      PATCH_IF !(FILE_CONTAINS_EVALUATED (~hidespl.2da~ ~%SOURCE_RES%~)) OR !(~%SOURCE_RES%~ STRING_MATCHES_REGEXP ~[Ss][Pp][Pp][Rr][1-7]50~) BEGIN
 		SET spl_ind = 0
         INNER_ACTION BEGIN
 		  ACTION_IF (FILE_CONTAINS_EVALUATED (~d5zclons.2da~ ~%SOURCE_RES%~)) BEGIN
@@ -1308,6 +1309,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zclons.2da~) BEGIN
 		  END
           APPEND ~d5zclons.2da~ ~%spl_ind% 	%SOURCE_RES% 	%SOURCE_RES% 	divine 	no ~ UNLESS ~%SOURCE_RES% 	%SOURCE_RES%~
         END
+      END
     BUT_ONLY
   END	//	end no FnP
 
@@ -1596,7 +1598,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zclons.2da~) BEGIN
       READ_SHORT 0x1c spell_type 
       READ_BYTE 0x25 spell_school
       READ_LONG 0x34 spell_level
-      PATCH_IF (~%SOURCE_RES%~ STRING_MATCHES_REGEXP ~[Ss][Pp][Ww][Ii][1-9][0-5][0-9]$~ = 0) && (spell_type = 1) && !(spell_school = 10) && !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI908~) && !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI124~) BEGIN
+      PATCH_IF (~%SOURCE_RES%~ STRING_MATCHES_REGEXP ~[Ss][Pp][Ww][Ii][1-9][0-5a-zA-Z][0-9a-zA-Z]$~ = 0) && (spell_type = 1) && !(spell_school = 10) && !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI908~) && !(~%SOURCE_RES%~ STRING_EQUAL_CASE ~SPWI124~) BEGIN
 	    SNPRINT (0 - 3) spell_num ~%SOURCE_RES%~
 	    PATCH_IF !(FILE_CONTAINS_EVALUATED (~hidespl.2da~ ~%SOURCE_RES%~)) AND !(FILE_CONTAINS_EVALUATED (~d5zclons.2da~ ~%SOURCE_RES%~)) BEGIN
           SPRINT $more_sorcerer_spells(~%SOURCE_RES%~) ~1~
@@ -1604,7 +1606,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zclons.2da~) BEGIN
       END
     END
   BUT_ONLY
-  
+
   ACTION_PHP_EACH more_sorcerer_spells AS sorc_spell => ind BEGIN
     ACTION_IF (%ind% > 0) BEGIN
       OUTER_SET spl_ind = 0

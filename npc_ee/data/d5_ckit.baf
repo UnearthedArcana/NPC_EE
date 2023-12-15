@@ -1746,7 +1746,6 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5LV1PRF","GLOBAL",1)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	Continue()
 END
 IF
@@ -1769,6 +1768,7 @@ THEN
 	RESPONSE #100
 	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
 	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathrog,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsrog,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyrog,SET)
@@ -2220,7 +2220,6 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5LV1PRF","GLOBAL",1)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	Continue()
 END
 IF
@@ -2254,6 +2253,7 @@ THEN
 	RESPONSE #100
 	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
 	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwar,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswar,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywar,SET)
@@ -2363,7 +2363,6 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5LV1PRF","GLOBAL",1)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	Continue()
 END
 IF
@@ -2397,6 +2396,7 @@ THEN
 	RESPONSE #100
 	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
 	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
@@ -2484,7 +2484,6 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5LV1PRF","GLOBAL",1)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	Continue()
 END
 IF
@@ -2518,6 +2517,7 @@ THEN
 	RESPONSE #100
 	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
 	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwiz,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswiz,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywiz,SET)
@@ -2545,7 +2545,6 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("D5LV1PRF","GLOBAL",1)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	Continue()
 END
 IF
@@ -2590,6 +2589,7 @@ THEN
 	RESPONSE #100
 	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
 	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5CSM8T",Myself))
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathwiz,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandswiz,SET)
 	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolywiz,SET)
