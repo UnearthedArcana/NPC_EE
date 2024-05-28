@@ -806,6 +806,9 @@ ACTION_IF !(FILE_EXISTS_IN_GAME ~d5nprf.spl~) BEGIN
         LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5c%d5_csp_stat%%d5_csp_letr%~ END
       END
     END
+    PATCH_FOR_EACH d5_prfx_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ BEGIN
+      LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5prfx%d5_prfx_letr%~ END
+    END
     LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 172 target = 1 timing = 1 STR_VAR resource = EVAL ~d5cx115~ END
     PATCH_FOR_EACH d5_csp_num IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ ~8~ ~9~ BEGIN
       PATCH_FOR_EACH d5_csp_dlg IN ~f~ ~m~ ~i~ BEGIN
@@ -990,6 +993,7 @@ CREATE SPL ~d5csm8u~	//	skill focus spell
   LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 275 target = 1 parameter1 = 10 parameter2 = 0 timing = 9 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 59 target = 1 parameter1 = 10 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
 CREATE SPL ~d5csm8v~	//	skill focus spell
   SAY NAME1 @12412
   SAY UNIDENTIFIED_DESC @12412
@@ -997,6 +1001,7 @@ CREATE SPL ~d5csm8v~	//	skill focus spell
   WRITE_LONG 0x34 1
   LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 92 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
 CREATE SPL ~d5csm8w~	//	skill focus spell
   SAY NAME1 @12413
   SAY UNIDENTIFIED_DESC @12413
@@ -1004,6 +1009,7 @@ CREATE SPL ~d5csm8w~	//	skill focus spell
   WRITE_LONG 0x34 1
   LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 90 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
 CREATE SPL ~d5csm8x~	//	skill focus spell
   SAY NAME1 @12414
   SAY UNIDENTIFIED_DESC @12414
@@ -1011,6 +1017,7 @@ CREATE SPL ~d5csm8x~	//	skill focus spell
   WRITE_LONG 0x34 1
   LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 91 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
 CREATE SPL ~d5csm8y~	//	skill focus spell
   SAY NAME1 @12415
   SAY UNIDENTIFIED_DESC @12415
@@ -1018,6 +1025,7 @@ CREATE SPL ~d5csm8y~	//	skill focus spell
   WRITE_LONG 0x34 1
   LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 276 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
 CREATE SPL ~d5csm8z~	//	skill focus spell
   SAY NAME1 @12416
   SAY UNIDENTIFIED_DESC @12416
@@ -1025,6 +1033,7 @@ CREATE SPL ~d5csm8z~	//	skill focus spell
   WRITE_LONG 0x34 1
   LPF QD_ADD_EMPTY_SPELL_HEADER INT_VAR type = 1 location = 4 target = 5 required_level = 1 END
   LPF ADD_SPELL_EFFECT INT_VAR opcode = 277 target = 1 parameter1 = 20 parameter2 = 0 timing = 9 END
+  LPF ADD_SPELL_EFFECT INT_VAR opcode = 172 target = 1 timing = 1 STR_VAR resource = ~d5csm8~ END
 
 END
 
@@ -2147,10 +2156,13 @@ COPY_EXISTING ~d5_nukt.spl~ ~override~
     END
   END
   PATCH_FOR_EACH ki IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5ki%ki%i~ END
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5ki%ki%i~ END
   END
   PATCH_FOR_EACH nj IN ~1~ ~2~ ~3~ ~4~ ~5~ ~6~ ~7~ BEGIN
-      LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5nj%nj%i~ END
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5nj%nj%i~ END
+  END
+  PATCH_FOR_EACH d5_prfx_letr IN ~a~ ~b~ ~c~ ~d~ ~e~ ~f~ ~g~ ~h~ ~i~ ~j~ ~k~ BEGIN
+    LPF ADD_SPELL_EFFECT INT_VAR target = 1 opcode = 172 timing = 1 STR_VAR resource = EVAL ~d5prfx%d5_prfx_letr%~ END
   END
   PATCH_FOR_EACH 112_itm IN
     ~d5mana~
