@@ -1,5 +1,5 @@
 
-// v11.4
+// v12 - added rest-crash prevention
 
 /*
 
@@ -665,6 +665,8 @@ END
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~d5xrfsh.spl~ BEGIN
   COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5xrfsh.spl~
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 146 target = 1 parameter2 = 1 timing = 1 duration = 0 STR_VAR resource = ~d5xx172~ END
+//  now doing this ^^ in d5xcrsh, before resting
+//  actually, shit, maybe it wouldn't hurt to do it twice?
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_spont_rest% parameter2 = 111 timing = 1 duration = 0 STR_VAR resource = ~d5zrest~ END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5zz145~ END
     LPF ADD_SPELL_EFFECT INT_VAR opcode = 321 target = 1 timing = 9 STR_VAR resource = ~d5src-1~ END
@@ -973,6 +975,24 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zw172.spl~) BEGIN
 END
 */
 
+// prevent crash on rest____________________________________________________________
+//
+LAF no_crash_on_rest END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5xcrsh.spl~) BEGIN
+  COPY_EXISTING ~d5xcrsh.spl~ ~override~
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_sorc_state% parameter2 = 110 timing = 1 STR_VAR resource = ~d5xx172~ END
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5xrfsh.spl~) BEGIN
+  COPY_EXISTING ~d5xrfsh.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = ~d5xcrs1~ END
+  BUT_ONLY
+END
+
+// ... then add AP_D5XCRS1 to a kit's CLAB table
+
+ 
 END		//	end with_tra
 
 

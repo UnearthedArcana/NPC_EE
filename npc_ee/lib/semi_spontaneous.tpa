@@ -1,5 +1,5 @@
 
-// v11.5 - support DW spells
+// v12 - add rest-crash prevention
 
 /*
 
@@ -1238,6 +1238,45 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zzini.spl~) BEGIN
 	END
 END
 */
+
+// prevent crash on rest____________________________________________________________
+//
+LAF ~no_crash_on_rest~ END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5xcrsh.spl~) BEGIN
+  COPY_EXISTING ~d5xcrsh.spl~ ~override~
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_spont_arcane% parameter2 = 110 timing = 1 STR_VAR resource = ~d5zz172~ END
+	LPF ADD_SPELL_EFFECT INT_VAR opcode = 326 target = 1 parameter1 = %semi_spont_divine% parameter2 = 110 timing = 1 STR_VAR resource = ~d5zz172~ END
+END
+
+/*
+//ACTION_IF !(FILE_EXISTS_IN_GAME ~d5xcrsh.spl~) BEGIN
+APPEND_OUTER ~weidu_external/d5_semi_cast/d5zlotr.baf~ 
+~IF
+	GlobalLT("D5_NO_CRASH","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("D5_NO_CRASH","GLOBAL",1)
+    	Continue()
+END
+~ UNLESS ~GlobalLT("D5_NO_CRASH","GLOBAL",1)~
+//END
+*/
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5zlotr.spl~) BEGIN
+  COPY_EXISTING ~d5zlotr.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = ~d5xcrs1~ END
+  BUT_ONLY
+END
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~d5zrfsh.spl~) BEGIN
+  COPY_EXISTING ~d5zrfsh.spl~ ~override~
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 0 opcode = 177 target = 1 parameter2 = 2 timing = 1 STR_VAR resource = ~d5xcrs1~ END
+  BUT_ONLY
+END
+
+// ... then add AP_D5XCRS1 to each kit's CLAB table
+
 
 END		//	end with_tra
 
