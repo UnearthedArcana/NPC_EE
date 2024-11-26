@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/backup/npc_ee~
 AUTHOR ~SubtleD~
 
-VERSION ~6.5.4~
+VERSION ~6.5.5~
 //README ~npc_ee/readme-NPC_EE.html~
 
 ALWAYS
@@ -82,6 +82,8 @@ BEGIN @2000
 DESIGNATED 2000
 LABEL ~D5_NPC_CUSTOMIZATION~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @2
+
+LAF fix_kitlist_missing_ids END
 
 INCLUDE ~npc_ee/lib/npc_changes.tpa~
 
