@@ -22,6 +22,10 @@ LANGUAGE
   ~npc_ee/language/english/setup.tra~ // fallback to english
   ~npc_ee/language/french/setup.tra~
 
+LANGUAGE
+  ~Simplified Chinese~
+  ~schinese~
+  ~npc_ee/language/schinese/setup.tra~
 
 //__________________________________________________________________________________
 //__________________________________________________________________________________
