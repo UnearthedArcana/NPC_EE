@@ -1619,66 +1619,6 @@ END
 
 IF
 	Global("D5CHAKIT","GLOBAL",0)
-	Class(LastSummonerOf(Myself),DRUID)
-	Global("D5CHACLS","GLOBAL",2)
-	Global("D5STTTLK","GLOBAL",1)
-	CheckStatGT(LastSummonerOf(Myself),1_druid_xp,XP)
-THEN
-	RESPONSE #100
-	SetGlobal("D5LV1PRF","GLOBAL",1)
-	Continue()
-END
-IF
-	Global("D5CHAKIT","GLOBAL",0)
-	Class(LastSummonerOf(Myself),DRUID)
-	Global("D5CHACLS","GLOBAL",2)
-	Global("D5STTTLK","GLOBAL",1)
-	CheckStatLT(LastSummonerOf(Myself),12,WIS)
-THEN
-	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
-	Continue()
-END
-IF
-	Global("D5CHAKIT","GLOBAL",0)
-	Class(LastSummonerOf(Myself),DRUID)
-	Global("D5CHACLS","GLOBAL",2)
-	Global("D5STTTLK","GLOBAL",1)
-	CheckStatLT(LastSummonerOf(Myself),15,CHR)
-THEN
-	RESPONSE #100
-	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,15,SET))
-	Continue()
-END
-IF
-	Global("D5CHAKIT","GLOBAL",0)
-	Class(LastSummonerOf(Myself),DRUID)
-	Global("D5CHACLS","GLOBAL",2)
-	Global("D5STTTLK","GLOBAL",1)
-THEN
-	RESPONSE #100
-	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
-	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
-	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
-	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
-	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
-	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
-	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
-	Continue()
-END
-IF
-	Global("D5CHAKIT","GLOBAL",0)
-	Class(LastSummonerOf(Myself),DRUID)
-THEN
-	RESPONSE #100
-	SetGlobal("D5CHAKIT","GLOBAL",1)
-	SetGlobal("D5DRKIT","GLOBAL",1)
-	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5SPMEM",Myself))
-	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5drkit",Myself))
-END
-
-IF
-	Global("D5CHAKIT","GLOBAL",0)
 	Class(LastSummonerOf(Myself),SHAMAN)
 	Global("D5CHACLS","GLOBAL",2)
 	Global("D5STTTLK","GLOBAL",1)
@@ -1735,6 +1675,66 @@ THEN
 	SetGlobal("D5SHKIT","GLOBAL",1)
 	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5SPMEM",Myself))
 	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5shkit",Myself))
+END
+
+IF
+	Global("D5CHAKIT","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatGT(LastSummonerOf(Myself),1_druid_xp,XP)
+THEN
+	RESPONSE #100
+	SetGlobal("D5LV1PRF","GLOBAL",1)
+	Continue()
+END
+IF
+	Global("D5CHAKIT","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),12,WIS)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,WIS,12,SET))
+	Continue()
+END
+IF
+	Global("D5CHAKIT","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+	CheckStatLT(LastSummonerOf(Myself),15,CHR)
+THEN
+	RESPONSE #100
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,CHR,15,SET))
+	Continue()
+END
+IF
+	Global("D5CHAKIT","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+	Global("D5CHACLS","GLOBAL",2)
+	Global("D5STTTLK","GLOBAL",1)
+THEN
+	RESPONSE #100
+	ChangeStat(LastSummonerOf(Myself),"LORE",1,SET)
+	ActionOverride(LastSummonerOf(Myself),ChangeStat(Myself,MAXHITPOINTS,2,SET))
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSDEATH",savedeathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSWANDS",savewandsprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSPOLY",savepolyprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSBREATH",savebreathprs,SET)
+	ChangeStat(LastSummonerOf(Myself),"SAVEVSSPELL",savespellsprs,SET)
+	Continue()
+END
+IF
+	Global("D5CHAKIT","GLOBAL",0)
+	Class(LastSummonerOf(Myself),DRUID)
+THEN
+	RESPONSE #100
+	SetGlobal("D5CHAKIT","GLOBAL",1)
+	SetGlobal("D5DRKIT","GLOBAL",1)
+	ActionOverride(LastSummonerOf(Myself),ApplySpellRES("D5SPMEM",Myself))
+	ActionOverride(LastSummonerOf(Myself),StartDialogOverride("d5drkit",Myself))
 END
 
 IF

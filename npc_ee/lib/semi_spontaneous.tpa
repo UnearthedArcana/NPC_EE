@@ -1,5 +1,5 @@
 
-// v12 - add rest-crash prevention
+// v12.2 - mater
 
 /*
 
@@ -1196,7 +1196,7 @@ COPY ~%MOD_FOLDER%/lib/semi_spont/d5_base.spl~ ~override/d5zifat.spl~
 ACTION_FOR_EACH fatigue_spell IN ~spcl939~ ~cdidrif~ BEGIN
   ACTION_IF (FILE_EXISTS_IN_GAME ~%fatigue_spell%.spl~) BEGIN
     COPY_EXISTING ~%fatigue_spell%.spl~ ~override~
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 93 match_parameter1 = 0 match_paramater2 = 1 parameter1 = 2 END
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 93 match_parameter1 = 0 match_parameter2 = 1 parameter1 = 2 END
       LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 101 match_parameter2 = 93 match_timing = 9 opcode = 177 parameter1 = 0 parameter2 = 2 STR_VAR resource = ~d5zifat9~ END
     BUT_ONLY
   END
@@ -1205,7 +1205,7 @@ END
 ACTION_FOR_EACH fatigue_item IN ~bdamul12~ BEGIN
   ACTION_IF (FILE_EXISTS_IN_GAME ~%fatigue_item%.itm~) BEGIN
     COPY_EXISTING ~%fatigue_item%.itm~ ~override~
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 93 match_parameter1 = 0 match_paramater2 = 1 parameter1 = 2 END
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 93 match_parameter1 = 0 match_parameter2 = 1 parameter1 = 2 END
       LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 101 match_parameter2 = 93 match_timing = 2 opcode = 177 parameter1 = 0 parameter2 = 2 STR_VAR resource = ~d5zifat2~ END
     BUT_ONLY
   END
@@ -1215,7 +1215,7 @@ OUTER_SET spell_ids = IDS_OF_SYMBOL (~spell~ ~CLERIC_UNFAILING_ENDURANCE~)
 ACTION_IF !(spell_ids = 0 - 1) BEGIN
   LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = ~CLERIC_UNFAILING_ENDURANCE~ RET spell_res END
   COPY_EXISTING ~%spell_res%.spl~ ~override~
-    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 93 match_parameter1 = 0 match_paramater2 = 1 parameter1 = 1 END
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 93 match_parameter1 = 0 match_parameter2 = 1 parameter1 = 1 END
   BUT_ONLY
 END 
 
@@ -1385,7 +1385,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~d5zclons.2da~) BEGIN
         OUTER_SET high_ind = high_ind + 1
 	    OUTER_SET spl_ind = high_ind
 	  END
-      APPEND ~d5zclons.2da~ ~%spl_ind% 	%res_1%	%res% 	divine 	no ~ UNLESS ~%res_1%~
+      APPEND ~d5zclons.2da~ ~%spl_ind% 	%res_1%	%res_1% 	divine 	no ~ UNLESS ~%res_1%~
       ACTION_IF !(~%res_2%~ STRING_EQUAL_CASE ~%res_1%~) BEGIN
         ACTION_IF !(~%res_2%~ STRING_EQUAL_CASE ~****~) BEGIN
           APPEND ~d5zclons.2da~ ~%spl_ind% 	%res_2% 	%res% 	divine 	no ~ UNLESS ~%res_2%~
